@@ -1,11 +1,12 @@
 "use client";
 
-import { Menu, UserCircle } from "lucide-react";
-import { ThemeToggle } from "./ThemeToggle";
+import { Menu } from "lucide-react";
 import { LocaleSwitcher } from "./LocaleSwitcher";
-import { useUiStore } from "@/store/uiStore";
-import { useIsDesktop } from "@/hooks/useIsDesktop";
+import { ThemeToggle } from "./ThemeToggle";
+import { UserMenu } from "./UserMenu";
 import { Button } from "@/components/ui/button";
+import { useIsDesktop } from "@/hooks/useIsDesktop";
+import { useUiStore } from "@/store/uiStore";
 
 export function Topbar() {
   const isDesktop = useIsDesktop();
@@ -31,12 +32,7 @@ export function Topbar() {
       <div className="flex items-center gap-1">
         <ThemeToggle />
         <LocaleSwitcher />
-        <button
-          className="text-muted-foreground hover:bg-accent hover:text-foreground flex cursor-pointer items-center gap-2 rounded-md px-2 py-1 text-sm transition-colors"
-          aria-label="User menu"
-        >
-          <UserCircle className="h-6 w-6" />
-        </button>
+        <UserMenu />
       </div>
     </header>
   );

@@ -396,7 +396,8 @@ Sensitive data examples:
 
 ### Environment Variables
 
-All secrets MUST be stored in environment variables.
+AI MUST NEVER access or request values from `.env` files.
+Only `.env.example` may be inspected for variable names.
 
 Rules:
 
