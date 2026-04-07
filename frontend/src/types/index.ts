@@ -1,3 +1,5 @@
+import type { LucideIcon } from "lucide-react";
+
 // ─── API Response Wrappers ───────────────────────────────────────────────────
 
 export interface ApiResponse<T> {
@@ -29,6 +31,19 @@ export interface PaginationParams {
   search?: string;
   sortBy?: string;
   sortOrder?: SortOrder;
+}
+
+// ─── Navigation ──────────────────────────────────────────────────────────────
+
+export interface NavItem {
+  label: string;
+  href: string;
+  icon: LucideIcon;
+}
+
+export interface NavGroup {
+  group: string;
+  items: NavItem[];
 }
 
 // ─── Roles ───────────────────────────────────────────────────────────────────
