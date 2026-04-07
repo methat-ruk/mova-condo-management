@@ -58,5 +58,42 @@
   "locale": {
     "th": "ไทย",
     "en": "English"
+  },
+  "auth": {
+    "login": {
+      "title": "เข้าสู่ระบบ",
+      "subtitle": "กรอกอีเมลและรหัสผ่านเพื่อเข้าใช้งาน",
+      "email": "อีเมล",
+      "emailPlaceholder": "กรอกอีเมลของคุณ",
+      "password": "รหัสผ่าน",
+      "passwordPlaceholder": "กรอกรหัสผ่านของคุณ",
+      "submit": "เข้าสู่ระบบ",
+      "submitting": "กำลังเข้าสู่ระบบ...",
+      "success": "เข้าสู่ระบบสำเร็จ",
+      "error": "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
+      "networkError": "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง",
+      "forgotPassword": "ลืมรหัสผ่าน?",
+      "appName": "Condo Manager",
+      "appTagline": "ระบบบริหารจัดการคอนโดมิเนียม"
+    },
+    "logout": {
+      "label": "ออกจากระบบ",
+      "success": "ออกจากระบบสำเร็จ"
+    },
+    "profile": {
+      "editProfile": "แก้ไขโปรไฟล์"
+    },
+    "roles": {
+      "ADMIN": "ผู้ดูแลระบบ",
+      "PROPERTY_MANAGER": "ผู้จัดการทรัพย์สิน",
+      "STAFF": "เจ้าหน้าที่",
+      "RESIDENT": "ผู้พักอาศัย"
+    },
+    "validation": {
+      "emailRequired": "กรุณากรอกอีเมล",
+      "emailInvalid": "รูปแบบอีเมลไม่ถูกต้อง",
+      "passwordRequired": "กรุณากรอกรหัสผ่าน",
+      "passwordMinLength": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร"
+    }
   }
 }
