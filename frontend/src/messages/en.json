@@ -1,0 +1,62 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "buildings": "Buildings & Units",
+    "residents": "Residents",
+    "maintenance": "Maintenance",
+    "billing": "Billing & Payment",
+    "visitors": "Visitors",
+    "parcels": "Parcels",
+    "facilities": "Facility Booking",
+    "analytics": "Analytics",
+    "admin": "Administration",
+    "groups": {
+      "overview": "Overview",
+      "property": "Property",
+      "operations": "Operations",
+      "management": "Management"
+    }
+  },
+  "common": {
+    "actions": {
+      "save": "Save",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "edit": "Edit",
+      "confirm": "Confirm",
+      "search": "Search",
+      "create": "Create",
+      "update": "Update",
+      "back": "Back",
+      "view": "View"
+    },
+    "status": {
+      "loading": "Loading...",
+      "noData": "No data found",
+      "error": "An error occurred"
+    },
+    "pagination": {
+      "page": "Page",
+      "of": "of",
+      "total": "Total",
+      "rowsPerPage": "Rows per page"
+    }
+  },
+  "breadcrumb": {
+    "detail": "Detail",
+    "floors": "Floors",
+    "units": "Units",
+    "invoices": "Invoices",
+    "payments": "Payments",
+    "tickets": "Tickets",
+    "bookings": "Bookings"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "locale": {
+    "th": "ไทย",
+    "en": "English"
+  }
+}

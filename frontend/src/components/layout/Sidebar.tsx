@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   BarChart3,
   Building2,
@@ -17,40 +18,46 @@ import {
 import { clsx } from "clsx";
 import { useUiStore } from "@/store/uiStore";
 import { useIsDesktop } from "@/hooks/useIsDesktop";
-import type { NavItem } from "@/types";
+import type { LucideIcon } from "lucide-react";
+
+interface NavItem {
+  key: string;
+  href: string;
+  icon: LucideIcon;
+}
 
 interface NavGroup {
-  group: string;
+  groupKey: string;
   items: NavItem[];
 }
 
 const navGroups: NavGroup[] = [
   {
-    group: "Overview",
-    items: [{ label: "Dashboard", href: "/dashboard", icon: LayoutDashboard }],
+    groupKey: "overview",
+    items: [{ key: "dashboard", href: "/dashboard", icon: LayoutDashboard }],
   },
   {
-    group: "Property",
+    groupKey: "property",
     items: [
-      { label: "Buildings & Units", href: "/buildings", icon: Building2 },
-      { label: "Residents", href: "/residents", icon: Users },
+      { key: "buildings", href: "/buildings", icon: Building2 },
+      { key: "residents", href: "/residents", icon: Users },
     ],
   },
   {
-    group: "Operations",
+    groupKey: "operations",
     items: [
-      { label: "Maintenance", href: "/maintenance", icon: Wrench },
-      { label: "Billing", href: "/billing", icon: Receipt },
-      { label: "Visitors", href: "/visitors", icon: UserCheck },
-      { label: "Parcels", href: "/parcels", icon: Package },
-      { label: "Facility Booking", href: "/facilities", icon: CalendarDays },
+      { key: "maintenance", href: "/maintenance", icon: Wrench },
+      { key: "billing", href: "/billing", icon: Receipt },
+      { key: "visitors", href: "/visitors", icon: UserCheck },
+      { key: "parcels", href: "/parcels", icon: Package },
+      { key: "facilities", href: "/facilities", icon: CalendarDays },
     ],
   },
   {
-    group: "Management",
+    groupKey: "management",
     items: [
-      { label: "Analytics", href: "/analytics", icon: BarChart3 },
-      { label: "Administration", href: "/admin", icon: Settings },
+      { key: "analytics", href: "/analytics", icon: BarChart3 },
+      { key: "admin", href: "/admin", icon: Settings },
     ],
   },
 ];
@@ -59,13 +66,13 @@ export function Sidebar() {
   const pathname = usePathname();
   const isDesktop = useIsDesktop();
   const { isSidebarOpen, isSidebarCollapsed, closeSidebar } = useUiStore();
+  const tNav = useTranslations("nav");
 
   const isVisible = isDesktop ? true : isSidebarOpen;
   const isCollapsed = isDesktop ? isSidebarCollapsed : false;
 
   return (
     <>
-      {/* Mobile backdrop */}
       {!isDesktop && isSidebarOpen && (
         <div
           className="fixed inset-0 z-40 bg-black/50 lg:hidden"
@@ -77,11 +84,8 @@ export function Sidebar() {
       <aside
         className={clsx(
           "bg-sidebar flex h-screen flex-col transition-all duration-300",
-          // Desktop: inline, Mobiles: fixed drawer
           isDesktop ? "relative" : "fixed inset-y-0 left-0 z-50",
-          // Width
           isCollapsed ? "w-16" : "w-60",
-          // Mobile show/hide
           !isDesktop && !isVisible && "-translate-x-full",
         )}
       >
@@ -107,19 +111,17 @@ export function Sidebar() {
 
         {/* Nav Groups */}
         <nav className="flex flex-1 flex-col gap-4 overflow-y-auto p-2 pt-3">
-          {navGroups.map(({ group, items }) => (
-            <div key={group}>
-              {/* Group Label */}
+          {navGroups.map(({ groupKey, items }) => (
+            <div key={groupKey}>
               {!isCollapsed && (
                 <p className="text-sidebar-foreground/40 mb-1 px-3 text-[10px] font-semibold tracking-widest uppercase">
-                  {group}
+                  {tNav(`groups.${groupKey}`)}
                 </p>
               )}
-
-              {/* Items */}
               <div className="flex flex-col gap-0.5">
-                {items.map(({ label, href, icon: Icon }) => {
+                {items.map(({ key, href, icon: Icon }) => {
                   const isActive = pathname === href || pathname.startsWith(`${href}/`);
+                  const label = tNav(key);
                   return (
                     <Link
                       key={href}

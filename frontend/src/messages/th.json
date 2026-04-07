@@ -1,0 +1,62 @@
+{
+  "nav": {
+    "dashboard": "แดชบอร์ด",
+    "buildings": "อาคารและห้องชุด",
+    "residents": "ผู้พักอาศัย",
+    "maintenance": "ซ่อมบำรุง",
+    "billing": "การเงินและชำระเงิน",
+    "visitors": "ผู้มาเยี่ยม",
+    "parcels": "พัสดุ",
+    "facilities": "การจองสิ่งอำนวยความสะดวก",
+    "analytics": "รายงานและวิเคราะห์",
+    "admin": "ผู้ดูแลระบบ",
+    "groups": {
+      "overview": "ภาพรวม",
+      "property": "ทรัพย์สิน",
+      "operations": "การดำเนินงาน",
+      "management": "การจัดการ"
+    }
+  },
+  "common": {
+    "actions": {
+      "save": "บันทึก",
+      "cancel": "ยกเลิก",
+      "delete": "ลบ",
+      "edit": "แก้ไข",
+      "confirm": "ยืนยัน",
+      "search": "ค้นหา",
+      "create": "สร้าง",
+      "update": "อัปเดต",
+      "back": "กลับ",
+      "view": "ดู"
+    },
+    "status": {
+      "loading": "กำลังโหลด...",
+      "noData": "ไม่มีข้อมูล",
+      "error": "เกิดข้อผิดพลาด"
+    },
+    "pagination": {
+      "page": "หน้า",
+      "of": "จาก",
+      "total": "ทั้งหมด",
+      "rowsPerPage": "แถวต่อหน้า"
+    }
+  },
+  "breadcrumb": {
+    "detail": "รายละเอียด",
+    "floors": "ชั้น",
+    "units": "ห้องชุด",
+    "invoices": "ใบแจ้งหนี้",
+    "payments": "การชำระเงิน",
+    "tickets": "คำร้อง",
+    "bookings": "การจอง"
+  },
+  "theme": {
+    "light": "สว่าง",
+    "dark": "มืด"
+  },
+  "locale": {
+    "th": "ไทย",
+    "en": "English"
+  }
+}

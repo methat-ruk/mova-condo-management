@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -17,8 +18,10 @@ import { useIsDesktop } from "@/hooks/useIsDesktop";
 export function AppBreadcrumb() {
   const pathname = usePathname();
   const isDesktop = useIsDesktop();
+  const tNav = useTranslations("nav");
+  const tBreadcrumb = useTranslations("breadcrumb");
 
-  const all = parseBreadcrumbs(pathname);
+  const all = parseBreadcrumbs(pathname, tNav, tBreadcrumb);
   const { visible, truncated } = isDesktop
     ? { visible: all, truncated: false }
     : truncateBreadcrumbs(all);
