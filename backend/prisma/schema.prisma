@@ -1,9 +1,17 @@
 generator client {
   provider = "prisma-client"
+  output   = "../generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+enum OccupancyStatus {
+  AVAILABLE
+  OCCUPIED
+  RESERVED
+  MAINTENANCE
 }
 
 enum UserRole {
@@ -11,6 +19,48 @@ enum UserRole {
   PROPERTY_MANAGER
   STAFF
   RESIDENT
+}
+
+model Building {
+  id          String   @id @default(uuid())
+  name        String
+  address     String
+  totalFloors Int
+  description String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  floors Floor[]
+}
+
+model Floor {
+  id          String   @id @default(uuid())
+  floorNumber Int
+  buildingId  String
+  building    Building @relation(fields: [buildingId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  units Unit[]
+
+  @@unique([buildingId, floorNumber])
+}
+
+model Unit {
+  id              String          @id @default(uuid())
+  unitNumber      String
+  floorId         String
+  floor           Floor           @relation(fields: [floorId], references: [id], onDelete: Cascade)
+  area            Float
+  bedrooms        Int             @default(1)
+  bathrooms       Int             @default(1)
+  occupancyStatus OccupancyStatus @default(AVAILABLE)
+  monthlyRent     Decimal         @db.Decimal(10, 2)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  @@unique([floorId, unitNumber])
 }
 
 model User {

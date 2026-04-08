@@ -2,7 +2,7 @@ export default function DashboardPage() {
   return (
     <div className="flex flex-col gap-4">
       <h1 className="text-foreground text-2xl font-semibold">Dashboard</h1>
-      <p className="text-muted-foreground">Welcome to the Condo Management Platform.</p>
+      <p className="text-muted-foreground">Welcome to Mova Condo Management System.</p>
     </div>
   );
 }

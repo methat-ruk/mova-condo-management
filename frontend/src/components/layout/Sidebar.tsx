@@ -39,7 +39,7 @@ const navGroups: NavGroup[] = [
   {
     groupKey: "property",
     items: [
-      { key: "buildings", href: "/buildings", icon: Building2 },
+      { key: "floors", href: "/floors", icon: Building2 },
       { key: "residents", href: "/residents", icon: Users },
     ],
   },
@@ -101,9 +101,9 @@ export function Sidebar() {
           </div>
           {!isCollapsed && (
             <div className="flex flex-col leading-tight">
-              <span className="text-sidebar-foreground truncate text-sm font-bold">CondoHub</span>
+              <span className="text-sidebar-foreground truncate text-sm font-bold">Mova Condo</span>
               <span className="text-sidebar-foreground/60 truncate text-[10px]">
-                Management Platform
+                Management System
               </span>
             </div>
           )}

@@ -9,6 +9,16 @@
 * 🟢 You can import this file directly.
 */
 
+export const OccupancyStatus = {
+  AVAILABLE: 'AVAILABLE',
+  OCCUPIED: 'OCCUPIED',
+  RESERVED: 'RESERVED',
+  MAINTENANCE: 'MAINTENANCE'
+} as const
+
+export type OccupancyStatus = (typeof OccupancyStatus)[keyof typeof OccupancyStatus]
+
+
 export const UserRole = {
   ADMIN: 'ADMIN',
   PROPERTY_MANAGER: 'PROPERTY_MANAGER',

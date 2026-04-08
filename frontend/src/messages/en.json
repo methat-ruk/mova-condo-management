@@ -1,7 +1,7 @@
 {
   "nav": {
     "dashboard": "Dashboard",
-    "buildings": "Buildings & Units",
+    "floors": "Floors & Units",
     "residents": "Residents",
     "maintenance": "Maintenance",
     "billing": "Billing & Payment",
@@ -34,22 +34,17 @@
       "loading": "Loading...",
       "noData": "No data found",
       "error": "An error occurred"
-    },
-    "pagination": {
-      "page": "Page",
-      "of": "of",
-      "total": "Total",
-      "rowsPerPage": "Rows per page"
     }
   },
   "breadcrumb": {
     "detail": "Detail",
-    "floors": "Floors",
+    "floor": "Floor",
     "units": "Units",
     "invoices": "Invoices",
     "payments": "Payments",
     "tickets": "Tickets",
-    "bookings": "Bookings"
+    "bookings": "Bookings",
+    "edit": "Edit"
   },
   "theme": {
     "light": "Light",
@@ -58,6 +53,75 @@
   "locale": {
     "th": "ไทย",
     "en": "English"
+  },
+  "building": {
+    "editTitle": "Edit Building Info",
+    "updateSuccess": "Building info updated",
+    "fields": {
+      "name": "Building Name",
+      "address": "Address",
+      "description": "Description"
+    },
+    "validation": {
+      "nameRequired": "Building name is required",
+      "addressRequired": "Address is required"
+    }
+  },
+  "buildings": {
+    "floors": {
+      "title": "Floors",
+      "addFloor": "Add Floor",
+      "deleteFloor": "Delete Floor",
+      "deleteConfirmTitle": "Confirm Delete Floor",
+      "deleteConfirmDesc": "Are you sure you want to delete this floor? This action cannot be undone.",
+      "floorNumber": "Floor",
+      "unitsCount": "Units",
+      "noFloors": "No floors yet",
+      "addSuccess": "Floor {number} added successfully",
+      "deleteSuccess": "Floor {number} deleted successfully",
+      "hasUnits": "Cannot delete floor with existing units",
+      "validation": {
+        "mustBeInteger": "Floor number must be a whole number",
+        "mustBePositive": "Floor number must be at least 1"
+      }
+    },
+    "units": {
+      "title": "Units",
+      "addUnit": "Add Unit",
+      "editUnit": "Edit Unit",
+      "deleteUnit": "Delete Unit",
+      "deleteConfirmTitle": "Confirm Delete Unit",
+      "deleteConfirmDesc": "Are you sure you want to delete this unit?",
+      "noUnits": "No units on this floor yet",
+      "deleteSuccess": "Unit {number} deleted successfully",
+      "createSuccess": "Unit {number} added successfully",
+      "updateSuccess": "Unit {number} updated successfully",
+      "validation": {
+        "unitNumberRequired": "Unit number is required",
+        "areaInvalid": "Area must be greater than 0",
+        "monthlyRentInvalid": "Monthly rent must be 0 or more"
+      },
+      "fields": {
+        "unitNumber": "Unit Number",
+        "area": "Area (sqm)",
+        "bedrooms": "Bedrooms",
+        "bathrooms": "Bathrooms",
+        "monthlyRent": "Monthly Rent",
+        "status": "Status"
+      },
+      "sqm": "sqm",
+      "meterAbbr": "m",
+      "dimensions": "{w}x{h} m",
+      "bedroomCount": "{count} bed",
+      "bathroomCount": "{count} bath",
+      "monthlyRentDisplay": "฿{amount}/mo",
+      "status": {
+        "AVAILABLE": "Available",
+        "OCCUPIED": "Occupied",
+        "RESERVED": "Reserved",
+        "MAINTENANCE": "Maintenance"
+      }
+    }
   },
   "auth": {
     "login": {
@@ -73,8 +137,8 @@
       "error": "Invalid email or password",
       "networkError": "Something went wrong. Please try again.",
       "forgotPassword": "Forgot password?",
-      "appName": "Condo Manager",
-      "appTagline": "Condominium Management System"
+      "appName": "Mova Condo",
+      "appTagline": "Condo Management System"
     },
     "logout": {
       "label": "Logout",

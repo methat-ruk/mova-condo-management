@@ -51,6 +51,9 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  Building: 'Building',
+  Floor: 'Floor',
+  Unit: 'Unit',
   User: 'User'
 } as const
 
@@ -68,6 +71,47 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const BuildingScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  address: 'address',
+  totalFloors: 'totalFloors',
+  description: 'description',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BuildingScalarFieldEnum = (typeof BuildingScalarFieldEnum)[keyof typeof BuildingScalarFieldEnum]
+
+
+export const FloorScalarFieldEnum = {
+  id: 'id',
+  floorNumber: 'floorNumber',
+  buildingId: 'buildingId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FloorScalarFieldEnum = (typeof FloorScalarFieldEnum)[keyof typeof FloorScalarFieldEnum]
+
+
+export const UnitScalarFieldEnum = {
+  id: 'id',
+  unitNumber: 'unitNumber',
+  floorId: 'floorId',
+  area: 'area',
+  bedrooms: 'bedrooms',
+  bathrooms: 'bathrooms',
+  occupancyStatus: 'occupancyStatus',
+  monthlyRent: 'monthlyRent',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UnitScalarFieldEnum = (typeof UnitScalarFieldEnum)[keyof typeof UnitScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {
@@ -99,4 +143,12 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

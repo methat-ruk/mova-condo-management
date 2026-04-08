@@ -1,11 +1,11 @@
 {
   "nav": {
     "dashboard": "แดชบอร์ด",
-    "buildings": "อาคารและห้องชุด",
+    "floors": "ชั้นและห้อง",
     "residents": "ผู้พักอาศัย",
     "maintenance": "ซ่อมบำรุง",
     "billing": "การเงินและชำระเงิน",
-    "visitors": "ผู้มาเยี่ยม",
+    "visitors": "ผู้มาติดต่อ",
     "parcels": "พัสดุ",
     "facilities": "การจองสิ่งอำนวยความสะดวก",
     "analytics": "รายงานและวิเคราะห์",
@@ -34,22 +34,17 @@
       "loading": "กำลังโหลด...",
       "noData": "ไม่มีข้อมูล",
       "error": "เกิดข้อผิดพลาด"
-    },
-    "pagination": {
-      "page": "หน้า",
-      "of": "จาก",
-      "total": "ทั้งหมด",
-      "rowsPerPage": "แถวต่อหน้า"
     }
   },
   "breadcrumb": {
     "detail": "รายละเอียด",
-    "floors": "ชั้น",
-    "units": "ห้องชุด",
+    "floor": "ชั้น",
+    "units": "ห้อง",
     "invoices": "ใบแจ้งหนี้",
     "payments": "การชำระเงิน",
     "tickets": "คำร้อง",
-    "bookings": "การจอง"
+    "bookings": "การจอง",
+    "edit": "แก้ไข"
   },
   "theme": {
     "light": "สว่าง",
@@ -58,6 +53,75 @@
   "locale": {
     "th": "ไทย",
     "en": "English"
+  },
+  "building": {
+    "editTitle": "แก้ไขข้อมูลอาคาร",
+    "updateSuccess": "อัปเดตข้อมูลอาคารเรียบร้อย",
+    "fields": {
+      "name": "ชื่ออาคาร",
+      "address": "ที่อยู่",
+      "description": "รายละเอียด"
+    },
+    "validation": {
+      "nameRequired": "กรุณากรอกชื่ออาคาร",
+      "addressRequired": "กรุณากรอกที่อยู่"
+    }
+  },
+  "buildings": {
+    "floors": {
+      "title": "รายการชั้น",
+      "addFloor": "เพิ่มชั้น",
+      "deleteFloor": "ลบชั้น",
+      "deleteConfirmTitle": "ยืนยันการลบชั้น",
+      "deleteConfirmDesc": "คุณต้องการลบชั้นนี้หรือไม่? การดำเนินการนี้ไม่สามารถย้อนกลับได้",
+      "floorNumber": "ชั้นที่",
+      "unitsCount": "ห้อง",
+      "noFloors": "ยังไม่มีชั้น",
+      "addSuccess": "เพิ่มชั้นที่ {number} เรียบร้อย",
+      "deleteSuccess": "ลบชั้นที่ {number} เรียบร้อย",
+      "hasUnits": "ไม่สามารถลบชั้นที่มีห้องอยู่ได้",
+      "validation": {
+        "mustBeInteger": "เลขชั้นต้องเป็นจำนวนเต็ม",
+        "mustBePositive": "เลขชั้นต้องมีอย่างน้อย 1"
+      }
+    },
+    "units": {
+      "title": "ห้อง",
+      "addUnit": "เพิ่มห้อง",
+      "editUnit": "แก้ไขห้อง",
+      "deleteUnit": "ลบห้อง",
+      "deleteConfirmTitle": "ยืนยันการลบห้อง",
+      "deleteConfirmDesc": "คุณต้องการลบห้องนี้หรือไม่?",
+      "noUnits": "ยังไม่มีห้องในชั้นนี้",
+      "deleteSuccess": "ลบห้อง {number} เรียบร้อย",
+      "createSuccess": "เพิ่มห้อง {number} เรียบร้อย",
+      "updateSuccess": "อัปเดตห้อง {number} เรียบร้อย",
+      "validation": {
+        "unitNumberRequired": "กรุณากรอกหมายเลขห้อง",
+        "areaInvalid": "พื้นที่ต้องมากกว่า 0",
+        "monthlyRentInvalid": "ค่าเช่าต้องไม่ติดลบ"
+      },
+      "fields": {
+        "unitNumber": "หมายเลขห้อง",
+        "area": "พื้นที่ (ตร.ม.)",
+        "bedrooms": "ห้องนอน",
+        "bathrooms": "ห้องน้ำ",
+        "monthlyRent": "ค่าเช่า/เดือน",
+        "status": "สถานะ"
+      },
+      "sqm": "ตร.ม.",
+      "meterAbbr": "ม.",
+      "dimensions": "{w}x{h} ม.",
+      "bedroomCount": "{count} ห้องนอน",
+      "bathroomCount": "{count} ห้องน้ำ",
+      "monthlyRentDisplay": "฿{amount}/เดือน",
+      "status": {
+        "AVAILABLE": "ว่าง",
+        "OCCUPIED": "มีผู้พัก",
+        "RESERVED": "จอง",
+        "MAINTENANCE": "ซ่อมบำรุง"
+      }
+    }
   },
   "auth": {
     "login": {
@@ -73,7 +137,7 @@
       "error": "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
       "networkError": "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง",
       "forgotPassword": "ลืมรหัสผ่าน?",
-      "appName": "Condo Manager",
+      "appName": "Mova Condo",
       "appTagline": "ระบบบริหารจัดการคอนโดมิเนียม"
     },
     "logout": {

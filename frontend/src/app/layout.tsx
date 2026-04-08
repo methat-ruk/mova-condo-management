@@ -11,8 +11,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Condo Management Platform",
-  description: "Centralized condominium management system",
+  title: "Mova Condo",
+  description: "Mova Condo Management System",
 };
 
 export default async function RootLayout({

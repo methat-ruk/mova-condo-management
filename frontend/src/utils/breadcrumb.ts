@@ -8,7 +8,7 @@ type TranslateFn = (key: string) => string;
 
 const ROUTE_KEYS: Record<string, string> = {
   dashboard: "dashboard",
-  buildings: "buildings",
+  floors: "floors",
   residents: "residents",
   maintenance: "maintenance",
   billing: "billing",
@@ -20,6 +20,8 @@ const ROUTE_KEYS: Record<string, string> = {
 };
 
 const BREADCRUMB_KEYS: Record<string, string> = {
+  new: "new",
+  edit: "edit",
   floors: "floors",
   units: "units",
   invoices: "invoices",
@@ -32,11 +34,23 @@ function isDynamicSegment(segment: string): boolean {
   return /^\d+$/.test(segment) || /^[0-9a-f-]{36}$/.test(segment);
 }
 
-function toLabel(segment: string, tNav: TranslateFn, tBreadcrumb: TranslateFn): string {
-  if (isDynamicSegment(segment)) return tBreadcrumb("detail");
-  if (ROUTE_KEYS[segment]) return tNav(ROUTE_KEYS[segment]);
-  if (BREADCRUMB_KEYS[segment]) return tBreadcrumb(BREADCRUMB_KEYS[segment]);
-  return segment.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+function toLabel(
+  segment: string,
+  index: number,
+  segments: string[],
+  tNav: TranslateFn,
+  tBreadcrumb: TranslateFn,
+): string {
+  if (!isDynamicSegment(segment)) {
+    if (ROUTE_KEYS[segment]) return tNav(ROUTE_KEYS[segment]);
+    if (BREADCRUMB_KEYS[segment]) return tBreadcrumb(BREADCRUMB_KEYS[segment]);
+    return segment.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  }
+
+  // Dynamic segment — determine label by parent context
+  const prev = segments[index - 1];
+  if (prev === "floors") return tBreadcrumb("floor");
+  return tBreadcrumb("detail");
 }
 
 export function parseBreadcrumbs(
@@ -46,7 +60,7 @@ export function parseBreadcrumbs(
 ): BreadcrumbSegment[] {
   const segments = pathname.split("/").filter(Boolean);
   return segments.map((seg, i) => ({
-    label: toLabel(seg, tNav, tBreadcrumb),
+    label: toLabel(seg, i, segments, tNav, tBreadcrumb),
     href: "/" + segments.slice(0, i + 1).join("/"),
     isLast: i === segments.length - 1,
   }));
