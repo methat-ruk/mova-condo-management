@@ -15,7 +15,10 @@ import type { ApiError } from "@/types";
 
 function buildSchema(t: ReturnType<typeof useTranslations<"auth.validation">>) {
   return z.object({
-    email: z.string().min(1, t("emailRequired")).email({ message: t("emailInvalid") }),
+    email: z
+      .string()
+      .min(1, t("emailRequired"))
+      .email({ message: t("emailInvalid") }),
     password: z.string().min(1, t("passwordRequired")).min(8, t("passwordMinLength")),
   });
 }
@@ -66,9 +69,7 @@ export default function LoginPage() {
           <Building2 className="h-7 w-7" strokeWidth={1.5} />
         </div>
         <div className="text-center">
-          <h1 className="text-foreground text-lg font-bold tracking-tight">
-            {t("appName")}
-          </h1>
+          <h1 className="text-foreground text-lg font-bold tracking-tight">{t("appName")}</h1>
           <p className="text-muted-foreground text-xs">{t("appTagline")}</p>
         </div>
         <div className="border-border w-full border-t" />
@@ -93,9 +94,7 @@ export default function LoginPage() {
               autoComplete="email"
             />
           </div>
-          {errors.email && (
-            <p className="text-xs text-red-500">{errors.email.message}</p>
-          )}
+          {errors.email && <p className="text-xs text-red-500">{errors.email.message}</p>}
         </div>
 
         {/* Password */}
@@ -115,13 +114,11 @@ export default function LoginPage() {
               autoComplete="current-password"
             />
           </div>
-          {errors.password && (
-            <p className="text-xs text-red-500">{errors.password.message}</p>
-          )}
+          {errors.password && <p className="text-xs text-red-500">{errors.password.message}</p>}
           <div className="flex justify-end">
             <button
               type="button"
-              className="text-primary hover:text-primary/80 hover:underline cursor-pointer text-xs transition-colors"
+              className="text-primary hover:text-primary/80 cursor-pointer text-xs transition-colors hover:underline"
               onClick={() => toast.info("Coming soon")}
             >
               {t("forgotPassword")}

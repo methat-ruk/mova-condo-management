@@ -72,8 +72,13 @@ function BuildingForm({ onSubmit, defaultValues, isPending }: FormProps) {
             id="buildingName"
             type="text"
             value={name}
-            onChange={(e) => { setName(e.target.value); setErrors((p) => ({ ...p, name: undefined })); }}
-            onBlur={() => { if (!name.trim()) setErrors((p) => ({ ...p, name: t("validation.nameRequired") })); }}
+            onChange={(e) => {
+              setName(e.target.value);
+              setErrors((p) => ({ ...p, name: undefined }));
+            }}
+            onBlur={() => {
+              if (!name.trim()) setErrors((p) => ({ ...p, name: t("validation.nameRequired") }));
+            }}
             className={inputClass(errors.name)}
           />
           {errors.name && <p className="text-destructive text-xs">{errors.name}</p>}
@@ -87,8 +92,14 @@ function BuildingForm({ onSubmit, defaultValues, isPending }: FormProps) {
             id="buildingAddress"
             type="text"
             value={address}
-            onChange={(e) => { setAddress(e.target.value); setErrors((p) => ({ ...p, address: undefined })); }}
-            onBlur={() => { if (!address.trim()) setErrors((p) => ({ ...p, address: t("validation.addressRequired") })); }}
+            onChange={(e) => {
+              setAddress(e.target.value);
+              setErrors((p) => ({ ...p, address: undefined }));
+            }}
+            onBlur={() => {
+              if (!address.trim())
+                setErrors((p) => ({ ...p, address: t("validation.addressRequired") }));
+            }}
             className={inputClass(errors.address)}
           />
           {errors.address && <p className="text-destructive text-xs">{errors.address}</p>}
@@ -136,13 +147,22 @@ export function BuildingEditDialog({
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Backdrop className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm" />
-        <Dialog.Popup className="bg-card border-border fixed top-1/2 left-1/2 z-50 w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-2xl border shadow-xl outline-none">
+        <Dialog.Popup className="bg-card border-border fixed top-1/2 left-1/2 z-50 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-2xl border shadow-xl outline-none">
           <div className="border-border flex items-center justify-between border-b px-6 py-4">
             <Dialog.Title className="text-foreground text-base font-semibold">
               {t("editTitle")}
             </Dialog.Title>
-            <Dialog.Close className="text-muted-foreground hover:text-foreground cursor-pointer rounded-lg p-1 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring/50">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            <Dialog.Close className="text-muted-foreground hover:text-foreground focus-visible:ring-ring/50 cursor-pointer rounded-lg p-1 transition-colors focus:outline-none focus-visible:ring-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M18 6 6 18M6 6l12 12" />
+              </svg>
             </Dialog.Close>
           </div>
           <BuildingForm

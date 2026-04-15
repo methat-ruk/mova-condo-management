@@ -22,6 +22,6 @@ export class RegisterDto {
   lastName!: string;
 
   @IsOptional()
-  @IsEnum(UserRole)
+  @IsEnum(UserRole as object)
   role?: UserRole;
 }

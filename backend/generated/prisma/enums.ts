@@ -27,3 +27,19 @@ export const UserRole = {
 } as const
 
 export type UserRole = (typeof UserRole)[keyof typeof UserRole]
+
+
+export const ResidentType = {
+  OWNER: 'OWNER',
+  TENANT: 'TENANT'
+} as const
+
+export type ResidentType = (typeof ResidentType)[keyof typeof ResidentType]
+
+
+export const ResidentStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE'
+} as const
+
+export type ResidentStatus = (typeof ResidentStatus)[keyof typeof ResidentStatus]

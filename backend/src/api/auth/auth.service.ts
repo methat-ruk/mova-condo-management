@@ -67,4 +67,19 @@ export class AuthService {
     const { password: _p, ...safeUser } = user;
     return safeUser;
   }
+
+  async getUsers() {
+    const users = await this.prisma.user.findMany({
+      where: { isActive: true },
+      select: {
+        id: true,
+        firstName: true,
+        lastName: true,
+        email: true,
+        role: true,
+      },
+      orderBy: { firstName: 'asc' },
+    });
+    return users;
+  }
 }

@@ -45,7 +45,9 @@ export default function FloorsPage() {
     }
   }, [tCommon]);
 
-  useEffect(() => { void load(); }, [load]);
+  useEffect(() => {
+    void load();
+  }, [load]);
 
   const tBuilding = useTranslations("building");
 
@@ -100,7 +102,7 @@ export default function FloorsPage() {
     return (
       <div className="space-y-4">
         <div className="bg-muted h-8 w-48 animate-pulse rounded" />
-        <div className="bg-card border-border rounded-xl border p-6 space-y-3">
+        <div className="bg-card border-border space-y-3 rounded-xl border p-6">
           {Array.from({ length: 4 }).map((_, i) => (
             <div key={i} className="bg-muted h-4 w-full animate-pulse rounded" />
           ))}
@@ -114,9 +116,7 @@ export default function FloorsPage() {
       {/* Header */}
       <div>
         <div className="flex items-center gap-2">
-          <h1 className="text-foreground text-2xl font-bold">
-            {building?.name ?? "Mova Condo"}
-          </h1>
+          <h1 className="text-foreground text-2xl font-bold">{building?.name ?? "Mova Condo"}</h1>
           {building && (
             <Button size="sm" className="cursor-pointer gap-1.5" onClick={() => setEditOpen(true)}>
               <Pencil className="h-3.5 w-3.5" />
@@ -132,7 +132,12 @@ export default function FloorsPage() {
       {/* Floors */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <h2 className="text-foreground font-semibold">{t("floors.title")}</h2>
+          <div>
+            <h2 className="text-foreground font-semibold">{t("floors.title")}</h2>
+            <p className="text-muted-foreground text-xs">
+              {t("floors.totalFloors", { count: floors.length })}
+            </p>
+          </div>
           <Button onClick={() => setAddOpen(true)} className="cursor-pointer gap-2" size="sm">
             <Plus className="h-4 w-4" />
             {t("floors.addFloor")}
@@ -210,7 +215,9 @@ export default function FloorsPage() {
 
       <ConfirmDialog
         open={!!deleteTarget}
-        onOpenChange={(o) => { if (!o) setDeleteTarget(null); }}
+        onOpenChange={(o) => {
+          if (!o) setDeleteTarget(null);
+        }}
         title={t("floors.deleteConfirmTitle")}
         description={t("floors.deleteConfirmDesc")}
         onConfirm={handleDeleteFloor}

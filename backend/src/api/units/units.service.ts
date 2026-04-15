@@ -11,6 +11,15 @@ import type { UpdateUnitDto } from './dto/update-unit.dto.js';
 export class UnitsService {
   constructor(private readonly prisma: PrismaService) {}
 
+  async findAll() {
+    return this.prisma.unit.findMany({
+      include: {
+        floor: { select: { id: true, floorNumber: true } },
+      },
+      orderBy: [{ floor: { floorNumber: 'asc' } }, { unitNumber: 'asc' }],
+    });
+  }
+
   async findByFloor(floorId: string) {
     const floor = await this.prisma.floor.findUnique({
       where: { id: floorId },

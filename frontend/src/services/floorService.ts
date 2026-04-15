@@ -2,8 +2,7 @@ import { api } from "@/lib/api";
 import type { CreateFloorRequest, Floor } from "@/types/building";
 
 export const floorService = {
-  getByBuilding: (buildingId: string) =>
-    api.get<Floor[]>(`/buildings/${buildingId}/floors`),
+  getByBuilding: (buildingId: string) => api.get<Floor[]>(`/buildings/${buildingId}/floors`),
 
   getOne: (id: string) => api.get<Floor>(`/floors/${id}`),
 

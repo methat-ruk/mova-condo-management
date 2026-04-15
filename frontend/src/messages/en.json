@@ -70,6 +70,7 @@
   "buildings": {
     "floors": {
       "title": "Floors",
+      "totalFloors": "Total floors: {count}",
       "addFloor": "Add Floor",
       "deleteFloor": "Delete Floor",
       "deleteConfirmTitle": "Confirm Delete Floor",
@@ -109,6 +110,10 @@
         "monthlyRent": "Monthly Rent",
         "status": "Status"
       },
+      "searchPlaceholder": "Search unit...",
+      "filterAll": "All",
+      "size": "Size",
+      "sizeOption": "{key} — {area} sqm · {w}x{h} m",
       "sqm": "sqm",
       "meterAbbr": "m",
       "dimensions": "{w}x{h} m",
@@ -121,6 +126,80 @@
         "RESERVED": "Reserved",
         "MAINTENANCE": "Maintenance"
       }
+    }
+  },
+  "residents": {
+    "title": "Residents",
+    "addResident": "Add Resident",
+    "editResident": "Edit Resident",
+    "noResidents": "No residents yet",
+    "createSuccess": "Resident added successfully",
+    "updateSuccess": "Resident updated successfully",
+    "moveOutSuccess": "Move-out recorded successfully",
+    "searchPlaceholder": "Search by name or email...",
+    "filterAll": "All",
+    "filterActive": "Active",
+    "filterInactive": "Moved Out",
+    "filterAllType": "All Types",
+    "filterResult": "Showing {count} of {total}",
+    "summary": {
+      "total": "{total} residents",
+      "owners": "{count} owners",
+      "tenants": "{count} tenants"
+    },
+    "moveOut": "Move Out",
+    "moveOutTitle": "Confirm Move Out",
+    "moveOutDesc": "This resident will be marked as inactive. The unit will be updated automatically if no active residents remain.",
+    "moveOutDateLabel": "Move-out Date",
+    "residentInfo": "Resident Info",
+    "unitInfo": "Unit",
+    "familyMembers": "Family Members",
+    "noFamilyMembers": "No family members added",
+    "addFamilyMember": "Add Member",
+    "editFamilyMember": "Edit Member",
+    "emergencyContacts": "Emergency Contacts",
+    "noEmergencyContacts": "No emergency contacts added",
+    "addEmergencyContact": "Add Contact",
+    "editEmergencyContact": "Edit Contact",
+    "deleteConfirmTitle": "Confirm Delete",
+    "deleteConfirmDesc": "Are you sure you want to delete this record?",
+    "deleteSuccess": "Deleted successfully",
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "residentType": "Type",
+      "status": "Status",
+      "moveInDate": "Move-in Date",
+      "moveOutDate": "Move-out Date",
+      "note": "Note",
+      "relationship": "Relationship",
+      "phone": "Phone",
+      "unit": "Unit",
+      "user": "User Account",
+      "floor": "Floor"
+    },
+    "residentType": {
+      "OWNER": "Owner",
+      "TENANT": "Tenant"
+    },
+    "status": {
+      "ACTIVE": "Active",
+      "INACTIVE": "Moved Out"
+    },
+    "validation": {
+      "userRequired": "Please select a user account",
+      "unitRequired": "Please select a unit",
+      "residentTypeRequired": "Please select resident type",
+      "moveInDateRequired": "Move-in date is required",
+      "firstNameRequired": "First name is required",
+      "lastNameRequired": "Last name is required",
+      "relationshipRequired": "Relationship is required",
+      "phoneRequired": "Phone number is required"
+    },
+    "noUserLinked": "Your account is not linked to any unit. Please contact staff.",
+    "pagination": {
+      "showing": "Showing {from}–{to} of {total}"
     }
   },
   "auth": {

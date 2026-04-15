@@ -20,6 +20,11 @@ import { UnitsService } from './units.service.js';
 export class UnitsController {
   constructor(private readonly unitsService: UnitsService) {}
 
+  @Get('units')
+  findAll() {
+    return this.unitsService.findAll();
+  }
+
   @Get('floors/:floorId/units')
   findByFloor(@Param('floorId') floorId: string) {
     return this.unitsService.findByFloor(floorId);

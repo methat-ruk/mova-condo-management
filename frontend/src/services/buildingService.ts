@@ -1,10 +1,6 @@
 import { api } from "@/lib/api";
 import type { PaginatedResponse } from "@/types";
-import type {
-  Building,
-  CreateBuildingRequest,
-  UpdateBuildingRequest,
-} from "@/types/building";
+import type { Building, CreateBuildingRequest, UpdateBuildingRequest } from "@/types/building";
 
 export const buildingService = {
   getAll: (params?: { search?: string; page?: number; limit?: number }) => {

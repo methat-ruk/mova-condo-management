@@ -269,6 +269,7 @@ export type UnitWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Unit"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Unit"> | Date | string
   floor?: Prisma.XOR<Prisma.FloorScalarRelationFilter, Prisma.FloorWhereInput>
+  residents?: Prisma.ResidentListRelationFilter
 }
 
 export type UnitOrderByWithRelationInput = {
@@ -283,6 +284,7 @@ export type UnitOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   floor?: Prisma.FloorOrderByWithRelationInput
+  residents?: Prisma.ResidentOrderByRelationAggregateInput
 }
 
 export type UnitWhereUniqueInput = Prisma.AtLeast<{
@@ -301,6 +303,7 @@ export type UnitWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Unit"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Unit"> | Date | string
   floor?: Prisma.XOR<Prisma.FloorScalarRelationFilter, Prisma.FloorWhereInput>
+  residents?: Prisma.ResidentListRelationFilter
 }, "id" | "floorId_unitNumber">
 
 export type UnitOrderByWithAggregationInput = {
@@ -348,6 +351,7 @@ export type UnitCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   floor: Prisma.FloorCreateNestedOneWithoutUnitsInput
+  residents?: Prisma.ResidentCreateNestedManyWithoutUnitInput
 }
 
 export type UnitUncheckedCreateInput = {
@@ -361,6 +365,7 @@ export type UnitUncheckedCreateInput = {
   monthlyRent: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUnitInput
 }
 
 export type UnitUpdateInput = {
@@ -374,6 +379,7 @@ export type UnitUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   floor?: Prisma.FloorUpdateOneRequiredWithoutUnitsNestedInput
+  residents?: Prisma.ResidentUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitUncheckedUpdateInput = {
@@ -387,6 +393,7 @@ export type UnitUncheckedUpdateInput = {
   monthlyRent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  residents?: Prisma.ResidentUncheckedUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitCreateManyInput = {
@@ -495,6 +502,11 @@ export type UnitSumOrderByAggregateInput = {
   monthlyRent?: Prisma.SortOrder
 }
 
+export type UnitScalarRelationFilter = {
+  is?: Prisma.UnitWhereInput
+  isNot?: Prisma.UnitWhereInput
+}
+
 export type UnitCreateNestedManyWithoutFloorInput = {
   create?: Prisma.XOR<Prisma.UnitCreateWithoutFloorInput, Prisma.UnitUncheckedCreateWithoutFloorInput> | Prisma.UnitCreateWithoutFloorInput[] | Prisma.UnitUncheckedCreateWithoutFloorInput[]
   connectOrCreate?: Prisma.UnitCreateOrConnectWithoutFloorInput | Prisma.UnitCreateOrConnectWithoutFloorInput[]
@@ -557,6 +569,20 @@ export type DecimalFieldUpdateOperationsInput = {
   divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
+export type UnitCreateNestedOneWithoutResidentsInput = {
+  create?: Prisma.XOR<Prisma.UnitCreateWithoutResidentsInput, Prisma.UnitUncheckedCreateWithoutResidentsInput>
+  connectOrCreate?: Prisma.UnitCreateOrConnectWithoutResidentsInput
+  connect?: Prisma.UnitWhereUniqueInput
+}
+
+export type UnitUpdateOneRequiredWithoutResidentsNestedInput = {
+  create?: Prisma.XOR<Prisma.UnitCreateWithoutResidentsInput, Prisma.UnitUncheckedCreateWithoutResidentsInput>
+  connectOrCreate?: Prisma.UnitCreateOrConnectWithoutResidentsInput
+  upsert?: Prisma.UnitUpsertWithoutResidentsInput
+  connect?: Prisma.UnitWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UnitUpdateToOneWithWhereWithoutResidentsInput, Prisma.UnitUpdateWithoutResidentsInput>, Prisma.UnitUncheckedUpdateWithoutResidentsInput>
+}
+
 export type UnitCreateWithoutFloorInput = {
   id?: string
   unitNumber: string
@@ -567,6 +593,7 @@ export type UnitCreateWithoutFloorInput = {
   monthlyRent: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  residents?: Prisma.ResidentCreateNestedManyWithoutUnitInput
 }
 
 export type UnitUncheckedCreateWithoutFloorInput = {
@@ -579,6 +606,7 @@ export type UnitUncheckedCreateWithoutFloorInput = {
   monthlyRent: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUnitInput
 }
 
 export type UnitCreateOrConnectWithoutFloorInput = {
@@ -623,6 +651,74 @@ export type UnitScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Unit"> | Date | string
 }
 
+export type UnitCreateWithoutResidentsInput = {
+  id?: string
+  unitNumber: string
+  area: number
+  bedrooms?: number
+  bathrooms?: number
+  occupancyStatus?: $Enums.OccupancyStatus
+  monthlyRent: runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  floor: Prisma.FloorCreateNestedOneWithoutUnitsInput
+}
+
+export type UnitUncheckedCreateWithoutResidentsInput = {
+  id?: string
+  unitNumber: string
+  floorId: string
+  area: number
+  bedrooms?: number
+  bathrooms?: number
+  occupancyStatus?: $Enums.OccupancyStatus
+  monthlyRent: runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type UnitCreateOrConnectWithoutResidentsInput = {
+  where: Prisma.UnitWhereUniqueInput
+  create: Prisma.XOR<Prisma.UnitCreateWithoutResidentsInput, Prisma.UnitUncheckedCreateWithoutResidentsInput>
+}
+
+export type UnitUpsertWithoutResidentsInput = {
+  update: Prisma.XOR<Prisma.UnitUpdateWithoutResidentsInput, Prisma.UnitUncheckedUpdateWithoutResidentsInput>
+  create: Prisma.XOR<Prisma.UnitCreateWithoutResidentsInput, Prisma.UnitUncheckedCreateWithoutResidentsInput>
+  where?: Prisma.UnitWhereInput
+}
+
+export type UnitUpdateToOneWithWhereWithoutResidentsInput = {
+  where?: Prisma.UnitWhereInput
+  data: Prisma.XOR<Prisma.UnitUpdateWithoutResidentsInput, Prisma.UnitUncheckedUpdateWithoutResidentsInput>
+}
+
+export type UnitUpdateWithoutResidentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  unitNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  area?: Prisma.FloatFieldUpdateOperationsInput | number
+  bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
+  bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
+  occupancyStatus?: Prisma.EnumOccupancyStatusFieldUpdateOperationsInput | $Enums.OccupancyStatus
+  monthlyRent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  floor?: Prisma.FloorUpdateOneRequiredWithoutUnitsNestedInput
+}
+
+export type UnitUncheckedUpdateWithoutResidentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  unitNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  floorId?: Prisma.StringFieldUpdateOperationsInput | string
+  area?: Prisma.FloatFieldUpdateOperationsInput | number
+  bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
+  bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
+  occupancyStatus?: Prisma.EnumOccupancyStatusFieldUpdateOperationsInput | $Enums.OccupancyStatus
+  monthlyRent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
 export type UnitCreateManyFloorInput = {
   id?: string
   unitNumber: string
@@ -645,6 +741,7 @@ export type UnitUpdateWithoutFloorInput = {
   monthlyRent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  residents?: Prisma.ResidentUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitUncheckedUpdateWithoutFloorInput = {
@@ -657,6 +754,7 @@ export type UnitUncheckedUpdateWithoutFloorInput = {
   monthlyRent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  residents?: Prisma.ResidentUncheckedUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitUncheckedUpdateManyWithoutFloorInput = {
@@ -672,6 +770,35 @@ export type UnitUncheckedUpdateManyWithoutFloorInput = {
 }
 
 
+/**
+ * Count Type UnitCountOutputType
+ */
+
+export type UnitCountOutputType = {
+  residents: number
+}
+
+export type UnitCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  residents?: boolean | UnitCountOutputTypeCountResidentsArgs
+}
+
+/**
+ * UnitCountOutputType without action
+ */
+export type UnitCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UnitCountOutputType
+   */
+  select?: Prisma.UnitCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * UnitCountOutputType without action
+ */
+export type UnitCountOutputTypeCountResidentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ResidentWhereInput
+}
+
 
 export type UnitSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -685,6 +812,8 @@ export type UnitSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   createdAt?: boolean
   updatedAt?: boolean
   floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
+  residents?: boolean | Prisma.Unit$residentsArgs<ExtArgs>
+  _count?: boolean | Prisma.UnitCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["unit"]>
 
 export type UnitSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -731,6 +860,8 @@ export type UnitSelectScalar = {
 export type UnitOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "unitNumber" | "floorId" | "area" | "bedrooms" | "bathrooms" | "occupancyStatus" | "monthlyRent" | "createdAt" | "updatedAt", ExtArgs["result"]["unit"]>
 export type UnitInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
+  residents?: boolean | Prisma.Unit$residentsArgs<ExtArgs>
+  _count?: boolean | Prisma.UnitCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UnitIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
@@ -743,6 +874,7 @@ export type $UnitPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name: "Unit"
   objects: {
     floor: Prisma.$FloorPayload<ExtArgs>
+    residents: Prisma.$ResidentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1150,6 +1282,7 @@ readonly fields: UnitFieldRefs;
 export interface Prisma__UnitClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   floor<T extends Prisma.FloorDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FloorDefaultArgs<ExtArgs>>): Prisma.Prisma__FloorClient<runtime.Types.Result.GetResult<Prisma.$FloorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  residents<T extends Prisma.Unit$residentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Unit$residentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ResidentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1587,6 +1720,30 @@ export type UnitDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Limit how many Units to delete.
    */
   limit?: number
+}
+
+/**
+ * Unit.residents
+ */
+export type Unit$residentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Resident
+   */
+  select?: Prisma.ResidentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Resident
+   */
+  omit?: Prisma.ResidentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ResidentInclude<ExtArgs> | null
+  where?: Prisma.ResidentWhereInput
+  orderBy?: Prisma.ResidentOrderByWithRelationInput | Prisma.ResidentOrderByWithRelationInput[]
+  cursor?: Prisma.ResidentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ResidentScalarFieldEnum | Prisma.ResidentScalarFieldEnum[]
 }
 
 /**

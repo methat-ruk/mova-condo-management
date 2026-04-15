@@ -70,6 +70,7 @@
   "buildings": {
     "floors": {
       "title": "รายการชั้น",
+      "totalFloors": "จำนวนชั้นทั้งหมด: {count}",
       "addFloor": "เพิ่มชั้น",
       "deleteFloor": "ลบชั้น",
       "deleteConfirmTitle": "ยืนยันการลบชั้น",
@@ -109,6 +110,10 @@
         "monthlyRent": "ค่าเช่า/เดือน",
         "status": "สถานะ"
       },
+      "searchPlaceholder": "ค้นหาหมายเลขห้อง...",
+      "filterAll": "ทั้งหมด",
+      "size": "ขนาดห้อง",
+      "sizeOption": "{key} — {area} ตร.ม. · {w}x{h} ม.",
       "sqm": "ตร.ม.",
       "meterAbbr": "ม.",
       "dimensions": "{w}x{h} ม.",
@@ -121,6 +126,80 @@
         "RESERVED": "จอง",
         "MAINTENANCE": "ซ่อมบำรุง"
       }
+    }
+  },
+  "residents": {
+    "title": "ผู้พักอาศัย",
+    "addResident": "เพิ่มผู้พักอาศัย",
+    "editResident": "แก้ไขข้อมูล",
+    "noResidents": "ยังไม่มีผู้พักอาศัย",
+    "createSuccess": "เพิ่มผู้พักอาศัยเรียบร้อย",
+    "updateSuccess": "อัปเดตข้อมูลเรียบร้อย",
+    "moveOutSuccess": "บันทึกการย้ายออกเรียบร้อย",
+    "searchPlaceholder": "ค้นหาชื่อหรืออีเมล...",
+    "filterAll": "ทั้งหมด",
+    "filterActive": "พักอาศัย",
+    "filterInactive": "ย้ายออกแล้ว",
+    "filterAllType": "ทุกประเภท",
+    "filterResult": "แสดง {count} จาก {total} รายการ",
+    "summary": {
+      "total": "ทั้งหมด {total} คน",
+      "owners": "เจ้าของ {count} คน",
+      "tenants": "ผู้เช่า {count} คน"
+    },
+    "moveOut": "บันทึกย้ายออก",
+    "moveOutTitle": "ยืนยันการย้ายออก",
+    "moveOutDesc": "ผู้พักอาศัยจะถูกเปลี่ยนสถานะเป็นไม่ใช้งาน และห้องจะถูกอัปเดตอัตโนมัติหากไม่มีผู้พักอาศัยเหลืออยู่",
+    "moveOutDateLabel": "วันที่ย้ายออก",
+    "residentInfo": "ข้อมูลผู้พักอาศัย",
+    "unitInfo": "ห้องพัก",
+    "familyMembers": "สมาชิกในครอบครัว",
+    "noFamilyMembers": "ยังไม่มีข้อมูลสมาชิก",
+    "addFamilyMember": "เพิ่มสมาชิก",
+    "editFamilyMember": "แก้ไขสมาชิก",
+    "emergencyContacts": "ผู้ติดต่อฉุกเฉิน",
+    "noEmergencyContacts": "ยังไม่มีผู้ติดต่อฉุกเฉิน",
+    "addEmergencyContact": "เพิ่มผู้ติดต่อ",
+    "editEmergencyContact": "แก้ไขผู้ติดต่อ",
+    "deleteConfirmTitle": "ยืนยันการลบ",
+    "deleteConfirmDesc": "คุณต้องการลบข้อมูลนี้หรือไม่?",
+    "deleteSuccess": "ลบข้อมูลเรียบร้อย",
+    "fields": {
+      "firstName": "ชื่อ",
+      "lastName": "นามสกุล",
+      "email": "อีเมล",
+      "residentType": "ประเภท",
+      "status": "สถานะ",
+      "moveInDate": "วันที่เข้าพัก",
+      "moveOutDate": "วันที่ย้ายออก",
+      "note": "หมายเหตุ",
+      "relationship": "ความสัมพันธ์",
+      "phone": "เบอร์โทร",
+      "unit": "ห้อง",
+      "user": "บัญชีผู้ใช้",
+      "floor": "ชั้น"
+    },
+    "residentType": {
+      "OWNER": "เจ้าของ",
+      "TENANT": "ผู้เช่า"
+    },
+    "status": {
+      "ACTIVE": "กำลังพักอาศัย",
+      "INACTIVE": "ย้ายออกแล้ว"
+    },
+    "validation": {
+      "userRequired": "กรุณาเลือกบัญชีผู้ใช้",
+      "unitRequired": "กรุณาเลือกห้อง",
+      "residentTypeRequired": "กรุณาเลือกประเภทผู้พักอาศัย",
+      "moveInDateRequired": "กรุณาระบุวันที่เข้าพัก",
+      "firstNameRequired": "กรุณากรอกชื่อ",
+      "lastNameRequired": "กรุณากรอกนามสกุล",
+      "relationshipRequired": "กรุณากรอกความสัมพันธ์",
+      "phoneRequired": "กรุณากรอกเบอร์โทร"
+    },
+    "noUserLinked": "บัญชีของคุณยังไม่ได้เชื่อมกับห้องพัก กรุณาติดต่อเจ้าหน้าที่",
+    "pagination": {
+      "showing": "แสดง {from}–{to} จาก {total} รายการ"
     }
   },
   "auth": {

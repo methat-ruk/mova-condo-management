@@ -37,3 +37,18 @@ export type Unit = Prisma.UnitModel
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model Resident
+ * 
+ */
+export type Resident = Prisma.ResidentModel
+/**
+ * Model FamilyMember
+ * 
+ */
+export type FamilyMember = Prisma.FamilyMemberModel
+/**
+ * Model EmergencyContact
+ * 
+ */
+export type EmergencyContact = Prisma.EmergencyContactModel

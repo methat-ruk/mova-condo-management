@@ -54,7 +54,10 @@ export const ModelName = {
   Building: 'Building',
   Floor: 'Floor',
   Unit: 'Unit',
-  User: 'User'
+  User: 'User',
+  Resident: 'Resident',
+  FamilyMember: 'FamilyMember',
+  EmergencyContact: 'EmergencyContact'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -127,6 +130,50 @@ export const UserScalarFieldEnum = {
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const ResidentScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  unitId: 'unitId',
+  residentType: 'residentType',
+  status: 'status',
+  moveInDate: 'moveInDate',
+  moveOutDate: 'moveOutDate',
+  note: 'note',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ResidentScalarFieldEnum = (typeof ResidentScalarFieldEnum)[keyof typeof ResidentScalarFieldEnum]
+
+
+export const FamilyMemberScalarFieldEnum = {
+  id: 'id',
+  residentId: 'residentId',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  relationship: 'relationship',
+  phone: 'phone',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FamilyMemberScalarFieldEnum = (typeof FamilyMemberScalarFieldEnum)[keyof typeof FamilyMemberScalarFieldEnum]
+
+
+export const EmergencyContactScalarFieldEnum = {
+  id: 'id',
+  residentId: 'residentId',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  relationship: 'relationship',
+  phone: 'phone',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EmergencyContactScalarFieldEnum = (typeof EmergencyContactScalarFieldEnum)[keyof typeof EmergencyContactScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -10,15 +10,15 @@ import {
 export class CreateBuildingDto {
   @IsString()
   @IsNotEmpty()
-  name: string;
+  name!: string;
 
   @IsString()
   @IsNotEmpty()
-  address: string;
+  address!: string;
 
   @IsInt()
   @Min(1)
-  totalFloors: number;
+  totalFloors!: number;
 
   @IsOptional()
   @IsString()

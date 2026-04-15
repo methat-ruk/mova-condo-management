@@ -387,7 +387,10 @@ export const ModelName = {
   Building: 'Building',
   Floor: 'Floor',
   Unit: 'Unit',
-  User: 'User'
+  User: 'User',
+  Resident: 'Resident',
+  FamilyMember: 'FamilyMember',
+  EmergencyContact: 'EmergencyContact'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -403,7 +406,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "building" | "floor" | "unit" | "user"
+    modelProps: "building" | "floor" | "unit" | "user" | "resident" | "familyMember" | "emergencyContact"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -703,6 +706,228 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Resident: {
+      payload: Prisma.$ResidentPayload<ExtArgs>
+      fields: Prisma.ResidentFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ResidentFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResidentPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ResidentFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResidentPayload>
+        }
+        findFirst: {
+          args: Prisma.ResidentFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResidentPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ResidentFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResidentPayload>
+        }
+        findMany: {
+          args: Prisma.ResidentFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResidentPayload>[]
+        }
+        create: {
+          args: Prisma.ResidentCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResidentPayload>
+        }
+        createMany: {
+          args: Prisma.ResidentCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ResidentCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResidentPayload>[]
+        }
+        delete: {
+          args: Prisma.ResidentDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResidentPayload>
+        }
+        update: {
+          args: Prisma.ResidentUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResidentPayload>
+        }
+        deleteMany: {
+          args: Prisma.ResidentDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ResidentUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ResidentUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResidentPayload>[]
+        }
+        upsert: {
+          args: Prisma.ResidentUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResidentPayload>
+        }
+        aggregate: {
+          args: Prisma.ResidentAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateResident>
+        }
+        groupBy: {
+          args: Prisma.ResidentGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ResidentGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ResidentCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ResidentCountAggregateOutputType> | number
+        }
+      }
+    }
+    FamilyMember: {
+      payload: Prisma.$FamilyMemberPayload<ExtArgs>
+      fields: Prisma.FamilyMemberFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.FamilyMemberFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FamilyMemberPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.FamilyMemberFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FamilyMemberPayload>
+        }
+        findFirst: {
+          args: Prisma.FamilyMemberFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FamilyMemberPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.FamilyMemberFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FamilyMemberPayload>
+        }
+        findMany: {
+          args: Prisma.FamilyMemberFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FamilyMemberPayload>[]
+        }
+        create: {
+          args: Prisma.FamilyMemberCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FamilyMemberPayload>
+        }
+        createMany: {
+          args: Prisma.FamilyMemberCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.FamilyMemberCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FamilyMemberPayload>[]
+        }
+        delete: {
+          args: Prisma.FamilyMemberDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FamilyMemberPayload>
+        }
+        update: {
+          args: Prisma.FamilyMemberUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FamilyMemberPayload>
+        }
+        deleteMany: {
+          args: Prisma.FamilyMemberDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.FamilyMemberUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.FamilyMemberUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FamilyMemberPayload>[]
+        }
+        upsert: {
+          args: Prisma.FamilyMemberUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FamilyMemberPayload>
+        }
+        aggregate: {
+          args: Prisma.FamilyMemberAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateFamilyMember>
+        }
+        groupBy: {
+          args: Prisma.FamilyMemberGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FamilyMemberGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.FamilyMemberCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FamilyMemberCountAggregateOutputType> | number
+        }
+      }
+    }
+    EmergencyContact: {
+      payload: Prisma.$EmergencyContactPayload<ExtArgs>
+      fields: Prisma.EmergencyContactFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.EmergencyContactFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmergencyContactPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.EmergencyContactFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmergencyContactPayload>
+        }
+        findFirst: {
+          args: Prisma.EmergencyContactFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmergencyContactPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.EmergencyContactFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmergencyContactPayload>
+        }
+        findMany: {
+          args: Prisma.EmergencyContactFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmergencyContactPayload>[]
+        }
+        create: {
+          args: Prisma.EmergencyContactCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmergencyContactPayload>
+        }
+        createMany: {
+          args: Prisma.EmergencyContactCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.EmergencyContactCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmergencyContactPayload>[]
+        }
+        delete: {
+          args: Prisma.EmergencyContactDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmergencyContactPayload>
+        }
+        update: {
+          args: Prisma.EmergencyContactUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmergencyContactPayload>
+        }
+        deleteMany: {
+          args: Prisma.EmergencyContactDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.EmergencyContactUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.EmergencyContactUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmergencyContactPayload>[]
+        }
+        upsert: {
+          args: Prisma.EmergencyContactUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmergencyContactPayload>
+        }
+        aggregate: {
+          args: Prisma.EmergencyContactAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateEmergencyContact>
+        }
+        groupBy: {
+          args: Prisma.EmergencyContactGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EmergencyContactGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.EmergencyContactCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EmergencyContactCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -796,6 +1021,50 @@ export const UserScalarFieldEnum = {
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const ResidentScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  unitId: 'unitId',
+  residentType: 'residentType',
+  status: 'status',
+  moveInDate: 'moveInDate',
+  moveOutDate: 'moveOutDate',
+  note: 'note',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ResidentScalarFieldEnum = (typeof ResidentScalarFieldEnum)[keyof typeof ResidentScalarFieldEnum]
+
+
+export const FamilyMemberScalarFieldEnum = {
+  id: 'id',
+  residentId: 'residentId',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  relationship: 'relationship',
+  phone: 'phone',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FamilyMemberScalarFieldEnum = (typeof FamilyMemberScalarFieldEnum)[keyof typeof FamilyMemberScalarFieldEnum]
+
+
+export const EmergencyContactScalarFieldEnum = {
+  id: 'id',
+  residentId: 'residentId',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  relationship: 'relationship',
+  phone: 'phone',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EmergencyContactScalarFieldEnum = (typeof EmergencyContactScalarFieldEnum)[keyof typeof EmergencyContactScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -932,6 +1201,34 @@ export type EnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
 export type ListEnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole[]'>
     
 
+
+/**
+ * Reference to a field of type 'ResidentType'
+ */
+export type EnumResidentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ResidentType'>
+    
+
+
+/**
+ * Reference to a field of type 'ResidentType[]'
+ */
+export type ListEnumResidentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ResidentType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ResidentStatus'
+ */
+export type EnumResidentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ResidentStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'ResidentStatus[]'
+ */
+export type ListEnumResidentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ResidentStatus[]'>
+    
+
 /**
  * Batch Payload for updateMany & deleteMany & createMany
  */
@@ -1031,6 +1328,9 @@ export type GlobalOmitConfig = {
   floor?: Prisma.FloorOmit
   unit?: Prisma.UnitOmit
   user?: Prisma.UserOmit
+  resident?: Prisma.ResidentOmit
+  familyMember?: Prisma.FamilyMemberOmit
+  emergencyContact?: Prisma.EmergencyContactOmit
 }
 
 /* Types for Logging */

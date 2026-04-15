@@ -12,11 +12,11 @@ import { OccupancyStatus } from '../../../../generated/prisma/enums.js';
 export class CreateUnitDto {
   @IsString()
   @IsNotEmpty()
-  unitNumber: string;
+  unitNumber!: string;
 
   @IsNumber()
   @Min(1)
-  area: number;
+  area!: number;
 
   @IsOptional()
   @IsInt()
@@ -29,10 +29,10 @@ export class CreateUnitDto {
   bathrooms?: number;
 
   @IsOptional()
-  @IsEnum(OccupancyStatus)
+  @IsEnum(OccupancyStatus as object)
   occupancyStatus?: OccupancyStatus;
 
   @IsNumber()
   @Min(0)
-  monthlyRent: number;
+  monthlyRent!: number;
 }
