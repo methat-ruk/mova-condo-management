@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import {
   BarChart3,
+  Megaphone,
   Building2,
-  CalendarDays,
   LayoutDashboard,
   Package,
   Receipt,
@@ -46,11 +46,11 @@ const navGroups: NavGroup[] = [
   {
     groupKey: "operations",
     items: [
+      { key: "announcements", href: "/announcements", icon: Megaphone },
       { key: "maintenance", href: "/maintenance", icon: Wrench },
       { key: "billing", href: "/billing", icon: Receipt },
       { key: "visitors", href: "/visitors", icon: UserCheck },
       { key: "parcels", href: "/parcels", icon: Package },
-      { key: "facilities", href: "/facilities", icon: CalendarDays },
     ],
   },
   {

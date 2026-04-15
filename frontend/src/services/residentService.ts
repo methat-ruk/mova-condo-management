@@ -22,7 +22,10 @@ export interface ResidentQuery {
 }
 
 export const residentService = {
-  getAll: (query?: ResidentQuery) => api.get<ResidentListResponse>("/residents", { params: query }),
+  getAll: (query?: ResidentQuery) =>
+    api.get<ResidentListResponse>("/residents", {
+      params: query as Record<string, unknown>,
+    }),
 
   getOne: (id: string) => api.get<Resident>(`/residents/${id}`),
 

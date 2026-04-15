@@ -3,6 +3,7 @@
     "dashboard": "แดชบอร์ด",
     "floors": "ชั้นและห้อง",
     "residents": "ผู้พักอาศัย",
+    "announcements": "ประกาศ",
     "maintenance": "ซ่อมบำรุง",
     "billing": "การเงินและชำระเงิน",
     "visitors": "ผู้มาติดต่อ",
@@ -12,7 +13,7 @@
     "admin": "ผู้ดูแลระบบ",
     "groups": {
       "overview": "ภาพรวม",
-      "property": "ทรัพย์สิน",
+      "property": "อาคาร",
       "operations": "การดำเนินงาน",
       "management": "การจัดการ"
     }
@@ -202,6 +203,45 @@
       "showing": "แสดง {from}–{to} จาก {total} รายการ"
     }
   },
+  "announcements": {
+    "title": "ประกาศ",
+    "addAnnouncement": "เพิ่มประกาศ",
+    "editAnnouncement": "แก้ไขประกาศ",
+    "noAnnouncements": "ยังไม่มีประกาศ",
+    "createSuccess": "เพิ่มประกาศเรียบร้อย",
+    "updateSuccess": "อัปเดตประกาศเรียบร้อย",
+    "deleteSuccess": "ลบประกาศเรียบร้อย",
+    "deleteConfirmTitle": "ยืนยันการลบประกาศ",
+    "deleteConfirmDesc": "คุณต้องการลบประกาศนี้หรือไม่? ไม่สามารถกู้คืนได้",
+    "searchPlaceholder": "ค้นหาชื่อหรือเนื้อหา...",
+    "filterAll": "ทั้งหมด",
+    "filterActive": "ใช้งาน",
+    "filterExpired": "หมดอายุ",
+    "pinned": "ปักหมุด",
+    "expired": "หมดอายุ",
+    "noExpiry": "ไม่มีวันหมดอายุ",
+    "forceExpire": "ปิดทันที",
+    "markAllRead": "ทำเครื่องหมายว่าอ่านแล้ว",
+    "viewAll": "ดูทั้งหมด",
+    "noUnread": "ไม่มีประกาศใหม่",
+    "unreadCount": "{count} ประกาศ",
+    "by": "โดย",
+    "fields": {
+      "title": "หัวข้อ",
+      "content": "เนื้อหา",
+      "isPinned": "ปักหมุดประกาศ",
+      "status": "สถานะ",
+      "expiredAt": "วันหมดอายุ"
+    },
+    "status": {
+      "ACTIVE": "ใช้งาน",
+      "EXPIRED": "หมดอายุ"
+    },
+    "validation": {
+      "titleRequired": "กรุณากรอกหัวข้อ",
+      "contentRequired": "กรุณากรอกเนื้อหา"
+    }
+  },
   "auth": {
     "login": {
       "title": "เข้าสู่ระบบ",
@@ -228,8 +268,9 @@
     },
     "roles": {
       "ADMIN": "ผู้ดูแลระบบ",
-      "PROPERTY_MANAGER": "ผู้จัดการทรัพย์สิน",
+      "JURISTIC": "นิติบุคคล",
       "STAFF": "เจ้าหน้าที่",
+      "GUARD": "ผู้รักษาความปลอดภัย",
       "RESIDENT": "ผู้พักอาศัย"
     },
     "validation": {

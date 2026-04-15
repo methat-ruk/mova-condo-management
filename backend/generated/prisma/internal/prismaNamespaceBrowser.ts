@@ -57,7 +57,9 @@ export const ModelName = {
   User: 'User',
   Resident: 'Resident',
   FamilyMember: 'FamilyMember',
-  EmergencyContact: 'EmergencyContact'
+  EmergencyContact: 'EmergencyContact',
+  Announcement: 'Announcement',
+  AnnouncementRead: 'AnnouncementRead'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -174,6 +176,30 @@ export const EmergencyContactScalarFieldEnum = {
 } as const
 
 export type EmergencyContactScalarFieldEnum = (typeof EmergencyContactScalarFieldEnum)[keyof typeof EmergencyContactScalarFieldEnum]
+
+
+export const AnnouncementScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  content: 'content',
+  isPinned: 'isPinned',
+  status: 'status',
+  expiredAt: 'expiredAt',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AnnouncementScalarFieldEnum = (typeof AnnouncementScalarFieldEnum)[keyof typeof AnnouncementScalarFieldEnum]
+
+
+export const AnnouncementReadScalarFieldEnum = {
+  userId: 'userId',
+  announcementId: 'announcementId',
+  readAt: 'readAt'
+} as const
+
+export type AnnouncementReadScalarFieldEnum = (typeof AnnouncementReadScalarFieldEnum)[keyof typeof AnnouncementReadScalarFieldEnum]
 
 
 export const SortOrder = {

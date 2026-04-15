@@ -9,6 +9,14 @@ interface RequestOptions {
   headers?: Record<string, string>;
 }
 
+function buildUrl(endpoint: string, params: Record<string, unknown>): string {
+  const qs = Object.entries(params)
+    .filter(([, v]) => v !== undefined && v !== null && v !== "")
+    .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(String(v))}`)
+    .join("&");
+  return qs ? `${endpoint}?${qs}` : endpoint;
+}
+
 async function request<T>(endpoint: string, options: RequestOptions = {}): Promise<T> {
   const { method = "GET", body, headers: extraHeaders = {} } = options;
 
@@ -35,7 +43,10 @@ async function request<T>(endpoint: string, options: RequestOptions = {}): Promi
     if (response.status === 401) {
       if (typeof window !== "undefined") {
         localStorage.removeItem("token");
-        window.location.href = "/login";
+        document.cookie = "AUTH_TOKEN=; path=/; max-age=0";
+        if (window.location.pathname !== "/login") {
+          window.location.href = "/login";
+        }
       }
     }
 
@@ -56,8 +67,13 @@ async function request<T>(endpoint: string, options: RequestOptions = {}): Promi
 }
 
 export const api = {
-  get: <T>(endpoint: string, headers?: Record<string, string>) =>
-    request<T>(endpoint, { method: "GET", headers }),
+  get: <T>(
+    endpoint: string,
+    options?: { params?: Record<string, unknown>; headers?: Record<string, string> },
+  ) => {
+    const url = options?.params ? buildUrl(endpoint, options.params) : endpoint;
+    return request<T>(url, { method: "GET", headers: options?.headers });
+  },
 
   post: <T>(endpoint: string, body?: unknown, headers?: Record<string, string>) =>
     request<T>(endpoint, { method: "POST", body, headers }),

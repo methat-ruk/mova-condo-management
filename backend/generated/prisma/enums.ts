@@ -21,8 +21,9 @@ export type OccupancyStatus = (typeof OccupancyStatus)[keyof typeof OccupancySta
 
 export const UserRole = {
   ADMIN: 'ADMIN',
-  PROPERTY_MANAGER: 'PROPERTY_MANAGER',
+  JURISTIC: 'JURISTIC',
   STAFF: 'STAFF',
+  GUARD: 'GUARD',
   RESIDENT: 'RESIDENT'
 } as const
 
@@ -43,3 +44,11 @@ export const ResidentStatus = {
 } as const
 
 export type ResidentStatus = (typeof ResidentStatus)[keyof typeof ResidentStatus]
+
+
+export const AnnouncementStatus = {
+  ACTIVE: 'ACTIVE',
+  EXPIRED: 'EXPIRED'
+} as const
+
+export type AnnouncementStatus = (typeof AnnouncementStatus)[keyof typeof AnnouncementStatus]

@@ -1,6 +1,7 @@
 "use client";
 
 import { Menu } from "lucide-react";
+import { AnnouncementBell } from "./AnnouncementBell";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
 import { UserMenu } from "./UserMenu";
@@ -30,6 +31,7 @@ export function Topbar() {
       </Button>
 
       <div className="flex items-center gap-1">
+        <AnnouncementBell />
         <ThemeToggle />
         <LocaleSwitcher />
         <UserMenu />
