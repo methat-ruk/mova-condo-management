@@ -157,40 +157,44 @@ export default function ResidentsPage() {
         <div className="flex flex-col gap-1 sm:shrink-0 sm:flex-row sm:items-center sm:gap-1">
           {/* Status filters */}
           <div className="flex gap-1">
-          {(["", "ACTIVE", "INACTIVE"] as const).map((s) => (
-            <button
-              key={s}
-              onClick={() => setStatusFilter(s)}
-              className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
-                statusFilter === s
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-muted text-muted-foreground hover:bg-muted/80"
-              }`}
-            >
-              {s === "" ? t("filterAll") : s === "ACTIVE" ? t("filterActive") : t("filterInactive")}
-            </button>
-          ))}
+            {(["", "ACTIVE", "INACTIVE"] as const).map((s) => (
+              <button
+                key={s}
+                onClick={() => setStatusFilter(s)}
+                className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
+                  statusFilter === s
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80"
+                }`}
+              >
+                {s === ""
+                  ? t("filterAll")
+                  : s === "ACTIVE"
+                    ? t("filterActive")
+                    : t("filterInactive")}
+              </button>
+            ))}
           </div>
           <div className="bg-border hidden h-4 w-px sm:block" />
           {/* Type filters */}
           <div className="flex gap-1">
-          {(["", "OWNER", "TENANT"] as const).map((tp) => (
-            <button
-              key={tp}
-              onClick={() => setTypeFilter(tp)}
-              className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
-                typeFilter === tp
-                  ? tp === "OWNER"
-                    ? "bg-blue-600 text-white dark:bg-blue-500"
-                    : tp === "TENANT"
-                      ? "bg-amber-500 text-white dark:bg-amber-400 dark:text-amber-900"
-                      : "bg-primary text-primary-foreground"
-                  : "bg-muted text-muted-foreground hover:bg-muted/80"
-              }`}
-            >
-              {tp === "" ? t("filterAllType") : t(`residentType.${tp}`)}
-            </button>
-          ))}
+            {(["", "OWNER", "TENANT"] as const).map((tp) => (
+              <button
+                key={tp}
+                onClick={() => setTypeFilter(tp)}
+                className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
+                  typeFilter === tp
+                    ? tp === "OWNER"
+                      ? "bg-blue-600 text-white dark:bg-blue-500"
+                      : tp === "TENANT"
+                        ? "bg-amber-500 text-white dark:bg-amber-400 dark:text-amber-900"
+                        : "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80"
+                }`}
+              >
+                {tp === "" ? t("filterAllType") : t(`residentType.${tp}`)}
+              </button>
+            ))}
           </div>
         </div>
       </div>

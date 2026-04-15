@@ -76,3 +76,13 @@ export type FamilyMember = Prisma.FamilyMemberModel
  * 
  */
 export type EmergencyContact = Prisma.EmergencyContactModel
+/**
+ * Model Announcement
+ * 
+ */
+export type Announcement = Prisma.AnnouncementModel
+/**
+ * Model AnnouncementRead
+ * 
+ */
+export type AnnouncementRead = Prisma.AnnouncementReadModel

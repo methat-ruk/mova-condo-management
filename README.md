@@ -1,106 +1,89 @@
 # Mova Condo
 
-A full-stack condominium management system for a single condominium building. Designed for administrators, property managers, staff, and residents to manage daily operations in one centralized platform.
+A full-stack condominium management system for a single condominium building. Designed for administrators, juristic managers, staff, security guards, and residents to manage daily operations in one centralized platform.
 
-> **Portfolio Project** — Demonstrates production-grade full-stack development including REST API design, RBAC, database architecture, background jobs, and real-time systems. All payments are **simulated (fake)** — no real payment gateway is integrated.
+> **Portfolio Project** — Demonstrates production-grade full-stack development including REST API design, RBAC, database architecture, and modern UI patterns. All payments are **simulated (fake)** — no real payment gateway is integrated.
 
 ---
 
-## Modules
+## Status
 
-| Module | Description |
+| Module | Status |
 |---|---|
-| Authentication & Users | Login, profile management, session handling |
-| Role & Permission (RBAC) | Admin, Property Manager, Staff, Resident |
-| Floor & Unit Management | Floors, units, occupancy status tracking |
-| Resident Management | Profiles, move-in/out, family members, emergency contacts |
-| Maintenance Requests | Ticket submission, technician assignment, status tracking |
-| Facility Booking | Reserve shared facilities (gym, meeting room, pool) |
-| Billing & Payment | Invoice generation, fee tracking, simulated payment |
-| Visitor Management | Guest registration, QR pass, entry/exit logs |
-| Parcel Management | Parcel logging, arrival notifications, pickup confirmation |
-| Notifications | Real-time alerts for key system events |
-| Analytics Dashboard | Occupancy, revenue, maintenance overview |
-| System Administration | User/role management, audit logs, system settings |
+| Authentication & Users | ✅ Done |
+| Floor & Unit Management | ✅ Done |
+| Resident Management | ✅ Done |
+| Announcements | ✅ Done |
+| Maintenance Requests | 🔲 Planned |
+| Billing & Payment | 🔲 Planned |
+| Visitor Management | 🔲 Planned |
+| Parcel Management | 🔲 Planned |
+| Analytics Dashboard | 🔲 Planned |
 
 ---
 
 ## Features
 
-### Authentication & User Management
-- Login / logout
-- Profile management
-- Session handling
+### Authentication & User Management ✅
+- Login / logout with JWT (cookie-based)
+- Role-based access: Admin, Juristic, Staff, Security Guard, Resident
+- Profile session handling
 
-### Role & Permission System (RBAC)
-Roles: **Admin**, **Property Manager**, **Staff**, **Resident**
-- Role-based access control per route and resource
-
-### Floor & Unit Management
+### Floor & Unit Management ✅
 - Single building (Mova Condo) with editable name and address
-- Floor creation and deletion (floors with units cannot be deleted)
-- Unit management per floor: unit number, area (sqm), bedrooms, bathrooms, monthly rent
-- Occupancy status: Available, Occupied, Reserved, Maintenance
+- Floor creation and deletion (floors with active units cannot be deleted)
+- Unit management per floor: unit number, size preset (S/M/L/XL), monthly rent
+- Occupancy status: Available, Occupied
+- Search and filter units by status per floor
+- Size badges (S / M / L / XL) based on area
 
-### Resident Management
-- Resident profile and contact management
-- Resident types: Owner, Tenant
-- Assign residents to units
-- Move-in / move-out tracking
-- Family members & emergency contacts
-- Resident history
+### Resident Management ✅
+- Resident list with real-time client-side search (name, email, unit number)
+- Filter by status (Active / Moved Out) and type (Owner / Tenant)
+- Summary counts: total residents, owners, tenants
+- Color-coded badges: Owner (blue), Tenant (amber), Active (green)
+- Add resident with user autocomplete search and floor → unit cascade select
+- Move-in / move-out tracking with auto unit occupancy update
+- Family members & emergency contacts (CRUD per resident)
+- Soft delete: residents are marked INACTIVE on move-out (never deleted)
 
-### Maintenance Request System
-- Maintenance ticket submission by residents
-- Technician assignment and priority management
-- Repair status tracking
-- Maintenance history & resident feedback
+### Announcements ✅
+- Post and manage building-wide announcements
+- Active / expired status with optional expiry date
+- Pin important announcements to top
+- Unread badge with per-user read tracking
+- Bell notification dropdown in topbar (5 latest active)
 
-### Facility Booking
-- Browse available shared facilities
-- Book time slots with conflict prevention
-- Booking approval workflow
-- Booking history
+### Maintenance Requests 🔲
+- Ticket submission by residents or staff
+- Staff assignment and priority management
+- Status tracking: Pending → In Progress → Done
+- Maintenance history
 
-### Billing & Payment System
+### Billing & Payment 🔲
 
-> Payments are **simulated** — no real payment gateway. This is a portfolio project demonstrating billing logic and UI only.
+> Payments are **simulated** — no real payment gateway.
 
-- Fee and charge type management
-- Monthly fee auto-generation
-- Invoice creation and management
-- Simulated payment recording
-- Payment history and status tracking
-- Payment reminders
+- Monthly fee generation per unit
+- Invoice management
+- Simulated payment recording and history
+- Payment status: Pending, Paid, Overdue
 
-### Visitor Management
-- Visitor registration and visit approval
-- QR code / visitor pass generation
-- Entry and exit logging
-- Visitor history
+### Visitor Management 🔲
+- Visitor registration by resident or staff
+- Manual entry/exit logging
+- Visitor history per unit
 
-### Parcel Management
-- Parcel arrival logging
-- Resident notification on arrival
+### Parcel Management 🔲
+- Log incoming parcels per resident
 - Pickup confirmation
 - Parcel history
 
-### Real-time Notifications
-- New maintenance request alerts
-- Simulated payment received
-- Visitor arrival
-- Maintenance status updates
-
-### Analytics Dashboard
-- Total residents & occupancy rate
-- Monthly revenue summary
-- Pending maintenance overview
-- Unit availability at a glance
-
-### System Administration
-- User and role management
-- System settings
-- Audit logs
+### Analytics Dashboard 🔲
+- Occupancy rate overview
+- Resident count by type
+- Pending maintenance summary
+- Revenue snapshot
 
 ---
 
@@ -116,30 +99,43 @@ Roles: **Admin**, **Property Manager**, **Staff**, **Resident**
 | i18n | next-intl (Thai / English) |
 | UI Components | Base UI, Shadcn/ui |
 | State Management | Zustand |
-| PDF | @react-pdf/renderer (planned) |
-| Realtime | Planned |
-| Background Jobs | Planned |
+| Validation | class-validator, class-transformer |
 
 ---
 
 ## Project Structure
 
 ```
-condo-management-platform/
-├── frontend/          # Next.js App Router (src/)
+mova-condo-management/
+├── frontend/                  # Next.js App Router
 │   └── src/
-│       ├── app/           # Routes and layouts
-│       ├── components/    # UI, shared, layout, providers
-│       ├── services/      # API call layer
-│       ├── store/         # Zustand global state
-│       ├── hooks/         # Reusable React hooks
-│       ├── types/         # Shared TypeScript definitions
-│       ├── lib/           # HTTP client and shared libs
-│       ├── utils/         # Pure utility functions
-│       └── config/        # App configuration
-└── backend/           # NestJS REST API
+│       ├── app/               # Routes and layouts
+│       │   ├── (auth)/        # Login page
+│       │   └── (dashboard)/   # Main app pages
+│       │       ├── floors/    # Floor & unit management
+│       │       └── residents/ # Resident management
+│       ├── components/
+│       │   ├── shared/        # Feature dialogs (forms, confirm, move-out)
+│       │   ├── ui/            # Base UI components
+│       │   └── layout/        # Sidebar, header, providers
+│       ├── services/          # API call layer
+│       ├── store/             # Zustand global state
+│       ├── types/             # Shared TypeScript definitions
+│       ├── lib/               # HTTP client
+│       ├── utils/             # Pure utility functions
+│       └── messages/          # i18n strings (th / en)
+└── backend/                   # NestJS REST API
     ├── src/
-    └── prisma/        # Schema and migrations
+    │   └── api/
+    │       ├── auth/          # Auth, users
+    │       ├── buildings/     # Building CRUD
+    │       ├── floors/        # Floor CRUD
+    │       ├── units/         # Unit CRUD
+    │       └── residents/     # Resident, family, emergency contacts
+    └── prisma/
+        ├── schema.prisma
+        ├── migrations/
+        └── seed.ts
 ```
 
 ---
@@ -157,7 +153,7 @@ condo-management-platform/
 
 ```bash
 git clone <repo-url>
-cd condo-management-platform
+cd mova-condo-management
 ```
 
 ### 2. Setup Backend
@@ -165,18 +161,14 @@ cd condo-management-platform
 ```bash
 cd backend
 npm install
+cp .env.example .env   # fill in DATABASE_URL and JWT_SECRET
 ```
 
-Copy the environment file and fill in your values:
-
-```bash
-cp .env.example .env
-```
-
-Run database migrations:
+Run migrations and seed:
 
 ```bash
 npx prisma migrate dev
+npm run seed
 ```
 
 Start the backend:
@@ -190,22 +182,28 @@ npm run start:dev
 ```bash
 cd frontend
 npm install
-```
-
-Copy the environment file:
-
-```bash
 cp .env.example .env.local
-```
-
-Start the frontend:
-
-```bash
 npm run dev
 ```
 
-Frontend runs at `http://localhost:3000`  
-Backend runs at `http://localhost:3001`
+| Service | URL |
+|---|---|
+| Frontend | http://localhost:3000 |
+| Backend | http://localhost:3001 |
+
+---
+
+## Seed Accounts
+
+| Role | Email | Password |
+|---|---|---|
+| Admin | admin@condo.com | Admin1234 |
+| Juristic | manager@condo.com | Manager1234 |
+| Staff | staff@condo.com | Staff1234 |
+| Security Guard | guard@condo.com | Guard1234 |
+| Resident | john.doe@condo.com | Resident1234 |
+
+Seed creates: 1 building · 5 floors · 20 units (4 per floor) · 7 resident users · 8 resident records · 6 announcements
 
 ---
 
@@ -228,5 +226,5 @@ Backend runs at `http://localhost:3001`
 | `npm run build` | Build for production |
 | `npm run lint` | Run ESLint |
 | `npm run format` | Format with Prettier |
+| `npm run seed` | Seed database with sample data |
 | `npm run test` | Run unit tests |
-| `npm run test:e2e` | Run end-to-end tests |

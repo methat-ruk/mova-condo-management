@@ -10,11 +10,11 @@ const ROUTE_KEYS: Record<string, string> = {
   dashboard: "dashboard",
   floors: "floors",
   residents: "residents",
+  announcements: "announcements",
   maintenance: "maintenance",
   billing: "billing",
   visitors: "visitors",
   parcels: "parcels",
-  facilities: "facilities",
   analytics: "analytics",
   admin: "admin",
 };

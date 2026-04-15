@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { AnnouncementsModule } from './api/announcements/announcements.module.js';
 import { AuthModule } from './api/auth/auth.module.js';
 import { BuildingsModule } from './api/buildings/buildings.module.js';
 import { FloorsModule } from './api/floors/floors.module.js';
@@ -16,6 +17,7 @@ import { PrismaModule } from './prisma/prisma.module.js';
     FloorsModule,
     UnitsModule,
     ResidentsModule,
+    AnnouncementsModule,
   ],
 })
 export class AppModule {}
