@@ -1,4 +1,4 @@
-export type UserRole = "ADMIN" | "JURISTIC" | "STAFF" | "GUARD" | "RESIDENT";
+export type UserRole = "ADMIN" | "JURISTIC" | "MAINTENANCE" | "GUARD" | "RESIDENT";
 
 export interface AuthUser {
   id: string;
@@ -14,14 +14,6 @@ export interface AuthUser {
 export interface LoginRequest {
   email: string;
   password: string;
-}
-
-export interface RegisterRequest {
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  role?: UserRole;
 }
 
 export interface AuthResponse {

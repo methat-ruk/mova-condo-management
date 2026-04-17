@@ -17,7 +17,7 @@ enum OccupancyStatus {
 enum UserRole {
   ADMIN
   JURISTIC
-  STAFF
+  MAINTENANCE
   GUARD
   RESIDENT
 }
@@ -77,6 +77,7 @@ model Unit {
   updatedAt       DateTime        @updatedAt
 
   residents Resident[]
+  visitors  Visitor[]
 
   @@unique([floorId, unitNumber])
 }
@@ -87,7 +88,7 @@ model User {
   password  String
   firstName String
   lastName  String
-  role      UserRole @default(STAFF)
+  role      UserRole @default(MAINTENANCE)
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -95,6 +96,30 @@ model User {
   residents             Resident[]
   announcements         Announcement[]
   announcementReads     AnnouncementRead[]
+  recordedVisitors      Visitor[] @relation("RecordedBy")
+  checkedOutVisitors    Visitor[] @relation("CheckedOutBy")
+}
+
+model Visitor {
+  id           String    @id @default(uuid())
+  name         String
+  phone        String?
+  purpose      String?
+  vehiclePlate String?
+  groupSize    Int       @default(1)
+  unitId       String
+  unit         Unit      @relation(fields: [unitId], references: [id])
+  residentId   String?
+  resident     Resident? @relation(fields: [residentId], references: [id])
+  checkInAt      DateTime  @default(now())
+  checkOutAt     DateTime?
+  recordedById   String
+  recordedBy     User      @relation("RecordedBy", fields: [recordedById], references: [id])
+  checkedOutById  String?
+  checkedOutBy    User?     @relation("CheckedOutBy", fields: [checkedOutById], references: [id])
+  isAutoExpired   Boolean   @default(false)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
 }
 
 model Resident {
@@ -113,6 +138,7 @@ model Resident {
 
   familyMembers     FamilyMember[]
   emergencyContacts EmergencyContact[]
+  visitors          Visitor[]
 }
 
 model FamilyMember {

@@ -14,9 +14,9 @@ A full-stack condominium management system for a single condominium building. De
 | Floor & Unit Management | ✅ Done |
 | Resident Management | ✅ Done |
 | Announcements | ✅ Done |
+| Visitor Management | ✅ Done |
 | Maintenance Requests | 🔲 Planned |
 | Billing & Payment | 🔲 Planned |
-| Visitor Management | 🔲 Planned |
 | Parcel Management | 🔲 Planned |
 | Analytics Dashboard | 🔲 Planned |
 
@@ -26,7 +26,7 @@ A full-stack condominium management system for a single condominium building. De
 
 ### Authentication & User Management ✅
 - Login / logout with JWT (cookie-based)
-- Role-based access: Admin, Juristic, Staff, Security Guard, Resident
+- Role-based access: Admin, Juristic, Maintenance, Security Guard, Resident
 - Profile session handling
 
 ### Floor & Unit Management ✅
@@ -69,10 +69,14 @@ A full-stack condominium management system for a single condominium building. De
 - Simulated payment recording and history
 - Payment status: Pending, Paid, Overdue
 
-### Visitor Management 🔲
-- Visitor registration by resident or staff
-- Manual entry/exit logging
-- Visitor history per unit
+### Visitor Management ✅
+- Manual visitor check-in by security guard or staff
+- Floor → unit cascade select with optional resident link
+- Check-out confirmation with timestamp
+- Client-side filter: All / Inside / Checked Out
+- Search by visitor name, phone, or unit number
+- "Currently inside" count in header
+- Responsive table with check-in/check-out timestamps
 
 ### Parcel Management 🔲
 - Log incoming parcels per resident
@@ -112,8 +116,10 @@ mova-condo-management/
 │       ├── app/               # Routes and layouts
 │       │   ├── (auth)/        # Login page
 │       │   └── (dashboard)/   # Main app pages
-│       │       ├── floors/    # Floor & unit management
-│       │       └── residents/ # Resident management
+│       │       ├── floors/         # Floor & unit management
+│       │       ├── residents/      # Resident management
+│       │       ├── announcements/  # Announcements
+│       │       └── visitors/       # Visitor management
 │       ├── components/
 │       │   ├── shared/        # Feature dialogs (forms, confirm, move-out)
 │       │   ├── ui/            # Base UI components
@@ -131,7 +137,9 @@ mova-condo-management/
     │       ├── buildings/     # Building CRUD
     │       ├── floors/        # Floor CRUD
     │       ├── units/         # Unit CRUD
-    │       └── residents/     # Resident, family, emergency contacts
+    │       ├── residents/     # Resident, family, emergency contacts
+│       ├── announcements/ # Announcements
+│       └── visitors/      # Visitor check-in/check-out
     └── prisma/
         ├── schema.prisma
         ├── migrations/
@@ -199,11 +207,11 @@ npm run dev
 |---|---|---|
 | Admin | admin@condo.com | Admin1234 |
 | Juristic | manager@condo.com | Manager1234 |
-| Staff | staff@condo.com | Staff1234 |
+| Maintenance | maintenance@condo.com | Maintenance1234 |
 | Security Guard | guard@condo.com | Guard1234 |
 | Resident | john.doe@condo.com | Resident1234 |
 
-Seed creates: 1 building · 5 floors · 20 units (4 per floor) · 7 resident users · 8 resident records · 6 announcements
+Seed creates: 1 building · 10 floors · 60 units · 21 users · 18 resident records · 9 family members · 9 emergency contacts · 12 announcements · 15 visitor records
 
 ---
 

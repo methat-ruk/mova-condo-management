@@ -36,15 +36,13 @@ export interface Unit {
   updatedAt: string;
 }
 
-export interface CreateBuildingRequest {
-  name: string;
-  address: string;
-  totalFloors: number;
+export interface UpdateBuildingRequest {
+  name?: string;
+  address?: string;
+  totalFloors?: number;
   description?: string;
   isActive?: boolean;
 }
-
-export type UpdateBuildingRequest = Partial<CreateBuildingRequest>;
 
 export interface CreateFloorRequest {
   floorNumber: number;

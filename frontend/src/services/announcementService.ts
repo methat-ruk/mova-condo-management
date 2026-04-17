@@ -13,7 +13,10 @@ export const announcementService = {
     status?: AnnouncementStatus | "VISIBLE";
     page?: number;
     limit?: number;
-  }) => api.get<AnnouncementListResponse>("/announcements", { params: params as Record<string, unknown> }),
+  }) =>
+    api.get<AnnouncementListResponse>("/announcements", {
+      params: params as Record<string, unknown>,
+    }),
 
   getOne: (id: string) => api.get<Announcement>(`/announcements/${id}`),
 

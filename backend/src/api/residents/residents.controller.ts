@@ -11,7 +11,10 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import { ResidentStatus } from '../../../generated/prisma/enums.js';
+import {
+  ResidentStatus,
+  ResidentType,
+} from '../../../generated/prisma/enums.js';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js';
 import { CreateEmergencyContactDto } from './dto/create-emergency-contact.dto.js';
 import { CreateFamilyMemberDto } from './dto/create-family-member.dto.js';
@@ -30,6 +33,7 @@ export class ResidentsController {
   @Get()
   findAll(
     @Query('status') status?: ResidentStatus,
+    @Query('residentType') residentType?: ResidentType,
     @Query('unitId') unitId?: string,
     @Query('search') search?: string,
     @Query('page') page?: string,
@@ -37,6 +41,7 @@ export class ResidentsController {
   ) {
     return this.residentsService.findAll({
       status,
+      residentType,
       unitId,
       search,
       page: page ? Number(page) : undefined,

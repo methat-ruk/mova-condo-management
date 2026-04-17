@@ -38,6 +38,11 @@ export type Unit = Prisma.UnitModel
  */
 export type User = Prisma.UserModel
 /**
+ * Model Visitor
+ * 
+ */
+export type Visitor = Prisma.VisitorModel
+/**
  * Model Resident
  * 
  */

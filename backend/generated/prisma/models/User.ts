@@ -217,6 +217,8 @@ export type UserWhereInput = {
   residents?: Prisma.ResidentListRelationFilter
   announcements?: Prisma.AnnouncementListRelationFilter
   announcementReads?: Prisma.AnnouncementReadListRelationFilter
+  recordedVisitors?: Prisma.VisitorListRelationFilter
+  checkedOutVisitors?: Prisma.VisitorListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -232,6 +234,8 @@ export type UserOrderByWithRelationInput = {
   residents?: Prisma.ResidentOrderByRelationAggregateInput
   announcements?: Prisma.AnnouncementOrderByRelationAggregateInput
   announcementReads?: Prisma.AnnouncementReadOrderByRelationAggregateInput
+  recordedVisitors?: Prisma.VisitorOrderByRelationAggregateInput
+  checkedOutVisitors?: Prisma.VisitorOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -250,6 +254,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   residents?: Prisma.ResidentListRelationFilter
   announcements?: Prisma.AnnouncementListRelationFilter
   announcementReads?: Prisma.AnnouncementReadListRelationFilter
+  recordedVisitors?: Prisma.VisitorListRelationFilter
+  checkedOutVisitors?: Prisma.VisitorListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -295,6 +301,8 @@ export type UserCreateInput = {
   residents?: Prisma.ResidentCreateNestedManyWithoutUserInput
   announcements?: Prisma.AnnouncementCreateNestedManyWithoutCreatedByInput
   announcementReads?: Prisma.AnnouncementReadCreateNestedManyWithoutUserInput
+  recordedVisitors?: Prisma.VisitorCreateNestedManyWithoutRecordedByInput
+  checkedOutVisitors?: Prisma.VisitorCreateNestedManyWithoutCheckedOutByInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -310,6 +318,8 @@ export type UserUncheckedCreateInput = {
   residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUserInput
   announcements?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutCreatedByInput
   announcementReads?: Prisma.AnnouncementReadUncheckedCreateNestedManyWithoutUserInput
+  recordedVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutRecordedByInput
+  checkedOutVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutCheckedOutByInput
 }
 
 export type UserUpdateInput = {
@@ -325,6 +335,8 @@ export type UserUpdateInput = {
   residents?: Prisma.ResidentUpdateManyWithoutUserNestedInput
   announcements?: Prisma.AnnouncementUpdateManyWithoutCreatedByNestedInput
   announcementReads?: Prisma.AnnouncementReadUpdateManyWithoutUserNestedInput
+  recordedVisitors?: Prisma.VisitorUpdateManyWithoutRecordedByNestedInput
+  checkedOutVisitors?: Prisma.VisitorUpdateManyWithoutCheckedOutByNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -340,6 +352,8 @@ export type UserUncheckedUpdateInput = {
   residents?: Prisma.ResidentUncheckedUpdateManyWithoutUserNestedInput
   announcements?: Prisma.AnnouncementUncheckedUpdateManyWithoutCreatedByNestedInput
   announcementReads?: Prisma.AnnouncementReadUncheckedUpdateManyWithoutUserNestedInput
+  recordedVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutRecordedByNestedInput
+  checkedOutVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutCheckedOutByNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -419,8 +433,43 @@ export type UserScalarRelationFilter = {
   isNot?: Prisma.UserWhereInput
 }
 
+export type UserNullableScalarRelationFilter = {
+  is?: Prisma.UserWhereInput | null
+  isNot?: Prisma.UserWhereInput | null
+}
+
 export type EnumUserRoleFieldUpdateOperationsInput = {
   set?: $Enums.UserRole
+}
+
+export type UserCreateNestedOneWithoutRecordedVisitorsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRecordedVisitorsInput, Prisma.UserUncheckedCreateWithoutRecordedVisitorsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRecordedVisitorsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutCheckedOutVisitorsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCheckedOutVisitorsInput, Prisma.UserUncheckedCreateWithoutCheckedOutVisitorsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCheckedOutVisitorsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutRecordedVisitorsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRecordedVisitorsInput, Prisma.UserUncheckedCreateWithoutRecordedVisitorsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRecordedVisitorsInput
+  upsert?: Prisma.UserUpsertWithoutRecordedVisitorsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRecordedVisitorsInput, Prisma.UserUpdateWithoutRecordedVisitorsInput>, Prisma.UserUncheckedUpdateWithoutRecordedVisitorsInput>
+}
+
+export type UserUpdateOneWithoutCheckedOutVisitorsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCheckedOutVisitorsInput, Prisma.UserUncheckedCreateWithoutCheckedOutVisitorsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCheckedOutVisitorsInput
+  upsert?: Prisma.UserUpsertWithoutCheckedOutVisitorsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCheckedOutVisitorsInput, Prisma.UserUpdateWithoutCheckedOutVisitorsInput>, Prisma.UserUncheckedUpdateWithoutCheckedOutVisitorsInput>
 }
 
 export type UserCreateNestedOneWithoutResidentsInput = {
@@ -465,6 +514,166 @@ export type UserUpdateOneRequiredWithoutAnnouncementReadsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAnnouncementReadsInput, Prisma.UserUpdateWithoutAnnouncementReadsInput>, Prisma.UserUncheckedUpdateWithoutAnnouncementReadsInput>
 }
 
+export type UserCreateWithoutRecordedVisitorsInput = {
+  id?: string
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  role?: $Enums.UserRole
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  residents?: Prisma.ResidentCreateNestedManyWithoutUserInput
+  announcements?: Prisma.AnnouncementCreateNestedManyWithoutCreatedByInput
+  announcementReads?: Prisma.AnnouncementReadCreateNestedManyWithoutUserInput
+  checkedOutVisitors?: Prisma.VisitorCreateNestedManyWithoutCheckedOutByInput
+}
+
+export type UserUncheckedCreateWithoutRecordedVisitorsInput = {
+  id?: string
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  role?: $Enums.UserRole
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUserInput
+  announcements?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutCreatedByInput
+  announcementReads?: Prisma.AnnouncementReadUncheckedCreateNestedManyWithoutUserInput
+  checkedOutVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutCheckedOutByInput
+}
+
+export type UserCreateOrConnectWithoutRecordedVisitorsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutRecordedVisitorsInput, Prisma.UserUncheckedCreateWithoutRecordedVisitorsInput>
+}
+
+export type UserCreateWithoutCheckedOutVisitorsInput = {
+  id?: string
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  role?: $Enums.UserRole
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  residents?: Prisma.ResidentCreateNestedManyWithoutUserInput
+  announcements?: Prisma.AnnouncementCreateNestedManyWithoutCreatedByInput
+  announcementReads?: Prisma.AnnouncementReadCreateNestedManyWithoutUserInput
+  recordedVisitors?: Prisma.VisitorCreateNestedManyWithoutRecordedByInput
+}
+
+export type UserUncheckedCreateWithoutCheckedOutVisitorsInput = {
+  id?: string
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  role?: $Enums.UserRole
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUserInput
+  announcements?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutCreatedByInput
+  announcementReads?: Prisma.AnnouncementReadUncheckedCreateNestedManyWithoutUserInput
+  recordedVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutRecordedByInput
+}
+
+export type UserCreateOrConnectWithoutCheckedOutVisitorsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCheckedOutVisitorsInput, Prisma.UserUncheckedCreateWithoutCheckedOutVisitorsInput>
+}
+
+export type UserUpsertWithoutRecordedVisitorsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRecordedVisitorsInput, Prisma.UserUncheckedUpdateWithoutRecordedVisitorsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRecordedVisitorsInput, Prisma.UserUncheckedCreateWithoutRecordedVisitorsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutRecordedVisitorsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRecordedVisitorsInput, Prisma.UserUncheckedUpdateWithoutRecordedVisitorsInput>
+}
+
+export type UserUpdateWithoutRecordedVisitorsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  residents?: Prisma.ResidentUpdateManyWithoutUserNestedInput
+  announcements?: Prisma.AnnouncementUpdateManyWithoutCreatedByNestedInput
+  announcementReads?: Prisma.AnnouncementReadUpdateManyWithoutUserNestedInput
+  checkedOutVisitors?: Prisma.VisitorUpdateManyWithoutCheckedOutByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutRecordedVisitorsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  residents?: Prisma.ResidentUncheckedUpdateManyWithoutUserNestedInput
+  announcements?: Prisma.AnnouncementUncheckedUpdateManyWithoutCreatedByNestedInput
+  announcementReads?: Prisma.AnnouncementReadUncheckedUpdateManyWithoutUserNestedInput
+  checkedOutVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutCheckedOutByNestedInput
+}
+
+export type UserUpsertWithoutCheckedOutVisitorsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCheckedOutVisitorsInput, Prisma.UserUncheckedUpdateWithoutCheckedOutVisitorsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCheckedOutVisitorsInput, Prisma.UserUncheckedCreateWithoutCheckedOutVisitorsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCheckedOutVisitorsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCheckedOutVisitorsInput, Prisma.UserUncheckedUpdateWithoutCheckedOutVisitorsInput>
+}
+
+export type UserUpdateWithoutCheckedOutVisitorsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  residents?: Prisma.ResidentUpdateManyWithoutUserNestedInput
+  announcements?: Prisma.AnnouncementUpdateManyWithoutCreatedByNestedInput
+  announcementReads?: Prisma.AnnouncementReadUpdateManyWithoutUserNestedInput
+  recordedVisitors?: Prisma.VisitorUpdateManyWithoutRecordedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCheckedOutVisitorsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  residents?: Prisma.ResidentUncheckedUpdateManyWithoutUserNestedInput
+  announcements?: Prisma.AnnouncementUncheckedUpdateManyWithoutCreatedByNestedInput
+  announcementReads?: Prisma.AnnouncementReadUncheckedUpdateManyWithoutUserNestedInput
+  recordedVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutRecordedByNestedInput
+}
+
 export type UserCreateWithoutResidentsInput = {
   id?: string
   email: string
@@ -477,6 +686,8 @@ export type UserCreateWithoutResidentsInput = {
   updatedAt?: Date | string
   announcements?: Prisma.AnnouncementCreateNestedManyWithoutCreatedByInput
   announcementReads?: Prisma.AnnouncementReadCreateNestedManyWithoutUserInput
+  recordedVisitors?: Prisma.VisitorCreateNestedManyWithoutRecordedByInput
+  checkedOutVisitors?: Prisma.VisitorCreateNestedManyWithoutCheckedOutByInput
 }
 
 export type UserUncheckedCreateWithoutResidentsInput = {
@@ -491,6 +702,8 @@ export type UserUncheckedCreateWithoutResidentsInput = {
   updatedAt?: Date | string
   announcements?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutCreatedByInput
   announcementReads?: Prisma.AnnouncementReadUncheckedCreateNestedManyWithoutUserInput
+  recordedVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutRecordedByInput
+  checkedOutVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutCheckedOutByInput
 }
 
 export type UserCreateOrConnectWithoutResidentsInput = {
@@ -521,6 +734,8 @@ export type UserUpdateWithoutResidentsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   announcements?: Prisma.AnnouncementUpdateManyWithoutCreatedByNestedInput
   announcementReads?: Prisma.AnnouncementReadUpdateManyWithoutUserNestedInput
+  recordedVisitors?: Prisma.VisitorUpdateManyWithoutRecordedByNestedInput
+  checkedOutVisitors?: Prisma.VisitorUpdateManyWithoutCheckedOutByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutResidentsInput = {
@@ -535,6 +750,8 @@ export type UserUncheckedUpdateWithoutResidentsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   announcements?: Prisma.AnnouncementUncheckedUpdateManyWithoutCreatedByNestedInput
   announcementReads?: Prisma.AnnouncementReadUncheckedUpdateManyWithoutUserNestedInput
+  recordedVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutRecordedByNestedInput
+  checkedOutVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutCheckedOutByNestedInput
 }
 
 export type UserCreateWithoutAnnouncementsInput = {
@@ -549,6 +766,8 @@ export type UserCreateWithoutAnnouncementsInput = {
   updatedAt?: Date | string
   residents?: Prisma.ResidentCreateNestedManyWithoutUserInput
   announcementReads?: Prisma.AnnouncementReadCreateNestedManyWithoutUserInput
+  recordedVisitors?: Prisma.VisitorCreateNestedManyWithoutRecordedByInput
+  checkedOutVisitors?: Prisma.VisitorCreateNestedManyWithoutCheckedOutByInput
 }
 
 export type UserUncheckedCreateWithoutAnnouncementsInput = {
@@ -563,6 +782,8 @@ export type UserUncheckedCreateWithoutAnnouncementsInput = {
   updatedAt?: Date | string
   residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUserInput
   announcementReads?: Prisma.AnnouncementReadUncheckedCreateNestedManyWithoutUserInput
+  recordedVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutRecordedByInput
+  checkedOutVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutCheckedOutByInput
 }
 
 export type UserCreateOrConnectWithoutAnnouncementsInput = {
@@ -593,6 +814,8 @@ export type UserUpdateWithoutAnnouncementsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   residents?: Prisma.ResidentUpdateManyWithoutUserNestedInput
   announcementReads?: Prisma.AnnouncementReadUpdateManyWithoutUserNestedInput
+  recordedVisitors?: Prisma.VisitorUpdateManyWithoutRecordedByNestedInput
+  checkedOutVisitors?: Prisma.VisitorUpdateManyWithoutCheckedOutByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAnnouncementsInput = {
@@ -607,6 +830,8 @@ export type UserUncheckedUpdateWithoutAnnouncementsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   residents?: Prisma.ResidentUncheckedUpdateManyWithoutUserNestedInput
   announcementReads?: Prisma.AnnouncementReadUncheckedUpdateManyWithoutUserNestedInput
+  recordedVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutRecordedByNestedInput
+  checkedOutVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutCheckedOutByNestedInput
 }
 
 export type UserCreateWithoutAnnouncementReadsInput = {
@@ -621,6 +846,8 @@ export type UserCreateWithoutAnnouncementReadsInput = {
   updatedAt?: Date | string
   residents?: Prisma.ResidentCreateNestedManyWithoutUserInput
   announcements?: Prisma.AnnouncementCreateNestedManyWithoutCreatedByInput
+  recordedVisitors?: Prisma.VisitorCreateNestedManyWithoutRecordedByInput
+  checkedOutVisitors?: Prisma.VisitorCreateNestedManyWithoutCheckedOutByInput
 }
 
 export type UserUncheckedCreateWithoutAnnouncementReadsInput = {
@@ -635,6 +862,8 @@ export type UserUncheckedCreateWithoutAnnouncementReadsInput = {
   updatedAt?: Date | string
   residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUserInput
   announcements?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutCreatedByInput
+  recordedVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutRecordedByInput
+  checkedOutVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutCheckedOutByInput
 }
 
 export type UserCreateOrConnectWithoutAnnouncementReadsInput = {
@@ -665,6 +894,8 @@ export type UserUpdateWithoutAnnouncementReadsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   residents?: Prisma.ResidentUpdateManyWithoutUserNestedInput
   announcements?: Prisma.AnnouncementUpdateManyWithoutCreatedByNestedInput
+  recordedVisitors?: Prisma.VisitorUpdateManyWithoutRecordedByNestedInput
+  checkedOutVisitors?: Prisma.VisitorUpdateManyWithoutCheckedOutByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAnnouncementReadsInput = {
@@ -679,6 +910,8 @@ export type UserUncheckedUpdateWithoutAnnouncementReadsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   residents?: Prisma.ResidentUncheckedUpdateManyWithoutUserNestedInput
   announcements?: Prisma.AnnouncementUncheckedUpdateManyWithoutCreatedByNestedInput
+  recordedVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutRecordedByNestedInput
+  checkedOutVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutCheckedOutByNestedInput
 }
 
 
@@ -690,12 +923,16 @@ export type UserCountOutputType = {
   residents: number
   announcements: number
   announcementReads: number
+  recordedVisitors: number
+  checkedOutVisitors: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   residents?: boolean | UserCountOutputTypeCountResidentsArgs
   announcements?: boolean | UserCountOutputTypeCountAnnouncementsArgs
   announcementReads?: boolean | UserCountOutputTypeCountAnnouncementReadsArgs
+  recordedVisitors?: boolean | UserCountOutputTypeCountRecordedVisitorsArgs
+  checkedOutVisitors?: boolean | UserCountOutputTypeCountCheckedOutVisitorsArgs
 }
 
 /**
@@ -729,6 +966,20 @@ export type UserCountOutputTypeCountAnnouncementReadsArgs<ExtArgs extends runtim
   where?: Prisma.AnnouncementReadWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRecordedVisitorsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.VisitorWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCheckedOutVisitorsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.VisitorWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -743,6 +994,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   residents?: boolean | Prisma.User$residentsArgs<ExtArgs>
   announcements?: boolean | Prisma.User$announcementsArgs<ExtArgs>
   announcementReads?: boolean | Prisma.User$announcementReadsArgs<ExtArgs>
+  recordedVisitors?: boolean | Prisma.User$recordedVisitorsArgs<ExtArgs>
+  checkedOutVisitors?: boolean | Prisma.User$checkedOutVisitorsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -787,6 +1040,8 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   residents?: boolean | Prisma.User$residentsArgs<ExtArgs>
   announcements?: boolean | Prisma.User$announcementsArgs<ExtArgs>
   announcementReads?: boolean | Prisma.User$announcementReadsArgs<ExtArgs>
+  recordedVisitors?: boolean | Prisma.User$recordedVisitorsArgs<ExtArgs>
+  checkedOutVisitors?: boolean | Prisma.User$checkedOutVisitorsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -798,6 +1053,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     residents: Prisma.$ResidentPayload<ExtArgs>[]
     announcements: Prisma.$AnnouncementPayload<ExtArgs>[]
     announcementReads: Prisma.$AnnouncementReadPayload<ExtArgs>[]
+    recordedVisitors: Prisma.$VisitorPayload<ExtArgs>[]
+    checkedOutVisitors: Prisma.$VisitorPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1206,6 +1463,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   residents<T extends Prisma.User$residentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$residentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ResidentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   announcements<T extends Prisma.User$announcementsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$announcementsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AnnouncementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   announcementReads<T extends Prisma.User$announcementReadsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$announcementReadsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AnnouncementReadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  recordedVisitors<T extends Prisma.User$recordedVisitorsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$recordedVisitorsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VisitorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  checkedOutVisitors<T extends Prisma.User$checkedOutVisitorsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$checkedOutVisitorsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VisitorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1706,6 +1965,54 @@ export type User$announcementReadsArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.AnnouncementReadScalarFieldEnum | Prisma.AnnouncementReadScalarFieldEnum[]
+}
+
+/**
+ * User.recordedVisitors
+ */
+export type User$recordedVisitorsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Visitor
+   */
+  select?: Prisma.VisitorSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Visitor
+   */
+  omit?: Prisma.VisitorOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.VisitorInclude<ExtArgs> | null
+  where?: Prisma.VisitorWhereInput
+  orderBy?: Prisma.VisitorOrderByWithRelationInput | Prisma.VisitorOrderByWithRelationInput[]
+  cursor?: Prisma.VisitorWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.VisitorScalarFieldEnum | Prisma.VisitorScalarFieldEnum[]
+}
+
+/**
+ * User.checkedOutVisitors
+ */
+export type User$checkedOutVisitorsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Visitor
+   */
+  select?: Prisma.VisitorSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Visitor
+   */
+  omit?: Prisma.VisitorOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.VisitorInclude<ExtArgs> | null
+  where?: Prisma.VisitorWhereInput
+  orderBy?: Prisma.VisitorOrderByWithRelationInput | Prisma.VisitorOrderByWithRelationInput[]
+  cursor?: Prisma.VisitorWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.VisitorScalarFieldEnum | Prisma.VisitorScalarFieldEnum[]
 }
 
 /**

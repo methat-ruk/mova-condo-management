@@ -55,6 +55,7 @@ export const ModelName = {
   Floor: 'Floor',
   Unit: 'Unit',
   User: 'User',
+  Visitor: 'Visitor',
   Resident: 'Resident',
   FamilyMember: 'FamilyMember',
   EmergencyContact: 'EmergencyContact',
@@ -132,6 +133,27 @@ export const UserScalarFieldEnum = {
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const VisitorScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  phone: 'phone',
+  purpose: 'purpose',
+  vehiclePlate: 'vehiclePlate',
+  groupSize: 'groupSize',
+  unitId: 'unitId',
+  residentId: 'residentId',
+  checkInAt: 'checkInAt',
+  checkOutAt: 'checkOutAt',
+  recordedById: 'recordedById',
+  checkedOutById: 'checkedOutById',
+  isAutoExpired: 'isAutoExpired',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type VisitorScalarFieldEnum = (typeof VisitorScalarFieldEnum)[keyof typeof VisitorScalarFieldEnum]
 
 
 export const ResidentScalarFieldEnum = {

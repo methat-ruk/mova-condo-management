@@ -1,9 +1,9 @@
 "use client";
 
-import { Plus, UserRound, Users } from "lucide-react";
+import { ChevronLeft, ChevronRight, Plus, UserRound, Users } from "lucide-react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { toast } from "sonner";
 import { ResidentFormDialog } from "@/components/shared/ResidentFormDialog";
 import { Button } from "@/components/ui/button";
@@ -20,11 +20,15 @@ import type {
   ResidentType,
 } from "@/types/resident";
 
+const LIMIT = 20;
+
 export default function ResidentsPage() {
   const t = useTranslations("residents");
   const tCommon = useTranslations("common");
 
   const [residents, setResidents] = useState<ResidentListItem[]>([]);
+  const [total, setTotal] = useState(0);
+  const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<ResidentStatus | "">("");
@@ -35,37 +39,48 @@ export default function ResidentsPage() {
   const [users, setUsers] = useState<UserOption[]>([]);
   const [units, setUnits] = useState<UnitWithFloor[]>([]);
 
-  const load = useCallback(async () => {
-    setIsLoading(true);
-    try {
-      const res = await residentService.getAll({ limit: 1000 });
-      setResidents(res.data);
-    } catch {
-      toast.error(tCommon("status.error"));
-    } finally {
-      setIsLoading(false);
-    }
-  }, [tCommon]);
-
   useEffect(() => {
-    void load();
-  }, [load]);
+    let cancelled = false;
+    residentService
+      .getAll({
+        page,
+        limit: LIMIT,
+        search: search.trim() || undefined,
+        status: statusFilter || undefined,
+        residentType: typeFilter || undefined,
+      })
+      .then((res) => {
+        if (!cancelled) {
+          setResidents(res.data);
+          setTotal(res.total);
+          setIsLoading(false);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          toast.error(tCommon("status.error"));
+          setIsLoading(false);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [page, search, statusFilter, typeFilter, tCommon]);
 
-  const loadDialogData = useCallback(async () => {
-    const [u, un] = await Promise.all([userService.getAll(), unitService.getAll()]);
-    setUsers(u);
-    setUnits(un);
-  }, []);
-
-  useEffect(() => {
-    if (addOpen) void loadDialogData();
-  }, [addOpen, loadDialogData]);
+  const openAddDialog = () => {
+    setAddOpen(true);
+    void Promise.all([userService.getAll(), unitService.getAll()]).then(([u, un]) => {
+      setUsers(u);
+      setUnits(un);
+    });
+  };
 
   const handleAdd = async (data: CreateResidentRequest) => {
     startAddTransition(async () => {
       try {
         const resident = await residentService.create(data);
         setResidents((prev) => [resident as unknown as ResidentListItem, ...prev]);
+        setTotal((n) => n + 1);
         toast.success(t("createSuccess"));
         setAddOpen(false);
       } catch (err) {
@@ -75,33 +90,9 @@ export default function ResidentsPage() {
     });
   };
 
-  // Summary counts
-  const ownerCount = useMemo(
-    () => residents.filter((r) => r.residentType === "OWNER").length,
-    [residents],
-  );
-  const tenantCount = useMemo(
-    () => residents.filter((r) => r.residentType === "TENANT").length,
-    [residents],
-  );
-
-  // Client-side filtering
-  const filtered = useMemo(() => {
-    const q = search.trim().toLowerCase();
-    return residents.filter((r) => {
-      if (statusFilter && r.status !== statusFilter) return false;
-      if (typeFilter && r.residentType !== typeFilter) return false;
-      if (q) {
-        const name = `${r.user.firstName} ${r.user.lastName}`.toLowerCase();
-        const email = r.user.email.toLowerCase();
-        const unit = r.unit.unitNumber.toLowerCase();
-        if (!name.includes(q) && !email.includes(q) && !unit.includes(q)) return false;
-      }
-      return true;
-    });
-  }, [residents, search, statusFilter, typeFilter]);
-
-  const isFiltered = search.trim() || statusFilter || typeFilter;
+  const totalPages = Math.max(1, Math.ceil(total / LIMIT));
+  const from = total === 0 ? 0 : (page - 1) * LIMIT + 1;
+  const to = Math.min(page * LIMIT, total);
 
   if (isLoading) {
     return (
@@ -128,18 +119,9 @@ export default function ResidentsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-foreground text-2xl font-bold">{t("title")}</h1>
-          <p className="text-muted-foreground mt-1 text-xs">
-            {t("summary.total", { total: residents.length })} ·{" "}
-            <span className="text-blue-600 dark:text-blue-400">
-              {t("summary.owners", { count: ownerCount })}
-            </span>
-            {" · "}
-            <span className="text-amber-600 dark:text-amber-400">
-              {t("summary.tenants", { count: tenantCount })}
-            </span>
-          </p>
+          <p className="text-muted-foreground mt-1 text-xs">{t("summary.total", { total })}</p>
         </div>
-        <Button onClick={() => setAddOpen(true)} className="cursor-pointer gap-2" size="sm">
+        <Button onClick={openAddDialog} className="cursor-pointer gap-2" size="sm">
           <Plus className="h-4 w-4" />
           {t("addResident")}
         </Button>
@@ -151,7 +133,10 @@ export default function ResidentsPage() {
           type="text"
           placeholder={t("searchPlaceholder")}
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setPage(1);
+          }}
           className="border-input bg-background text-foreground placeholder:text-muted-foreground focus:ring-ring h-9 w-full min-w-0 rounded-lg border px-3 text-sm focus:ring-2 focus:outline-none sm:flex-1"
         />
         <div className="flex flex-col gap-1 sm:shrink-0 sm:flex-row sm:items-center sm:gap-1">
@@ -160,7 +145,10 @@ export default function ResidentsPage() {
             {(["", "ACTIVE", "INACTIVE"] as const).map((s) => (
               <button
                 key={s}
-                onClick={() => setStatusFilter(s)}
+                onClick={() => {
+                  setStatusFilter(s);
+                  setPage(1);
+                }}
                 className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
                   statusFilter === s
                     ? "bg-primary text-primary-foreground"
@@ -181,7 +169,10 @@ export default function ResidentsPage() {
             {(["", "OWNER", "TENANT"] as const).map((tp) => (
               <button
                 key={tp}
-                onClick={() => setTypeFilter(tp)}
+                onClick={() => {
+                  setTypeFilter(tp);
+                  setPage(1);
+                }}
                 className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
                   typeFilter === tp
                     ? tp === "OWNER"
@@ -199,22 +190,15 @@ export default function ResidentsPage() {
         </div>
       </div>
 
-      {/* Count when filtered */}
-      {isFiltered && (
-        <p className="text-muted-foreground -mt-3 text-xs">
-          {t("filterResult", { count: filtered.length, total: residents.length })}
-        </p>
-      )}
-
       {/* List */}
-      {filtered.length === 0 ? (
+      {residents.length === 0 ? (
         <div className="bg-card border-border flex flex-col items-center gap-3 rounded-xl border py-16 text-center">
           <Users className="text-muted-foreground h-8 w-8" />
           <p className="text-foreground font-medium">{t("noResidents")}</p>
         </div>
       ) : (
         <div className="bg-card border-border divide-border divide-y rounded-xl border">
-          {filtered.map((r) => (
+          {residents.map((r) => (
             <div
               key={r.id}
               className="hover:bg-muted/40 flex items-center justify-between px-6 py-4 transition-colors"
@@ -233,7 +217,6 @@ export default function ResidentsPage() {
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                {/* Type badge */}
                 <span
                   className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
                     r.residentType === "OWNER"
@@ -243,7 +226,6 @@ export default function ResidentsPage() {
                 >
                   {t(`residentType.${r.residentType}`)}
                 </span>
-                {/* Status badge */}
                 <span
                   className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
                     r.status === "ACTIVE"
@@ -264,6 +246,34 @@ export default function ResidentsPage() {
               </div>
             </div>
           ))}
+        </div>
+      )}
+
+      {/* Pagination */}
+      {total > LIMIT && (
+        <div className="flex items-center justify-between">
+          <p className="text-muted-foreground text-xs">
+            {t("pagination.showing", { from, to, total })}
+          </p>
+          <div className="flex items-center gap-1">
+            <button
+              onClick={() => setPage((p) => p - 1)}
+              disabled={page <= 1}
+              className="bg-muted text-muted-foreground hover:bg-muted/80 flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg transition-colors disabled:cursor-default disabled:opacity-40"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <span className="text-foreground min-w-16 text-center text-xs font-medium">
+              {page} / {totalPages}
+            </span>
+            <button
+              onClick={() => setPage((p) => p + 1)}
+              disabled={page >= totalPages}
+              className="bg-muted text-muted-foreground hover:bg-muted/80 flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg transition-colors disabled:cursor-default disabled:opacity-40"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
         </div>
       )}
 

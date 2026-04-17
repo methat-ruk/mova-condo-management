@@ -15,6 +15,7 @@ import type {
 
 export interface ResidentQuery {
   status?: string;
+  residentType?: string;
   unitId?: string;
   search?: string;
   page?: number;

@@ -30,7 +30,7 @@ export default function AnnouncementsPage() {
   const load = useCallback(async () => {
     setIsLoading(true);
     try {
-      const res = await announcementService.getAll({ limit: 1000 });
+      const res = await announcementService.getAll({ limit: 50 });
       setAnnouncements(res.data);
     } catch {
       toast.error(tCommon("status.error"));

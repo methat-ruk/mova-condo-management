@@ -269,7 +269,7 @@
     "roles": {
       "ADMIN": "ผู้ดูแลระบบ",
       "JURISTIC": "นิติบุคคล",
-      "STAFF": "เจ้าหน้าที่",
+      "MAINTENANCE": "เจ้าหน้าที่ซ่อมบำรุง",
       "GUARD": "ผู้รักษาความปลอดภัย",
       "RESIDENT": "ผู้พักอาศัย"
     },
@@ -278,6 +278,46 @@
       "emailInvalid": "รูปแบบอีเมลไม่ถูกต้อง",
       "passwordRequired": "กรุณากรอกรหัสผ่าน",
       "passwordMinLength": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร"
+    }
+  },
+  "visitors": {
+    "title": "ผู้มาติดต่อ",
+    "checkIn": "บันทึกเข้า",
+    "checkOut": "บันทึกออก",
+    "checkOutConfirm": "ยืนยันการบันทึกออก",
+    "checkOutConfirmDesc": "ต้องการบันทึกเวลาออกสำหรับ {name} ใช่หรือไม่?",
+    "checkInSuccess": "บันทึกเข้าสำเร็จ",
+    "checkOutSuccess": "บันทึกออกสำเร็จ",
+    "autoExpired": "อัตโนมัติ",
+    "autoExpiredTooltip": "ระบบ check out อัตโนมัติทุกวัน เวลา 03:00 น.",
+    "currentlyIn": "อยู่ในอาคาร",
+    "noVisitors": "ยังไม่มีผู้มาติดต่อ",
+    "searchPlaceholder": "ค้นหาชื่อ เบอร์โทร หรือห้อง...",
+    "filterAll": "ทั้งหมด",
+    "filterIn": "อยู่ในอาคาร",
+    "filterOut": "ออกแล้ว",
+    "status": {
+      "IN": "อยู่ในอาคาร",
+      "OUT": "ออกแล้ว"
+    },
+    "fields": {
+      "name": "ชื่อผู้มาติดต่อ",
+      "phone": "เบอร์โทร",
+      "purpose": "วัตถุประสงค์",
+      "vehiclePlate": "ทะเบียนรถ",
+      "groupSize": "จำนวนผู้มาติดต่อ",
+      "floor": "ชั้น",
+      "unit": "ห้องที่ติดต่อ",
+      "resident": "ผู้พักอาศัยที่ติดต่อ",
+      "checkInAt": "เวลาเข้า",
+      "checkOutAt": "เวลาออก",
+      "duration": "ระยะเวลา",
+      "recordedBy": "บันทึกโดย",
+      "optional": "ไม่ระบุ"
+    },
+    "validation": {
+      "nameRequired": "กรุณากรอกชื่อผู้มาติดต่อ",
+      "unitRequired": "กรุณาเลือกห้อง"
     }
   }
 }
