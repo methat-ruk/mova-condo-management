@@ -388,6 +388,7 @@ export const ModelName = {
   Floor: 'Floor',
   Unit: 'Unit',
   User: 'User',
+  Visitor: 'Visitor',
   Resident: 'Resident',
   FamilyMember: 'FamilyMember',
   EmergencyContact: 'EmergencyContact',
@@ -408,7 +409,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "building" | "floor" | "unit" | "user" | "resident" | "familyMember" | "emergencyContact" | "announcement" | "announcementRead"
+    modelProps: "building" | "floor" | "unit" | "user" | "visitor" | "resident" | "familyMember" | "emergencyContact" | "announcement" | "announcementRead"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -705,6 +706,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.UserCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.UserCountAggregateOutputType> | number
+        }
+      }
+    }
+    Visitor: {
+      payload: Prisma.$VisitorPayload<ExtArgs>
+      fields: Prisma.VisitorFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.VisitorFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.VisitorFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorPayload>
+        }
+        findFirst: {
+          args: Prisma.VisitorFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.VisitorFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorPayload>
+        }
+        findMany: {
+          args: Prisma.VisitorFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorPayload>[]
+        }
+        create: {
+          args: Prisma.VisitorCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorPayload>
+        }
+        createMany: {
+          args: Prisma.VisitorCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.VisitorCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorPayload>[]
+        }
+        delete: {
+          args: Prisma.VisitorDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorPayload>
+        }
+        update: {
+          args: Prisma.VisitorUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorPayload>
+        }
+        deleteMany: {
+          args: Prisma.VisitorDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.VisitorUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.VisitorUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorPayload>[]
+        }
+        upsert: {
+          args: Prisma.VisitorUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorPayload>
+        }
+        aggregate: {
+          args: Prisma.VisitorAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateVisitor>
+        }
+        groupBy: {
+          args: Prisma.VisitorGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VisitorGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.VisitorCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VisitorCountAggregateOutputType> | number
         }
       }
     }
@@ -1173,6 +1248,27 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+export const VisitorScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  phone: 'phone',
+  purpose: 'purpose',
+  vehiclePlate: 'vehiclePlate',
+  groupSize: 'groupSize',
+  unitId: 'unitId',
+  residentId: 'residentId',
+  checkInAt: 'checkInAt',
+  checkOutAt: 'checkOutAt',
+  recordedById: 'recordedById',
+  checkedOutById: 'checkedOutById',
+  isAutoExpired: 'isAutoExpired',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type VisitorScalarFieldEnum = (typeof VisitorScalarFieldEnum)[keyof typeof VisitorScalarFieldEnum]
+
+
 export const ResidentScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -1516,6 +1612,7 @@ export type GlobalOmitConfig = {
   floor?: Prisma.FloorOmit
   unit?: Prisma.UnitOmit
   user?: Prisma.UserOmit
+  visitor?: Prisma.VisitorOmit
   resident?: Prisma.ResidentOmit
   familyMember?: Prisma.FamilyMemberOmit
   emergencyContact?: Prisma.EmergencyContactOmit

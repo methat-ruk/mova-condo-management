@@ -22,7 +22,7 @@ export type OccupancyStatus = (typeof OccupancyStatus)[keyof typeof OccupancySta
 export const UserRole = {
   ADMIN: 'ADMIN',
   JURISTIC: 'JURISTIC',
-  STAFF: 'STAFF',
+  MAINTENANCE: 'MAINTENANCE',
   GUARD: 'GUARD',
   RESIDENT: 'RESIDENT'
 } as const

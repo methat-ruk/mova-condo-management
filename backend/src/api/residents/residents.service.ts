@@ -6,6 +6,7 @@ import {
 import {
   OccupancyStatus,
   ResidentStatus,
+  ResidentType,
 } from '../../../generated/prisma/enums.js';
 import { PrismaService } from '../../prisma/prisma.service.js';
 import type { CreateEmergencyContactDto } from './dto/create-emergency-contact.dto.js';
@@ -35,16 +36,25 @@ export class ResidentsService {
 
   async findAll(query: {
     status?: ResidentStatus;
+    residentType?: ResidentType;
     unitId?: string;
     search?: string;
     page?: number;
     limit?: number;
   }) {
-    const { status, unitId, search, page = 1, limit = 20 } = query;
+    const {
+      status,
+      residentType,
+      unitId,
+      search,
+      page = 1,
+      limit = 20,
+    } = query;
     const skip = (page - 1) * limit;
 
     const where = {
       ...(status && { status }),
+      ...(residentType && { residentType }),
       ...(unitId && { unitId }),
       ...(search && {
         OR: [

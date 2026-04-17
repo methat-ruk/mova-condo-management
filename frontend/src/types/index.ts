@@ -48,7 +48,7 @@ export interface NavGroup {
 
 // ─── Roles ───────────────────────────────────────────────────────────────────
 
-export type UserRole = "ADMIN" | "JURISTIC" | "STAFF" | "GUARD" | "RESIDENT";
+export type UserRole = "ADMIN" | "JURISTIC" | "MAINTENANCE" | "GUARD" | "RESIDENT";
 
 export type OccupancyStatus = "AVAILABLE" | "OCCUPIED" | "RESERVED" | "MAINTENANCE";
 

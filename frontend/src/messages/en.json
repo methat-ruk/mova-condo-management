@@ -269,7 +269,7 @@
     "roles": {
       "ADMIN": "Administrator",
       "JURISTIC": "Juristic",
-      "STAFF": "Staff",
+      "MAINTENANCE": "Maintenance",
       "GUARD": "Security Guard",
       "RESIDENT": "Resident"
     },
@@ -278,6 +278,46 @@
       "emailInvalid": "Invalid email format",
       "passwordRequired": "Password is required",
       "passwordMinLength": "Password must be at least 8 characters"
+    }
+  },
+  "visitors": {
+    "title": "Visitors",
+    "checkIn": "Check In",
+    "checkOut": "Check Out",
+    "checkOutConfirm": "Confirm Check Out",
+    "checkOutConfirmDesc": "Mark {name} as checked out?",
+    "checkInSuccess": "Checked in successfully",
+    "checkOutSuccess": "Checked out successfully",
+    "autoExpired": "Auto",
+    "autoExpiredTooltip": "System auto check-out daily at 03:00",
+    "currentlyIn": "Currently inside",
+    "noVisitors": "No visitors yet",
+    "searchPlaceholder": "Search name, phone, or unit...",
+    "filterAll": "All",
+    "filterIn": "Inside",
+    "filterOut": "Checked Out",
+    "status": {
+      "IN": "Inside",
+      "OUT": "Checked Out"
+    },
+    "fields": {
+      "name": "Visitor Name",
+      "phone": "Phone",
+      "purpose": "Purpose",
+      "vehiclePlate": "Vehicle Plate",
+      "groupSize": "Number of Visitors",
+      "floor": "Floor",
+      "unit": "Visiting Unit",
+      "resident": "Resident",
+      "checkInAt": "Check In",
+      "checkOutAt": "Check Out",
+      "duration": "Duration",
+      "recordedBy": "Recorded By",
+      "optional": "Not specified"
+    },
+    "validation": {
+      "nameRequired": "Visitor name is required",
+      "unitRequired": "Please select a unit"
     }
   }
 }
