@@ -26,6 +26,9 @@ const residentInclude = {
       floor: { select: { id: true, floorNumber: true } },
     },
   },
+  createdBy: {
+    select: { id: true, firstName: true, lastName: true, role: true },
+  },
   familyMembers: { orderBy: { createdAt: 'asc' as const } },
   emergencyContacts: { orderBy: { createdAt: 'asc' as const } },
 };
@@ -98,7 +101,7 @@ export class ResidentsService {
     return resident;
   }
 
-  async create(dto: CreateResidentDto) {
+  async create(dto: CreateResidentDto, createdById?: string) {
     const [user, unit] = await Promise.all([
       this.prisma.user.findUnique({ where: { id: dto.userId } }),
       this.prisma.unit.findUnique({ where: { id: dto.unitId } }),
@@ -113,6 +116,7 @@ export class ResidentsService {
         residentType: dto.residentType,
         moveInDate: new Date(dto.moveInDate),
         note: dto.note,
+        ...(createdById ? { createdById } : {}),
       },
       include: residentInclude,
     });
@@ -136,6 +140,12 @@ export class ResidentsService {
       data: dto,
       include: residentInclude,
     });
+  }
+
+  async remove(id: string) {
+    const resident = await this.prisma.resident.findUnique({ where: { id } });
+    if (!resident) throw new NotFoundException('Resident not found');
+    await this.prisma.resident.delete({ where: { id } });
   }
 
   async moveOut(id: string, dto: MoveOutDto) {

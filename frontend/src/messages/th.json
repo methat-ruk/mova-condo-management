@@ -148,6 +148,15 @@
       "owners": "เจ้าของ {count} คน",
       "tenants": "ผู้เช่า {count} คน"
     },
+    "deleteResident": "ลบผู้พักอาศัย",
+    "deleteResidentConfirmTitle": "ลบผู้พักอาศัย",
+    "deleteResidentConfirmDesc": "ข้อมูลผู้พักอาศัยนี้จะถูกลบถาวร ไม่สามารถกู้คืนได้",
+    "deleteResidentSuccess": "ลบผู้พักอาศัยเรียบร้อย",
+    "addedBy": "เพิ่มโดย",
+    "duration": "ระยะเวลาที่อาศัย",
+    "durationDays": "{days} วัน",
+    "durationMonths": "{months} เดือน {days} วัน",
+    "durationYearsApprox": "(~{years} ปี)",
     "moveOut": "บันทึกย้ายออก",
     "moveOutTitle": "ยืนยันการย้ายออก",
     "moveOutDesc": "ผู้พักอาศัยจะถูกเปลี่ยนสถานะเป็นไม่ใช้งาน และห้องจะถูกอัปเดตอัตโนมัติหากไม่มีผู้พักอาศัยเหลืออยู่",
@@ -317,6 +326,73 @@
     },
     "pagination": {
       "showing": "แสดง {from}–{to} จาก {total} รายการ"
+    }
+  },
+  "maintenance": {
+    "title": "ซ่อมบำรุง",
+    "newTicket": "แจ้งซ่อม",
+    "updateTicket": "อัปเดตคำร้อง",
+    "noTickets": "ยังไม่มีคำร้องซ่อมบำรุง",
+    "createSuccess": "สร้างคำร้องเรียบร้อย",
+    "updateSuccess": "อัปเดตคำร้องเรียบร้อย",
+    "deleteSuccess": "ลบคำร้องเรียบร้อย",
+    "deleteConfirmTitle": "ลบคำร้อง",
+    "deleteConfirmDesc": "ต้องการลบคำร้องนี้ใช่ไหม? ไม่สามารถย้อนกลับได้",
+    "openCount": "คำร้องที่รอดำเนินการ",
+    "searchPlaceholder": "ค้นหาหัวข้อหรือห้อง...",
+    "filterAll": "ทั้งหมด",
+    "fields": {
+      "title": "หัวข้อ",
+      "description": "รายละเอียด",
+      "category": "ประเภท",
+      "status": "สถานะ",
+      "unit": "ห้อง",
+      "floor": "ชั้น",
+      "resident": "ผู้พักอาศัย",
+      "assignedTo": "ผู้รับผิดชอบ",
+      "note": "หมายเหตุสำหรับเจ้าหน้าที่",
+      "notePlaceholder": "เพิ่มหมายเหตุสำหรับการอ้างอิงภายใน...",
+      "reportedBy": "ผู้แจ้ง",
+      "resolvedAt": "วันที่แก้ไขสำเร็จ",
+      "createdAt": "วันที่แจ้ง",
+      "unassigned": "ยังไม่มีผู้รับผิดชอบ",
+      "optional": "ไม่บังคับ"
+    },
+    "status": {
+      "OPEN": "รอดำเนินการ",
+      "IN_PROGRESS": "กำลังดำเนินการ",
+      "RESOLVED": "แก้ไขแล้ว",
+      "CANCELLED": "ยกเลิก"
+    },
+    "category": {
+      "ELECTRICAL": "ไฟฟ้า",
+      "PLUMBING": "ประปา",
+      "HVAC": "แอร์ / ระบายอากาศ",
+      "STRUCTURAL": "โครงสร้าง",
+      "APPLIANCE": "เครื่องใช้ไฟฟ้า",
+      "OTHER": "อื่นๆ"
+    },
+    "validation": {
+      "titleRequired": "กรุณากรอกหัวข้อ",
+      "descriptionRequired": "กรุณากรอกรายละเอียด",
+      "categoryRequired": "กรุณาเลือกประเภท",
+      "unitRequired": "กรุณาเลือกห้อง"
+    },
+    "pagination": {
+      "showing": "แสดง {from}–{to} จาก {total} รายการ"
+    },
+    "history": {
+      "title": "ประวัติการดำเนินการ",
+      "noLogs": "ยังไม่มีประวัติ",
+      "latest": "ล่าสุด",
+      "actions": {
+        "CREATED": "สร้างคำร้อง",
+        "STATUS_CHANGED": "เปลี่ยนสถานะเป็น {new}",
+        "ASSIGNED": "มอบหมายให้ {new}",
+        "REASSIGNED": "มอบหมายใหม่ให้ {new}",
+        "UNASSIGNED": "ยกเลิกการมอบหมาย",
+        "NOTE_UPDATED": "อัปเดตหมายเหตุ"
+      }
     }
   },
   "visitors": {

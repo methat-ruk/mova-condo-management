@@ -60,3 +60,25 @@ export const ParcelStatus = {
 } as const
 
 export type ParcelStatus = (typeof ParcelStatus)[keyof typeof ParcelStatus]
+
+
+export const MaintenanceStatus = {
+  OPEN: 'OPEN',
+  IN_PROGRESS: 'IN_PROGRESS',
+  RESOLVED: 'RESOLVED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type MaintenanceStatus = (typeof MaintenanceStatus)[keyof typeof MaintenanceStatus]
+
+
+export const MaintenanceCategory = {
+  ELECTRICAL: 'ELECTRICAL',
+  PLUMBING: 'PLUMBING',
+  HVAC: 'HVAC',
+  STRUCTURAL: 'STRUCTURAL',
+  APPLIANCE: 'APPLIANCE',
+  OTHER: 'OTHER'
+} as const
+
+export type MaintenanceCategory = (typeof MaintenanceCategory)[keyof typeof MaintenanceCategory]

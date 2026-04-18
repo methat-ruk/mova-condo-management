@@ -23,6 +23,9 @@ export const UNIT_SIZES: UnitSize[] = [
 ];
 
 export function getSizeKey(area: number): "S" | "M" | "L" | "XL" | null {
-  const found = UNIT_SIZES.find((s) => s.area === area);
-  return found ? found.key : null;
+  if (area < 30) return "S";
+  if (area < 45) return "M";
+  if (area < 65) return "L";
+  if (area >= 65) return "XL";
+  return null;
 }

@@ -61,7 +61,9 @@ export const ModelName = {
   EmergencyContact: 'EmergencyContact',
   Announcement: 'Announcement',
   AnnouncementRead: 'AnnouncementRead',
-  Parcel: 'Parcel'
+  Parcel: 'Parcel',
+  MaintenanceTicket: 'MaintenanceTicket',
+  MaintenanceTicketLog: 'MaintenanceTicketLog'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -166,6 +168,7 @@ export const ResidentScalarFieldEnum = {
   moveInDate: 'moveInDate',
   moveOutDate: 'moveOutDate',
   note: 'note',
+  createdById: 'createdById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -242,6 +245,38 @@ export const ParcelScalarFieldEnum = {
 } as const
 
 export type ParcelScalarFieldEnum = (typeof ParcelScalarFieldEnum)[keyof typeof ParcelScalarFieldEnum]
+
+
+export const MaintenanceTicketScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  category: 'category',
+  status: 'status',
+  unitId: 'unitId',
+  residentId: 'residentId',
+  assignedToId: 'assignedToId',
+  reportedById: 'reportedById',
+  resolvedAt: 'resolvedAt',
+  note: 'note',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MaintenanceTicketScalarFieldEnum = (typeof MaintenanceTicketScalarFieldEnum)[keyof typeof MaintenanceTicketScalarFieldEnum]
+
+
+export const MaintenanceTicketLogScalarFieldEnum = {
+  id: 'id',
+  ticketId: 'ticketId',
+  userId: 'userId',
+  action: 'action',
+  oldValue: 'oldValue',
+  newValue: 'newValue',
+  createdAt: 'createdAt'
+} as const
+
+export type MaintenanceTicketLogScalarFieldEnum = (typeof MaintenanceTicketLogScalarFieldEnum)[keyof typeof MaintenanceTicketLogScalarFieldEnum]
 
 
 export const SortOrder = {

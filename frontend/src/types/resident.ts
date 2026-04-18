@@ -39,6 +39,13 @@ export interface EmergencyContact {
   updatedAt: string;
 }
 
+export interface ResidentCreatedBy {
+  id: string;
+  firstName: string;
+  lastName: string;
+  role: string;
+}
+
 export interface Resident {
   id: string;
   userId: string;
@@ -48,6 +55,8 @@ export interface Resident {
   moveInDate: string;
   moveOutDate?: string;
   note?: string;
+  createdById: string | null;
+  createdBy: ResidentCreatedBy | null;
   createdAt: string;
   updatedAt: string;
   user: ResidentUser;

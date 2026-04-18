@@ -272,6 +272,7 @@ export type UnitWhereInput = {
   residents?: Prisma.ResidentListRelationFilter
   visitors?: Prisma.VisitorListRelationFilter
   parcels?: Prisma.ParcelListRelationFilter
+  maintenanceTickets?: Prisma.MaintenanceTicketListRelationFilter
 }
 
 export type UnitOrderByWithRelationInput = {
@@ -289,6 +290,7 @@ export type UnitOrderByWithRelationInput = {
   residents?: Prisma.ResidentOrderByRelationAggregateInput
   visitors?: Prisma.VisitorOrderByRelationAggregateInput
   parcels?: Prisma.ParcelOrderByRelationAggregateInput
+  maintenanceTickets?: Prisma.MaintenanceTicketOrderByRelationAggregateInput
 }
 
 export type UnitWhereUniqueInput = Prisma.AtLeast<{
@@ -310,6 +312,7 @@ export type UnitWhereUniqueInput = Prisma.AtLeast<{
   residents?: Prisma.ResidentListRelationFilter
   visitors?: Prisma.VisitorListRelationFilter
   parcels?: Prisma.ParcelListRelationFilter
+  maintenanceTickets?: Prisma.MaintenanceTicketListRelationFilter
 }, "id" | "floorId_unitNumber">
 
 export type UnitOrderByWithAggregationInput = {
@@ -360,6 +363,7 @@ export type UnitCreateInput = {
   residents?: Prisma.ResidentCreateNestedManyWithoutUnitInput
   visitors?: Prisma.VisitorCreateNestedManyWithoutUnitInput
   parcels?: Prisma.ParcelCreateNestedManyWithoutUnitInput
+  maintenanceTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutUnitInput
 }
 
 export type UnitUncheckedCreateInput = {
@@ -376,6 +380,7 @@ export type UnitUncheckedCreateInput = {
   residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUnitInput
   visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutUnitInput
   parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutUnitInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutUnitInput
 }
 
 export type UnitUpdateInput = {
@@ -392,6 +397,7 @@ export type UnitUpdateInput = {
   residents?: Prisma.ResidentUpdateManyWithoutUnitNestedInput
   visitors?: Prisma.VisitorUpdateManyWithoutUnitNestedInput
   parcels?: Prisma.ParcelUpdateManyWithoutUnitNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitUncheckedUpdateInput = {
@@ -408,6 +414,7 @@ export type UnitUncheckedUpdateInput = {
   residents?: Prisma.ResidentUncheckedUpdateManyWithoutUnitNestedInput
   visitors?: Prisma.VisitorUncheckedUpdateManyWithoutUnitNestedInput
   parcels?: Prisma.ParcelUncheckedUpdateManyWithoutUnitNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitCreateManyInput = {
@@ -625,6 +632,20 @@ export type UnitUpdateOneRequiredWithoutParcelsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UnitUpdateToOneWithWhereWithoutParcelsInput, Prisma.UnitUpdateWithoutParcelsInput>, Prisma.UnitUncheckedUpdateWithoutParcelsInput>
 }
 
+export type UnitCreateNestedOneWithoutMaintenanceTicketsInput = {
+  create?: Prisma.XOR<Prisma.UnitCreateWithoutMaintenanceTicketsInput, Prisma.UnitUncheckedCreateWithoutMaintenanceTicketsInput>
+  connectOrCreate?: Prisma.UnitCreateOrConnectWithoutMaintenanceTicketsInput
+  connect?: Prisma.UnitWhereUniqueInput
+}
+
+export type UnitUpdateOneRequiredWithoutMaintenanceTicketsNestedInput = {
+  create?: Prisma.XOR<Prisma.UnitCreateWithoutMaintenanceTicketsInput, Prisma.UnitUncheckedCreateWithoutMaintenanceTicketsInput>
+  connectOrCreate?: Prisma.UnitCreateOrConnectWithoutMaintenanceTicketsInput
+  upsert?: Prisma.UnitUpsertWithoutMaintenanceTicketsInput
+  connect?: Prisma.UnitWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UnitUpdateToOneWithWhereWithoutMaintenanceTicketsInput, Prisma.UnitUpdateWithoutMaintenanceTicketsInput>, Prisma.UnitUncheckedUpdateWithoutMaintenanceTicketsInput>
+}
+
 export type UnitCreateWithoutFloorInput = {
   id?: string
   unitNumber: string
@@ -638,6 +659,7 @@ export type UnitCreateWithoutFloorInput = {
   residents?: Prisma.ResidentCreateNestedManyWithoutUnitInput
   visitors?: Prisma.VisitorCreateNestedManyWithoutUnitInput
   parcels?: Prisma.ParcelCreateNestedManyWithoutUnitInput
+  maintenanceTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutUnitInput
 }
 
 export type UnitUncheckedCreateWithoutFloorInput = {
@@ -653,6 +675,7 @@ export type UnitUncheckedCreateWithoutFloorInput = {
   residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUnitInput
   visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutUnitInput
   parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutUnitInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutUnitInput
 }
 
 export type UnitCreateOrConnectWithoutFloorInput = {
@@ -710,6 +733,7 @@ export type UnitCreateWithoutVisitorsInput = {
   floor: Prisma.FloorCreateNestedOneWithoutUnitsInput
   residents?: Prisma.ResidentCreateNestedManyWithoutUnitInput
   parcels?: Prisma.ParcelCreateNestedManyWithoutUnitInput
+  maintenanceTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutUnitInput
 }
 
 export type UnitUncheckedCreateWithoutVisitorsInput = {
@@ -725,6 +749,7 @@ export type UnitUncheckedCreateWithoutVisitorsInput = {
   updatedAt?: Date | string
   residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUnitInput
   parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutUnitInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutUnitInput
 }
 
 export type UnitCreateOrConnectWithoutVisitorsInput = {
@@ -756,6 +781,7 @@ export type UnitUpdateWithoutVisitorsInput = {
   floor?: Prisma.FloorUpdateOneRequiredWithoutUnitsNestedInput
   residents?: Prisma.ResidentUpdateManyWithoutUnitNestedInput
   parcels?: Prisma.ParcelUpdateManyWithoutUnitNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitUncheckedUpdateWithoutVisitorsInput = {
@@ -771,6 +797,7 @@ export type UnitUncheckedUpdateWithoutVisitorsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   residents?: Prisma.ResidentUncheckedUpdateManyWithoutUnitNestedInput
   parcels?: Prisma.ParcelUncheckedUpdateManyWithoutUnitNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitCreateWithoutResidentsInput = {
@@ -786,6 +813,7 @@ export type UnitCreateWithoutResidentsInput = {
   floor: Prisma.FloorCreateNestedOneWithoutUnitsInput
   visitors?: Prisma.VisitorCreateNestedManyWithoutUnitInput
   parcels?: Prisma.ParcelCreateNestedManyWithoutUnitInput
+  maintenanceTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutUnitInput
 }
 
 export type UnitUncheckedCreateWithoutResidentsInput = {
@@ -801,6 +829,7 @@ export type UnitUncheckedCreateWithoutResidentsInput = {
   updatedAt?: Date | string
   visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutUnitInput
   parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutUnitInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutUnitInput
 }
 
 export type UnitCreateOrConnectWithoutResidentsInput = {
@@ -832,6 +861,7 @@ export type UnitUpdateWithoutResidentsInput = {
   floor?: Prisma.FloorUpdateOneRequiredWithoutUnitsNestedInput
   visitors?: Prisma.VisitorUpdateManyWithoutUnitNestedInput
   parcels?: Prisma.ParcelUpdateManyWithoutUnitNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitUncheckedUpdateWithoutResidentsInput = {
@@ -847,6 +877,7 @@ export type UnitUncheckedUpdateWithoutResidentsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   visitors?: Prisma.VisitorUncheckedUpdateManyWithoutUnitNestedInput
   parcels?: Prisma.ParcelUncheckedUpdateManyWithoutUnitNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitCreateWithoutParcelsInput = {
@@ -862,6 +893,7 @@ export type UnitCreateWithoutParcelsInput = {
   floor: Prisma.FloorCreateNestedOneWithoutUnitsInput
   residents?: Prisma.ResidentCreateNestedManyWithoutUnitInput
   visitors?: Prisma.VisitorCreateNestedManyWithoutUnitInput
+  maintenanceTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutUnitInput
 }
 
 export type UnitUncheckedCreateWithoutParcelsInput = {
@@ -877,6 +909,7 @@ export type UnitUncheckedCreateWithoutParcelsInput = {
   updatedAt?: Date | string
   residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUnitInput
   visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutUnitInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutUnitInput
 }
 
 export type UnitCreateOrConnectWithoutParcelsInput = {
@@ -908,6 +941,7 @@ export type UnitUpdateWithoutParcelsInput = {
   floor?: Prisma.FloorUpdateOneRequiredWithoutUnitsNestedInput
   residents?: Prisma.ResidentUpdateManyWithoutUnitNestedInput
   visitors?: Prisma.VisitorUpdateManyWithoutUnitNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitUncheckedUpdateWithoutParcelsInput = {
@@ -923,6 +957,87 @@ export type UnitUncheckedUpdateWithoutParcelsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   residents?: Prisma.ResidentUncheckedUpdateManyWithoutUnitNestedInput
   visitors?: Prisma.VisitorUncheckedUpdateManyWithoutUnitNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutUnitNestedInput
+}
+
+export type UnitCreateWithoutMaintenanceTicketsInput = {
+  id?: string
+  unitNumber: string
+  area: number
+  bedrooms?: number
+  bathrooms?: number
+  occupancyStatus?: $Enums.OccupancyStatus
+  monthlyRent: runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  floor: Prisma.FloorCreateNestedOneWithoutUnitsInput
+  residents?: Prisma.ResidentCreateNestedManyWithoutUnitInput
+  visitors?: Prisma.VisitorCreateNestedManyWithoutUnitInput
+  parcels?: Prisma.ParcelCreateNestedManyWithoutUnitInput
+}
+
+export type UnitUncheckedCreateWithoutMaintenanceTicketsInput = {
+  id?: string
+  unitNumber: string
+  floorId: string
+  area: number
+  bedrooms?: number
+  bathrooms?: number
+  occupancyStatus?: $Enums.OccupancyStatus
+  monthlyRent: runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUnitInput
+  visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutUnitInput
+  parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutUnitInput
+}
+
+export type UnitCreateOrConnectWithoutMaintenanceTicketsInput = {
+  where: Prisma.UnitWhereUniqueInput
+  create: Prisma.XOR<Prisma.UnitCreateWithoutMaintenanceTicketsInput, Prisma.UnitUncheckedCreateWithoutMaintenanceTicketsInput>
+}
+
+export type UnitUpsertWithoutMaintenanceTicketsInput = {
+  update: Prisma.XOR<Prisma.UnitUpdateWithoutMaintenanceTicketsInput, Prisma.UnitUncheckedUpdateWithoutMaintenanceTicketsInput>
+  create: Prisma.XOR<Prisma.UnitCreateWithoutMaintenanceTicketsInput, Prisma.UnitUncheckedCreateWithoutMaintenanceTicketsInput>
+  where?: Prisma.UnitWhereInput
+}
+
+export type UnitUpdateToOneWithWhereWithoutMaintenanceTicketsInput = {
+  where?: Prisma.UnitWhereInput
+  data: Prisma.XOR<Prisma.UnitUpdateWithoutMaintenanceTicketsInput, Prisma.UnitUncheckedUpdateWithoutMaintenanceTicketsInput>
+}
+
+export type UnitUpdateWithoutMaintenanceTicketsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  unitNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  area?: Prisma.FloatFieldUpdateOperationsInput | number
+  bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
+  bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
+  occupancyStatus?: Prisma.EnumOccupancyStatusFieldUpdateOperationsInput | $Enums.OccupancyStatus
+  monthlyRent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  floor?: Prisma.FloorUpdateOneRequiredWithoutUnitsNestedInput
+  residents?: Prisma.ResidentUpdateManyWithoutUnitNestedInput
+  visitors?: Prisma.VisitorUpdateManyWithoutUnitNestedInput
+  parcels?: Prisma.ParcelUpdateManyWithoutUnitNestedInput
+}
+
+export type UnitUncheckedUpdateWithoutMaintenanceTicketsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  unitNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  floorId?: Prisma.StringFieldUpdateOperationsInput | string
+  area?: Prisma.FloatFieldUpdateOperationsInput | number
+  bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
+  bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
+  occupancyStatus?: Prisma.EnumOccupancyStatusFieldUpdateOperationsInput | $Enums.OccupancyStatus
+  monthlyRent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  residents?: Prisma.ResidentUncheckedUpdateManyWithoutUnitNestedInput
+  visitors?: Prisma.VisitorUncheckedUpdateManyWithoutUnitNestedInput
+  parcels?: Prisma.ParcelUncheckedUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitCreateManyFloorInput = {
@@ -950,6 +1065,7 @@ export type UnitUpdateWithoutFloorInput = {
   residents?: Prisma.ResidentUpdateManyWithoutUnitNestedInput
   visitors?: Prisma.VisitorUpdateManyWithoutUnitNestedInput
   parcels?: Prisma.ParcelUpdateManyWithoutUnitNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitUncheckedUpdateWithoutFloorInput = {
@@ -965,6 +1081,7 @@ export type UnitUncheckedUpdateWithoutFloorInput = {
   residents?: Prisma.ResidentUncheckedUpdateManyWithoutUnitNestedInput
   visitors?: Prisma.VisitorUncheckedUpdateManyWithoutUnitNestedInput
   parcels?: Prisma.ParcelUncheckedUpdateManyWithoutUnitNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitUncheckedUpdateManyWithoutFloorInput = {
@@ -988,12 +1105,14 @@ export type UnitCountOutputType = {
   residents: number
   visitors: number
   parcels: number
+  maintenanceTickets: number
 }
 
 export type UnitCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   residents?: boolean | UnitCountOutputTypeCountResidentsArgs
   visitors?: boolean | UnitCountOutputTypeCountVisitorsArgs
   parcels?: boolean | UnitCountOutputTypeCountParcelsArgs
+  maintenanceTickets?: boolean | UnitCountOutputTypeCountMaintenanceTicketsArgs
 }
 
 /**
@@ -1027,6 +1146,13 @@ export type UnitCountOutputTypeCountParcelsArgs<ExtArgs extends runtime.Types.Ex
   where?: Prisma.ParcelWhereInput
 }
 
+/**
+ * UnitCountOutputType without action
+ */
+export type UnitCountOutputTypeCountMaintenanceTicketsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MaintenanceTicketWhereInput
+}
+
 
 export type UnitSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1043,6 +1169,7 @@ export type UnitSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   residents?: boolean | Prisma.Unit$residentsArgs<ExtArgs>
   visitors?: boolean | Prisma.Unit$visitorsArgs<ExtArgs>
   parcels?: boolean | Prisma.Unit$parcelsArgs<ExtArgs>
+  maintenanceTickets?: boolean | Prisma.Unit$maintenanceTicketsArgs<ExtArgs>
   _count?: boolean | Prisma.UnitCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["unit"]>
 
@@ -1093,6 +1220,7 @@ export type UnitInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   residents?: boolean | Prisma.Unit$residentsArgs<ExtArgs>
   visitors?: boolean | Prisma.Unit$visitorsArgs<ExtArgs>
   parcels?: boolean | Prisma.Unit$parcelsArgs<ExtArgs>
+  maintenanceTickets?: boolean | Prisma.Unit$maintenanceTicketsArgs<ExtArgs>
   _count?: boolean | Prisma.UnitCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UnitIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1109,6 +1237,7 @@ export type $UnitPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     residents: Prisma.$ResidentPayload<ExtArgs>[]
     visitors: Prisma.$VisitorPayload<ExtArgs>[]
     parcels: Prisma.$ParcelPayload<ExtArgs>[]
+    maintenanceTickets: Prisma.$MaintenanceTicketPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1519,6 +1648,7 @@ export interface Prisma__UnitClient<T, Null = never, ExtArgs extends runtime.Typ
   residents<T extends Prisma.Unit$residentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Unit$residentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ResidentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   visitors<T extends Prisma.Unit$visitorsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Unit$visitorsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VisitorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   parcels<T extends Prisma.Unit$parcelsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Unit$parcelsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ParcelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  maintenanceTickets<T extends Prisma.Unit$maintenanceTicketsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Unit$maintenanceTicketsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MaintenanceTicketPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2028,6 +2158,30 @@ export type Unit$parcelsArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.ParcelScalarFieldEnum | Prisma.ParcelScalarFieldEnum[]
+}
+
+/**
+ * Unit.maintenanceTickets
+ */
+export type Unit$maintenanceTicketsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MaintenanceTicket
+   */
+  select?: Prisma.MaintenanceTicketSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MaintenanceTicket
+   */
+  omit?: Prisma.MaintenanceTicketOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MaintenanceTicketInclude<ExtArgs> | null
+  where?: Prisma.MaintenanceTicketWhereInput
+  orderBy?: Prisma.MaintenanceTicketOrderByWithRelationInput | Prisma.MaintenanceTicketOrderByWithRelationInput[]
+  cursor?: Prisma.MaintenanceTicketWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MaintenanceTicketScalarFieldEnum | Prisma.MaintenanceTicketScalarFieldEnum[]
 }
 
 /**

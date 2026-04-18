@@ -30,28 +30,28 @@ type VisitorSeed = {
 const SEED_USERS = [
   // Staff
   {
-    email: 'admin@condo.com',
+    email: 'admin@movacondo.co.th',
     password: 'Admin1234',
     firstName: 'ธนากร',
     lastName: 'พงษ์ศิริ',
     role: UserRole.ADMIN,
   },
   {
-    email: 'manager@condo.com',
+    email: 'manager@movacondo.co.th',
     password: 'Manager1234',
     firstName: 'วิภา',
     lastName: 'พรหมมา',
     role: UserRole.JURISTIC,
   },
   {
-    email: 'maintenance@condo.com',
+    email: 'maintenance@movacondo.co.th',
     password: 'Maintenance1234',
     firstName: 'ประสิทธิ์',
     lastName: 'สุขใจ',
     role: UserRole.MAINTENANCE,
   },
   {
-    email: 'guard@condo.com',
+    email: 'guard@movacondo.co.th',
     password: 'Guard1234',
     firstName: 'วิเชียร',
     lastName: 'ทองคำ',
@@ -59,119 +59,119 @@ const SEED_USERS = [
   },
   // Residents (batch 1)
   {
-    email: 'john.doe@condo.com',
+    email: 'john.doe@gmail.com',
     password: 'Resident1234',
     firstName: 'John',
     lastName: 'Doe',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'sarah.smith@condo.com',
+    email: 'sarah.smith@hotmail.com',
     password: 'Resident1234',
     firstName: 'Sarah',
     lastName: 'Smith',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'wichai.th@condo.com',
+    email: 'wichai.srisomboon@gmail.com',
     password: 'Resident1234',
     firstName: 'วิชัย',
     lastName: 'ศรีสมบูรณ์',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'malee.th@condo.com',
+    email: 'malee.jangam@gmail.com',
     password: 'Resident1234',
     firstName: 'มาลี',
     lastName: 'จันทร์งาม',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'somchai.th@condo.com',
+    email: 'somchai.jaidee@gmail.com',
     password: 'Resident1234',
     firstName: 'สมชาย',
     lastName: 'ใจดี',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'david.lee@condo.com',
+    email: 'david.lee@outlook.com',
     password: 'Resident1234',
     firstName: 'David',
     lastName: 'Lee',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'nattaya.th@condo.com',
+    email: 'nattaya.prom@gmail.com',
     password: 'Resident1234',
     firstName: 'ณัฐยา',
     lastName: 'พรหมสุวรรณ',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'anan.th@condo.com',
+    email: 'anan.sooksan@gmail.com',
     password: 'Resident1234',
     firstName: 'อนันต์',
     lastName: 'สุขสันต์',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'pranee.th@condo.com',
+    email: 'pranee.wongsiri@gmail.com',
     password: 'Resident1234',
     firstName: 'ปราณี',
     lastName: 'วงศ์ศิริ',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'krit.th@condo.com',
+    email: 'krit.limpichai@gmail.com',
     password: 'Resident1234',
     firstName: 'กฤต',
     lastName: 'ลิมปิชัย',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'pim.th@condo.com',
+    email: 'pim.thanakul@gmail.com',
     password: 'Resident1234',
     firstName: 'พิม',
     lastName: 'ธนะกูล',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'chaiyot.th@condo.com',
+    email: 'chaiyot.boonmak@gmail.com',
     password: 'Resident1234',
     firstName: 'ชัยยศ',
     lastName: 'บุญมาก',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'lisa.wong@condo.com',
+    email: 'lisa.wong@gmail.com',
     password: 'Resident1234',
     firstName: 'Lisa',
     lastName: 'Wong',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'michael.brown@condo.com',
+    email: 'michael.brown@outlook.com',
     password: 'Resident1234',
     firstName: 'Michael',
     lastName: 'Brown',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'yuki.tanaka@condo.com',
+    email: 'yuki.tanaka@gmail.com',
     password: 'Resident1234',
     firstName: 'Yuki',
     lastName: 'Tanaka',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'arisa.th@condo.com',
+    email: 'arisa.charoensuk@gmail.com',
     password: 'Resident1234',
     firstName: 'อริสา',
     lastName: 'เจริญสุข',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'thanapat.th@condo.com',
+    email: 'thanapat.munkong@gmail.com',
     password: 'Resident1234',
     firstName: 'ธนภัทร',
     lastName: 'มั่นคง',
@@ -179,42 +179,42 @@ const SEED_USERS = [
   },
   // Residents (batch 2)
   {
-    email: 'supanee.th@condo.com',
+    email: 'supanee.lamthan@gmail.com',
     password: 'Resident1234',
     firstName: 'สุพาณี',
     lastName: 'ลำธาร',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'boonsong.th@condo.com',
+    email: 'boonsong.wichakarn@gmail.com',
     password: 'Resident1234',
     firstName: 'บุญสง่า',
     lastName: 'วิชาการ',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'patcharee.th@condo.com',
+    email: 'patcharee.suthisan@gmail.com',
     password: 'Resident1234',
     firstName: 'พัชรี',
     lastName: 'สุทธิสาร',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'tawan.th@condo.com',
+    email: 'tawan.pimpa@gmail.com',
     password: 'Resident1234',
     firstName: 'ตะวัน',
     lastName: 'พิมพา',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'emma.white@condo.com',
+    email: 'emma.white@outlook.com',
     password: 'Resident1234',
     firstName: 'Emma',
     lastName: 'White',
     role: UserRole.RESIDENT,
   },
   {
-    email: 'suchada.th@condo.com',
+    email: 'suchada.medee@gmail.com',
     password: 'Resident1234',
     firstName: 'สุชาดา',
     lastName: 'มีดี',
@@ -333,7 +333,7 @@ async function main() {
     string | null,
   ][] = [
     [
-      'john.doe@condo.com',
+      'john.doe@gmail.com',
       0,
       2,
       ResidentType.OWNER,
@@ -341,7 +341,7 @@ async function main() {
       'เจ้าของห้อง ชั้น 1',
     ],
     [
-      'sarah.smith@condo.com',
+      'sarah.smith@hotmail.com',
       1,
       1,
       ResidentType.TENANT,
@@ -349,7 +349,7 @@ async function main() {
       null,
     ],
     [
-      'wichai.th@condo.com',
+      'wichai.srisomboon@gmail.com',
       2,
       4,
       ResidentType.OWNER,
@@ -357,7 +357,7 @@ async function main() {
       '2 ห้องนอน วิวดี',
     ],
     [
-      'malee.th@condo.com',
+      'malee.jangam@gmail.com',
       3,
       0,
       ResidentType.TENANT,
@@ -365,7 +365,7 @@ async function main() {
       null,
     ],
     [
-      'somchai.th@condo.com',
+      'somchai.jaidee@gmail.com',
       4,
       5,
       ResidentType.OWNER,
@@ -373,7 +373,7 @@ async function main() {
       'ห้องใหญ่ 2BR+',
     ],
     [
-      'david.lee@condo.com',
+      'david.lee@outlook.com',
       5,
       2,
       ResidentType.TENANT,
@@ -381,7 +381,7 @@ async function main() {
       'ชาวต่างชาติ สัญญา 1 ปี',
     ],
     [
-      'nattaya.th@condo.com',
+      'nattaya.prom@gmail.com',
       6,
       3,
       ResidentType.OWNER,
@@ -389,7 +389,7 @@ async function main() {
       null,
     ],
     [
-      'anan.th@condo.com',
+      'anan.sooksan@gmail.com',
       7,
       1,
       ResidentType.OWNER,
@@ -397,7 +397,7 @@ async function main() {
       'ซื้อพร้อมเฟอร์นิเจอร์',
     ],
     [
-      'pranee.th@condo.com',
+      'pranee.wongsiri@gmail.com',
       1,
       4,
       ResidentType.TENANT,
@@ -405,7 +405,7 @@ async function main() {
       null,
     ],
     [
-      'krit.th@condo.com',
+      'krit.limpichai@gmail.com',
       8,
       5,
       ResidentType.OWNER,
@@ -413,7 +413,7 @@ async function main() {
       'ห้องมุม วิวสระ',
     ],
     [
-      'pim.th@condo.com',
+      'pim.thanakul@gmail.com',
       0,
       5,
       ResidentType.TENANT,
@@ -421,7 +421,7 @@ async function main() {
       null,
     ],
     [
-      'chaiyot.th@condo.com',
+      'chaiyot.boonmak@gmail.com',
       3,
       3,
       ResidentType.OWNER,
@@ -429,7 +429,7 @@ async function main() {
       null,
     ],
     [
-      'lisa.wong@condo.com',
+      'lisa.wong@gmail.com',
       9,
       4,
       ResidentType.TENANT,
@@ -437,7 +437,7 @@ async function main() {
       'ชาวต่างชาติ สัญญา 2 ปี',
     ],
     [
-      'michael.brown@condo.com',
+      'michael.brown@outlook.com',
       9,
       2,
       ResidentType.OWNER,
@@ -445,7 +445,7 @@ async function main() {
       null,
     ],
     [
-      'yuki.tanaka@condo.com',
+      'yuki.tanaka@gmail.com',
       5,
       0,
       ResidentType.TENANT,
@@ -453,7 +453,7 @@ async function main() {
       null,
     ],
     [
-      'arisa.th@condo.com',
+      'arisa.charoensuk@gmail.com',
       7,
       3,
       ResidentType.TENANT,
@@ -461,7 +461,7 @@ async function main() {
       null,
     ],
     [
-      'thanapat.th@condo.com',
+      'thanapat.munkong@gmail.com',
       2,
       2,
       ResidentType.OWNER,
@@ -470,7 +470,7 @@ async function main() {
     ],
     // john.doe มีห้องที่ 2
     [
-      'john.doe@condo.com',
+      'john.doe@gmail.com',
       4,
       2,
       ResidentType.OWNER,
@@ -479,7 +479,7 @@ async function main() {
     ],
     // batch 2 residents — units 07-12
     [
-      'supanee.th@condo.com',
+      'supanee.lamthan@gmail.com',
       2,
       6,
       ResidentType.TENANT,
@@ -487,7 +487,7 @@ async function main() {
       null,
     ],
     [
-      'boonsong.th@condo.com',
+      'boonsong.wichakarn@gmail.com',
       4,
       7,
       ResidentType.OWNER,
@@ -495,7 +495,7 @@ async function main() {
       '2 ห้องนอน ชั้น 5',
     ],
     [
-      'patcharee.th@condo.com',
+      'patcharee.suthisan@gmail.com',
       5,
       8,
       ResidentType.TENANT,
@@ -503,7 +503,7 @@ async function main() {
       null,
     ],
     [
-      'tawan.th@condo.com',
+      'tawan.pimpa@gmail.com',
       6,
       9,
       ResidentType.OWNER,
@@ -511,7 +511,7 @@ async function main() {
       null,
     ],
     [
-      'emma.white@condo.com',
+      'emma.white@outlook.com',
       7,
       10,
       ResidentType.TENANT,
@@ -519,7 +519,7 @@ async function main() {
       'ชาวต่างชาติ สัญญา 1 ปี',
     ],
     [
-      'suchada.th@condo.com',
+      'suchada.medee@gmail.com',
       8,
       11,
       ResidentType.OWNER,
@@ -539,10 +539,23 @@ async function main() {
       where: { userId, unitId },
     });
     if (resident) {
+      if (!resident.createdById) {
+        await prisma.resident.update({
+          where: { id: resident.id },
+          data: { createdById: userIds['admin@movacondo.co.th'] },
+        });
+      }
       console.log(`  – skip  ${email} → unit already seeded`);
     } else {
       resident = await prisma.resident.create({
-        data: { userId, unitId, residentType: type, moveInDate: moveIn, note },
+        data: {
+          userId,
+          unitId,
+          residentType: type,
+          moveInDate: moveIn,
+          note,
+          createdById: userIds['admin@movacondo.co.th'],
+        },
       });
       await prisma.unit.update({
         where: { id: unitId },
@@ -575,7 +588,7 @@ async function main() {
     emergency?: EmergencySeed[];
   }[] = [
     {
-      key: 'john.doe@condo.com-0-2',
+      key: 'john.doe@gmail.com-0-2',
       family: [
         {
           firstName: 'Jane',
@@ -595,7 +608,7 @@ async function main() {
       ],
     },
     {
-      key: 'wichai.th@condo.com-2-4',
+      key: 'wichai.srisomboon@gmail.com-2-4',
       family: [
         {
           firstName: 'วรรณา',
@@ -615,7 +628,7 @@ async function main() {
       ],
     },
     {
-      key: 'somchai.th@condo.com-4-5',
+      key: 'somchai.jaidee@gmail.com-4-5',
       family: [
         {
           firstName: 'สุดา',
@@ -634,7 +647,7 @@ async function main() {
       ],
     },
     {
-      key: 'nattaya.th@condo.com-6-3',
+      key: 'nattaya.prom@gmail.com-6-3',
       emergency: [
         {
           firstName: 'สมพร',
@@ -645,7 +658,7 @@ async function main() {
       ],
     },
     {
-      key: 'anan.th@condo.com-7-1',
+      key: 'anan.sooksan@gmail.com-7-1',
       family: [
         {
           firstName: 'รัตนา',
@@ -664,7 +677,7 @@ async function main() {
       ],
     },
     {
-      key: 'krit.th@condo.com-8-5',
+      key: 'krit.limpichai@gmail.com-8-5',
       family: [
         {
           firstName: 'ปาณิสรา',
@@ -683,7 +696,7 @@ async function main() {
       ],
     },
     {
-      key: 'chaiyot.th@condo.com-3-3',
+      key: 'chaiyot.boonmak@gmail.com-3-3',
       family: [
         {
           firstName: 'นันทิดา',
@@ -703,7 +716,7 @@ async function main() {
       ],
     },
     {
-      key: 'michael.brown@condo.com-9-2',
+      key: 'michael.brown@outlook.com-9-2',
       family: [
         {
           firstName: 'Jennifer',
@@ -722,7 +735,7 @@ async function main() {
       ],
     },
     {
-      key: 'lisa.wong@condo.com-9-4',
+      key: 'lisa.wong@gmail.com-9-4',
       emergency: [
         {
           firstName: 'Christine',
@@ -774,8 +787,8 @@ async function main() {
   // ── Announcements ─────────────────────────────────────────────────────────
   console.log('Seeding announcements...');
 
-  const adminId = userIds['admin@condo.com'];
-  const managerId = userIds['manager@condo.com'];
+  const adminId = userIds['admin@movacondo.co.th'];
+  const managerId = userIds['manager@movacondo.co.th'];
 
   const announcementDefs = [
     {
@@ -911,7 +924,7 @@ async function main() {
   // ── Visitors ──────────────────────────────────────────────────────────────
   console.log('Seeding visitors...');
 
-  const guardId = userIds['guard@condo.com'];
+  const guardId = userIds['guard@movacondo.co.th'];
 
   const visitorDefs: VisitorSeed[] = [
     // Currently inside
@@ -923,7 +936,7 @@ async function main() {
       vehiclePlate: 'กค-4521',
       groupSize: 3,
       unitKey: [0, 2],
-      residentEmail: 'john.doe@condo.com',
+      residentEmail: 'john.doe@gmail.com',
       checkInAt: new Date(Date.now() - 2 * 60 * 60 * 1000),
     },
     {
@@ -942,7 +955,7 @@ async function main() {
       vehiclePlate: 'ชธ-8833',
       groupSize: 2,
       unitKey: [1, 4],
-      residentEmail: 'pranee.th@condo.com',
+      residentEmail: 'pranee.wongsiri@gmail.com',
       checkInAt: new Date(Date.now() - 60 * 60 * 1000),
     },
     {
@@ -953,7 +966,7 @@ async function main() {
       vehiclePlate: 'งง-2277',
       groupSize: 4,
       unitKey: [7, 3],
-      residentEmail: 'arisa.th@condo.com',
+      residentEmail: 'arisa.charoensuk@gmail.com',
       checkInAt: new Date(Date.now() - 3 * 60 * 60 * 1000),
     },
     {
@@ -962,7 +975,7 @@ async function main() {
       phone: '0823456789',
       purpose: 'Visit colleague',
       unitKey: [9, 4],
-      residentEmail: 'lisa.wong@condo.com',
+      residentEmail: 'lisa.wong@gmail.com',
       checkInAt: new Date(Date.now() - 45 * 60 * 1000),
     },
     {
@@ -972,7 +985,7 @@ async function main() {
       vehiclePlate: 'งจ-9900',
       groupSize: 2,
       unitKey: [2, 2],
-      residentEmail: 'thanapat.th@condo.com',
+      residentEmail: 'thanapat.munkong@gmail.com',
       checkInAt: new Date(Date.now() - 2.5 * 60 * 60 * 1000),
     },
     // Checked out
@@ -983,10 +996,10 @@ async function main() {
       purpose: 'ประชุมธุรกิจ',
       vehiclePlate: 'มก-5566',
       unitKey: [4, 5],
-      residentEmail: 'somchai.th@condo.com',
+      residentEmail: 'somchai.jaidee@gmail.com',
       checkInAt: new Date(Date.now() - 5 * 60 * 60 * 1000),
       checkOutAt: new Date(Date.now() - 3 * 60 * 60 * 1000),
-      checkedOutByEmail: 'guard@condo.com',
+      checkedOutByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-vis-4',
@@ -994,10 +1007,10 @@ async function main() {
       phone: '0856781234',
       purpose: 'Visit friend',
       unitKey: [5, 2],
-      residentEmail: 'david.lee@condo.com',
+      residentEmail: 'david.lee@outlook.com',
       checkInAt: new Date(Date.now() - 24 * 60 * 60 * 1000),
       checkOutAt: new Date(Date.now() - 22 * 60 * 60 * 1000),
-      checkedOutByEmail: 'guard@condo.com',
+      checkedOutByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-vis-5',
@@ -1006,7 +1019,7 @@ async function main() {
       vehiclePlate: 'งจ-5678',
       groupSize: 3,
       unitKey: [6, 3],
-      residentEmail: 'nattaya.th@condo.com',
+      residentEmail: 'nattaya.prom@gmail.com',
       checkInAt: new Date(Date.now() - 48 * 60 * 60 * 1000),
       checkOutAt: new Date(Date.now() - 24 * 60 * 60 * 1000),
       isAutoExpired: true,
@@ -1017,10 +1030,10 @@ async function main() {
       purpose: 'ส่งพัสดุด่วนต่างประเทศ',
       vehiclePlate: 'ขค-7755',
       unitKey: [9, 2],
-      residentEmail: 'michael.brown@condo.com',
+      residentEmail: 'michael.brown@outlook.com',
       checkInAt: new Date(Date.now() - 6 * 60 * 60 * 1000),
       checkOutAt: new Date(Date.now() - 5.5 * 60 * 60 * 1000),
-      checkedOutByEmail: 'guard@condo.com',
+      checkedOutByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-vis-9',
@@ -1029,10 +1042,10 @@ async function main() {
       purpose: 'Visit friend',
       vehiclePlate: 'ฮบ-3301',
       unitKey: [5, 0],
-      residentEmail: 'yuki.tanaka@condo.com',
+      residentEmail: 'yuki.tanaka@gmail.com',
       checkInAt: new Date(Date.now() - 8 * 60 * 60 * 1000),
       checkOutAt: new Date(Date.now() - 6 * 60 * 60 * 1000),
-      checkedOutByEmail: 'guard@condo.com',
+      checkedOutByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-vis-10',
@@ -1041,10 +1054,10 @@ async function main() {
       vehiclePlate: 'บต-1190',
       groupSize: 2,
       unitKey: [3, 0],
-      residentEmail: 'malee.th@condo.com',
+      residentEmail: 'malee.jangam@gmail.com',
       checkInAt: new Date(Date.now() - 10 * 60 * 60 * 1000),
       checkOutAt: new Date(Date.now() - 8.5 * 60 * 60 * 1000),
-      checkedOutByEmail: 'manager@condo.com',
+      checkedOutByEmail: 'manager@movacondo.co.th',
     },
     {
       id: 'seed-vis-12',
@@ -1053,10 +1066,10 @@ async function main() {
       purpose: 'เยี่ยมหลาน',
       vehiclePlate: 'นข-6644',
       unitKey: [7, 1],
-      residentEmail: 'anan.th@condo.com',
+      residentEmail: 'anan.sooksan@gmail.com',
       checkInAt: new Date(Date.now() - 30 * 60 * 60 * 1000),
       checkOutAt: new Date(Date.now() - 27 * 60 * 60 * 1000),
-      checkedOutByEmail: 'guard@condo.com',
+      checkedOutByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-vis-14',
@@ -1065,7 +1078,7 @@ async function main() {
       vehiclePlate: 'พร-4422',
       groupSize: 5,
       unitKey: [8, 5],
-      residentEmail: 'krit.th@condo.com',
+      residentEmail: 'krit.limpichai@gmail.com',
       checkInAt: new Date(Date.now() - 72 * 60 * 60 * 1000),
       checkOutAt: new Date(Date.now() - 48 * 60 * 60 * 1000),
       isAutoExpired: true,
@@ -1076,10 +1089,10 @@ async function main() {
       phone: '0878901234',
       purpose: 'ดูห้อง (ผู้เช่าใหม่)',
       unitKey: [0, 5],
-      residentEmail: 'pim.th@condo.com',
+      residentEmail: 'pim.thanakul@gmail.com',
       checkInAt: new Date(Date.now() - 12 * 60 * 60 * 1000),
       checkOutAt: new Date(Date.now() - 11 * 60 * 60 * 1000),
-      checkedOutByEmail: 'guard@condo.com',
+      checkedOutByEmail: 'guard@movacondo.co.th',
     },
     // Visitors for new residents (units 07-12) — some with phone+vehiclePlate
     {
@@ -1089,7 +1102,7 @@ async function main() {
       purpose: 'เยี่ยมเพื่อน',
       vehiclePlate: 'กง-5512',
       unitKey: [2, 6],
-      residentEmail: 'supanee.th@condo.com',
+      residentEmail: 'supanee.lamthan@gmail.com',
       checkInAt: new Date(Date.now() - 80 * 60 * 1000),
     },
     {
@@ -1100,10 +1113,10 @@ async function main() {
       vehiclePlate: 'พน-3301',
       groupSize: 2,
       unitKey: [4, 7],
-      residentEmail: 'boonsong.th@condo.com',
+      residentEmail: 'boonsong.wichakarn@gmail.com',
       checkInAt: new Date(Date.now() - 3.5 * 60 * 60 * 1000),
       checkOutAt: new Date(Date.now() - 2 * 60 * 60 * 1000),
-      checkedOutByEmail: 'guard@condo.com',
+      checkedOutByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-vis-18',
@@ -1112,7 +1125,7 @@ async function main() {
       purpose: 'Visit friend',
       vehiclePlate: 'ฮก-7790',
       unitKey: [7, 10],
-      residentEmail: 'emma.white@condo.com',
+      residentEmail: 'emma.white@outlook.com',
       checkInAt: new Date(Date.now() - 55 * 60 * 1000),
     },
     {
@@ -1122,10 +1135,10 @@ async function main() {
       purpose: 'ส่งของขวัญ',
       vehiclePlate: 'งน-4488',
       unitKey: [6, 9],
-      residentEmail: 'tawan.th@condo.com',
+      residentEmail: 'tawan.pimpa@gmail.com',
       checkInAt: new Date(Date.now() - 18 * 60 * 60 * 1000),
       checkOutAt: new Date(Date.now() - 17 * 60 * 60 * 1000),
-      checkedOutByEmail: 'guard@condo.com',
+      checkedOutByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-vis-20',
@@ -1135,10 +1148,10 @@ async function main() {
       vehiclePlate: 'บจ-1188',
       groupSize: 4,
       unitKey: [8, 11],
-      residentEmail: 'suchada.th@condo.com',
+      residentEmail: 'suchada.medee@gmail.com',
       checkInAt: new Date(Date.now() - 4 * 60 * 60 * 1000),
       checkOutAt: new Date(Date.now() - 2.5 * 60 * 60 * 1000),
-      checkedOutByEmail: 'manager@condo.com',
+      checkedOutByEmail: 'manager@movacondo.co.th',
     },
   ];
 
@@ -1203,51 +1216,51 @@ async function main() {
       trackingNumber: 'TH123456789',
       carrier: 'Flash Express',
       unitKey: [0, 2],
-      residentEmail: 'john.doe@condo.com',
+      residentEmail: 'john.doe@gmail.com',
       status: 'PENDING',
       receivedAt: new Date(Date.now() - 2 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-2',
       trackingNumber: 'KE987654321',
       carrier: 'Kerry Express',
       unitKey: [2, 4],
-      residentEmail: 'wichai.th@condo.com',
+      residentEmail: 'wichai.srisomboon@gmail.com',
       status: 'PENDING',
       receivedAt: new Date(Date.now() - 5 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-3',
       carrier: 'DHL',
       note: 'กล่องใหญ่ เก็บไว้ที่เคาน์เตอร์',
       unitKey: [9, 2],
-      residentEmail: 'michael.brown@condo.com',
+      residentEmail: 'michael.brown@outlook.com',
       status: 'PENDING',
       receivedAt: new Date(Date.now() - 1 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-4',
       trackingNumber: 'JT556677889',
       carrier: 'J&T Express',
       unitKey: [1, 1],
-      residentEmail: 'sarah.smith@condo.com',
+      residentEmail: 'sarah.smith@hotmail.com',
       status: 'PENDING',
       receivedAt: new Date(Date.now() - 8 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-5',
       trackingNumber: 'SP334455667',
       carrier: 'Speed-D',
       unitKey: [6, 3],
-      residentEmail: 'nattaya.th@condo.com',
+      residentEmail: 'nattaya.prom@gmail.com',
       status: 'PENDING',
       receivedAt: new Date(Date.now() - 24 * 60 * 60 * 1000),
       note: 'รอมา 1 วันแล้ว',
-      receivedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
     },
     // Claimed
     {
@@ -1255,36 +1268,36 @@ async function main() {
       trackingNumber: 'FL112233445',
       carrier: 'Flash Express',
       unitKey: [4, 5],
-      residentEmail: 'somchai.th@condo.com',
+      residentEmail: 'somchai.jaidee@gmail.com',
       status: 'CLAIMED',
       receivedAt: new Date(Date.now() - 6 * 60 * 60 * 1000),
       claimedAt: new Date(Date.now() - 3 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
-      claimedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
+      claimedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-7',
       trackingNumber: 'TH998877665',
       carrier: 'Thailand Post',
       unitKey: [7, 1],
-      residentEmail: 'anan.th@condo.com',
+      residentEmail: 'anan.sooksan@gmail.com',
       status: 'CLAIMED',
       receivedAt: new Date(Date.now() - 25 * 60 * 60 * 1000),
       claimedAt: new Date(Date.now() - 20 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
-      claimedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
+      claimedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-8',
       trackingNumber: 'LZ223344556',
       carrier: 'Lazada Logistics',
       unitKey: [9, 4],
-      residentEmail: 'lisa.wong@condo.com',
+      residentEmail: 'lisa.wong@gmail.com',
       status: 'CLAIMED',
       receivedAt: new Date(Date.now() - 48 * 60 * 60 * 1000),
       claimedAt: new Date(Date.now() - 46 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
-      claimedByEmail: 'manager@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
+      claimedByEmail: 'manager@movacondo.co.th',
     },
     // Pending — page 2+
     {
@@ -1292,82 +1305,82 @@ async function main() {
       trackingNumber: 'SX445566778',
       carrier: 'Shopee Xpress',
       unitKey: [3, 0],
-      residentEmail: 'malee.th@condo.com',
+      residentEmail: 'malee.jangam@gmail.com',
       status: 'PENDING',
       receivedAt: new Date(Date.now() - 3 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-10',
       carrier: 'Thailand Post',
       note: 'พัสดุลงทะเบียน',
       unitKey: [7, 10],
-      residentEmail: 'emma.white@condo.com',
+      residentEmail: 'emma.white@outlook.com',
       status: 'PENDING',
       receivedAt: new Date(Date.now() - 30 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-11',
       trackingNumber: 'NV667788990',
       carrier: 'Ninja Van',
       unitKey: [4, 7],
-      residentEmail: 'boonsong.th@condo.com',
+      residentEmail: 'boonsong.wichakarn@gmail.com',
       status: 'PENDING',
       receivedAt: new Date(Date.now() - 7 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-12',
       trackingNumber: 'FL778899001',
       carrier: 'Flash Express',
       unitKey: [8, 11],
-      residentEmail: 'suchada.th@condo.com',
+      residentEmail: 'suchada.medee@gmail.com',
       status: 'PENDING',
       receivedAt: new Date(Date.now() - 15 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-13',
       trackingNumber: 'KE889900112',
       carrier: 'Kerry Express',
       unitKey: [6, 9],
-      residentEmail: 'tawan.th@condo.com',
+      residentEmail: 'tawan.pimpa@gmail.com',
       status: 'PENDING',
       note: 'รอมา 2 วันแล้ว',
       receivedAt: new Date(Date.now() - 50 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-21',
       trackingNumber: 'LZ556677883',
       carrier: 'Lazada Logistics',
       unitKey: [1, 4],
-      residentEmail: 'pranee.th@condo.com',
+      residentEmail: 'pranee.wongsiri@gmail.com',
       status: 'PENDING',
       receivedAt: new Date(Date.now() - 4 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-22',
       trackingNumber: 'TH334455671',
       carrier: 'Thailand Post',
       unitKey: [5, 8],
-      residentEmail: 'patcharee.th@condo.com',
+      residentEmail: 'patcharee.suthisan@gmail.com',
       status: 'PENDING',
       receivedAt: new Date(Date.now() - 9 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-23',
       trackingNumber: 'SP990011225',
       carrier: 'Speed-D',
       unitKey: [3, 3],
-      residentEmail: 'chaiyot.th@condo.com',
+      residentEmail: 'chaiyot.boonmak@gmail.com',
       status: 'PENDING',
       receivedAt: new Date(Date.now() - 38 * 60 * 60 * 1000),
       note: 'ฝากเก็บไว้ที่เคาน์เตอร์',
-      receivedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
     },
     // Claimed — page 2+
     {
@@ -1375,144 +1388,144 @@ async function main() {
       trackingNumber: 'SX112233440',
       carrier: 'Shopee Xpress',
       unitKey: [0, 2],
-      residentEmail: 'john.doe@condo.com',
+      residentEmail: 'john.doe@gmail.com',
       status: 'CLAIMED',
       receivedAt: new Date(Date.now() - 72 * 60 * 60 * 1000),
       claimedAt: new Date(Date.now() - 70 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
-      claimedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
+      claimedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-15',
       trackingNumber: 'LZ334455669',
       carrier: 'Lazada Logistics',
       unitKey: [2, 4],
-      residentEmail: 'wichai.th@condo.com',
+      residentEmail: 'wichai.srisomboon@gmail.com',
       status: 'CLAIMED',
       receivedAt: new Date(Date.now() - 36 * 60 * 60 * 1000),
       claimedAt: new Date(Date.now() - 34 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
-      claimedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
+      claimedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-16',
       trackingNumber: 'DH556677882',
       carrier: 'DHL',
       unitKey: [5, 2],
-      residentEmail: 'david.lee@condo.com',
+      residentEmail: 'david.lee@outlook.com',
       status: 'CLAIMED',
       receivedAt: new Date(Date.now() - 96 * 60 * 60 * 1000),
       claimedAt: new Date(Date.now() - 90 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
-      claimedByEmail: 'manager@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
+      claimedByEmail: 'manager@movacondo.co.th',
     },
     {
       id: 'seed-par-17',
       trackingNumber: 'FL990011223',
       carrier: 'Flash Express',
       unitKey: [7, 3],
-      residentEmail: 'arisa.th@condo.com',
+      residentEmail: 'arisa.charoensuk@gmail.com',
       status: 'CLAIMED',
       receivedAt: new Date(Date.now() - 20 * 60 * 60 * 1000),
       claimedAt: new Date(Date.now() - 18 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
-      claimedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
+      claimedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-18',
       trackingNumber: 'JT223344557',
       carrier: 'J&T Express',
       unitKey: [2, 6],
-      residentEmail: 'supanee.th@condo.com',
+      residentEmail: 'supanee.lamthan@gmail.com',
       status: 'CLAIMED',
       receivedAt: new Date(Date.now() - 54 * 60 * 60 * 1000),
       claimedAt: new Date(Date.now() - 52 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
-      claimedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
+      claimedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-19',
       trackingNumber: 'TH001122334',
       carrier: 'Thailand Post',
       unitKey: [8, 5],
-      residentEmail: 'krit.th@condo.com',
+      residentEmail: 'krit.limpichai@gmail.com',
       status: 'CLAIMED',
       receivedAt: new Date(Date.now() - 120 * 60 * 60 * 1000),
       claimedAt: new Date(Date.now() - 118 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
-      claimedByEmail: 'manager@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
+      claimedByEmail: 'manager@movacondo.co.th',
     },
     {
       id: 'seed-par-20',
       trackingNumber: 'SP112233446',
       carrier: 'Speed-D',
       unitKey: [0, 5],
-      residentEmail: 'pim.th@condo.com',
+      residentEmail: 'pim.thanakul@gmail.com',
       status: 'CLAIMED',
       receivedAt: new Date(Date.now() - 14 * 60 * 60 * 1000),
       claimedAt: new Date(Date.now() - 12 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
-      claimedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
+      claimedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-24',
       trackingNumber: 'KE778899004',
       carrier: 'Kerry Express',
       unitKey: [9, 2],
-      residentEmail: 'michael.brown@condo.com',
+      residentEmail: 'michael.brown@outlook.com',
       status: 'CLAIMED',
       receivedAt: new Date(Date.now() - 144 * 60 * 60 * 1000),
       claimedAt: new Date(Date.now() - 140 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
-      claimedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
+      claimedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-25',
       trackingNumber: 'NV445566779',
       carrier: 'Ninja Van',
       unitKey: [5, 0],
-      residentEmail: 'yuki.tanaka@condo.com',
+      residentEmail: 'yuki.tanaka@gmail.com',
       status: 'CLAIMED',
       receivedAt: new Date(Date.now() - 60 * 60 * 60 * 1000),
       claimedAt: new Date(Date.now() - 58 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
-      claimedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
+      claimedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-26',
       trackingNumber: 'SX667788995',
       carrier: 'Shopee Xpress',
       unitKey: [4, 5],
-      residentEmail: 'somchai.th@condo.com',
+      residentEmail: 'somchai.jaidee@gmail.com',
       status: 'CLAIMED',
       receivedAt: new Date(Date.now() - 80 * 60 * 60 * 1000),
       claimedAt: new Date(Date.now() - 78 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
-      claimedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
+      claimedByEmail: 'guard@movacondo.co.th',
     },
     {
       id: 'seed-par-27',
       trackingNumber: 'FL334455668',
       carrier: 'Flash Express',
       unitKey: [6, 3],
-      residentEmail: 'nattaya.th@condo.com',
+      residentEmail: 'nattaya.prom@gmail.com',
       status: 'CLAIMED',
       receivedAt: new Date(Date.now() - 168 * 60 * 60 * 1000),
       claimedAt: new Date(Date.now() - 165 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
-      claimedByEmail: 'manager@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
+      claimedByEmail: 'manager@movacondo.co.th',
     },
     {
       id: 'seed-par-28',
       trackingNumber: 'JT889900113',
       carrier: 'J&T Express',
       unitKey: [1, 1],
-      residentEmail: 'sarah.smith@condo.com',
+      residentEmail: 'sarah.smith@hotmail.com',
       status: 'CLAIMED',
       receivedAt: new Date(Date.now() - 110 * 60 * 60 * 1000),
       claimedAt: new Date(Date.now() - 108 * 60 * 60 * 1000),
-      receivedByEmail: 'guard@condo.com',
-      claimedByEmail: 'guard@condo.com',
+      receivedByEmail: 'guard@movacondo.co.th',
+      claimedByEmail: 'guard@movacondo.co.th',
     },
   ];
 
@@ -1553,6 +1566,636 @@ async function main() {
     console.log(`  ✓ [${p.status.padEnd(7)}] ${carrier} → ${tracking}`);
   }
 
+  // ── Maintenance tickets ──────────────────────────────────────────────────
+  console.log('Seeding maintenance tickets...');
+
+  type TicketSeed = {
+    id: string;
+    title: string;
+    description: string;
+    category:
+      | 'ELECTRICAL'
+      | 'PLUMBING'
+      | 'HVAC'
+      | 'STRUCTURAL'
+      | 'APPLIANCE'
+      | 'OTHER';
+    status: 'OPEN' | 'IN_PROGRESS' | 'RESOLVED' | 'CANCELLED';
+    unitKey: [number, number];
+    residentEmail?: string;
+    reportedByEmail: string;
+    assignedToEmail?: string;
+    note?: string;
+    resolvedAt?: Date;
+    createdAt: Date;
+    logs?: {
+      action: string;
+      oldValue?: string | null;
+      newValue?: string | null;
+      byEmail: string;
+      offsetMs: number;
+    }[];
+  };
+
+  const ticketDefs: TicketSeed[] = [
+    {
+      id: 'tkt-001',
+      title: 'หลอดไฟในห้องน้ำเสีย',
+      description: 'หลอดไฟในห้องน้ำดับ 2 ดวง เปลี่ยนหลอดใหม่แล้วยังไม่ติด',
+      category: 'ELECTRICAL',
+      status: 'OPEN',
+      unitKey: [0, 0],
+      residentEmail: 'somchai.jaidee@gmail.com',
+      reportedByEmail: 'somchai.jaidee@gmail.com',
+      createdAt: new Date(Date.now() - 2 * 3600000),
+      logs: [
+        {
+          action: 'CREATED',
+          newValue: 'OPEN',
+          byEmail: 'somchai.jaidee@gmail.com',
+          offsetMs: 0,
+        },
+      ],
+    },
+    {
+      id: 'tkt-002',
+      title: 'ก๊อกน้ำในครัวรั่ว',
+      description: 'ก๊อกน้ำในครัวหยดตลอดเวลา น้ำไหลไม่หยุด',
+      category: 'PLUMBING',
+      status: 'IN_PROGRESS',
+      unitKey: [0, 1],
+      residentEmail: 'malee.jangam@gmail.com',
+      reportedByEmail: 'malee.jangam@gmail.com',
+      assignedToEmail: 'maintenance@movacondo.co.th',
+      note: 'ส่งช่างไปดูแล้ว รอสั่งอะไหล่',
+      createdAt: new Date(Date.now() - 26 * 3600000),
+      logs: [
+        {
+          action: 'CREATED',
+          newValue: 'OPEN',
+          byEmail: 'malee.jangam@gmail.com',
+          offsetMs: 0,
+        },
+        {
+          action: 'ASSIGNED',
+          newValue: 'ประสิทธิ์ สุขใจ',
+          byEmail: 'admin@movacondo.co.th',
+          offsetMs: 1 * 3600000,
+        },
+        {
+          action: 'STATUS_CHANGED',
+          oldValue: 'OPEN',
+          newValue: 'IN_PROGRESS',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 2 * 3600000,
+        },
+        {
+          action: 'NOTE_UPDATED',
+          oldValue: null,
+          newValue: 'ส่งช่างไปดูแล้ว รอสั่งอะไหล่',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 3 * 3600000,
+        },
+      ],
+    },
+    {
+      id: 'tkt-003',
+      title: 'แอร์ไม่เย็น',
+      description: 'แอร์ในห้องนอนเปิดแล้วลมออก แต่ไม่เย็น น่าจะแก๊สหมด',
+      category: 'HVAC',
+      status: 'RESOLVED',
+      unitKey: [1, 2],
+      residentEmail: 'wichai.srisomboon@gmail.com',
+      reportedByEmail: 'wichai.srisomboon@gmail.com',
+      assignedToEmail: 'maintenance@movacondo.co.th',
+      note: 'เติมแก๊สแอร์เรียบร้อย',
+      resolvedAt: new Date(Date.now() - 12 * 3600000),
+      createdAt: new Date(Date.now() - 3 * 24 * 3600000),
+      logs: [
+        {
+          action: 'CREATED',
+          newValue: 'OPEN',
+          byEmail: 'wichai.srisomboon@gmail.com',
+          offsetMs: 0,
+        },
+        {
+          action: 'ASSIGNED',
+          newValue: 'ประสิทธิ์ สุขใจ',
+          byEmail: 'admin@movacondo.co.th',
+          offsetMs: 2 * 3600000,
+        },
+        {
+          action: 'STATUS_CHANGED',
+          oldValue: 'OPEN',
+          newValue: 'IN_PROGRESS',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 4 * 3600000,
+        },
+        {
+          action: 'NOTE_UPDATED',
+          oldValue: null,
+          newValue: 'เติมแก๊สแอร์เรียบร้อย',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 36 * 3600000,
+        },
+        {
+          action: 'STATUS_CHANGED',
+          oldValue: 'IN_PROGRESS',
+          newValue: 'RESOLVED',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 3 * 24 * 3600000 - 12 * 3600000,
+        },
+      ],
+    },
+    {
+      id: 'tkt-004',
+      title: 'ประตูห้องปิดไม่สนิท',
+      description: 'กลอนประตูหลักมีปัญหา ล็อคไม่ได้ ต้องรีบซ่อม',
+      category: 'STRUCTURAL',
+      status: 'IN_PROGRESS',
+      unitKey: [2, 0],
+      residentEmail: 'pranee.wongsiri@gmail.com',
+      reportedByEmail: 'guard@movacondo.co.th',
+      assignedToEmail: 'maintenance@movacondo.co.th',
+      createdAt: new Date(Date.now() - 5 * 3600000),
+      logs: [
+        {
+          action: 'CREATED',
+          newValue: 'OPEN',
+          byEmail: 'guard@movacondo.co.th',
+          offsetMs: 0,
+        },
+        {
+          action: 'ASSIGNED',
+          newValue: 'ประสิทธิ์ สุขใจ',
+          byEmail: 'admin@movacondo.co.th',
+          offsetMs: 1 * 3600000,
+        },
+        {
+          action: 'STATUS_CHANGED',
+          oldValue: 'OPEN',
+          newValue: 'IN_PROGRESS',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 2 * 3600000,
+        },
+      ],
+    },
+    {
+      id: 'tkt-005',
+      title: 'เครื่องซักผ้าสั่น ดังมาก',
+      description: 'เครื่องซักผ้าสั่นแรงมากตอนปั่นหมาด เสียงดังรบกวนห้องข้างๆ',
+      category: 'APPLIANCE',
+      status: 'OPEN',
+      unitKey: [3, 1],
+      residentEmail: 'nattaya.prom@gmail.com',
+      reportedByEmail: 'nattaya.prom@gmail.com',
+      createdAt: new Date(Date.now() - 1 * 3600000),
+      logs: [
+        {
+          action: 'CREATED',
+          newValue: 'OPEN',
+          byEmail: 'nattaya.prom@gmail.com',
+          offsetMs: 0,
+        },
+      ],
+    },
+    {
+      id: 'tkt-006',
+      title: 'ท่อน้ำทิ้งในห้องน้ำตัน',
+      description: 'น้ำในอ่างล้างหน้าไหลช้ามาก เหมือนท่อตัน',
+      category: 'PLUMBING',
+      status: 'RESOLVED',
+      unitKey: [0, 3],
+      residentEmail: 'krit.limpichai@gmail.com',
+      reportedByEmail: 'krit.limpichai@gmail.com',
+      assignedToEmail: 'maintenance@movacondo.co.th',
+      note: 'ล้างท่อเรียบร้อย',
+      resolvedAt: new Date(Date.now() - 24 * 3600000),
+      createdAt: new Date(Date.now() - 4 * 24 * 3600000),
+      logs: [
+        {
+          action: 'CREATED',
+          newValue: 'OPEN',
+          byEmail: 'krit.limpichai@gmail.com',
+          offsetMs: 0,
+        },
+        {
+          action: 'ASSIGNED',
+          newValue: 'ประสิทธิ์ สุขใจ',
+          byEmail: 'admin@movacondo.co.th',
+          offsetMs: 3 * 3600000,
+        },
+        {
+          action: 'STATUS_CHANGED',
+          oldValue: 'OPEN',
+          newValue: 'IN_PROGRESS',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 6 * 3600000,
+        },
+        {
+          action: 'NOTE_UPDATED',
+          oldValue: null,
+          newValue: 'ล้างท่อเรียบร้อย',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 2 * 24 * 3600000,
+        },
+        {
+          action: 'STATUS_CHANGED',
+          oldValue: 'IN_PROGRESS',
+          newValue: 'RESOLVED',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 3 * 24 * 3600000,
+        },
+      ],
+    },
+    {
+      id: 'tkt-007',
+      title: 'ไฟในโถงทางเดินชั้น 5 ดับ',
+      description: 'ไฟส่องสว่างในโถงทางเดินชั้น 5 ดับ 3 ดวง มืดมากตอนกลางคืน',
+      category: 'ELECTRICAL',
+      status: 'CANCELLED',
+      unitKey: [4, 0],
+      reportedByEmail: 'guard@movacondo.co.th',
+      assignedToEmail: 'maintenance@movacondo.co.th',
+      note: 'เปลี่ยนหลอดไฟ LED ใหม่ทั้งหมด',
+      resolvedAt: new Date(Date.now() - 2 * 24 * 3600000),
+      createdAt: new Date(Date.now() - 6 * 24 * 3600000),
+      logs: [
+        {
+          action: 'CREATED',
+          newValue: 'OPEN',
+          byEmail: 'guard@movacondo.co.th',
+          offsetMs: 0,
+        },
+        {
+          action: 'ASSIGNED',
+          newValue: 'ประสิทธิ์ สุขใจ',
+          byEmail: 'admin@movacondo.co.th',
+          offsetMs: 12 * 3600000,
+        },
+        {
+          action: 'STATUS_CHANGED',
+          oldValue: 'OPEN',
+          newValue: 'IN_PROGRESS',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 24 * 3600000,
+        },
+        {
+          action: 'NOTE_UPDATED',
+          oldValue: null,
+          newValue: 'เปลี่ยนหลอดไฟ LED ใหม่ทั้งหมด',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 3 * 24 * 3600000,
+        },
+        {
+          action: 'STATUS_CHANGED',
+          oldValue: 'IN_PROGRESS',
+          newValue: 'CANCELLED',
+          byEmail: 'admin@movacondo.co.th',
+          offsetMs: 4 * 24 * 3600000,
+        },
+      ],
+    },
+    {
+      id: 'tkt-008',
+      title: 'อุปกรณ์ครัวชำรุด',
+      description: 'เตาแก๊สใช้งานไม่ได้ หัวเตาหัวหนึ่งจุดไม่ติด',
+      category: 'APPLIANCE',
+      status: 'OPEN',
+      unitKey: [5, 2],
+      residentEmail: 'arisa.charoensuk@gmail.com',
+      reportedByEmail: 'arisa.charoensuk@gmail.com',
+      createdAt: new Date(Date.now() - 30 * 60000),
+      logs: [
+        {
+          action: 'CREATED',
+          newValue: 'OPEN',
+          byEmail: 'arisa.charoensuk@gmail.com',
+          offsetMs: 0,
+        },
+      ],
+    },
+    {
+      id: 'tkt-009',
+      title: 'แอร์ส่วนกลางชั้น 3 รั่ว',
+      description: 'แอร์ส่วนกลางในล็อบบี้ชั้น 3 มีน้ำหยด พื้นเปียก อาจลื่น',
+      category: 'HVAC',
+      status: 'IN_PROGRESS',
+      unitKey: [2, 1],
+      reportedByEmail: 'manager@movacondo.co.th',
+      assignedToEmail: 'maintenance@movacondo.co.th',
+      note: 'ช่างตรวจสอบแล้ว รอนัดซ่อมใหญ่',
+      createdAt: new Date(Date.now() - 2 * 24 * 3600000),
+      logs: [
+        {
+          action: 'CREATED',
+          newValue: 'OPEN',
+          byEmail: 'manager@movacondo.co.th',
+          offsetMs: 0,
+        },
+        {
+          action: 'ASSIGNED',
+          newValue: 'ประสิทธิ์ สุขใจ',
+          byEmail: 'manager@movacondo.co.th',
+          offsetMs: 2 * 3600000,
+        },
+        {
+          action: 'STATUS_CHANGED',
+          oldValue: 'OPEN',
+          newValue: 'IN_PROGRESS',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 6 * 3600000,
+        },
+        {
+          action: 'NOTE_UPDATED',
+          oldValue: null,
+          newValue: 'ช่างตรวจสอบแล้ว รอนัดซ่อมใหญ่',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 28 * 3600000,
+        },
+      ],
+    },
+    {
+      id: 'tkt-010',
+      title: 'ผนังห้องน้ำแตกร้าว',
+      description:
+        'ผนังห้องน้ำมีรอยแตกร้าวยาวประมาณ 20 ซม. กังวลเรื่องความชื้น',
+      category: 'STRUCTURAL',
+      status: 'OPEN',
+      unitKey: [6, 0],
+      residentEmail: 'thanapat.munkong@gmail.com',
+      reportedByEmail: 'thanapat.munkong@gmail.com',
+      createdAt: new Date(Date.now() - 3 * 3600000),
+      logs: [
+        {
+          action: 'CREATED',
+          newValue: 'OPEN',
+          byEmail: 'thanapat.munkong@gmail.com',
+          offsetMs: 0,
+        },
+      ],
+    },
+    {
+      id: 'tkt-011',
+      title: 'ลิฟต์ขัดข้อง',
+      description: 'ลิฟต์หมายเลข 2 เปิดประตูค้าง กดปุ่มชั้นไม่ขึ้น',
+      category: 'OTHER',
+      status: 'RESOLVED',
+      unitKey: [7, 1],
+      reportedByEmail: 'guard@movacondo.co.th',
+      assignedToEmail: 'maintenance@movacondo.co.th',
+      note: 'ติดต่อบริษัทลิฟต์แก้ไขแล้ว',
+      resolvedAt: new Date(Date.now() - 6 * 3600000),
+      createdAt: new Date(Date.now() - 5 * 24 * 3600000),
+      logs: [
+        {
+          action: 'CREATED',
+          newValue: 'OPEN',
+          byEmail: 'guard@movacondo.co.th',
+          offsetMs: 0,
+        },
+        {
+          action: 'ASSIGNED',
+          newValue: 'ประสิทธิ์ สุขใจ',
+          byEmail: 'admin@movacondo.co.th',
+          offsetMs: 6 * 3600000,
+        },
+        {
+          action: 'STATUS_CHANGED',
+          oldValue: 'OPEN',
+          newValue: 'IN_PROGRESS',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 12 * 3600000,
+        },
+        {
+          action: 'REASSIGNED',
+          oldValue: 'ประสิทธิ์ สุขใจ',
+          newValue: 'ประสิทธิ์ สุขใจ',
+          byEmail: 'admin@movacondo.co.th',
+          offsetMs: 2 * 24 * 3600000,
+        },
+        {
+          action: 'NOTE_UPDATED',
+          oldValue: null,
+          newValue: 'ติดต่อบริษัทลิฟต์แก้ไขแล้ว',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 4 * 24 * 3600000,
+        },
+        {
+          action: 'STATUS_CHANGED',
+          oldValue: 'IN_PROGRESS',
+          newValue: 'RESOLVED',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 5 * 24 * 3600000 - 6 * 3600000,
+        },
+      ],
+    },
+    {
+      id: 'tkt-012',
+      title: 'ปลั๊กไฟในห้องนอนไม่มีไฟ',
+      description: 'ปลั๊กไฟข้างเตียง 2 ตัวไม่มีไฟ เสียบอะไรก็ไม่ทำงาน',
+      category: 'ELECTRICAL',
+      status: 'OPEN',
+      unitKey: [1, 3],
+      residentEmail: 'pim.thanakul@gmail.com',
+      reportedByEmail: 'pim.thanakul@gmail.com',
+      createdAt: new Date(Date.now() - 4 * 3600000),
+      logs: [
+        {
+          action: 'CREATED',
+          newValue: 'OPEN',
+          byEmail: 'pim.thanakul@gmail.com',
+          offsetMs: 0,
+        },
+      ],
+    },
+    {
+      id: 'tkt-013',
+      title: 'ท่อน้ำประปาแตก',
+      description: 'ท่อน้ำประปาใต้อ่างล้างจาน แตกน้ำรั่วออกมาเยอะ',
+      category: 'PLUMBING',
+      status: 'IN_PROGRESS',
+      unitKey: [3, 3],
+      residentEmail: 'chaiyot.boonmak@gmail.com',
+      reportedByEmail: 'chaiyot.boonmak@gmail.com',
+      assignedToEmail: 'maintenance@movacondo.co.th',
+      note: 'ปิดวาล์วน้ำชั่วคราวแล้ว รอช่างมาเปลี่ยนท่อ',
+      createdAt: new Date(Date.now() - 8 * 3600000),
+      logs: [
+        {
+          action: 'CREATED',
+          newValue: 'OPEN',
+          byEmail: 'chaiyot.boonmak@gmail.com',
+          offsetMs: 0,
+        },
+        {
+          action: 'ASSIGNED',
+          newValue: 'ประสิทธิ์ สุขใจ',
+          byEmail: 'admin@movacondo.co.th',
+          offsetMs: 1 * 3600000,
+        },
+        {
+          action: 'STATUS_CHANGED',
+          oldValue: 'OPEN',
+          newValue: 'IN_PROGRESS',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 2 * 3600000,
+        },
+        {
+          action: 'NOTE_UPDATED',
+          oldValue: null,
+          newValue: 'ปิดวาล์วน้ำชั่วคราวแล้ว รอช่างมาเปลี่ยนท่อ',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 3 * 3600000,
+        },
+      ],
+    },
+    {
+      id: 'tkt-014',
+      title: 'เครื่องทำน้ำร้อนเสีย',
+      description: 'เครื่องทำน้ำร้อนไม่ทำงาน อาบน้ำไม่ได้น้ำอุ่น',
+      category: 'APPLIANCE',
+      status: 'CANCELLED',
+      unitKey: [4, 2],
+      residentEmail: 'supanee.lamthan@gmail.com',
+      reportedByEmail: 'supanee.lamthan@gmail.com',
+      assignedToEmail: 'maintenance@movacondo.co.th',
+      note: 'เปลี่ยนเครื่องทำน้ำร้อนใหม่เรียบร้อย',
+      resolvedAt: new Date(Date.now() - 5 * 24 * 3600000),
+      createdAt: new Date(Date.now() - 10 * 24 * 3600000),
+      logs: [
+        {
+          action: 'CREATED',
+          newValue: 'OPEN',
+          byEmail: 'supanee.lamthan@gmail.com',
+          offsetMs: 0,
+        },
+        {
+          action: 'ASSIGNED',
+          newValue: 'ประสิทธิ์ สุขใจ',
+          byEmail: 'admin@movacondo.co.th',
+          offsetMs: 6 * 3600000,
+        },
+        {
+          action: 'STATUS_CHANGED',
+          oldValue: 'OPEN',
+          newValue: 'IN_PROGRESS',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 24 * 3600000,
+        },
+        {
+          action: 'NOTE_UPDATED',
+          oldValue: null,
+          newValue: 'เปลี่ยนเครื่องทำน้ำร้อนใหม่เรียบร้อย',
+          byEmail: 'maintenance@movacondo.co.th',
+          offsetMs: 4 * 24 * 3600000,
+        },
+        {
+          action: 'STATUS_CHANGED',
+          oldValue: 'IN_PROGRESS',
+          newValue: 'CANCELLED',
+          byEmail: 'admin@movacondo.co.th',
+          offsetMs: 5 * 24 * 3600000,
+        },
+      ],
+    },
+    {
+      id: 'tkt-015',
+      title: 'กลิ่นเหม็นจากท่อระบาย',
+      description: 'มีกลิ่นเหม็นจากท่อระบายน้ำในห้องน้ำ โดยเฉพาะตอนเช้า',
+      category: 'PLUMBING',
+      status: 'OPEN',
+      unitKey: [5, 1],
+      residentEmail: 'suchada.medee@gmail.com',
+      reportedByEmail: 'suchada.medee@gmail.com',
+      createdAt: new Date(Date.now() - 50 * 60000),
+      logs: [
+        {
+          action: 'CREATED',
+          newValue: 'OPEN',
+          byEmail: 'suchada.medee@gmail.com',
+          offsetMs: 0,
+        },
+      ],
+    },
+  ];
+
+  for (const t of ticketDefs) {
+    const [floorIdx, unitIdx] = t.unitKey;
+    const unitId = unitIds[floorIdx]?.[unitIdx];
+    if (!unitId) {
+      console.log(`  – skip ticket ${t.id} → unit not found`);
+      continue;
+    }
+
+    const reportedById = userIds[t.reportedByEmail];
+    if (!reportedById) {
+      console.log(`  – skip ticket ${t.id} → reporter not found`);
+      continue;
+    }
+
+    let residentId: string | undefined;
+    if (t.residentEmail) {
+      const res = await prisma.resident.findFirst({
+        where: { user: { email: t.residentEmail }, unitId },
+      });
+      residentId = res?.id;
+    }
+
+    const assignedToId = t.assignedToEmail
+      ? userIds[t.assignedToEmail]
+      : undefined;
+
+    await prisma.maintenanceTicket.upsert({
+      where: { id: t.id },
+      create: {
+        id: t.id,
+        title: t.title,
+        description: t.description,
+        category: t.category,
+        status: t.status,
+        unitId,
+        residentId,
+        reportedById,
+        assignedToId,
+        note: t.note,
+        resolvedAt: t.resolvedAt,
+        createdAt: t.createdAt,
+      },
+      update: {
+        status: t.status,
+        assignedToId,
+        note: t.note,
+        resolvedAt: t.resolvedAt,
+      },
+    });
+
+    // Seed logs: delete existing then recreate
+    if (t.logs && t.logs.length > 0) {
+      await prisma.maintenanceTicketLog.deleteMany({
+        where: { ticketId: t.id },
+      });
+      for (const log of t.logs) {
+        const logUserId = userIds[log.byEmail];
+        if (!logUserId) continue;
+        await prisma.maintenanceTicketLog.create({
+          data: {
+            ticketId: t.id,
+            userId: logUserId,
+            action: log.action,
+            oldValue: log.oldValue ?? null,
+            newValue: log.newValue ?? null,
+            createdAt: new Date(t.createdAt.getTime() + log.offsetMs),
+          },
+        });
+      }
+    }
+
+    console.log(
+      `  ✓ [${t.status.padEnd(11)}] ${t.title} (${t.logs?.length ?? 0} logs)`,
+    );
+  }
+
   console.log('\nDone.');
   console.log(`  Users:         ${Object.keys(userIds).length}`);
   console.log(`  Floors:        ${floorIds.length}`);
@@ -1560,6 +2203,7 @@ async function main() {
   console.log(`  Units:         ${unitTotal} (${unitDefs.length}/floor)`);
   console.log(`  Announcements: ${announcementDefs.length}`);
   console.log(`  Visitors:      ${visitorDefs.length}`);
+  console.log(`  Tickets:       ${ticketDefs.length}`);
 }
 
 main()

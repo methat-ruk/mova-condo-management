@@ -139,53 +139,91 @@ export default function ResidentsPage() {
           }}
           className="border-input bg-background text-foreground placeholder:text-muted-foreground focus:ring-ring h-9 w-full min-w-0 rounded-lg border px-3 text-sm focus:ring-2 focus:outline-none sm:flex-1"
         />
-        <div className="flex flex-col gap-1 sm:shrink-0 sm:flex-row sm:items-center sm:gap-1">
+        <div className="flex w-full flex-col gap-x-1 gap-y-2 sm:w-auto sm:shrink-0 sm:flex-row sm:items-center">
           {/* Status filters */}
           <div className="flex gap-1">
-            {(["", "ACTIVE", "INACTIVE"] as const).map((s) => (
-              <button
-                key={s}
-                onClick={() => {
-                  setStatusFilter(s);
-                  setPage(1);
-                }}
-                className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
-                  statusFilter === s
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground hover:bg-muted/80"
-                }`}
-              >
-                {s === ""
-                  ? t("filterAll")
-                  : s === "ACTIVE"
-                    ? t("filterActive")
-                    : t("filterInactive")}
-              </button>
-            ))}
+            <button
+              onClick={() => {
+                setStatusFilter("");
+                setPage(1);
+              }}
+              className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
+                statusFilter === ""
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-muted text-muted-foreground hover:bg-muted/80"
+              }`}
+            >
+              {t("filterAll")}
+            </button>
+            <button
+              onClick={() => {
+                setStatusFilter("ACTIVE");
+                setPage(1);
+              }}
+              className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
+                statusFilter === "ACTIVE"
+                  ? "bg-green-600 text-white dark:bg-green-500"
+                  : "bg-muted text-muted-foreground hover:bg-muted/80"
+              }`}
+            >
+              {t("filterActive")}
+            </button>
+            <button
+              onClick={() => {
+                setStatusFilter("INACTIVE");
+                setPage(1);
+              }}
+              className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
+                statusFilter === "INACTIVE"
+                  ? "bg-slate-500 text-white dark:bg-slate-400 dark:text-slate-900"
+                  : "bg-muted text-muted-foreground hover:bg-muted/80"
+              }`}
+            >
+              {t("filterInactive")}
+            </button>
           </div>
           <div className="bg-border hidden h-4 w-px sm:block" />
           {/* Type filters */}
           <div className="flex gap-1">
-            {(["", "OWNER", "TENANT"] as const).map((tp) => (
-              <button
-                key={tp}
-                onClick={() => {
-                  setTypeFilter(tp);
-                  setPage(1);
-                }}
-                className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
-                  typeFilter === tp
-                    ? tp === "OWNER"
-                      ? "bg-blue-600 text-white dark:bg-blue-500"
-                      : tp === "TENANT"
-                        ? "bg-amber-500 text-white dark:bg-amber-400 dark:text-amber-900"
-                        : "bg-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground hover:bg-muted/80"
-                }`}
-              >
-                {tp === "" ? t("filterAllType") : t(`residentType.${tp}`)}
-              </button>
-            ))}
+            <button
+              onClick={() => {
+                setTypeFilter("");
+                setPage(1);
+              }}
+              className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
+                typeFilter === ""
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-muted text-muted-foreground hover:bg-muted/80"
+              }`}
+            >
+              {t("filterAllType")}
+            </button>
+            <button
+              onClick={() => {
+                setTypeFilter("OWNER");
+                setPage(1);
+              }}
+              className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
+                typeFilter === "OWNER"
+                  ? "bg-blue-600 text-white dark:bg-blue-500"
+                  : "bg-muted text-muted-foreground hover:bg-muted/80"
+              }`}
+            >
+              {t("residentType.OWNER")}
+            </button>
+            <button
+              onClick={() => {
+                setTypeFilter("TENANT");
+                setPage(1);
+              }}
+              className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
+                typeFilter === "TENANT"
+                  ? "bg-amber-500 text-white dark:bg-amber-400 dark:text-amber-900"
+                  : "bg-muted text-muted-foreground hover:bg-muted/80"
+              }`}
+            >
+              {t("residentType.TENANT")}
+            </button>
           </div>
         </div>
       </div>

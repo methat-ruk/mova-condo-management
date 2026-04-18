@@ -166,28 +166,71 @@ export default function FloorUnitsPage() {
 
       {/* Search + Filter */}
       {units.length > 0 && (
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
           <input
             type="text"
             placeholder={t("units.searchPlaceholder")}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border-input bg-background text-foreground placeholder:text-muted-foreground focus:ring-ring h-9 min-w-0 flex-1 rounded-lg border px-3 text-sm focus:ring-2 focus:outline-none"
+            className="border-input bg-background text-foreground placeholder:text-muted-foreground focus:ring-ring h-9 w-full min-w-0 rounded-lg border px-3 text-sm focus:ring-2 focus:outline-none sm:flex-1"
           />
-          <div className="flex shrink-0 items-center gap-1">
-            {STATUS_FILTER_OPTIONS.map((s) => (
+          <div className="flex w-full flex-col gap-x-1 gap-y-2 sm:w-auto sm:shrink-0 sm:flex-row sm:flex-wrap">
+            {/* Row 1: ALL + AVAILABLE + OCCUPIED */}
+            <div className="flex gap-1 sm:contents">
               <button
-                key={s}
-                onClick={() => setStatusFilter(s)}
-                className={`cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
-                  statusFilter === s
+                onClick={() => setStatusFilter("ALL")}
+                className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
+                  statusFilter === "ALL"
                     ? "bg-primary text-primary-foreground"
                     : "bg-muted text-muted-foreground hover:bg-muted/80"
                 }`}
               >
-                {s === "ALL" ? t("units.filterAll") : STATUS_LABELS[s as OccupancyStatus]}
+                {t("units.filterAll")}
               </button>
-            ))}
+              <button
+                onClick={() => setStatusFilter("AVAILABLE")}
+                className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
+                  statusFilter === "AVAILABLE"
+                    ? "bg-green-600 text-white dark:bg-green-500"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80"
+                }`}
+              >
+                {STATUS_LABELS.AVAILABLE}
+              </button>
+              <button
+                onClick={() => setStatusFilter("OCCUPIED")}
+                className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
+                  statusFilter === "OCCUPIED"
+                    ? "bg-blue-600 text-white dark:bg-blue-500"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80"
+                }`}
+              >
+                {STATUS_LABELS.OCCUPIED}
+              </button>
+            </div>
+            {/* Row 2: RESERVED + MAINTENANCE */}
+            <div className="flex gap-1 sm:contents">
+              <button
+                onClick={() => setStatusFilter("RESERVED")}
+                className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
+                  statusFilter === "RESERVED"
+                    ? "bg-amber-500 text-white dark:bg-amber-400 dark:text-amber-900"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80"
+                }`}
+              >
+                {STATUS_LABELS.RESERVED}
+              </button>
+              <button
+                onClick={() => setStatusFilter("MAINTENANCE")}
+                className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
+                  statusFilter === "MAINTENANCE"
+                    ? "bg-red-600 text-white dark:bg-red-500"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80"
+                }`}
+              >
+                {STATUS_LABELS.MAINTENANCE}
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -214,7 +257,17 @@ export default function FloorUnitsPage() {
                     <div className="flex items-center gap-2">
                       <p className="text-foreground font-semibold">{unit.unitNumber}</p>
                       {sizeKey && (
-                        <span className="bg-muted text-muted-foreground rounded px-1.5 py-0.5 text-[10px] font-semibold">
+                        <span
+                          className={`rounded px-1.5 py-0.5 text-[10px] font-semibold ${
+                            sizeKey === "S"
+                              ? "bg-sky-100 text-sky-700 dark:bg-sky-900/50 dark:text-sky-300"
+                              : sizeKey === "M"
+                                ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300"
+                                : sizeKey === "L"
+                                  ? "bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-300"
+                                  : "bg-violet-100 text-violet-700 dark:bg-violet-900/50 dark:text-violet-300"
+                          }`}
+                        >
                           {sizeKey}
                         </span>
                       )}

@@ -1,0 +1,2 @@
+ALTER TABLE "Resident" ADD COLUMN "createdById" TEXT;
+ALTER TABLE "Resident" ADD CONSTRAINT "Resident_createdById_fkey" FOREIGN KEY ("createdById") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;

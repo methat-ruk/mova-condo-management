@@ -1,8 +1,8 @@
 # Mova Condo
 
-A full-stack condominium management system for a single condominium building. Designed for administrators, juristic managers, staff, security guards, and residents to manage daily operations in one centralized platform.
+A full-stack condominium management system for a single building. Designed for administrators, juristic managers, maintenance staff, security guards, and residents to manage daily operations in one centralized platform.
 
-> **Portfolio Project** — Demonstrates production-grade full-stack development including REST API design, RBAC, database architecture, and modern UI patterns. All payments are **simulated (fake)** — no real payment gateway is integrated.
+> **Portfolio Project** — Demonstrates production-grade full-stack development including REST API design, role-based access control, database architecture, and modern UI patterns. All payments are **simulated (fake)** — no real payment gateway is integrated.
 
 ---
 
@@ -15,37 +15,38 @@ A full-stack condominium management system for a single condominium building. De
 | Resident Management | ✅ Done |
 | Announcements | ✅ Done |
 | Visitor Management | ✅ Done |
-| Maintenance Requests | 🔲 Planned |
+| Maintenance Requests | ✅ Done |
+| Parcel Management | ✅ Done |
 | Billing & Payment | 🔲 Planned |
-| Parcel Management | 🔲 Planned |
 | Analytics Dashboard | 🔲 Planned |
+| Administration (User Management) | 🔲 Planned |
 
 ---
 
 ## Features
 
 ### Authentication & User Management ✅
-- Login / logout with JWT (cookie-based)
+- Login / logout with JWT (HTTP-only cookie)
 - Role-based access: Admin, Juristic, Maintenance, Security Guard, Resident
-- Profile session handling
+- Profile session in topbar with logout
 
 ### Floor & Unit Management ✅
-- Single building (Mova Condo) with editable name and address
+- Single building with editable name and address
 - Floor creation and deletion (floors with active units cannot be deleted)
-- Unit management per floor: unit number, size preset (S/M/L/XL), monthly rent
-- Occupancy status: Available, Occupied
+- Unit management per floor: unit number, area, bedrooms, bathrooms, monthly rent
+- Size badges (S / M / L / XL) derived from area range — color-coded, visible in both light and dark mode
+- Occupancy status: Available, Occupied, Reserved, Maintenance
 - Search and filter units by status per floor
-- Size badges (S / M / L / XL) based on area
 
 ### Resident Management ✅
-- Resident list with real-time client-side search (name, email, unit number)
-- Filter by status (Active / Moved Out) and type (Owner / Tenant)
-- Summary counts: total residents, owners, tenants
-- Color-coded badges: Owner (blue), Tenant (amber), Active (green)
-- Add resident with user autocomplete search and floor → unit cascade select
+- Resident list with search (name, email) and filter by status / type
+- Summary counts: total, owners, tenants
+- Add resident: select existing user account → assign floor + unit → set type and move-in date
 - Move-in / move-out tracking with auto unit occupancy update
-- Family members & emergency contacts (CRUD per resident)
-- Soft delete: residents are marked INACTIVE on move-out (never deleted)
+- Duration of stay: `(~1.5 yrs) 17 months 15 days`
+- Recorded by: shows name + role of staff who added the resident
+- Hard delete with confirmation
+- Family members & emergency contacts (full CRUD per resident)
 
 ### Announcements ✅
 - Post and manage building-wide announcements
@@ -54,11 +55,27 @@ A full-stack condominium management system for a single condominium building. De
 - Unread badge with per-user read tracking
 - Bell notification dropdown in topbar (5 latest active)
 
-### Maintenance Requests 🔲
-- Ticket submission by residents or staff
-- Staff assignment and priority management
-- Status tracking: Pending → In Progress → Done
-- Maintenance history
+### Visitor Management ✅
+- Manual visitor check-in by security guard or staff
+- Floor → unit cascade select with optional resident link
+- Check-out confirmation with timestamp
+- Auto check-out daily at 03:00 via scheduler
+- Filter: All / Inside / Checked Out with "currently inside" count
+- Search by visitor name, phone, or unit number
+
+### Maintenance Requests ✅
+- Ticket submission with category, description, and unit link
+- Staff assignment (assign / reassign / unassign)
+- Status flow: Open → In Progress → Resolved / Cancelled
+- Staff note per ticket
+- Full audit log history: every status change, assignment, and note update — recorded with actor name, role, and timestamp — displayed newest-first
+
+### Parcel Management ✅
+- Log incoming parcels with tracking number, carrier, and unit
+- Optional resident link
+- Claim confirmation with timestamp and staff record
+- Filter: All / Pending / Claimed with "waiting for pickup" count
+- Search by tracking number or unit
 
 ### Billing & Payment 🔲
 
@@ -67,21 +84,6 @@ A full-stack condominium management system for a single condominium building. De
 - Monthly fee generation per unit
 - Invoice management
 - Simulated payment recording and history
-- Payment status: Pending, Paid, Overdue
-
-### Visitor Management ✅
-- Manual visitor check-in by security guard or staff
-- Floor → unit cascade select with optional resident link
-- Check-out confirmation with timestamp
-- Client-side filter: All / Inside / Checked Out
-- Search by visitor name, phone, or unit number
-- "Currently inside" count in header
-- Responsive table with check-in/check-out timestamps
-
-### Parcel Management 🔲
-- Log incoming parcels per resident
-- Pickup confirmation
-- Parcel history
 
 ### Analytics Dashboard 🔲
 - Occupancy rate overview
@@ -89,20 +91,24 @@ A full-stack condominium management system for a single condominium building. De
 - Pending maintenance summary
 - Revenue snapshot
 
+### Administration 🔲
+- User account creation and management
+- Role assignment
+
 ---
 
 ## Tech Stack
 
 | Layer | Technology |
 |---|---|
-| Frontend | Next.js 16, React 19, TypeScript, Tailwind CSS v4 |
+| Frontend | Next.js 15, React 19, TypeScript, Tailwind CSS v4 |
 | Backend | NestJS 11, TypeScript (ESM) |
 | ORM | Prisma 7 |
 | Database | PostgreSQL |
-| Auth | JWT (cookie-based) |
+| Auth | JWT (HTTP-only cookie) |
+| UI Components | Base UI (headless) + custom Shadcn-style |
+| State | Zustand |
 | i18n | next-intl (Thai / English) |
-| UI Components | Base UI, Shadcn/ui |
-| State Management | Zustand |
 | Validation | class-validator, class-transformer |
 
 ---
@@ -113,15 +119,17 @@ A full-stack condominium management system for a single condominium building. De
 mova-condo-management/
 ├── frontend/                  # Next.js App Router
 │   └── src/
-│       ├── app/               # Routes and layouts
+│       ├── app/               # Routes and pages
 │       │   ├── (auth)/        # Login page
 │       │   └── (dashboard)/   # Main app pages
 │       │       ├── floors/         # Floor & unit management
 │       │       ├── residents/      # Resident management
 │       │       ├── announcements/  # Announcements
-│       │       └── visitors/       # Visitor management
+│       │       ├── visitors/       # Visitor management
+│       │       ├── maintenance/    # Maintenance tickets
+│       │       └── parcels/        # Parcel management
 │       ├── components/
-│       │   ├── shared/        # Feature dialogs (forms, confirm, move-out)
+│       │   ├── shared/        # Feature dialogs (forms, confirm, move-out, etc.)
 │       │   ├── ui/            # Base UI components
 │       │   └── layout/        # Sidebar, header, providers
 │       ├── services/          # API call layer
@@ -138,8 +146,10 @@ mova-condo-management/
     │       ├── floors/        # Floor CRUD
     │       ├── units/         # Unit CRUD
     │       ├── residents/     # Resident, family, emergency contacts
-│       ├── announcements/ # Announcements
-│       └── visitors/      # Visitor check-in/check-out
+    │       ├── announcements/ # Announcements
+    │       ├── visitors/      # Visitor check-in/check-out
+    │       ├── maintenance/   # Maintenance tickets + audit log
+    │       └── parcels/       # Parcel logging and claims
     └── prisma/
         ├── schema.prisma
         ├── migrations/
@@ -175,7 +185,7 @@ cp .env.example .env   # fill in DATABASE_URL and JWT_SECRET
 Run migrations and seed:
 
 ```bash
-npx prisma migrate dev
+npx prisma migrate deploy
 npm run seed
 ```
 
@@ -205,13 +215,13 @@ npm run dev
 
 | Role | Email | Password |
 |---|---|---|
-| Admin | admin@condo.com | Admin1234 |
-| Juristic | manager@condo.com | Manager1234 |
-| Maintenance | maintenance@condo.com | Maintenance1234 |
-| Security Guard | guard@condo.com | Guard1234 |
-| Resident | john.doe@condo.com | Resident1234 |
+| Admin | admin@movacondo.co.th | Admin1234 |
+| Juristic | manager@movacondo.co.th | Manager1234 |
+| Maintenance | maintenance@movacondo.co.th | Maintenance1234 |
+| Security Guard | guard@movacondo.co.th | Guard1234 |
+| Resident | john.doe@gmail.com | Resident1234 |
 
-Seed creates: 1 building · 10 floors · 60 units · 21 users · 18 resident records · 9 family members · 9 emergency contacts · 12 announcements · 15 visitor records
+Seed creates: 1 building · 10 floors · 120 units · 27 users · 21 residents · 12 announcements · 20 visitor records · 28 parcels · 15 maintenance tickets with full audit log history
 
 ---
 

@@ -180,8 +180,7 @@ export default function ParcelsPage() {
           <h1 className="text-foreground text-2xl font-bold">{t("title")}</h1>
           {total > 0 && (
             <p className="text-muted-foreground mt-0.5 text-sm">
-              {t("waitingCount")}:{" "}
-              <span className="text-foreground font-medium">{total}</span>
+              {t("waitingCount")}: <span className="text-foreground font-medium">{total}</span>
             </p>
           )}
         </div>

@@ -1,0 +1,1 @@
+ALTER TYPE "MaintenanceStatus" RENAME VALUE 'CLOSED' TO 'CANCELLED';

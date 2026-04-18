@@ -42,6 +42,22 @@ enum ParcelStatus {
   CLAIMED
 }
 
+enum MaintenanceStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CANCELLED
+}
+
+enum MaintenanceCategory {
+  ELECTRICAL
+  PLUMBING
+  HVAC
+  STRUCTURAL
+  APPLIANCE
+  OTHER
+}
+
 model Building {
   id          String   @id @default(uuid())
   name        String
@@ -81,9 +97,10 @@ model Unit {
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
 
-  residents Resident[]
-  visitors  Visitor[]
-  parcels   Parcel[]
+  residents            Resident[]
+  visitors             Visitor[]
+  parcels              Parcel[]
+  maintenanceTickets   MaintenanceTicket[]
 
   @@unique([floorId, unitNumber])
 }
@@ -100,12 +117,16 @@ model User {
   updatedAt DateTime @updatedAt
 
   residents             Resident[]
+  createdResidents      Resident[]     @relation("ResidentCreatedBy")
   announcements         Announcement[]
   announcementReads     AnnouncementRead[]
   recordedVisitors      Visitor[]  @relation("RecordedBy")
   checkedOutVisitors    Visitor[]  @relation("CheckedOutBy")
-  receivedParcels       Parcel[]   @relation("ReceivedBy")
-  claimedParcels        Parcel[]   @relation("ClaimedBy")
+  receivedParcels       Parcel[]             @relation("ReceivedBy")
+  claimedParcels        Parcel[]             @relation("ClaimedBy")
+  reportedTickets       MaintenanceTicket[]     @relation("ReportedBy")
+  assignedTickets       MaintenanceTicket[]     @relation("AssignedTo")
+  ticketLogs            MaintenanceTicketLog[]  @relation("LoggedBy")
 }
 
 model Visitor {
@@ -141,13 +162,16 @@ model Resident {
   moveInDate   DateTime
   moveOutDate  DateTime?
   note         String?
+  createdById  String?
+  createdBy    User?          @relation("ResidentCreatedBy", fields: [createdById], references: [id])
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @updatedAt
 
-  familyMembers     FamilyMember[]
-  emergencyContacts EmergencyContact[]
-  visitors          Visitor[]
-  parcels           Parcel[]
+  familyMembers        FamilyMember[]
+  emergencyContacts    EmergencyContact[]
+  visitors             Visitor[]
+  parcels              Parcel[]
+  maintenanceTickets   MaintenanceTicket[]
 }
 
 model FamilyMember {
@@ -217,4 +241,38 @@ model Parcel {
   claimedBy      User?        @relation("ClaimedBy", fields: [claimedById], references: [id])
   createdAt      DateTime     @default(now())
   updatedAt      DateTime     @updatedAt
+}
+
+model MaintenanceTicket {
+  id           String              @id @default(uuid())
+  title        String
+  description  String
+  category     MaintenanceCategory
+  status       MaintenanceStatus   @default(OPEN)
+  unitId       String
+  unit         Unit                @relation(fields: [unitId], references: [id])
+  residentId   String?
+  resident     Resident?           @relation(fields: [residentId], references: [id])
+  assignedToId String?
+  assignedTo   User?               @relation("AssignedTo", fields: [assignedToId], references: [id])
+  reportedById String
+  reportedBy   User                @relation("ReportedBy", fields: [reportedById], references: [id])
+  resolvedAt   DateTime?
+  note         String?
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+
+  logs         MaintenanceTicketLog[]
+}
+
+model MaintenanceTicketLog {
+  id        String            @id @default(uuid())
+  ticketId  String
+  ticket    MaintenanceTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User              @relation("LoggedBy", fields: [userId], references: [id])
+  action    String
+  oldValue  String?
+  newValue  String?
+  createdAt DateTime          @default(now())
 }

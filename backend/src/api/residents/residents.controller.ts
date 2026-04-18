@@ -9,6 +9,7 @@ import {
   Patch,
   Post,
   Query,
+  Request,
   UseGuards,
 } from '@nestjs/common';
 import {
@@ -55,8 +56,17 @@ export class ResidentsController {
   }
 
   @Post()
-  create(@Body() dto: CreateResidentDto) {
-    return this.residentsService.create(dto);
+  create(
+    @Body() dto: CreateResidentDto,
+    @Request() req: { user: { id: string } },
+  ) {
+    return this.residentsService.create(dto, req.user.id);
+  }
+
+  @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  remove(@Param('id') id: string) {
+    return this.residentsService.remove(id);
   }
 
   @Patch(':id')

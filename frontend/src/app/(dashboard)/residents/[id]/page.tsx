@@ -2,7 +2,7 @@
 
 import { ArrowLeft, LogOut, Pencil, Phone, Plus, Trash2, UserRound, Users } from "lucide-react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useState, useTransition } from "react";
 import { toast } from "sonner";
@@ -21,13 +21,35 @@ import type {
   Resident,
 } from "@/types/resident";
 
+function calcDuration(
+  from: string,
+  to?: string,
+): { yearsApprox: number; months: number; days: number } {
+  const start = new Date(from);
+  const end = to ? new Date(to) : new Date();
+  const ms = end.getTime() - start.getTime();
+  const totalDays = Math.max(0, Math.floor(ms / 86400000));
+  const months = Math.floor(totalDays / 30);
+  return {
+    yearsApprox: Math.round((totalDays / 365) * 10) / 10,
+    months,
+    days: totalDays % 30,
+  };
+}
+
 export default function ResidentDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const router = useRouter();
   const t = useTranslations("residents");
   const tCommon = useTranslations("common");
+  const tAuth = useTranslations("auth");
 
   const [resident, setResident] = useState<Resident | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  // Delete resident
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [isDeleting, startDeleteTransition] = useTransition();
 
   // Move-out
   const [moveOutOpen, setMoveOutOpen] = useState(false);
@@ -62,6 +84,18 @@ export default function ResidentDetailPage() {
   useEffect(() => {
     void load();
   }, [load]);
+
+  const handleDelete = () => {
+    startDeleteTransition(async () => {
+      try {
+        await residentService.remove(id);
+        toast.success(t("deleteResidentSuccess"));
+        router.push("/residents");
+      } catch (err) {
+        toast.error((err as ApiError).message ?? tCommon("status.error"));
+      }
+    });
+  };
 
   const handleMoveOut = async (moveOutDate?: string) => {
     startMoveOutTransition(async () => {
@@ -225,17 +259,28 @@ export default function ResidentDetailPage() {
           <ArrowLeft className="h-4 w-4" />
           {tCommon("actions.back")}
         </Button>
-        {isActive && (
+        <div className="flex items-center gap-2">
+          {isActive && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setMoveOutOpen(true)}
+              className="border-destructive text-destructive hover:bg-destructive/10 cursor-pointer gap-1.5"
+            >
+              <LogOut className="h-3.5 w-3.5" />
+              {t("moveOut")}
+            </Button>
+          )}
           <Button
             variant="outline"
             size="sm"
-            onClick={() => setMoveOutOpen(true)}
+            onClick={() => setDeleteOpen(true)}
             className="border-destructive text-destructive hover:bg-destructive/10 cursor-pointer gap-1.5"
           >
-            <LogOut className="h-3.5 w-3.5" />
-            {t("moveOut")}
+            <Trash2 className="h-3.5 w-3.5" />
+            {t("deleteResident")}
           </Button>
-        )}
+        </div>
       </div>
 
       {/* Resident info */}
@@ -285,6 +330,35 @@ export default function ResidentDetailPage() {
               <p className="text-muted-foreground text-xs">{t("fields.moveOutDate")}</p>
               <p className="text-foreground text-sm font-medium">
                 {new Date(resident.moveOutDate).toLocaleDateString()}
+              </p>
+            </div>
+          )}
+          <div>
+            <p className="text-muted-foreground text-xs">{t("duration")}</p>
+            <p className="text-foreground text-sm font-medium">
+              {(() => {
+                const { yearsApprox, months, days } = calcDuration(
+                  resident.moveInDate,
+                  resident.moveOutDate,
+                );
+                const yearHint =
+                  yearsApprox >= 1 ? t("durationYearsApprox", { years: yearsApprox }) + " " : "";
+                const dur =
+                  months > 0 ? t("durationMonths", { months, days }) : t("durationDays", { days });
+                return yearHint + dur;
+              })()}
+            </p>
+          </div>
+          {resident.createdBy && (
+            <div>
+              <p className="text-muted-foreground text-xs">{t("addedBy")}</p>
+              <p className="text-foreground text-sm font-medium">
+                {resident.createdBy.firstName} {resident.createdBy.lastName}
+              </p>
+              <p className="text-muted-foreground text-xs">
+                {tAuth(
+                  `roles.${resident.createdBy.role as "ADMIN" | "JURISTIC" | "MAINTENANCE" | "GUARD" | "RESIDENT"}`,
+                )}
               </p>
             </div>
           )}
@@ -431,6 +505,15 @@ export default function ResidentDetailPage() {
       </div>
 
       {/* Dialogs */}
+      <ConfirmDialog
+        open={deleteOpen}
+        onOpenChange={setDeleteOpen}
+        title={t("deleteResidentConfirmTitle")}
+        description={t("deleteResidentConfirmDesc")}
+        onConfirm={handleDelete}
+        isPending={isDeleting}
+      />
+
       <MoveOutDialog
         open={moveOutOpen}
         onOpenChange={setMoveOutOpen}

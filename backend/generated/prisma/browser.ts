@@ -72,3 +72,13 @@ export type AnnouncementRead = Prisma.AnnouncementReadModel
  * 
  */
 export type Parcel = Prisma.ParcelModel
+/**
+ * Model MaintenanceTicket
+ * 
+ */
+export type MaintenanceTicket = Prisma.MaintenanceTicketModel
+/**
+ * Model MaintenanceTicketLog
+ * 
+ */
+export type MaintenanceTicketLog = Prisma.MaintenanceTicketLogModel

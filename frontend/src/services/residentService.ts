@@ -35,6 +35,8 @@ export const residentService = {
   update: (id: string, data: UpdateResidentRequest) =>
     api.patch<Resident>(`/residents/${id}`, data),
 
+  remove: (id: string) => api.delete<void>(`/residents/${id}`),
+
   moveOut: (id: string, data?: MoveOutRequest) =>
     api.patch<Resident>(`/residents/${id}/move-out`, data ?? {}),
 

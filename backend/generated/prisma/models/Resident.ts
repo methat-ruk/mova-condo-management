@@ -33,6 +33,7 @@ export type ResidentMinAggregateOutputType = {
   moveInDate: Date | null
   moveOutDate: Date | null
   note: string | null
+  createdById: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -46,6 +47,7 @@ export type ResidentMaxAggregateOutputType = {
   moveInDate: Date | null
   moveOutDate: Date | null
   note: string | null
+  createdById: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -59,6 +61,7 @@ export type ResidentCountAggregateOutputType = {
   moveInDate: number
   moveOutDate: number
   note: number
+  createdById: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -74,6 +77,7 @@ export type ResidentMinAggregateInputType = {
   moveInDate?: true
   moveOutDate?: true
   note?: true
+  createdById?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -87,6 +91,7 @@ export type ResidentMaxAggregateInputType = {
   moveInDate?: true
   moveOutDate?: true
   note?: true
+  createdById?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -100,6 +105,7 @@ export type ResidentCountAggregateInputType = {
   moveInDate?: true
   moveOutDate?: true
   note?: true
+  createdById?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -186,6 +192,7 @@ export type ResidentGroupByOutputType = {
   moveInDate: Date
   moveOutDate: Date | null
   note: string | null
+  createdById: string | null
   createdAt: Date
   updatedAt: Date
   _count: ResidentCountAggregateOutputType | null
@@ -220,14 +227,17 @@ export type ResidentWhereInput = {
   moveInDate?: Prisma.DateTimeFilter<"Resident"> | Date | string
   moveOutDate?: Prisma.DateTimeNullableFilter<"Resident"> | Date | string | null
   note?: Prisma.StringNullableFilter<"Resident"> | string | null
+  createdById?: Prisma.StringNullableFilter<"Resident"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Resident"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Resident"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   unit?: Prisma.XOR<Prisma.UnitScalarRelationFilter, Prisma.UnitWhereInput>
+  createdBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   familyMembers?: Prisma.FamilyMemberListRelationFilter
   emergencyContacts?: Prisma.EmergencyContactListRelationFilter
   visitors?: Prisma.VisitorListRelationFilter
   parcels?: Prisma.ParcelListRelationFilter
+  maintenanceTickets?: Prisma.MaintenanceTicketListRelationFilter
 }
 
 export type ResidentOrderByWithRelationInput = {
@@ -239,14 +249,17 @@ export type ResidentOrderByWithRelationInput = {
   moveInDate?: Prisma.SortOrder
   moveOutDate?: Prisma.SortOrderInput | Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
   unit?: Prisma.UnitOrderByWithRelationInput
+  createdBy?: Prisma.UserOrderByWithRelationInput
   familyMembers?: Prisma.FamilyMemberOrderByRelationAggregateInput
   emergencyContacts?: Prisma.EmergencyContactOrderByRelationAggregateInput
   visitors?: Prisma.VisitorOrderByRelationAggregateInput
   parcels?: Prisma.ParcelOrderByRelationAggregateInput
+  maintenanceTickets?: Prisma.MaintenanceTicketOrderByRelationAggregateInput
 }
 
 export type ResidentWhereUniqueInput = Prisma.AtLeast<{
@@ -261,14 +274,17 @@ export type ResidentWhereUniqueInput = Prisma.AtLeast<{
   moveInDate?: Prisma.DateTimeFilter<"Resident"> | Date | string
   moveOutDate?: Prisma.DateTimeNullableFilter<"Resident"> | Date | string | null
   note?: Prisma.StringNullableFilter<"Resident"> | string | null
+  createdById?: Prisma.StringNullableFilter<"Resident"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Resident"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Resident"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   unit?: Prisma.XOR<Prisma.UnitScalarRelationFilter, Prisma.UnitWhereInput>
+  createdBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   familyMembers?: Prisma.FamilyMemberListRelationFilter
   emergencyContacts?: Prisma.EmergencyContactListRelationFilter
   visitors?: Prisma.VisitorListRelationFilter
   parcels?: Prisma.ParcelListRelationFilter
+  maintenanceTickets?: Prisma.MaintenanceTicketListRelationFilter
 }, "id">
 
 export type ResidentOrderByWithAggregationInput = {
@@ -280,6 +296,7 @@ export type ResidentOrderByWithAggregationInput = {
   moveInDate?: Prisma.SortOrder
   moveOutDate?: Prisma.SortOrderInput | Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdById?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.ResidentCountOrderByAggregateInput
@@ -299,6 +316,7 @@ export type ResidentScalarWhereWithAggregatesInput = {
   moveInDate?: Prisma.DateTimeWithAggregatesFilter<"Resident"> | Date | string
   moveOutDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Resident"> | Date | string | null
   note?: Prisma.StringNullableWithAggregatesFilter<"Resident"> | string | null
+  createdById?: Prisma.StringNullableWithAggregatesFilter<"Resident"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Resident"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Resident"> | Date | string
 }
@@ -314,10 +332,12 @@ export type ResidentCreateInput = {
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutResidentsInput
   unit: Prisma.UnitCreateNestedOneWithoutResidentsInput
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedResidentsInput
   familyMembers?: Prisma.FamilyMemberCreateNestedManyWithoutResidentInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorCreateNestedManyWithoutResidentInput
   parcels?: Prisma.ParcelCreateNestedManyWithoutResidentInput
+  maintenanceTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentUncheckedCreateInput = {
@@ -329,12 +349,14 @@ export type ResidentUncheckedCreateInput = {
   moveInDate: Date | string
   moveOutDate?: Date | string | null
   note?: string | null
+  createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   familyMembers?: Prisma.FamilyMemberUncheckedCreateNestedManyWithoutResidentInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutResidentInput
   parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutResidentInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentUpdateInput = {
@@ -348,10 +370,12 @@ export type ResidentUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutResidentsNestedInput
   unit?: Prisma.UnitUpdateOneRequiredWithoutResidentsNestedInput
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedResidentsNestedInput
   familyMembers?: Prisma.FamilyMemberUpdateManyWithoutResidentNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUpdateManyWithoutResidentNestedInput
   parcels?: Prisma.ParcelUpdateManyWithoutResidentNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentUncheckedUpdateInput = {
@@ -363,12 +387,14 @@ export type ResidentUncheckedUpdateInput = {
   moveInDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   moveOutDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   familyMembers?: Prisma.FamilyMemberUncheckedUpdateManyWithoutResidentNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUncheckedUpdateManyWithoutResidentNestedInput
   parcels?: Prisma.ParcelUncheckedUpdateManyWithoutResidentNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentCreateManyInput = {
@@ -380,6 +406,7 @@ export type ResidentCreateManyInput = {
   moveInDate: Date | string
   moveOutDate?: Date | string | null
   note?: string | null
+  createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -404,6 +431,7 @@ export type ResidentUncheckedUpdateManyInput = {
   moveInDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   moveOutDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -432,6 +460,7 @@ export type ResidentCountOrderByAggregateInput = {
   moveInDate?: Prisma.SortOrder
   moveOutDate?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -445,6 +474,7 @@ export type ResidentMaxOrderByAggregateInput = {
   moveInDate?: Prisma.SortOrder
   moveOutDate?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -458,6 +488,7 @@ export type ResidentMinOrderByAggregateInput = {
   moveInDate?: Prisma.SortOrder
   moveOutDate?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -516,10 +547,24 @@ export type ResidentCreateNestedManyWithoutUserInput = {
   connect?: Prisma.ResidentWhereUniqueInput | Prisma.ResidentWhereUniqueInput[]
 }
 
+export type ResidentCreateNestedManyWithoutCreatedByInput = {
+  create?: Prisma.XOR<Prisma.ResidentCreateWithoutCreatedByInput, Prisma.ResidentUncheckedCreateWithoutCreatedByInput> | Prisma.ResidentCreateWithoutCreatedByInput[] | Prisma.ResidentUncheckedCreateWithoutCreatedByInput[]
+  connectOrCreate?: Prisma.ResidentCreateOrConnectWithoutCreatedByInput | Prisma.ResidentCreateOrConnectWithoutCreatedByInput[]
+  createMany?: Prisma.ResidentCreateManyCreatedByInputEnvelope
+  connect?: Prisma.ResidentWhereUniqueInput | Prisma.ResidentWhereUniqueInput[]
+}
+
 export type ResidentUncheckedCreateNestedManyWithoutUserInput = {
   create?: Prisma.XOR<Prisma.ResidentCreateWithoutUserInput, Prisma.ResidentUncheckedCreateWithoutUserInput> | Prisma.ResidentCreateWithoutUserInput[] | Prisma.ResidentUncheckedCreateWithoutUserInput[]
   connectOrCreate?: Prisma.ResidentCreateOrConnectWithoutUserInput | Prisma.ResidentCreateOrConnectWithoutUserInput[]
   createMany?: Prisma.ResidentCreateManyUserInputEnvelope
+  connect?: Prisma.ResidentWhereUniqueInput | Prisma.ResidentWhereUniqueInput[]
+}
+
+export type ResidentUncheckedCreateNestedManyWithoutCreatedByInput = {
+  create?: Prisma.XOR<Prisma.ResidentCreateWithoutCreatedByInput, Prisma.ResidentUncheckedCreateWithoutCreatedByInput> | Prisma.ResidentCreateWithoutCreatedByInput[] | Prisma.ResidentUncheckedCreateWithoutCreatedByInput[]
+  connectOrCreate?: Prisma.ResidentCreateOrConnectWithoutCreatedByInput | Prisma.ResidentCreateOrConnectWithoutCreatedByInput[]
+  createMany?: Prisma.ResidentCreateManyCreatedByInputEnvelope
   connect?: Prisma.ResidentWhereUniqueInput | Prisma.ResidentWhereUniqueInput[]
 }
 
@@ -537,6 +582,20 @@ export type ResidentUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.ResidentScalarWhereInput | Prisma.ResidentScalarWhereInput[]
 }
 
+export type ResidentUpdateManyWithoutCreatedByNestedInput = {
+  create?: Prisma.XOR<Prisma.ResidentCreateWithoutCreatedByInput, Prisma.ResidentUncheckedCreateWithoutCreatedByInput> | Prisma.ResidentCreateWithoutCreatedByInput[] | Prisma.ResidentUncheckedCreateWithoutCreatedByInput[]
+  connectOrCreate?: Prisma.ResidentCreateOrConnectWithoutCreatedByInput | Prisma.ResidentCreateOrConnectWithoutCreatedByInput[]
+  upsert?: Prisma.ResidentUpsertWithWhereUniqueWithoutCreatedByInput | Prisma.ResidentUpsertWithWhereUniqueWithoutCreatedByInput[]
+  createMany?: Prisma.ResidentCreateManyCreatedByInputEnvelope
+  set?: Prisma.ResidentWhereUniqueInput | Prisma.ResidentWhereUniqueInput[]
+  disconnect?: Prisma.ResidentWhereUniqueInput | Prisma.ResidentWhereUniqueInput[]
+  delete?: Prisma.ResidentWhereUniqueInput | Prisma.ResidentWhereUniqueInput[]
+  connect?: Prisma.ResidentWhereUniqueInput | Prisma.ResidentWhereUniqueInput[]
+  update?: Prisma.ResidentUpdateWithWhereUniqueWithoutCreatedByInput | Prisma.ResidentUpdateWithWhereUniqueWithoutCreatedByInput[]
+  updateMany?: Prisma.ResidentUpdateManyWithWhereWithoutCreatedByInput | Prisma.ResidentUpdateManyWithWhereWithoutCreatedByInput[]
+  deleteMany?: Prisma.ResidentScalarWhereInput | Prisma.ResidentScalarWhereInput[]
+}
+
 export type ResidentUncheckedUpdateManyWithoutUserNestedInput = {
   create?: Prisma.XOR<Prisma.ResidentCreateWithoutUserInput, Prisma.ResidentUncheckedCreateWithoutUserInput> | Prisma.ResidentCreateWithoutUserInput[] | Prisma.ResidentUncheckedCreateWithoutUserInput[]
   connectOrCreate?: Prisma.ResidentCreateOrConnectWithoutUserInput | Prisma.ResidentCreateOrConnectWithoutUserInput[]
@@ -548,6 +607,20 @@ export type ResidentUncheckedUpdateManyWithoutUserNestedInput = {
   connect?: Prisma.ResidentWhereUniqueInput | Prisma.ResidentWhereUniqueInput[]
   update?: Prisma.ResidentUpdateWithWhereUniqueWithoutUserInput | Prisma.ResidentUpdateWithWhereUniqueWithoutUserInput[]
   updateMany?: Prisma.ResidentUpdateManyWithWhereWithoutUserInput | Prisma.ResidentUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.ResidentScalarWhereInput | Prisma.ResidentScalarWhereInput[]
+}
+
+export type ResidentUncheckedUpdateManyWithoutCreatedByNestedInput = {
+  create?: Prisma.XOR<Prisma.ResidentCreateWithoutCreatedByInput, Prisma.ResidentUncheckedCreateWithoutCreatedByInput> | Prisma.ResidentCreateWithoutCreatedByInput[] | Prisma.ResidentUncheckedCreateWithoutCreatedByInput[]
+  connectOrCreate?: Prisma.ResidentCreateOrConnectWithoutCreatedByInput | Prisma.ResidentCreateOrConnectWithoutCreatedByInput[]
+  upsert?: Prisma.ResidentUpsertWithWhereUniqueWithoutCreatedByInput | Prisma.ResidentUpsertWithWhereUniqueWithoutCreatedByInput[]
+  createMany?: Prisma.ResidentCreateManyCreatedByInputEnvelope
+  set?: Prisma.ResidentWhereUniqueInput | Prisma.ResidentWhereUniqueInput[]
+  disconnect?: Prisma.ResidentWhereUniqueInput | Prisma.ResidentWhereUniqueInput[]
+  delete?: Prisma.ResidentWhereUniqueInput | Prisma.ResidentWhereUniqueInput[]
+  connect?: Prisma.ResidentWhereUniqueInput | Prisma.ResidentWhereUniqueInput[]
+  update?: Prisma.ResidentUpdateWithWhereUniqueWithoutCreatedByInput | Prisma.ResidentUpdateWithWhereUniqueWithoutCreatedByInput[]
+  updateMany?: Prisma.ResidentUpdateManyWithWhereWithoutCreatedByInput | Prisma.ResidentUpdateManyWithWhereWithoutCreatedByInput[]
   deleteMany?: Prisma.ResidentScalarWhereInput | Prisma.ResidentScalarWhereInput[]
 }
 
@@ -619,6 +692,22 @@ export type ResidentUpdateOneWithoutParcelsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ResidentUpdateToOneWithWhereWithoutParcelsInput, Prisma.ResidentUpdateWithoutParcelsInput>, Prisma.ResidentUncheckedUpdateWithoutParcelsInput>
 }
 
+export type ResidentCreateNestedOneWithoutMaintenanceTicketsInput = {
+  create?: Prisma.XOR<Prisma.ResidentCreateWithoutMaintenanceTicketsInput, Prisma.ResidentUncheckedCreateWithoutMaintenanceTicketsInput>
+  connectOrCreate?: Prisma.ResidentCreateOrConnectWithoutMaintenanceTicketsInput
+  connect?: Prisma.ResidentWhereUniqueInput
+}
+
+export type ResidentUpdateOneWithoutMaintenanceTicketsNestedInput = {
+  create?: Prisma.XOR<Prisma.ResidentCreateWithoutMaintenanceTicketsInput, Prisma.ResidentUncheckedCreateWithoutMaintenanceTicketsInput>
+  connectOrCreate?: Prisma.ResidentCreateOrConnectWithoutMaintenanceTicketsInput
+  upsert?: Prisma.ResidentUpsertWithoutMaintenanceTicketsInput
+  disconnect?: Prisma.ResidentWhereInput | boolean
+  delete?: Prisma.ResidentWhereInput | boolean
+  connect?: Prisma.ResidentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ResidentUpdateToOneWithWhereWithoutMaintenanceTicketsInput, Prisma.ResidentUpdateWithoutMaintenanceTicketsInput>, Prisma.ResidentUncheckedUpdateWithoutMaintenanceTicketsInput>
+}
+
 export type ResidentCreateWithoutUnitInput = {
   id?: string
   residentType: $Enums.ResidentType
@@ -629,10 +718,12 @@ export type ResidentCreateWithoutUnitInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutResidentsInput
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedResidentsInput
   familyMembers?: Prisma.FamilyMemberCreateNestedManyWithoutResidentInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorCreateNestedManyWithoutResidentInput
   parcels?: Prisma.ParcelCreateNestedManyWithoutResidentInput
+  maintenanceTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentUncheckedCreateWithoutUnitInput = {
@@ -643,12 +734,14 @@ export type ResidentUncheckedCreateWithoutUnitInput = {
   moveInDate: Date | string
   moveOutDate?: Date | string | null
   note?: string | null
+  createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   familyMembers?: Prisma.FamilyMemberUncheckedCreateNestedManyWithoutResidentInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutResidentInput
   parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutResidentInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentCreateOrConnectWithoutUnitInput = {
@@ -689,6 +782,7 @@ export type ResidentScalarWhereInput = {
   moveInDate?: Prisma.DateTimeFilter<"Resident"> | Date | string
   moveOutDate?: Prisma.DateTimeNullableFilter<"Resident"> | Date | string | null
   note?: Prisma.StringNullableFilter<"Resident"> | string | null
+  createdById?: Prisma.StringNullableFilter<"Resident"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Resident"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Resident"> | Date | string
 }
@@ -703,14 +797,63 @@ export type ResidentCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   unit: Prisma.UnitCreateNestedOneWithoutResidentsInput
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedResidentsInput
   familyMembers?: Prisma.FamilyMemberCreateNestedManyWithoutResidentInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorCreateNestedManyWithoutResidentInput
   parcels?: Prisma.ParcelCreateNestedManyWithoutResidentInput
+  maintenanceTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentUncheckedCreateWithoutUserInput = {
   id?: string
+  unitId: string
+  residentType: $Enums.ResidentType
+  status?: $Enums.ResidentStatus
+  moveInDate: Date | string
+  moveOutDate?: Date | string | null
+  note?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  familyMembers?: Prisma.FamilyMemberUncheckedCreateNestedManyWithoutResidentInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutResidentInput
+  visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutResidentInput
+  parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutResidentInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutResidentInput
+}
+
+export type ResidentCreateOrConnectWithoutUserInput = {
+  where: Prisma.ResidentWhereUniqueInput
+  create: Prisma.XOR<Prisma.ResidentCreateWithoutUserInput, Prisma.ResidentUncheckedCreateWithoutUserInput>
+}
+
+export type ResidentCreateManyUserInputEnvelope = {
+  data: Prisma.ResidentCreateManyUserInput | Prisma.ResidentCreateManyUserInput[]
+  skipDuplicates?: boolean
+}
+
+export type ResidentCreateWithoutCreatedByInput = {
+  id?: string
+  residentType: $Enums.ResidentType
+  status?: $Enums.ResidentStatus
+  moveInDate: Date | string
+  moveOutDate?: Date | string | null
+  note?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutResidentsInput
+  unit: Prisma.UnitCreateNestedOneWithoutResidentsInput
+  familyMembers?: Prisma.FamilyMemberCreateNestedManyWithoutResidentInput
+  emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutResidentInput
+  visitors?: Prisma.VisitorCreateNestedManyWithoutResidentInput
+  parcels?: Prisma.ParcelCreateNestedManyWithoutResidentInput
+  maintenanceTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutResidentInput
+}
+
+export type ResidentUncheckedCreateWithoutCreatedByInput = {
+  id?: string
+  userId: string
   unitId: string
   residentType: $Enums.ResidentType
   status?: $Enums.ResidentStatus
@@ -723,15 +866,16 @@ export type ResidentUncheckedCreateWithoutUserInput = {
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutResidentInput
   parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutResidentInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutResidentInput
 }
 
-export type ResidentCreateOrConnectWithoutUserInput = {
+export type ResidentCreateOrConnectWithoutCreatedByInput = {
   where: Prisma.ResidentWhereUniqueInput
-  create: Prisma.XOR<Prisma.ResidentCreateWithoutUserInput, Prisma.ResidentUncheckedCreateWithoutUserInput>
+  create: Prisma.XOR<Prisma.ResidentCreateWithoutCreatedByInput, Prisma.ResidentUncheckedCreateWithoutCreatedByInput>
 }
 
-export type ResidentCreateManyUserInputEnvelope = {
-  data: Prisma.ResidentCreateManyUserInput | Prisma.ResidentCreateManyUserInput[]
+export type ResidentCreateManyCreatedByInputEnvelope = {
+  data: Prisma.ResidentCreateManyCreatedByInput | Prisma.ResidentCreateManyCreatedByInput[]
   skipDuplicates?: boolean
 }
 
@@ -751,6 +895,22 @@ export type ResidentUpdateManyWithWhereWithoutUserInput = {
   data: Prisma.XOR<Prisma.ResidentUpdateManyMutationInput, Prisma.ResidentUncheckedUpdateManyWithoutUserInput>
 }
 
+export type ResidentUpsertWithWhereUniqueWithoutCreatedByInput = {
+  where: Prisma.ResidentWhereUniqueInput
+  update: Prisma.XOR<Prisma.ResidentUpdateWithoutCreatedByInput, Prisma.ResidentUncheckedUpdateWithoutCreatedByInput>
+  create: Prisma.XOR<Prisma.ResidentCreateWithoutCreatedByInput, Prisma.ResidentUncheckedCreateWithoutCreatedByInput>
+}
+
+export type ResidentUpdateWithWhereUniqueWithoutCreatedByInput = {
+  where: Prisma.ResidentWhereUniqueInput
+  data: Prisma.XOR<Prisma.ResidentUpdateWithoutCreatedByInput, Prisma.ResidentUncheckedUpdateWithoutCreatedByInput>
+}
+
+export type ResidentUpdateManyWithWhereWithoutCreatedByInput = {
+  where: Prisma.ResidentScalarWhereInput
+  data: Prisma.XOR<Prisma.ResidentUpdateManyMutationInput, Prisma.ResidentUncheckedUpdateManyWithoutCreatedByInput>
+}
+
 export type ResidentCreateWithoutVisitorsInput = {
   id?: string
   residentType: $Enums.ResidentType
@@ -762,9 +922,11 @@ export type ResidentCreateWithoutVisitorsInput = {
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutResidentsInput
   unit: Prisma.UnitCreateNestedOneWithoutResidentsInput
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedResidentsInput
   familyMembers?: Prisma.FamilyMemberCreateNestedManyWithoutResidentInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutResidentInput
   parcels?: Prisma.ParcelCreateNestedManyWithoutResidentInput
+  maintenanceTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentUncheckedCreateWithoutVisitorsInput = {
@@ -776,11 +938,13 @@ export type ResidentUncheckedCreateWithoutVisitorsInput = {
   moveInDate: Date | string
   moveOutDate?: Date | string | null
   note?: string | null
+  createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   familyMembers?: Prisma.FamilyMemberUncheckedCreateNestedManyWithoutResidentInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutResidentInput
   parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutResidentInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentCreateOrConnectWithoutVisitorsInput = {
@@ -810,9 +974,11 @@ export type ResidentUpdateWithoutVisitorsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutResidentsNestedInput
   unit?: Prisma.UnitUpdateOneRequiredWithoutResidentsNestedInput
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedResidentsNestedInput
   familyMembers?: Prisma.FamilyMemberUpdateManyWithoutResidentNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutResidentNestedInput
   parcels?: Prisma.ParcelUpdateManyWithoutResidentNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentUncheckedUpdateWithoutVisitorsInput = {
@@ -824,11 +990,13 @@ export type ResidentUncheckedUpdateWithoutVisitorsInput = {
   moveInDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   moveOutDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   familyMembers?: Prisma.FamilyMemberUncheckedUpdateManyWithoutResidentNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutResidentNestedInput
   parcels?: Prisma.ParcelUncheckedUpdateManyWithoutResidentNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentCreateWithoutFamilyMembersInput = {
@@ -842,9 +1010,11 @@ export type ResidentCreateWithoutFamilyMembersInput = {
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutResidentsInput
   unit: Prisma.UnitCreateNestedOneWithoutResidentsInput
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedResidentsInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorCreateNestedManyWithoutResidentInput
   parcels?: Prisma.ParcelCreateNestedManyWithoutResidentInput
+  maintenanceTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentUncheckedCreateWithoutFamilyMembersInput = {
@@ -856,11 +1026,13 @@ export type ResidentUncheckedCreateWithoutFamilyMembersInput = {
   moveInDate: Date | string
   moveOutDate?: Date | string | null
   note?: string | null
+  createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutResidentInput
   parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutResidentInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentCreateOrConnectWithoutFamilyMembersInput = {
@@ -890,9 +1062,11 @@ export type ResidentUpdateWithoutFamilyMembersInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutResidentsNestedInput
   unit?: Prisma.UnitUpdateOneRequiredWithoutResidentsNestedInput
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedResidentsNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUpdateManyWithoutResidentNestedInput
   parcels?: Prisma.ParcelUpdateManyWithoutResidentNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentUncheckedUpdateWithoutFamilyMembersInput = {
@@ -904,11 +1078,13 @@ export type ResidentUncheckedUpdateWithoutFamilyMembersInput = {
   moveInDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   moveOutDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUncheckedUpdateManyWithoutResidentNestedInput
   parcels?: Prisma.ParcelUncheckedUpdateManyWithoutResidentNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentCreateWithoutEmergencyContactsInput = {
@@ -922,9 +1098,11 @@ export type ResidentCreateWithoutEmergencyContactsInput = {
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutResidentsInput
   unit: Prisma.UnitCreateNestedOneWithoutResidentsInput
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedResidentsInput
   familyMembers?: Prisma.FamilyMemberCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorCreateNestedManyWithoutResidentInput
   parcels?: Prisma.ParcelCreateNestedManyWithoutResidentInput
+  maintenanceTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentUncheckedCreateWithoutEmergencyContactsInput = {
@@ -936,11 +1114,13 @@ export type ResidentUncheckedCreateWithoutEmergencyContactsInput = {
   moveInDate: Date | string
   moveOutDate?: Date | string | null
   note?: string | null
+  createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   familyMembers?: Prisma.FamilyMemberUncheckedCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutResidentInput
   parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutResidentInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentCreateOrConnectWithoutEmergencyContactsInput = {
@@ -970,9 +1150,11 @@ export type ResidentUpdateWithoutEmergencyContactsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutResidentsNestedInput
   unit?: Prisma.UnitUpdateOneRequiredWithoutResidentsNestedInput
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedResidentsNestedInput
   familyMembers?: Prisma.FamilyMemberUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUpdateManyWithoutResidentNestedInput
   parcels?: Prisma.ParcelUpdateManyWithoutResidentNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentUncheckedUpdateWithoutEmergencyContactsInput = {
@@ -984,11 +1166,13 @@ export type ResidentUncheckedUpdateWithoutEmergencyContactsInput = {
   moveInDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   moveOutDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   familyMembers?: Prisma.FamilyMemberUncheckedUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUncheckedUpdateManyWithoutResidentNestedInput
   parcels?: Prisma.ParcelUncheckedUpdateManyWithoutResidentNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentCreateWithoutParcelsInput = {
@@ -1002,9 +1186,11 @@ export type ResidentCreateWithoutParcelsInput = {
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutResidentsInput
   unit: Prisma.UnitCreateNestedOneWithoutResidentsInput
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedResidentsInput
   familyMembers?: Prisma.FamilyMemberCreateNestedManyWithoutResidentInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorCreateNestedManyWithoutResidentInput
+  maintenanceTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentUncheckedCreateWithoutParcelsInput = {
@@ -1016,11 +1202,13 @@ export type ResidentUncheckedCreateWithoutParcelsInput = {
   moveInDate: Date | string
   moveOutDate?: Date | string | null
   note?: string | null
+  createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   familyMembers?: Prisma.FamilyMemberUncheckedCreateNestedManyWithoutResidentInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutResidentInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentCreateOrConnectWithoutParcelsInput = {
@@ -1050,9 +1238,11 @@ export type ResidentUpdateWithoutParcelsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutResidentsNestedInput
   unit?: Prisma.UnitUpdateOneRequiredWithoutResidentsNestedInput
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedResidentsNestedInput
   familyMembers?: Prisma.FamilyMemberUpdateManyWithoutResidentNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUpdateManyWithoutResidentNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentUncheckedUpdateWithoutParcelsInput = {
@@ -1064,11 +1254,101 @@ export type ResidentUncheckedUpdateWithoutParcelsInput = {
   moveInDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   moveOutDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   familyMembers?: Prisma.FamilyMemberUncheckedUpdateManyWithoutResidentNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUncheckedUpdateManyWithoutResidentNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutResidentNestedInput
+}
+
+export type ResidentCreateWithoutMaintenanceTicketsInput = {
+  id?: string
+  residentType: $Enums.ResidentType
+  status?: $Enums.ResidentStatus
+  moveInDate: Date | string
+  moveOutDate?: Date | string | null
+  note?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutResidentsInput
+  unit: Prisma.UnitCreateNestedOneWithoutResidentsInput
+  createdBy?: Prisma.UserCreateNestedOneWithoutCreatedResidentsInput
+  familyMembers?: Prisma.FamilyMemberCreateNestedManyWithoutResidentInput
+  emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutResidentInput
+  visitors?: Prisma.VisitorCreateNestedManyWithoutResidentInput
+  parcels?: Prisma.ParcelCreateNestedManyWithoutResidentInput
+}
+
+export type ResidentUncheckedCreateWithoutMaintenanceTicketsInput = {
+  id?: string
+  userId: string
+  unitId: string
+  residentType: $Enums.ResidentType
+  status?: $Enums.ResidentStatus
+  moveInDate: Date | string
+  moveOutDate?: Date | string | null
+  note?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  familyMembers?: Prisma.FamilyMemberUncheckedCreateNestedManyWithoutResidentInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutResidentInput
+  visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutResidentInput
+  parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutResidentInput
+}
+
+export type ResidentCreateOrConnectWithoutMaintenanceTicketsInput = {
+  where: Prisma.ResidentWhereUniqueInput
+  create: Prisma.XOR<Prisma.ResidentCreateWithoutMaintenanceTicketsInput, Prisma.ResidentUncheckedCreateWithoutMaintenanceTicketsInput>
+}
+
+export type ResidentUpsertWithoutMaintenanceTicketsInput = {
+  update: Prisma.XOR<Prisma.ResidentUpdateWithoutMaintenanceTicketsInput, Prisma.ResidentUncheckedUpdateWithoutMaintenanceTicketsInput>
+  create: Prisma.XOR<Prisma.ResidentCreateWithoutMaintenanceTicketsInput, Prisma.ResidentUncheckedCreateWithoutMaintenanceTicketsInput>
+  where?: Prisma.ResidentWhereInput
+}
+
+export type ResidentUpdateToOneWithWhereWithoutMaintenanceTicketsInput = {
+  where?: Prisma.ResidentWhereInput
+  data: Prisma.XOR<Prisma.ResidentUpdateWithoutMaintenanceTicketsInput, Prisma.ResidentUncheckedUpdateWithoutMaintenanceTicketsInput>
+}
+
+export type ResidentUpdateWithoutMaintenanceTicketsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  residentType?: Prisma.EnumResidentTypeFieldUpdateOperationsInput | $Enums.ResidentType
+  status?: Prisma.EnumResidentStatusFieldUpdateOperationsInput | $Enums.ResidentStatus
+  moveInDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  moveOutDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutResidentsNestedInput
+  unit?: Prisma.UnitUpdateOneRequiredWithoutResidentsNestedInput
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedResidentsNestedInput
+  familyMembers?: Prisma.FamilyMemberUpdateManyWithoutResidentNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutResidentNestedInput
+  visitors?: Prisma.VisitorUpdateManyWithoutResidentNestedInput
+  parcels?: Prisma.ParcelUpdateManyWithoutResidentNestedInput
+}
+
+export type ResidentUncheckedUpdateWithoutMaintenanceTicketsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  unitId?: Prisma.StringFieldUpdateOperationsInput | string
+  residentType?: Prisma.EnumResidentTypeFieldUpdateOperationsInput | $Enums.ResidentType
+  status?: Prisma.EnumResidentStatusFieldUpdateOperationsInput | $Enums.ResidentStatus
+  moveInDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  moveOutDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  familyMembers?: Prisma.FamilyMemberUncheckedUpdateManyWithoutResidentNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutResidentNestedInput
+  visitors?: Prisma.VisitorUncheckedUpdateManyWithoutResidentNestedInput
+  parcels?: Prisma.ParcelUncheckedUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentCreateManyUnitInput = {
@@ -1079,6 +1359,7 @@ export type ResidentCreateManyUnitInput = {
   moveInDate: Date | string
   moveOutDate?: Date | string | null
   note?: string | null
+  createdById?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1093,10 +1374,12 @@ export type ResidentUpdateWithoutUnitInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutResidentsNestedInput
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedResidentsNestedInput
   familyMembers?: Prisma.FamilyMemberUpdateManyWithoutResidentNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUpdateManyWithoutResidentNestedInput
   parcels?: Prisma.ParcelUpdateManyWithoutResidentNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentUncheckedUpdateWithoutUnitInput = {
@@ -1107,12 +1390,14 @@ export type ResidentUncheckedUpdateWithoutUnitInput = {
   moveInDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   moveOutDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   familyMembers?: Prisma.FamilyMemberUncheckedUpdateManyWithoutResidentNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUncheckedUpdateManyWithoutResidentNestedInput
   parcels?: Prisma.ParcelUncheckedUpdateManyWithoutResidentNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentUncheckedUpdateManyWithoutUnitInput = {
@@ -1123,12 +1408,27 @@ export type ResidentUncheckedUpdateManyWithoutUnitInput = {
   moveInDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   moveOutDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ResidentCreateManyUserInput = {
   id?: string
+  unitId: string
+  residentType: $Enums.ResidentType
+  status?: $Enums.ResidentStatus
+  moveInDate: Date | string
+  moveOutDate?: Date | string | null
+  note?: string | null
+  createdById?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type ResidentCreateManyCreatedByInput = {
+  id?: string
+  userId: string
   unitId: string
   residentType: $Enums.ResidentType
   status?: $Enums.ResidentStatus
@@ -1149,14 +1449,66 @@ export type ResidentUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   unit?: Prisma.UnitUpdateOneRequiredWithoutResidentsNestedInput
+  createdBy?: Prisma.UserUpdateOneWithoutCreatedResidentsNestedInput
   familyMembers?: Prisma.FamilyMemberUpdateManyWithoutResidentNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUpdateManyWithoutResidentNestedInput
   parcels?: Prisma.ParcelUpdateManyWithoutResidentNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  unitId?: Prisma.StringFieldUpdateOperationsInput | string
+  residentType?: Prisma.EnumResidentTypeFieldUpdateOperationsInput | $Enums.ResidentType
+  status?: Prisma.EnumResidentStatusFieldUpdateOperationsInput | $Enums.ResidentStatus
+  moveInDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  moveOutDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  familyMembers?: Prisma.FamilyMemberUncheckedUpdateManyWithoutResidentNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutResidentNestedInput
+  visitors?: Prisma.VisitorUncheckedUpdateManyWithoutResidentNestedInput
+  parcels?: Prisma.ParcelUncheckedUpdateManyWithoutResidentNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutResidentNestedInput
+}
+
+export type ResidentUncheckedUpdateManyWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  unitId?: Prisma.StringFieldUpdateOperationsInput | string
+  residentType?: Prisma.EnumResidentTypeFieldUpdateOperationsInput | $Enums.ResidentType
+  status?: Prisma.EnumResidentStatusFieldUpdateOperationsInput | $Enums.ResidentStatus
+  moveInDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  moveOutDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type ResidentUpdateWithoutCreatedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  residentType?: Prisma.EnumResidentTypeFieldUpdateOperationsInput | $Enums.ResidentType
+  status?: Prisma.EnumResidentStatusFieldUpdateOperationsInput | $Enums.ResidentStatus
+  moveInDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  moveOutDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutResidentsNestedInput
+  unit?: Prisma.UnitUpdateOneRequiredWithoutResidentsNestedInput
+  familyMembers?: Prisma.FamilyMemberUpdateManyWithoutResidentNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutResidentNestedInput
+  visitors?: Prisma.VisitorUpdateManyWithoutResidentNestedInput
+  parcels?: Prisma.ParcelUpdateManyWithoutResidentNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUpdateManyWithoutResidentNestedInput
+}
+
+export type ResidentUncheckedUpdateWithoutCreatedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   unitId?: Prisma.StringFieldUpdateOperationsInput | string
   residentType?: Prisma.EnumResidentTypeFieldUpdateOperationsInput | $Enums.ResidentType
   status?: Prisma.EnumResidentStatusFieldUpdateOperationsInput | $Enums.ResidentStatus
@@ -1169,10 +1521,12 @@ export type ResidentUncheckedUpdateWithoutUserInput = {
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUncheckedUpdateManyWithoutResidentNestedInput
   parcels?: Prisma.ParcelUncheckedUpdateManyWithoutResidentNestedInput
+  maintenanceTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutResidentNestedInput
 }
 
-export type ResidentUncheckedUpdateManyWithoutUserInput = {
+export type ResidentUncheckedUpdateManyWithoutCreatedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   unitId?: Prisma.StringFieldUpdateOperationsInput | string
   residentType?: Prisma.EnumResidentTypeFieldUpdateOperationsInput | $Enums.ResidentType
   status?: Prisma.EnumResidentStatusFieldUpdateOperationsInput | $Enums.ResidentStatus
@@ -1193,6 +1547,7 @@ export type ResidentCountOutputType = {
   emergencyContacts: number
   visitors: number
   parcels: number
+  maintenanceTickets: number
 }
 
 export type ResidentCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1200,6 +1555,7 @@ export type ResidentCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensio
   emergencyContacts?: boolean | ResidentCountOutputTypeCountEmergencyContactsArgs
   visitors?: boolean | ResidentCountOutputTypeCountVisitorsArgs
   parcels?: boolean | ResidentCountOutputTypeCountParcelsArgs
+  maintenanceTickets?: boolean | ResidentCountOutputTypeCountMaintenanceTicketsArgs
 }
 
 /**
@@ -1240,6 +1596,13 @@ export type ResidentCountOutputTypeCountParcelsArgs<ExtArgs extends runtime.Type
   where?: Prisma.ParcelWhereInput
 }
 
+/**
+ * ResidentCountOutputType without action
+ */
+export type ResidentCountOutputTypeCountMaintenanceTicketsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MaintenanceTicketWhereInput
+}
+
 
 export type ResidentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1250,14 +1613,17 @@ export type ResidentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   moveInDate?: boolean
   moveOutDate?: boolean
   note?: boolean
+  createdById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   unit?: boolean | Prisma.UnitDefaultArgs<ExtArgs>
+  createdBy?: boolean | Prisma.Resident$createdByArgs<ExtArgs>
   familyMembers?: boolean | Prisma.Resident$familyMembersArgs<ExtArgs>
   emergencyContacts?: boolean | Prisma.Resident$emergencyContactsArgs<ExtArgs>
   visitors?: boolean | Prisma.Resident$visitorsArgs<ExtArgs>
   parcels?: boolean | Prisma.Resident$parcelsArgs<ExtArgs>
+  maintenanceTickets?: boolean | Prisma.Resident$maintenanceTicketsArgs<ExtArgs>
   _count?: boolean | Prisma.ResidentCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["resident"]>
 
@@ -1270,10 +1636,12 @@ export type ResidentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   moveInDate?: boolean
   moveOutDate?: boolean
   note?: boolean
+  createdById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   unit?: boolean | Prisma.UnitDefaultArgs<ExtArgs>
+  createdBy?: boolean | Prisma.Resident$createdByArgs<ExtArgs>
 }, ExtArgs["result"]["resident"]>
 
 export type ResidentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1285,10 +1653,12 @@ export type ResidentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   moveInDate?: boolean
   moveOutDate?: boolean
   note?: boolean
+  createdById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   unit?: boolean | Prisma.UnitDefaultArgs<ExtArgs>
+  createdBy?: boolean | Prisma.Resident$createdByArgs<ExtArgs>
 }, ExtArgs["result"]["resident"]>
 
 export type ResidentSelectScalar = {
@@ -1300,27 +1670,32 @@ export type ResidentSelectScalar = {
   moveInDate?: boolean
   moveOutDate?: boolean
   note?: boolean
+  createdById?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ResidentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "unitId" | "residentType" | "status" | "moveInDate" | "moveOutDate" | "note" | "createdAt" | "updatedAt", ExtArgs["result"]["resident"]>
+export type ResidentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "unitId" | "residentType" | "status" | "moveInDate" | "moveOutDate" | "note" | "createdById" | "createdAt" | "updatedAt", ExtArgs["result"]["resident"]>
 export type ResidentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   unit?: boolean | Prisma.UnitDefaultArgs<ExtArgs>
+  createdBy?: boolean | Prisma.Resident$createdByArgs<ExtArgs>
   familyMembers?: boolean | Prisma.Resident$familyMembersArgs<ExtArgs>
   emergencyContacts?: boolean | Prisma.Resident$emergencyContactsArgs<ExtArgs>
   visitors?: boolean | Prisma.Resident$visitorsArgs<ExtArgs>
   parcels?: boolean | Prisma.Resident$parcelsArgs<ExtArgs>
+  maintenanceTickets?: boolean | Prisma.Resident$maintenanceTicketsArgs<ExtArgs>
   _count?: boolean | Prisma.ResidentCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ResidentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   unit?: boolean | Prisma.UnitDefaultArgs<ExtArgs>
+  createdBy?: boolean | Prisma.Resident$createdByArgs<ExtArgs>
 }
 export type ResidentIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   unit?: boolean | Prisma.UnitDefaultArgs<ExtArgs>
+  createdBy?: boolean | Prisma.Resident$createdByArgs<ExtArgs>
 }
 
 export type $ResidentPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1328,10 +1703,12 @@ export type $ResidentPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
     unit: Prisma.$UnitPayload<ExtArgs>
+    createdBy: Prisma.$UserPayload<ExtArgs> | null
     familyMembers: Prisma.$FamilyMemberPayload<ExtArgs>[]
     emergencyContacts: Prisma.$EmergencyContactPayload<ExtArgs>[]
     visitors: Prisma.$VisitorPayload<ExtArgs>[]
     parcels: Prisma.$ParcelPayload<ExtArgs>[]
+    maintenanceTickets: Prisma.$MaintenanceTicketPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1342,6 +1719,7 @@ export type $ResidentPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     moveInDate: Date
     moveOutDate: Date | null
     note: string | null
+    createdById: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["resident"]>
@@ -1740,10 +2118,12 @@ export interface Prisma__ResidentClient<T, Null = never, ExtArgs extends runtime
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   unit<T extends Prisma.UnitDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UnitDefaultArgs<ExtArgs>>): Prisma.Prisma__UnitClient<runtime.Types.Result.GetResult<Prisma.$UnitPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  createdBy<T extends Prisma.Resident$createdByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Resident$createdByArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   familyMembers<T extends Prisma.Resident$familyMembersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Resident$familyMembersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FamilyMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   emergencyContacts<T extends Prisma.Resident$emergencyContactsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Resident$emergencyContactsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EmergencyContactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   visitors<T extends Prisma.Resident$visitorsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Resident$visitorsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VisitorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   parcels<T extends Prisma.Resident$parcelsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Resident$parcelsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ParcelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  maintenanceTickets<T extends Prisma.Resident$maintenanceTicketsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Resident$maintenanceTicketsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MaintenanceTicketPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1781,6 +2161,7 @@ export interface ResidentFieldRefs {
   readonly moveInDate: Prisma.FieldRef<"Resident", 'DateTime'>
   readonly moveOutDate: Prisma.FieldRef<"Resident", 'DateTime'>
   readonly note: Prisma.FieldRef<"Resident", 'String'>
+  readonly createdById: Prisma.FieldRef<"Resident", 'String'>
   readonly createdAt: Prisma.FieldRef<"Resident", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Resident", 'DateTime'>
 }
@@ -2184,6 +2565,25 @@ export type ResidentDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
+ * Resident.createdBy
+ */
+export type Resident$createdByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
  * Resident.familyMembers
  */
 export type Resident$familyMembersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2277,6 +2677,30 @@ export type Resident$parcelsArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.ParcelScalarFieldEnum | Prisma.ParcelScalarFieldEnum[]
+}
+
+/**
+ * Resident.maintenanceTickets
+ */
+export type Resident$maintenanceTicketsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MaintenanceTicket
+   */
+  select?: Prisma.MaintenanceTicketSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MaintenanceTicket
+   */
+  omit?: Prisma.MaintenanceTicketOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MaintenanceTicketInclude<ExtArgs> | null
+  where?: Prisma.MaintenanceTicketWhereInput
+  orderBy?: Prisma.MaintenanceTicketOrderByWithRelationInput | Prisma.MaintenanceTicketOrderByWithRelationInput[]
+  cursor?: Prisma.MaintenanceTicketWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MaintenanceTicketScalarFieldEnum | Prisma.MaintenanceTicketScalarFieldEnum[]
 }
 
 /**

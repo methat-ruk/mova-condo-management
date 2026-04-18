@@ -123,20 +123,37 @@ export default function AnnouncementsPage() {
           onChange={(e) => setSearch(e.target.value)}
           className="border-input bg-background text-foreground placeholder:text-muted-foreground focus:ring-ring h-9 w-full min-w-0 rounded-lg border px-3 text-sm focus:ring-2 focus:outline-none sm:flex-1"
         />
-        <div className="flex shrink-0 gap-1">
-          {(["", "ACTIVE", "EXPIRED"] as const).map((s) => (
-            <button
-              key={s}
-              onClick={() => setStatusFilter(s)}
-              className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
-                statusFilter === s
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-muted text-muted-foreground hover:bg-muted/80"
-              }`}
-            >
-              {s === "" ? t("filterAll") : s === "ACTIVE" ? t("filterActive") : t("filterExpired")}
-            </button>
-          ))}
+        <div className="flex w-full gap-1 sm:w-auto sm:shrink-0">
+          <button
+            onClick={() => setStatusFilter("")}
+            className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
+              statusFilter === ""
+                ? "bg-primary text-primary-foreground"
+                : "bg-muted text-muted-foreground hover:bg-muted/80"
+            }`}
+          >
+            {t("filterAll")}
+          </button>
+          <button
+            onClick={() => setStatusFilter("ACTIVE")}
+            className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
+              statusFilter === "ACTIVE"
+                ? "bg-green-600 text-white dark:bg-green-500"
+                : "bg-muted text-muted-foreground hover:bg-muted/80"
+            }`}
+          >
+            {t("filterActive")}
+          </button>
+          <button
+            onClick={() => setStatusFilter("EXPIRED")}
+            className={`flex-1 cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:flex-none ${
+              statusFilter === "EXPIRED"
+                ? "bg-slate-500 text-white dark:bg-slate-400 dark:text-slate-900"
+                : "bg-muted text-muted-foreground hover:bg-muted/80"
+            }`}
+          >
+            {t("filterExpired")}
+          </button>
         </div>
       </div>
 

@@ -394,7 +394,9 @@ export const ModelName = {
   EmergencyContact: 'EmergencyContact',
   Announcement: 'Announcement',
   AnnouncementRead: 'AnnouncementRead',
-  Parcel: 'Parcel'
+  Parcel: 'Parcel',
+  MaintenanceTicket: 'MaintenanceTicket',
+  MaintenanceTicketLog: 'MaintenanceTicketLog'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -410,7 +412,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "building" | "floor" | "unit" | "user" | "visitor" | "resident" | "familyMember" | "emergencyContact" | "announcement" | "announcementRead" | "parcel"
+    modelProps: "building" | "floor" | "unit" | "user" | "visitor" | "resident" | "familyMember" | "emergencyContact" | "announcement" | "announcementRead" | "parcel" | "maintenanceTicket" | "maintenanceTicketLog"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1228,6 +1230,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    MaintenanceTicket: {
+      payload: Prisma.$MaintenanceTicketPayload<ExtArgs>
+      fields: Prisma.MaintenanceTicketFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MaintenanceTicketFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MaintenanceTicketFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketPayload>
+        }
+        findFirst: {
+          args: Prisma.MaintenanceTicketFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MaintenanceTicketFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketPayload>
+        }
+        findMany: {
+          args: Prisma.MaintenanceTicketFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketPayload>[]
+        }
+        create: {
+          args: Prisma.MaintenanceTicketCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketPayload>
+        }
+        createMany: {
+          args: Prisma.MaintenanceTicketCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MaintenanceTicketCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketPayload>[]
+        }
+        delete: {
+          args: Prisma.MaintenanceTicketDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketPayload>
+        }
+        update: {
+          args: Prisma.MaintenanceTicketUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketPayload>
+        }
+        deleteMany: {
+          args: Prisma.MaintenanceTicketDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MaintenanceTicketUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MaintenanceTicketUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketPayload>[]
+        }
+        upsert: {
+          args: Prisma.MaintenanceTicketUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketPayload>
+        }
+        aggregate: {
+          args: Prisma.MaintenanceTicketAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMaintenanceTicket>
+        }
+        groupBy: {
+          args: Prisma.MaintenanceTicketGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MaintenanceTicketGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MaintenanceTicketCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MaintenanceTicketCountAggregateOutputType> | number
+        }
+      }
+    }
+    MaintenanceTicketLog: {
+      payload: Prisma.$MaintenanceTicketLogPayload<ExtArgs>
+      fields: Prisma.MaintenanceTicketLogFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MaintenanceTicketLogFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketLogPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MaintenanceTicketLogFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketLogPayload>
+        }
+        findFirst: {
+          args: Prisma.MaintenanceTicketLogFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketLogPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MaintenanceTicketLogFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketLogPayload>
+        }
+        findMany: {
+          args: Prisma.MaintenanceTicketLogFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketLogPayload>[]
+        }
+        create: {
+          args: Prisma.MaintenanceTicketLogCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketLogPayload>
+        }
+        createMany: {
+          args: Prisma.MaintenanceTicketLogCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MaintenanceTicketLogCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketLogPayload>[]
+        }
+        delete: {
+          args: Prisma.MaintenanceTicketLogDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketLogPayload>
+        }
+        update: {
+          args: Prisma.MaintenanceTicketLogUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketLogPayload>
+        }
+        deleteMany: {
+          args: Prisma.MaintenanceTicketLogDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MaintenanceTicketLogUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MaintenanceTicketLogUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketLogPayload>[]
+        }
+        upsert: {
+          args: Prisma.MaintenanceTicketLogUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceTicketLogPayload>
+        }
+        aggregate: {
+          args: Prisma.MaintenanceTicketLogAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMaintenanceTicketLog>
+        }
+        groupBy: {
+          args: Prisma.MaintenanceTicketLogGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MaintenanceTicketLogGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MaintenanceTicketLogCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MaintenanceTicketLogCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1353,6 +1503,7 @@ export const ResidentScalarFieldEnum = {
   moveInDate: 'moveInDate',
   moveOutDate: 'moveOutDate',
   note: 'note',
+  createdById: 'createdById',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -1429,6 +1580,38 @@ export const ParcelScalarFieldEnum = {
 } as const
 
 export type ParcelScalarFieldEnum = (typeof ParcelScalarFieldEnum)[keyof typeof ParcelScalarFieldEnum]
+
+
+export const MaintenanceTicketScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  category: 'category',
+  status: 'status',
+  unitId: 'unitId',
+  residentId: 'residentId',
+  assignedToId: 'assignedToId',
+  reportedById: 'reportedById',
+  resolvedAt: 'resolvedAt',
+  note: 'note',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MaintenanceTicketScalarFieldEnum = (typeof MaintenanceTicketScalarFieldEnum)[keyof typeof MaintenanceTicketScalarFieldEnum]
+
+
+export const MaintenanceTicketLogScalarFieldEnum = {
+  id: 'id',
+  ticketId: 'ticketId',
+  userId: 'userId',
+  action: 'action',
+  oldValue: 'oldValue',
+  newValue: 'newValue',
+  createdAt: 'createdAt'
+} as const
+
+export type MaintenanceTicketLogScalarFieldEnum = (typeof MaintenanceTicketLogScalarFieldEnum)[keyof typeof MaintenanceTicketLogScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1621,6 +1804,34 @@ export type EnumParcelStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Pri
 export type ListEnumParcelStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ParcelStatus[]'>
     
 
+
+/**
+ * Reference to a field of type 'MaintenanceCategory'
+ */
+export type EnumMaintenanceCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MaintenanceCategory'>
+    
+
+
+/**
+ * Reference to a field of type 'MaintenanceCategory[]'
+ */
+export type ListEnumMaintenanceCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MaintenanceCategory[]'>
+    
+
+
+/**
+ * Reference to a field of type 'MaintenanceStatus'
+ */
+export type EnumMaintenanceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MaintenanceStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'MaintenanceStatus[]'
+ */
+export type ListEnumMaintenanceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MaintenanceStatus[]'>
+    
+
 /**
  * Batch Payload for updateMany & deleteMany & createMany
  */
@@ -1727,6 +1938,8 @@ export type GlobalOmitConfig = {
   announcement?: Prisma.AnnouncementOmit
   announcementRead?: Prisma.AnnouncementReadOmit
   parcel?: Prisma.ParcelOmit
+  maintenanceTicket?: Prisma.MaintenanceTicketOmit
+  maintenanceTicketLog?: Prisma.MaintenanceTicketLogOmit
 }
 
 /* Types for Logging */
