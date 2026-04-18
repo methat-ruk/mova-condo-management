@@ -227,6 +227,7 @@ export type ResidentWhereInput = {
   familyMembers?: Prisma.FamilyMemberListRelationFilter
   emergencyContacts?: Prisma.EmergencyContactListRelationFilter
   visitors?: Prisma.VisitorListRelationFilter
+  parcels?: Prisma.ParcelListRelationFilter
 }
 
 export type ResidentOrderByWithRelationInput = {
@@ -245,6 +246,7 @@ export type ResidentOrderByWithRelationInput = {
   familyMembers?: Prisma.FamilyMemberOrderByRelationAggregateInput
   emergencyContacts?: Prisma.EmergencyContactOrderByRelationAggregateInput
   visitors?: Prisma.VisitorOrderByRelationAggregateInput
+  parcels?: Prisma.ParcelOrderByRelationAggregateInput
 }
 
 export type ResidentWhereUniqueInput = Prisma.AtLeast<{
@@ -266,6 +268,7 @@ export type ResidentWhereUniqueInput = Prisma.AtLeast<{
   familyMembers?: Prisma.FamilyMemberListRelationFilter
   emergencyContacts?: Prisma.EmergencyContactListRelationFilter
   visitors?: Prisma.VisitorListRelationFilter
+  parcels?: Prisma.ParcelListRelationFilter
 }, "id">
 
 export type ResidentOrderByWithAggregationInput = {
@@ -314,6 +317,7 @@ export type ResidentCreateInput = {
   familyMembers?: Prisma.FamilyMemberCreateNestedManyWithoutResidentInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorCreateNestedManyWithoutResidentInput
+  parcels?: Prisma.ParcelCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentUncheckedCreateInput = {
@@ -330,6 +334,7 @@ export type ResidentUncheckedCreateInput = {
   familyMembers?: Prisma.FamilyMemberUncheckedCreateNestedManyWithoutResidentInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutResidentInput
+  parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentUpdateInput = {
@@ -346,6 +351,7 @@ export type ResidentUpdateInput = {
   familyMembers?: Prisma.FamilyMemberUpdateManyWithoutResidentNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUpdateManyWithoutResidentNestedInput
+  parcels?: Prisma.ParcelUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentUncheckedUpdateInput = {
@@ -362,6 +368,7 @@ export type ResidentUncheckedUpdateInput = {
   familyMembers?: Prisma.FamilyMemberUncheckedUpdateManyWithoutResidentNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUncheckedUpdateManyWithoutResidentNestedInput
+  parcels?: Prisma.ParcelUncheckedUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentCreateManyInput = {
@@ -596,6 +603,22 @@ export type ResidentUpdateOneRequiredWithoutEmergencyContactsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ResidentUpdateToOneWithWhereWithoutEmergencyContactsInput, Prisma.ResidentUpdateWithoutEmergencyContactsInput>, Prisma.ResidentUncheckedUpdateWithoutEmergencyContactsInput>
 }
 
+export type ResidentCreateNestedOneWithoutParcelsInput = {
+  create?: Prisma.XOR<Prisma.ResidentCreateWithoutParcelsInput, Prisma.ResidentUncheckedCreateWithoutParcelsInput>
+  connectOrCreate?: Prisma.ResidentCreateOrConnectWithoutParcelsInput
+  connect?: Prisma.ResidentWhereUniqueInput
+}
+
+export type ResidentUpdateOneWithoutParcelsNestedInput = {
+  create?: Prisma.XOR<Prisma.ResidentCreateWithoutParcelsInput, Prisma.ResidentUncheckedCreateWithoutParcelsInput>
+  connectOrCreate?: Prisma.ResidentCreateOrConnectWithoutParcelsInput
+  upsert?: Prisma.ResidentUpsertWithoutParcelsInput
+  disconnect?: Prisma.ResidentWhereInput | boolean
+  delete?: Prisma.ResidentWhereInput | boolean
+  connect?: Prisma.ResidentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ResidentUpdateToOneWithWhereWithoutParcelsInput, Prisma.ResidentUpdateWithoutParcelsInput>, Prisma.ResidentUncheckedUpdateWithoutParcelsInput>
+}
+
 export type ResidentCreateWithoutUnitInput = {
   id?: string
   residentType: $Enums.ResidentType
@@ -609,6 +632,7 @@ export type ResidentCreateWithoutUnitInput = {
   familyMembers?: Prisma.FamilyMemberCreateNestedManyWithoutResidentInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorCreateNestedManyWithoutResidentInput
+  parcels?: Prisma.ParcelCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentUncheckedCreateWithoutUnitInput = {
@@ -624,6 +648,7 @@ export type ResidentUncheckedCreateWithoutUnitInput = {
   familyMembers?: Prisma.FamilyMemberUncheckedCreateNestedManyWithoutResidentInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutResidentInput
+  parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentCreateOrConnectWithoutUnitInput = {
@@ -681,6 +706,7 @@ export type ResidentCreateWithoutUserInput = {
   familyMembers?: Prisma.FamilyMemberCreateNestedManyWithoutResidentInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorCreateNestedManyWithoutResidentInput
+  parcels?: Prisma.ParcelCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentUncheckedCreateWithoutUserInput = {
@@ -696,6 +722,7 @@ export type ResidentUncheckedCreateWithoutUserInput = {
   familyMembers?: Prisma.FamilyMemberUncheckedCreateNestedManyWithoutResidentInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutResidentInput
+  parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentCreateOrConnectWithoutUserInput = {
@@ -737,6 +764,7 @@ export type ResidentCreateWithoutVisitorsInput = {
   unit: Prisma.UnitCreateNestedOneWithoutResidentsInput
   familyMembers?: Prisma.FamilyMemberCreateNestedManyWithoutResidentInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutResidentInput
+  parcels?: Prisma.ParcelCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentUncheckedCreateWithoutVisitorsInput = {
@@ -752,6 +780,7 @@ export type ResidentUncheckedCreateWithoutVisitorsInput = {
   updatedAt?: Date | string
   familyMembers?: Prisma.FamilyMemberUncheckedCreateNestedManyWithoutResidentInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutResidentInput
+  parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentCreateOrConnectWithoutVisitorsInput = {
@@ -783,6 +812,7 @@ export type ResidentUpdateWithoutVisitorsInput = {
   unit?: Prisma.UnitUpdateOneRequiredWithoutResidentsNestedInput
   familyMembers?: Prisma.FamilyMemberUpdateManyWithoutResidentNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutResidentNestedInput
+  parcels?: Prisma.ParcelUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentUncheckedUpdateWithoutVisitorsInput = {
@@ -798,6 +828,7 @@ export type ResidentUncheckedUpdateWithoutVisitorsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   familyMembers?: Prisma.FamilyMemberUncheckedUpdateManyWithoutResidentNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutResidentNestedInput
+  parcels?: Prisma.ParcelUncheckedUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentCreateWithoutFamilyMembersInput = {
@@ -813,6 +844,7 @@ export type ResidentCreateWithoutFamilyMembersInput = {
   unit: Prisma.UnitCreateNestedOneWithoutResidentsInput
   emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorCreateNestedManyWithoutResidentInput
+  parcels?: Prisma.ParcelCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentUncheckedCreateWithoutFamilyMembersInput = {
@@ -828,6 +860,7 @@ export type ResidentUncheckedCreateWithoutFamilyMembersInput = {
   updatedAt?: Date | string
   emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutResidentInput
+  parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentCreateOrConnectWithoutFamilyMembersInput = {
@@ -859,6 +892,7 @@ export type ResidentUpdateWithoutFamilyMembersInput = {
   unit?: Prisma.UnitUpdateOneRequiredWithoutResidentsNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUpdateManyWithoutResidentNestedInput
+  parcels?: Prisma.ParcelUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentUncheckedUpdateWithoutFamilyMembersInput = {
@@ -874,6 +908,7 @@ export type ResidentUncheckedUpdateWithoutFamilyMembersInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUncheckedUpdateManyWithoutResidentNestedInput
+  parcels?: Prisma.ParcelUncheckedUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentCreateWithoutEmergencyContactsInput = {
@@ -889,6 +924,7 @@ export type ResidentCreateWithoutEmergencyContactsInput = {
   unit: Prisma.UnitCreateNestedOneWithoutResidentsInput
   familyMembers?: Prisma.FamilyMemberCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorCreateNestedManyWithoutResidentInput
+  parcels?: Prisma.ParcelCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentUncheckedCreateWithoutEmergencyContactsInput = {
@@ -904,6 +940,7 @@ export type ResidentUncheckedCreateWithoutEmergencyContactsInput = {
   updatedAt?: Date | string
   familyMembers?: Prisma.FamilyMemberUncheckedCreateNestedManyWithoutResidentInput
   visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutResidentInput
+  parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutResidentInput
 }
 
 export type ResidentCreateOrConnectWithoutEmergencyContactsInput = {
@@ -935,6 +972,7 @@ export type ResidentUpdateWithoutEmergencyContactsInput = {
   unit?: Prisma.UnitUpdateOneRequiredWithoutResidentsNestedInput
   familyMembers?: Prisma.FamilyMemberUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUpdateManyWithoutResidentNestedInput
+  parcels?: Prisma.ParcelUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentUncheckedUpdateWithoutEmergencyContactsInput = {
@@ -949,6 +987,87 @@ export type ResidentUncheckedUpdateWithoutEmergencyContactsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   familyMembers?: Prisma.FamilyMemberUncheckedUpdateManyWithoutResidentNestedInput
+  visitors?: Prisma.VisitorUncheckedUpdateManyWithoutResidentNestedInput
+  parcels?: Prisma.ParcelUncheckedUpdateManyWithoutResidentNestedInput
+}
+
+export type ResidentCreateWithoutParcelsInput = {
+  id?: string
+  residentType: $Enums.ResidentType
+  status?: $Enums.ResidentStatus
+  moveInDate: Date | string
+  moveOutDate?: Date | string | null
+  note?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutResidentsInput
+  unit: Prisma.UnitCreateNestedOneWithoutResidentsInput
+  familyMembers?: Prisma.FamilyMemberCreateNestedManyWithoutResidentInput
+  emergencyContacts?: Prisma.EmergencyContactCreateNestedManyWithoutResidentInput
+  visitors?: Prisma.VisitorCreateNestedManyWithoutResidentInput
+}
+
+export type ResidentUncheckedCreateWithoutParcelsInput = {
+  id?: string
+  userId: string
+  unitId: string
+  residentType: $Enums.ResidentType
+  status?: $Enums.ResidentStatus
+  moveInDate: Date | string
+  moveOutDate?: Date | string | null
+  note?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  familyMembers?: Prisma.FamilyMemberUncheckedCreateNestedManyWithoutResidentInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedCreateNestedManyWithoutResidentInput
+  visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutResidentInput
+}
+
+export type ResidentCreateOrConnectWithoutParcelsInput = {
+  where: Prisma.ResidentWhereUniqueInput
+  create: Prisma.XOR<Prisma.ResidentCreateWithoutParcelsInput, Prisma.ResidentUncheckedCreateWithoutParcelsInput>
+}
+
+export type ResidentUpsertWithoutParcelsInput = {
+  update: Prisma.XOR<Prisma.ResidentUpdateWithoutParcelsInput, Prisma.ResidentUncheckedUpdateWithoutParcelsInput>
+  create: Prisma.XOR<Prisma.ResidentCreateWithoutParcelsInput, Prisma.ResidentUncheckedCreateWithoutParcelsInput>
+  where?: Prisma.ResidentWhereInput
+}
+
+export type ResidentUpdateToOneWithWhereWithoutParcelsInput = {
+  where?: Prisma.ResidentWhereInput
+  data: Prisma.XOR<Prisma.ResidentUpdateWithoutParcelsInput, Prisma.ResidentUncheckedUpdateWithoutParcelsInput>
+}
+
+export type ResidentUpdateWithoutParcelsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  residentType?: Prisma.EnumResidentTypeFieldUpdateOperationsInput | $Enums.ResidentType
+  status?: Prisma.EnumResidentStatusFieldUpdateOperationsInput | $Enums.ResidentStatus
+  moveInDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  moveOutDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutResidentsNestedInput
+  unit?: Prisma.UnitUpdateOneRequiredWithoutResidentsNestedInput
+  familyMembers?: Prisma.FamilyMemberUpdateManyWithoutResidentNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutResidentNestedInput
+  visitors?: Prisma.VisitorUpdateManyWithoutResidentNestedInput
+}
+
+export type ResidentUncheckedUpdateWithoutParcelsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  unitId?: Prisma.StringFieldUpdateOperationsInput | string
+  residentType?: Prisma.EnumResidentTypeFieldUpdateOperationsInput | $Enums.ResidentType
+  status?: Prisma.EnumResidentStatusFieldUpdateOperationsInput | $Enums.ResidentStatus
+  moveInDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  moveOutDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  familyMembers?: Prisma.FamilyMemberUncheckedUpdateManyWithoutResidentNestedInput
+  emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUncheckedUpdateManyWithoutResidentNestedInput
 }
 
@@ -977,6 +1096,7 @@ export type ResidentUpdateWithoutUnitInput = {
   familyMembers?: Prisma.FamilyMemberUpdateManyWithoutResidentNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUpdateManyWithoutResidentNestedInput
+  parcels?: Prisma.ParcelUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentUncheckedUpdateWithoutUnitInput = {
@@ -992,6 +1112,7 @@ export type ResidentUncheckedUpdateWithoutUnitInput = {
   familyMembers?: Prisma.FamilyMemberUncheckedUpdateManyWithoutResidentNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUncheckedUpdateManyWithoutResidentNestedInput
+  parcels?: Prisma.ParcelUncheckedUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentUncheckedUpdateManyWithoutUnitInput = {
@@ -1031,6 +1152,7 @@ export type ResidentUpdateWithoutUserInput = {
   familyMembers?: Prisma.FamilyMemberUpdateManyWithoutResidentNestedInput
   emergencyContacts?: Prisma.EmergencyContactUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUpdateManyWithoutResidentNestedInput
+  parcels?: Prisma.ParcelUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentUncheckedUpdateWithoutUserInput = {
@@ -1046,6 +1168,7 @@ export type ResidentUncheckedUpdateWithoutUserInput = {
   familyMembers?: Prisma.FamilyMemberUncheckedUpdateManyWithoutResidentNestedInput
   emergencyContacts?: Prisma.EmergencyContactUncheckedUpdateManyWithoutResidentNestedInput
   visitors?: Prisma.VisitorUncheckedUpdateManyWithoutResidentNestedInput
+  parcels?: Prisma.ParcelUncheckedUpdateManyWithoutResidentNestedInput
 }
 
 export type ResidentUncheckedUpdateManyWithoutUserInput = {
@@ -1069,12 +1192,14 @@ export type ResidentCountOutputType = {
   familyMembers: number
   emergencyContacts: number
   visitors: number
+  parcels: number
 }
 
 export type ResidentCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   familyMembers?: boolean | ResidentCountOutputTypeCountFamilyMembersArgs
   emergencyContacts?: boolean | ResidentCountOutputTypeCountEmergencyContactsArgs
   visitors?: boolean | ResidentCountOutputTypeCountVisitorsArgs
+  parcels?: boolean | ResidentCountOutputTypeCountParcelsArgs
 }
 
 /**
@@ -1108,6 +1233,13 @@ export type ResidentCountOutputTypeCountVisitorsArgs<ExtArgs extends runtime.Typ
   where?: Prisma.VisitorWhereInput
 }
 
+/**
+ * ResidentCountOutputType without action
+ */
+export type ResidentCountOutputTypeCountParcelsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ParcelWhereInput
+}
+
 
 export type ResidentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1125,6 +1257,7 @@ export type ResidentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   familyMembers?: boolean | Prisma.Resident$familyMembersArgs<ExtArgs>
   emergencyContacts?: boolean | Prisma.Resident$emergencyContactsArgs<ExtArgs>
   visitors?: boolean | Prisma.Resident$visitorsArgs<ExtArgs>
+  parcels?: boolean | Prisma.Resident$parcelsArgs<ExtArgs>
   _count?: boolean | Prisma.ResidentCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["resident"]>
 
@@ -1178,6 +1311,7 @@ export type ResidentInclude<ExtArgs extends runtime.Types.Extensions.InternalArg
   familyMembers?: boolean | Prisma.Resident$familyMembersArgs<ExtArgs>
   emergencyContacts?: boolean | Prisma.Resident$emergencyContactsArgs<ExtArgs>
   visitors?: boolean | Prisma.Resident$visitorsArgs<ExtArgs>
+  parcels?: boolean | Prisma.Resident$parcelsArgs<ExtArgs>
   _count?: boolean | Prisma.ResidentCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ResidentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1197,6 +1331,7 @@ export type $ResidentPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     familyMembers: Prisma.$FamilyMemberPayload<ExtArgs>[]
     emergencyContacts: Prisma.$EmergencyContactPayload<ExtArgs>[]
     visitors: Prisma.$VisitorPayload<ExtArgs>[]
+    parcels: Prisma.$ParcelPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1608,6 +1743,7 @@ export interface Prisma__ResidentClient<T, Null = never, ExtArgs extends runtime
   familyMembers<T extends Prisma.Resident$familyMembersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Resident$familyMembersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FamilyMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   emergencyContacts<T extends Prisma.Resident$emergencyContactsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Resident$emergencyContactsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EmergencyContactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   visitors<T extends Prisma.Resident$visitorsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Resident$visitorsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VisitorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  parcels<T extends Prisma.Resident$parcelsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Resident$parcelsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ParcelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2117,6 +2253,30 @@ export type Resident$visitorsArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.VisitorScalarFieldEnum | Prisma.VisitorScalarFieldEnum[]
+}
+
+/**
+ * Resident.parcels
+ */
+export type Resident$parcelsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Parcel
+   */
+  select?: Prisma.ParcelSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Parcel
+   */
+  omit?: Prisma.ParcelOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ParcelInclude<ExtArgs> | null
+  where?: Prisma.ParcelWhereInput
+  orderBy?: Prisma.ParcelOrderByWithRelationInput | Prisma.ParcelOrderByWithRelationInput[]
+  cursor?: Prisma.ParcelWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ParcelScalarFieldEnum | Prisma.ParcelScalarFieldEnum[]
 }
 
 /**

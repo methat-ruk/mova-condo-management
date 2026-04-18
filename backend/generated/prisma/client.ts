@@ -91,3 +91,8 @@ export type Announcement = Prisma.AnnouncementModel
  * 
  */
 export type AnnouncementRead = Prisma.AnnouncementReadModel
+/**
+ * Model Parcel
+ * 
+ */
+export type Parcel = Prisma.ParcelModel

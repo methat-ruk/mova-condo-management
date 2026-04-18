@@ -52,3 +52,11 @@ export const AnnouncementStatus = {
 } as const
 
 export type AnnouncementStatus = (typeof AnnouncementStatus)[keyof typeof AnnouncementStatus]
+
+
+export const ParcelStatus = {
+  PENDING: 'PENDING',
+  CLAIMED: 'CLAIMED'
+} as const
+
+export type ParcelStatus = (typeof ParcelStatus)[keyof typeof ParcelStatus]

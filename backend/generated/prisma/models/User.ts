@@ -219,6 +219,8 @@ export type UserWhereInput = {
   announcementReads?: Prisma.AnnouncementReadListRelationFilter
   recordedVisitors?: Prisma.VisitorListRelationFilter
   checkedOutVisitors?: Prisma.VisitorListRelationFilter
+  receivedParcels?: Prisma.ParcelListRelationFilter
+  claimedParcels?: Prisma.ParcelListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -236,6 +238,8 @@ export type UserOrderByWithRelationInput = {
   announcementReads?: Prisma.AnnouncementReadOrderByRelationAggregateInput
   recordedVisitors?: Prisma.VisitorOrderByRelationAggregateInput
   checkedOutVisitors?: Prisma.VisitorOrderByRelationAggregateInput
+  receivedParcels?: Prisma.ParcelOrderByRelationAggregateInput
+  claimedParcels?: Prisma.ParcelOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -256,6 +260,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   announcementReads?: Prisma.AnnouncementReadListRelationFilter
   recordedVisitors?: Prisma.VisitorListRelationFilter
   checkedOutVisitors?: Prisma.VisitorListRelationFilter
+  receivedParcels?: Prisma.ParcelListRelationFilter
+  claimedParcels?: Prisma.ParcelListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -303,6 +309,8 @@ export type UserCreateInput = {
   announcementReads?: Prisma.AnnouncementReadCreateNestedManyWithoutUserInput
   recordedVisitors?: Prisma.VisitorCreateNestedManyWithoutRecordedByInput
   checkedOutVisitors?: Prisma.VisitorCreateNestedManyWithoutCheckedOutByInput
+  receivedParcels?: Prisma.ParcelCreateNestedManyWithoutReceivedByInput
+  claimedParcels?: Prisma.ParcelCreateNestedManyWithoutClaimedByInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -320,6 +328,8 @@ export type UserUncheckedCreateInput = {
   announcementReads?: Prisma.AnnouncementReadUncheckedCreateNestedManyWithoutUserInput
   recordedVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutRecordedByInput
   checkedOutVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutCheckedOutByInput
+  receivedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutReceivedByInput
+  claimedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutClaimedByInput
 }
 
 export type UserUpdateInput = {
@@ -337,6 +347,8 @@ export type UserUpdateInput = {
   announcementReads?: Prisma.AnnouncementReadUpdateManyWithoutUserNestedInput
   recordedVisitors?: Prisma.VisitorUpdateManyWithoutRecordedByNestedInput
   checkedOutVisitors?: Prisma.VisitorUpdateManyWithoutCheckedOutByNestedInput
+  receivedParcels?: Prisma.ParcelUpdateManyWithoutReceivedByNestedInput
+  claimedParcels?: Prisma.ParcelUpdateManyWithoutClaimedByNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -354,6 +366,8 @@ export type UserUncheckedUpdateInput = {
   announcementReads?: Prisma.AnnouncementReadUncheckedUpdateManyWithoutUserNestedInput
   recordedVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutRecordedByNestedInput
   checkedOutVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutCheckedOutByNestedInput
+  receivedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutReceivedByNestedInput
+  claimedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutClaimedByNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -514,6 +528,36 @@ export type UserUpdateOneRequiredWithoutAnnouncementReadsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAnnouncementReadsInput, Prisma.UserUpdateWithoutAnnouncementReadsInput>, Prisma.UserUncheckedUpdateWithoutAnnouncementReadsInput>
 }
 
+export type UserCreateNestedOneWithoutReceivedParcelsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReceivedParcelsInput, Prisma.UserUncheckedCreateWithoutReceivedParcelsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReceivedParcelsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutClaimedParcelsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutClaimedParcelsInput, Prisma.UserUncheckedCreateWithoutClaimedParcelsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutClaimedParcelsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutReceivedParcelsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReceivedParcelsInput, Prisma.UserUncheckedCreateWithoutReceivedParcelsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReceivedParcelsInput
+  upsert?: Prisma.UserUpsertWithoutReceivedParcelsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReceivedParcelsInput, Prisma.UserUpdateWithoutReceivedParcelsInput>, Prisma.UserUncheckedUpdateWithoutReceivedParcelsInput>
+}
+
+export type UserUpdateOneWithoutClaimedParcelsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutClaimedParcelsInput, Prisma.UserUncheckedCreateWithoutClaimedParcelsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutClaimedParcelsInput
+  upsert?: Prisma.UserUpsertWithoutClaimedParcelsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutClaimedParcelsInput, Prisma.UserUpdateWithoutClaimedParcelsInput>, Prisma.UserUncheckedUpdateWithoutClaimedParcelsInput>
+}
+
 export type UserCreateWithoutRecordedVisitorsInput = {
   id?: string
   email: string
@@ -528,6 +572,8 @@ export type UserCreateWithoutRecordedVisitorsInput = {
   announcements?: Prisma.AnnouncementCreateNestedManyWithoutCreatedByInput
   announcementReads?: Prisma.AnnouncementReadCreateNestedManyWithoutUserInput
   checkedOutVisitors?: Prisma.VisitorCreateNestedManyWithoutCheckedOutByInput
+  receivedParcels?: Prisma.ParcelCreateNestedManyWithoutReceivedByInput
+  claimedParcels?: Prisma.ParcelCreateNestedManyWithoutClaimedByInput
 }
 
 export type UserUncheckedCreateWithoutRecordedVisitorsInput = {
@@ -544,6 +590,8 @@ export type UserUncheckedCreateWithoutRecordedVisitorsInput = {
   announcements?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutCreatedByInput
   announcementReads?: Prisma.AnnouncementReadUncheckedCreateNestedManyWithoutUserInput
   checkedOutVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutCheckedOutByInput
+  receivedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutReceivedByInput
+  claimedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutClaimedByInput
 }
 
 export type UserCreateOrConnectWithoutRecordedVisitorsInput = {
@@ -565,6 +613,8 @@ export type UserCreateWithoutCheckedOutVisitorsInput = {
   announcements?: Prisma.AnnouncementCreateNestedManyWithoutCreatedByInput
   announcementReads?: Prisma.AnnouncementReadCreateNestedManyWithoutUserInput
   recordedVisitors?: Prisma.VisitorCreateNestedManyWithoutRecordedByInput
+  receivedParcels?: Prisma.ParcelCreateNestedManyWithoutReceivedByInput
+  claimedParcels?: Prisma.ParcelCreateNestedManyWithoutClaimedByInput
 }
 
 export type UserUncheckedCreateWithoutCheckedOutVisitorsInput = {
@@ -581,6 +631,8 @@ export type UserUncheckedCreateWithoutCheckedOutVisitorsInput = {
   announcements?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutCreatedByInput
   announcementReads?: Prisma.AnnouncementReadUncheckedCreateNestedManyWithoutUserInput
   recordedVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutRecordedByInput
+  receivedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutReceivedByInput
+  claimedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutClaimedByInput
 }
 
 export type UserCreateOrConnectWithoutCheckedOutVisitorsInput = {
@@ -613,6 +665,8 @@ export type UserUpdateWithoutRecordedVisitorsInput = {
   announcements?: Prisma.AnnouncementUpdateManyWithoutCreatedByNestedInput
   announcementReads?: Prisma.AnnouncementReadUpdateManyWithoutUserNestedInput
   checkedOutVisitors?: Prisma.VisitorUpdateManyWithoutCheckedOutByNestedInput
+  receivedParcels?: Prisma.ParcelUpdateManyWithoutReceivedByNestedInput
+  claimedParcels?: Prisma.ParcelUpdateManyWithoutClaimedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRecordedVisitorsInput = {
@@ -629,6 +683,8 @@ export type UserUncheckedUpdateWithoutRecordedVisitorsInput = {
   announcements?: Prisma.AnnouncementUncheckedUpdateManyWithoutCreatedByNestedInput
   announcementReads?: Prisma.AnnouncementReadUncheckedUpdateManyWithoutUserNestedInput
   checkedOutVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutCheckedOutByNestedInput
+  receivedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutReceivedByNestedInput
+  claimedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutClaimedByNestedInput
 }
 
 export type UserUpsertWithoutCheckedOutVisitorsInput = {
@@ -656,6 +712,8 @@ export type UserUpdateWithoutCheckedOutVisitorsInput = {
   announcements?: Prisma.AnnouncementUpdateManyWithoutCreatedByNestedInput
   announcementReads?: Prisma.AnnouncementReadUpdateManyWithoutUserNestedInput
   recordedVisitors?: Prisma.VisitorUpdateManyWithoutRecordedByNestedInput
+  receivedParcels?: Prisma.ParcelUpdateManyWithoutReceivedByNestedInput
+  claimedParcels?: Prisma.ParcelUpdateManyWithoutClaimedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCheckedOutVisitorsInput = {
@@ -672,6 +730,8 @@ export type UserUncheckedUpdateWithoutCheckedOutVisitorsInput = {
   announcements?: Prisma.AnnouncementUncheckedUpdateManyWithoutCreatedByNestedInput
   announcementReads?: Prisma.AnnouncementReadUncheckedUpdateManyWithoutUserNestedInput
   recordedVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutRecordedByNestedInput
+  receivedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutReceivedByNestedInput
+  claimedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutClaimedByNestedInput
 }
 
 export type UserCreateWithoutResidentsInput = {
@@ -688,6 +748,8 @@ export type UserCreateWithoutResidentsInput = {
   announcementReads?: Prisma.AnnouncementReadCreateNestedManyWithoutUserInput
   recordedVisitors?: Prisma.VisitorCreateNestedManyWithoutRecordedByInput
   checkedOutVisitors?: Prisma.VisitorCreateNestedManyWithoutCheckedOutByInput
+  receivedParcels?: Prisma.ParcelCreateNestedManyWithoutReceivedByInput
+  claimedParcels?: Prisma.ParcelCreateNestedManyWithoutClaimedByInput
 }
 
 export type UserUncheckedCreateWithoutResidentsInput = {
@@ -704,6 +766,8 @@ export type UserUncheckedCreateWithoutResidentsInput = {
   announcementReads?: Prisma.AnnouncementReadUncheckedCreateNestedManyWithoutUserInput
   recordedVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutRecordedByInput
   checkedOutVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutCheckedOutByInput
+  receivedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutReceivedByInput
+  claimedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutClaimedByInput
 }
 
 export type UserCreateOrConnectWithoutResidentsInput = {
@@ -736,6 +800,8 @@ export type UserUpdateWithoutResidentsInput = {
   announcementReads?: Prisma.AnnouncementReadUpdateManyWithoutUserNestedInput
   recordedVisitors?: Prisma.VisitorUpdateManyWithoutRecordedByNestedInput
   checkedOutVisitors?: Prisma.VisitorUpdateManyWithoutCheckedOutByNestedInput
+  receivedParcels?: Prisma.ParcelUpdateManyWithoutReceivedByNestedInput
+  claimedParcels?: Prisma.ParcelUpdateManyWithoutClaimedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutResidentsInput = {
@@ -752,6 +818,8 @@ export type UserUncheckedUpdateWithoutResidentsInput = {
   announcementReads?: Prisma.AnnouncementReadUncheckedUpdateManyWithoutUserNestedInput
   recordedVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutRecordedByNestedInput
   checkedOutVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutCheckedOutByNestedInput
+  receivedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutReceivedByNestedInput
+  claimedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutClaimedByNestedInput
 }
 
 export type UserCreateWithoutAnnouncementsInput = {
@@ -768,6 +836,8 @@ export type UserCreateWithoutAnnouncementsInput = {
   announcementReads?: Prisma.AnnouncementReadCreateNestedManyWithoutUserInput
   recordedVisitors?: Prisma.VisitorCreateNestedManyWithoutRecordedByInput
   checkedOutVisitors?: Prisma.VisitorCreateNestedManyWithoutCheckedOutByInput
+  receivedParcels?: Prisma.ParcelCreateNestedManyWithoutReceivedByInput
+  claimedParcels?: Prisma.ParcelCreateNestedManyWithoutClaimedByInput
 }
 
 export type UserUncheckedCreateWithoutAnnouncementsInput = {
@@ -784,6 +854,8 @@ export type UserUncheckedCreateWithoutAnnouncementsInput = {
   announcementReads?: Prisma.AnnouncementReadUncheckedCreateNestedManyWithoutUserInput
   recordedVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutRecordedByInput
   checkedOutVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutCheckedOutByInput
+  receivedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutReceivedByInput
+  claimedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutClaimedByInput
 }
 
 export type UserCreateOrConnectWithoutAnnouncementsInput = {
@@ -816,6 +888,8 @@ export type UserUpdateWithoutAnnouncementsInput = {
   announcementReads?: Prisma.AnnouncementReadUpdateManyWithoutUserNestedInput
   recordedVisitors?: Prisma.VisitorUpdateManyWithoutRecordedByNestedInput
   checkedOutVisitors?: Prisma.VisitorUpdateManyWithoutCheckedOutByNestedInput
+  receivedParcels?: Prisma.ParcelUpdateManyWithoutReceivedByNestedInput
+  claimedParcels?: Prisma.ParcelUpdateManyWithoutClaimedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAnnouncementsInput = {
@@ -832,6 +906,8 @@ export type UserUncheckedUpdateWithoutAnnouncementsInput = {
   announcementReads?: Prisma.AnnouncementReadUncheckedUpdateManyWithoutUserNestedInput
   recordedVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutRecordedByNestedInput
   checkedOutVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutCheckedOutByNestedInput
+  receivedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutReceivedByNestedInput
+  claimedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutClaimedByNestedInput
 }
 
 export type UserCreateWithoutAnnouncementReadsInput = {
@@ -848,6 +924,8 @@ export type UserCreateWithoutAnnouncementReadsInput = {
   announcements?: Prisma.AnnouncementCreateNestedManyWithoutCreatedByInput
   recordedVisitors?: Prisma.VisitorCreateNestedManyWithoutRecordedByInput
   checkedOutVisitors?: Prisma.VisitorCreateNestedManyWithoutCheckedOutByInput
+  receivedParcels?: Prisma.ParcelCreateNestedManyWithoutReceivedByInput
+  claimedParcels?: Prisma.ParcelCreateNestedManyWithoutClaimedByInput
 }
 
 export type UserUncheckedCreateWithoutAnnouncementReadsInput = {
@@ -864,6 +942,8 @@ export type UserUncheckedCreateWithoutAnnouncementReadsInput = {
   announcements?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutCreatedByInput
   recordedVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutRecordedByInput
   checkedOutVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutCheckedOutByInput
+  receivedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutReceivedByInput
+  claimedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutClaimedByInput
 }
 
 export type UserCreateOrConnectWithoutAnnouncementReadsInput = {
@@ -896,6 +976,8 @@ export type UserUpdateWithoutAnnouncementReadsInput = {
   announcements?: Prisma.AnnouncementUpdateManyWithoutCreatedByNestedInput
   recordedVisitors?: Prisma.VisitorUpdateManyWithoutRecordedByNestedInput
   checkedOutVisitors?: Prisma.VisitorUpdateManyWithoutCheckedOutByNestedInput
+  receivedParcels?: Prisma.ParcelUpdateManyWithoutReceivedByNestedInput
+  claimedParcels?: Prisma.ParcelUpdateManyWithoutClaimedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAnnouncementReadsInput = {
@@ -912,6 +994,184 @@ export type UserUncheckedUpdateWithoutAnnouncementReadsInput = {
   announcements?: Prisma.AnnouncementUncheckedUpdateManyWithoutCreatedByNestedInput
   recordedVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutRecordedByNestedInput
   checkedOutVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutCheckedOutByNestedInput
+  receivedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutReceivedByNestedInput
+  claimedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutClaimedByNestedInput
+}
+
+export type UserCreateWithoutReceivedParcelsInput = {
+  id?: string
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  role?: $Enums.UserRole
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  residents?: Prisma.ResidentCreateNestedManyWithoutUserInput
+  announcements?: Prisma.AnnouncementCreateNestedManyWithoutCreatedByInput
+  announcementReads?: Prisma.AnnouncementReadCreateNestedManyWithoutUserInput
+  recordedVisitors?: Prisma.VisitorCreateNestedManyWithoutRecordedByInput
+  checkedOutVisitors?: Prisma.VisitorCreateNestedManyWithoutCheckedOutByInput
+  claimedParcels?: Prisma.ParcelCreateNestedManyWithoutClaimedByInput
+}
+
+export type UserUncheckedCreateWithoutReceivedParcelsInput = {
+  id?: string
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  role?: $Enums.UserRole
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUserInput
+  announcements?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutCreatedByInput
+  announcementReads?: Prisma.AnnouncementReadUncheckedCreateNestedManyWithoutUserInput
+  recordedVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutRecordedByInput
+  checkedOutVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutCheckedOutByInput
+  claimedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutClaimedByInput
+}
+
+export type UserCreateOrConnectWithoutReceivedParcelsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutReceivedParcelsInput, Prisma.UserUncheckedCreateWithoutReceivedParcelsInput>
+}
+
+export type UserCreateWithoutClaimedParcelsInput = {
+  id?: string
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  role?: $Enums.UserRole
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  residents?: Prisma.ResidentCreateNestedManyWithoutUserInput
+  announcements?: Prisma.AnnouncementCreateNestedManyWithoutCreatedByInput
+  announcementReads?: Prisma.AnnouncementReadCreateNestedManyWithoutUserInput
+  recordedVisitors?: Prisma.VisitorCreateNestedManyWithoutRecordedByInput
+  checkedOutVisitors?: Prisma.VisitorCreateNestedManyWithoutCheckedOutByInput
+  receivedParcels?: Prisma.ParcelCreateNestedManyWithoutReceivedByInput
+}
+
+export type UserUncheckedCreateWithoutClaimedParcelsInput = {
+  id?: string
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  role?: $Enums.UserRole
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUserInput
+  announcements?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutCreatedByInput
+  announcementReads?: Prisma.AnnouncementReadUncheckedCreateNestedManyWithoutUserInput
+  recordedVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutRecordedByInput
+  checkedOutVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutCheckedOutByInput
+  receivedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutReceivedByInput
+}
+
+export type UserCreateOrConnectWithoutClaimedParcelsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutClaimedParcelsInput, Prisma.UserUncheckedCreateWithoutClaimedParcelsInput>
+}
+
+export type UserUpsertWithoutReceivedParcelsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutReceivedParcelsInput, Prisma.UserUncheckedUpdateWithoutReceivedParcelsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutReceivedParcelsInput, Prisma.UserUncheckedCreateWithoutReceivedParcelsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutReceivedParcelsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutReceivedParcelsInput, Prisma.UserUncheckedUpdateWithoutReceivedParcelsInput>
+}
+
+export type UserUpdateWithoutReceivedParcelsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  residents?: Prisma.ResidentUpdateManyWithoutUserNestedInput
+  announcements?: Prisma.AnnouncementUpdateManyWithoutCreatedByNestedInput
+  announcementReads?: Prisma.AnnouncementReadUpdateManyWithoutUserNestedInput
+  recordedVisitors?: Prisma.VisitorUpdateManyWithoutRecordedByNestedInput
+  checkedOutVisitors?: Prisma.VisitorUpdateManyWithoutCheckedOutByNestedInput
+  claimedParcels?: Prisma.ParcelUpdateManyWithoutClaimedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutReceivedParcelsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  residents?: Prisma.ResidentUncheckedUpdateManyWithoutUserNestedInput
+  announcements?: Prisma.AnnouncementUncheckedUpdateManyWithoutCreatedByNestedInput
+  announcementReads?: Prisma.AnnouncementReadUncheckedUpdateManyWithoutUserNestedInput
+  recordedVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutRecordedByNestedInput
+  checkedOutVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutCheckedOutByNestedInput
+  claimedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutClaimedByNestedInput
+}
+
+export type UserUpsertWithoutClaimedParcelsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutClaimedParcelsInput, Prisma.UserUncheckedUpdateWithoutClaimedParcelsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutClaimedParcelsInput, Prisma.UserUncheckedCreateWithoutClaimedParcelsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutClaimedParcelsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutClaimedParcelsInput, Prisma.UserUncheckedUpdateWithoutClaimedParcelsInput>
+}
+
+export type UserUpdateWithoutClaimedParcelsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  residents?: Prisma.ResidentUpdateManyWithoutUserNestedInput
+  announcements?: Prisma.AnnouncementUpdateManyWithoutCreatedByNestedInput
+  announcementReads?: Prisma.AnnouncementReadUpdateManyWithoutUserNestedInput
+  recordedVisitors?: Prisma.VisitorUpdateManyWithoutRecordedByNestedInput
+  checkedOutVisitors?: Prisma.VisitorUpdateManyWithoutCheckedOutByNestedInput
+  receivedParcels?: Prisma.ParcelUpdateManyWithoutReceivedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutClaimedParcelsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  residents?: Prisma.ResidentUncheckedUpdateManyWithoutUserNestedInput
+  announcements?: Prisma.AnnouncementUncheckedUpdateManyWithoutCreatedByNestedInput
+  announcementReads?: Prisma.AnnouncementReadUncheckedUpdateManyWithoutUserNestedInput
+  recordedVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutRecordedByNestedInput
+  checkedOutVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutCheckedOutByNestedInput
+  receivedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutReceivedByNestedInput
 }
 
 
@@ -925,6 +1185,8 @@ export type UserCountOutputType = {
   announcementReads: number
   recordedVisitors: number
   checkedOutVisitors: number
+  receivedParcels: number
+  claimedParcels: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -933,6 +1195,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   announcementReads?: boolean | UserCountOutputTypeCountAnnouncementReadsArgs
   recordedVisitors?: boolean | UserCountOutputTypeCountRecordedVisitorsArgs
   checkedOutVisitors?: boolean | UserCountOutputTypeCountCheckedOutVisitorsArgs
+  receivedParcels?: boolean | UserCountOutputTypeCountReceivedParcelsArgs
+  claimedParcels?: boolean | UserCountOutputTypeCountClaimedParcelsArgs
 }
 
 /**
@@ -980,6 +1244,20 @@ export type UserCountOutputTypeCountCheckedOutVisitorsArgs<ExtArgs extends runti
   where?: Prisma.VisitorWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountReceivedParcelsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ParcelWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountClaimedParcelsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ParcelWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -996,6 +1274,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   announcementReads?: boolean | Prisma.User$announcementReadsArgs<ExtArgs>
   recordedVisitors?: boolean | Prisma.User$recordedVisitorsArgs<ExtArgs>
   checkedOutVisitors?: boolean | Prisma.User$checkedOutVisitorsArgs<ExtArgs>
+  receivedParcels?: boolean | Prisma.User$receivedParcelsArgs<ExtArgs>
+  claimedParcels?: boolean | Prisma.User$claimedParcelsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1042,6 +1322,8 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   announcementReads?: boolean | Prisma.User$announcementReadsArgs<ExtArgs>
   recordedVisitors?: boolean | Prisma.User$recordedVisitorsArgs<ExtArgs>
   checkedOutVisitors?: boolean | Prisma.User$checkedOutVisitorsArgs<ExtArgs>
+  receivedParcels?: boolean | Prisma.User$receivedParcelsArgs<ExtArgs>
+  claimedParcels?: boolean | Prisma.User$claimedParcelsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1055,6 +1337,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     announcementReads: Prisma.$AnnouncementReadPayload<ExtArgs>[]
     recordedVisitors: Prisma.$VisitorPayload<ExtArgs>[]
     checkedOutVisitors: Prisma.$VisitorPayload<ExtArgs>[]
+    receivedParcels: Prisma.$ParcelPayload<ExtArgs>[]
+    claimedParcels: Prisma.$ParcelPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1465,6 +1749,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   announcementReads<T extends Prisma.User$announcementReadsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$announcementReadsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AnnouncementReadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   recordedVisitors<T extends Prisma.User$recordedVisitorsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$recordedVisitorsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VisitorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   checkedOutVisitors<T extends Prisma.User$checkedOutVisitorsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$checkedOutVisitorsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VisitorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  receivedParcels<T extends Prisma.User$receivedParcelsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$receivedParcelsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ParcelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  claimedParcels<T extends Prisma.User$claimedParcelsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$claimedParcelsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ParcelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2013,6 +2299,54 @@ export type User$checkedOutVisitorsArgs<ExtArgs extends runtime.Types.Extensions
   take?: number
   skip?: number
   distinct?: Prisma.VisitorScalarFieldEnum | Prisma.VisitorScalarFieldEnum[]
+}
+
+/**
+ * User.receivedParcels
+ */
+export type User$receivedParcelsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Parcel
+   */
+  select?: Prisma.ParcelSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Parcel
+   */
+  omit?: Prisma.ParcelOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ParcelInclude<ExtArgs> | null
+  where?: Prisma.ParcelWhereInput
+  orderBy?: Prisma.ParcelOrderByWithRelationInput | Prisma.ParcelOrderByWithRelationInput[]
+  cursor?: Prisma.ParcelWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ParcelScalarFieldEnum | Prisma.ParcelScalarFieldEnum[]
+}
+
+/**
+ * User.claimedParcels
+ */
+export type User$claimedParcelsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Parcel
+   */
+  select?: Prisma.ParcelSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Parcel
+   */
+  omit?: Prisma.ParcelOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ParcelInclude<ExtArgs> | null
+  where?: Prisma.ParcelWhereInput
+  orderBy?: Prisma.ParcelOrderByWithRelationInput | Prisma.ParcelOrderByWithRelationInput[]
+  cursor?: Prisma.ParcelWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ParcelScalarFieldEnum | Prisma.ParcelScalarFieldEnum[]
 }
 
 /**

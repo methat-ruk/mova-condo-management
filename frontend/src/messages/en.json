@@ -280,6 +280,45 @@
       "passwordMinLength": "Password must be at least 8 characters"
     }
   },
+  "parcels": {
+    "title": "Parcels",
+    "logParcel": "Log Parcel",
+    "claim": "Claim",
+    "claimConfirm": "Confirm Claim",
+    "claimConfirmDesc": "Mark this parcel as claimed by {name}?",
+    "claimConfirmDescNoName": "Mark this parcel as claimed?",
+    "logSuccess": "Parcel logged",
+    "claimSuccess": "Parcel claimed",
+    "noParcels": "No parcels yet",
+    "searchPlaceholder": "Search tracking number or unit...",
+    "filterAll": "All",
+    "filterPending": "Pending",
+    "filterClaimed": "Claimed",
+    "waitingCount": "Waiting for pickup",
+    "fields": {
+      "trackingNumber": "Tracking Number",
+      "carrier": "Carrier",
+      "unit": "Unit",
+      "floor": "Floor",
+      "resident": "Resident",
+      "note": "Note",
+      "receivedAt": "Received",
+      "claimedAt": "Claimed At",
+      "status": "Status",
+      "receivedBy": "Received By",
+      "optional": "Optional"
+    },
+    "status": {
+      "PENDING": "Pending",
+      "CLAIMED": "Claimed"
+    },
+    "validation": {
+      "unitRequired": "Please select a unit"
+    },
+    "pagination": {
+      "showing": "Showing {from}–{to} of {total}"
+    }
+  },
   "visitors": {
     "title": "Visitors",
     "checkIn": "Check In",

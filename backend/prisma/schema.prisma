@@ -37,6 +37,11 @@ enum AnnouncementStatus {
   EXPIRED
 }
 
+enum ParcelStatus {
+  PENDING
+  CLAIMED
+}
+
 model Building {
   id          String   @id @default(uuid())
   name        String
@@ -78,6 +83,7 @@ model Unit {
 
   residents Resident[]
   visitors  Visitor[]
+  parcels   Parcel[]
 
   @@unique([floorId, unitNumber])
 }
@@ -96,8 +102,10 @@ model User {
   residents             Resident[]
   announcements         Announcement[]
   announcementReads     AnnouncementRead[]
-  recordedVisitors      Visitor[] @relation("RecordedBy")
-  checkedOutVisitors    Visitor[] @relation("CheckedOutBy")
+  recordedVisitors      Visitor[]  @relation("RecordedBy")
+  checkedOutVisitors    Visitor[]  @relation("CheckedOutBy")
+  receivedParcels       Parcel[]   @relation("ReceivedBy")
+  claimedParcels        Parcel[]   @relation("ClaimedBy")
 }
 
 model Visitor {
@@ -139,6 +147,7 @@ model Resident {
   familyMembers     FamilyMember[]
   emergencyContacts EmergencyContact[]
   visitors          Visitor[]
+  parcels           Parcel[]
 }
 
 model FamilyMember {
@@ -188,4 +197,24 @@ model AnnouncementRead {
   announcement   Announcement @relation(fields: [announcementId], references: [id], onDelete: Cascade)
 
   @@id([userId, announcementId])
+}
+
+model Parcel {
+  id             String       @id @default(uuid())
+  trackingNumber String?
+  carrier        String?
+  note           String?
+  status         ParcelStatus @default(PENDING)
+  unitId         String
+  unit           Unit         @relation(fields: [unitId], references: [id])
+  residentId     String?
+  resident       Resident?    @relation(fields: [residentId], references: [id])
+  receivedAt     DateTime     @default(now())
+  claimedAt      DateTime?
+  receivedById   String
+  receivedBy     User         @relation("ReceivedBy", fields: [receivedById], references: [id])
+  claimedById    String?
+  claimedBy      User?        @relation("ClaimedBy", fields: [claimedById], references: [id])
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
 }

@@ -280,6 +280,45 @@
       "passwordMinLength": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร"
     }
   },
+  "parcels": {
+    "title": "พัสดุ",
+    "logParcel": "รับพัสดุ",
+    "claim": "มอบให้เจ้าของ",
+    "claimConfirm": "ยืนยันการมอบพัสดุ",
+    "claimConfirmDesc": "ยืนยันว่า {name} รับพัสดุแล้ว?",
+    "claimConfirmDescNoName": "ยืนยันการมอบพัสดุให้เจ้าของห้อง?",
+    "logSuccess": "บันทึกพัสดุแล้ว",
+    "claimSuccess": "มอบพัสดุเรียบร้อย",
+    "noParcels": "ยังไม่มีพัสดุ",
+    "searchPlaceholder": "ค้นหาเลขพัสดุหรือห้อง...",
+    "filterAll": "ทั้งหมด",
+    "filterPending": "รอรับ",
+    "filterClaimed": "รับแล้ว",
+    "waitingCount": "รอรับอยู่",
+    "fields": {
+      "trackingNumber": "เลขพัสดุ",
+      "carrier": "ผู้ส่ง",
+      "unit": "ห้อง",
+      "floor": "ชั้น",
+      "resident": "ผู้พักอาศัย",
+      "note": "หมายเหตุ",
+      "receivedAt": "รับเข้า",
+      "claimedAt": "รับออก",
+      "status": "สถานะ",
+      "receivedBy": "รับโดย",
+      "optional": "ไม่บังคับ"
+    },
+    "status": {
+      "PENDING": "รอรับ",
+      "CLAIMED": "รับแล้ว"
+    },
+    "validation": {
+      "unitRequired": "กรุณาเลือกห้อง"
+    },
+    "pagination": {
+      "showing": "แสดง {from}–{to} จาก {total} รายการ"
+    }
+  },
   "visitors": {
     "title": "ผู้มาติดต่อ",
     "checkIn": "บันทึกเข้า",

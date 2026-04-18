@@ -1179,6 +1179,380 @@ async function main() {
     console.log(`  ✓ [${status}] ${v.name}`);
   }
 
+  // ── Parcels ───────────────────────────────────────────────────────────────
+  console.log('Seeding parcels...');
+
+  type ParcelSeed = {
+    id: string;
+    trackingNumber?: string;
+    carrier?: string;
+    note?: string;
+    status: 'PENDING' | 'CLAIMED';
+    unitKey: [number, number];
+    residentEmail?: string;
+    receivedAt: Date;
+    claimedAt?: Date;
+    receivedByEmail: string;
+    claimedByEmail?: string;
+  };
+
+  const parcelDefs: ParcelSeed[] = [
+    // Pending (waiting for pickup)
+    {
+      id: 'seed-par-1',
+      trackingNumber: 'TH123456789',
+      carrier: 'Flash Express',
+      unitKey: [0, 2],
+      residentEmail: 'john.doe@condo.com',
+      status: 'PENDING',
+      receivedAt: new Date(Date.now() - 2 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-2',
+      trackingNumber: 'KE987654321',
+      carrier: 'Kerry Express',
+      unitKey: [2, 4],
+      residentEmail: 'wichai.th@condo.com',
+      status: 'PENDING',
+      receivedAt: new Date(Date.now() - 5 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-3',
+      carrier: 'DHL',
+      note: 'กล่องใหญ่ เก็บไว้ที่เคาน์เตอร์',
+      unitKey: [9, 2],
+      residentEmail: 'michael.brown@condo.com',
+      status: 'PENDING',
+      receivedAt: new Date(Date.now() - 1 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-4',
+      trackingNumber: 'JT556677889',
+      carrier: 'J&T Express',
+      unitKey: [1, 1],
+      residentEmail: 'sarah.smith@condo.com',
+      status: 'PENDING',
+      receivedAt: new Date(Date.now() - 8 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-5',
+      trackingNumber: 'SP334455667',
+      carrier: 'Speed-D',
+      unitKey: [6, 3],
+      residentEmail: 'nattaya.th@condo.com',
+      status: 'PENDING',
+      receivedAt: new Date(Date.now() - 24 * 60 * 60 * 1000),
+      note: 'รอมา 1 วันแล้ว',
+      receivedByEmail: 'guard@condo.com',
+    },
+    // Claimed
+    {
+      id: 'seed-par-6',
+      trackingNumber: 'FL112233445',
+      carrier: 'Flash Express',
+      unitKey: [4, 5],
+      residentEmail: 'somchai.th@condo.com',
+      status: 'CLAIMED',
+      receivedAt: new Date(Date.now() - 6 * 60 * 60 * 1000),
+      claimedAt: new Date(Date.now() - 3 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+      claimedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-7',
+      trackingNumber: 'TH998877665',
+      carrier: 'Thailand Post',
+      unitKey: [7, 1],
+      residentEmail: 'anan.th@condo.com',
+      status: 'CLAIMED',
+      receivedAt: new Date(Date.now() - 25 * 60 * 60 * 1000),
+      claimedAt: new Date(Date.now() - 20 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+      claimedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-8',
+      trackingNumber: 'LZ223344556',
+      carrier: 'Lazada Logistics',
+      unitKey: [9, 4],
+      residentEmail: 'lisa.wong@condo.com',
+      status: 'CLAIMED',
+      receivedAt: new Date(Date.now() - 48 * 60 * 60 * 1000),
+      claimedAt: new Date(Date.now() - 46 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+      claimedByEmail: 'manager@condo.com',
+    },
+    // Pending — page 2+
+    {
+      id: 'seed-par-9',
+      trackingNumber: 'SX445566778',
+      carrier: 'Shopee Xpress',
+      unitKey: [3, 0],
+      residentEmail: 'malee.th@condo.com',
+      status: 'PENDING',
+      receivedAt: new Date(Date.now() - 3 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-10',
+      carrier: 'Thailand Post',
+      note: 'พัสดุลงทะเบียน',
+      unitKey: [7, 10],
+      residentEmail: 'emma.white@condo.com',
+      status: 'PENDING',
+      receivedAt: new Date(Date.now() - 30 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-11',
+      trackingNumber: 'NV667788990',
+      carrier: 'Ninja Van',
+      unitKey: [4, 7],
+      residentEmail: 'boonsong.th@condo.com',
+      status: 'PENDING',
+      receivedAt: new Date(Date.now() - 7 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-12',
+      trackingNumber: 'FL778899001',
+      carrier: 'Flash Express',
+      unitKey: [8, 11],
+      residentEmail: 'suchada.th@condo.com',
+      status: 'PENDING',
+      receivedAt: new Date(Date.now() - 15 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-13',
+      trackingNumber: 'KE889900112',
+      carrier: 'Kerry Express',
+      unitKey: [6, 9],
+      residentEmail: 'tawan.th@condo.com',
+      status: 'PENDING',
+      note: 'รอมา 2 วันแล้ว',
+      receivedAt: new Date(Date.now() - 50 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-21',
+      trackingNumber: 'LZ556677883',
+      carrier: 'Lazada Logistics',
+      unitKey: [1, 4],
+      residentEmail: 'pranee.th@condo.com',
+      status: 'PENDING',
+      receivedAt: new Date(Date.now() - 4 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-22',
+      trackingNumber: 'TH334455671',
+      carrier: 'Thailand Post',
+      unitKey: [5, 8],
+      residentEmail: 'patcharee.th@condo.com',
+      status: 'PENDING',
+      receivedAt: new Date(Date.now() - 9 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-23',
+      trackingNumber: 'SP990011225',
+      carrier: 'Speed-D',
+      unitKey: [3, 3],
+      residentEmail: 'chaiyot.th@condo.com',
+      status: 'PENDING',
+      receivedAt: new Date(Date.now() - 38 * 60 * 60 * 1000),
+      note: 'ฝากเก็บไว้ที่เคาน์เตอร์',
+      receivedByEmail: 'guard@condo.com',
+    },
+    // Claimed — page 2+
+    {
+      id: 'seed-par-14',
+      trackingNumber: 'SX112233440',
+      carrier: 'Shopee Xpress',
+      unitKey: [0, 2],
+      residentEmail: 'john.doe@condo.com',
+      status: 'CLAIMED',
+      receivedAt: new Date(Date.now() - 72 * 60 * 60 * 1000),
+      claimedAt: new Date(Date.now() - 70 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+      claimedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-15',
+      trackingNumber: 'LZ334455669',
+      carrier: 'Lazada Logistics',
+      unitKey: [2, 4],
+      residentEmail: 'wichai.th@condo.com',
+      status: 'CLAIMED',
+      receivedAt: new Date(Date.now() - 36 * 60 * 60 * 1000),
+      claimedAt: new Date(Date.now() - 34 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+      claimedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-16',
+      trackingNumber: 'DH556677882',
+      carrier: 'DHL',
+      unitKey: [5, 2],
+      residentEmail: 'david.lee@condo.com',
+      status: 'CLAIMED',
+      receivedAt: new Date(Date.now() - 96 * 60 * 60 * 1000),
+      claimedAt: new Date(Date.now() - 90 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+      claimedByEmail: 'manager@condo.com',
+    },
+    {
+      id: 'seed-par-17',
+      trackingNumber: 'FL990011223',
+      carrier: 'Flash Express',
+      unitKey: [7, 3],
+      residentEmail: 'arisa.th@condo.com',
+      status: 'CLAIMED',
+      receivedAt: new Date(Date.now() - 20 * 60 * 60 * 1000),
+      claimedAt: new Date(Date.now() - 18 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+      claimedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-18',
+      trackingNumber: 'JT223344557',
+      carrier: 'J&T Express',
+      unitKey: [2, 6],
+      residentEmail: 'supanee.th@condo.com',
+      status: 'CLAIMED',
+      receivedAt: new Date(Date.now() - 54 * 60 * 60 * 1000),
+      claimedAt: new Date(Date.now() - 52 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+      claimedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-19',
+      trackingNumber: 'TH001122334',
+      carrier: 'Thailand Post',
+      unitKey: [8, 5],
+      residentEmail: 'krit.th@condo.com',
+      status: 'CLAIMED',
+      receivedAt: new Date(Date.now() - 120 * 60 * 60 * 1000),
+      claimedAt: new Date(Date.now() - 118 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+      claimedByEmail: 'manager@condo.com',
+    },
+    {
+      id: 'seed-par-20',
+      trackingNumber: 'SP112233446',
+      carrier: 'Speed-D',
+      unitKey: [0, 5],
+      residentEmail: 'pim.th@condo.com',
+      status: 'CLAIMED',
+      receivedAt: new Date(Date.now() - 14 * 60 * 60 * 1000),
+      claimedAt: new Date(Date.now() - 12 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+      claimedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-24',
+      trackingNumber: 'KE778899004',
+      carrier: 'Kerry Express',
+      unitKey: [9, 2],
+      residentEmail: 'michael.brown@condo.com',
+      status: 'CLAIMED',
+      receivedAt: new Date(Date.now() - 144 * 60 * 60 * 1000),
+      claimedAt: new Date(Date.now() - 140 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+      claimedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-25',
+      trackingNumber: 'NV445566779',
+      carrier: 'Ninja Van',
+      unitKey: [5, 0],
+      residentEmail: 'yuki.tanaka@condo.com',
+      status: 'CLAIMED',
+      receivedAt: new Date(Date.now() - 60 * 60 * 60 * 1000),
+      claimedAt: new Date(Date.now() - 58 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+      claimedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-26',
+      trackingNumber: 'SX667788995',
+      carrier: 'Shopee Xpress',
+      unitKey: [4, 5],
+      residentEmail: 'somchai.th@condo.com',
+      status: 'CLAIMED',
+      receivedAt: new Date(Date.now() - 80 * 60 * 60 * 1000),
+      claimedAt: new Date(Date.now() - 78 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+      claimedByEmail: 'guard@condo.com',
+    },
+    {
+      id: 'seed-par-27',
+      trackingNumber: 'FL334455668',
+      carrier: 'Flash Express',
+      unitKey: [6, 3],
+      residentEmail: 'nattaya.th@condo.com',
+      status: 'CLAIMED',
+      receivedAt: new Date(Date.now() - 168 * 60 * 60 * 1000),
+      claimedAt: new Date(Date.now() - 165 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+      claimedByEmail: 'manager@condo.com',
+    },
+    {
+      id: 'seed-par-28',
+      trackingNumber: 'JT889900113',
+      carrier: 'J&T Express',
+      unitKey: [1, 1],
+      residentEmail: 'sarah.smith@condo.com',
+      status: 'CLAIMED',
+      receivedAt: new Date(Date.now() - 110 * 60 * 60 * 1000),
+      claimedAt: new Date(Date.now() - 108 * 60 * 60 * 1000),
+      receivedByEmail: 'guard@condo.com',
+      claimedByEmail: 'guard@condo.com',
+    },
+  ];
+
+  for (const p of parcelDefs) {
+    const unitId = unitIds[p.unitKey[0]][p.unitKey[1]];
+    let residentId: string | undefined;
+    if (p.residentEmail) {
+      const resUserId = userIds[p.residentEmail];
+      const resident = await prisma.resident.findFirst({
+        where: { userId: resUserId, unitId },
+      });
+      residentId = resident?.id;
+    }
+    const receivedById = userIds[p.receivedByEmail];
+    const claimedById = p.claimedByEmail
+      ? userIds[p.claimedByEmail]
+      : undefined;
+
+    await prisma.parcel.upsert({
+      where: { id: p.id },
+      update: { claimedById, claimedAt: p.claimedAt, status: p.status },
+      create: {
+        id: p.id,
+        trackingNumber: p.trackingNumber,
+        carrier: p.carrier,
+        note: p.note,
+        status: p.status,
+        unitId,
+        residentId,
+        receivedAt: p.receivedAt,
+        claimedAt: p.claimedAt,
+        receivedById,
+        claimedById,
+      },
+    });
+    const tracking = p.trackingNumber ?? 'no tracking';
+    const carrier = p.carrier ?? '—';
+    console.log(`  ✓ [${p.status.padEnd(7)}] ${carrier} → ${tracking}`);
+  }
+
   console.log('\nDone.');
   console.log(`  Users:         ${Object.keys(userIds).length}`);
   console.log(`  Floors:        ${floorIds.length}`);

@@ -314,6 +314,23 @@ export type EnumAnnouncementStatusWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumAnnouncementStatusFilter<$PrismaModel>
 }
 
+export type EnumParcelStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.ParcelStatus | Prisma.EnumParcelStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ParcelStatus[] | Prisma.ListEnumParcelStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ParcelStatus[] | Prisma.ListEnumParcelStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumParcelStatusFilter<$PrismaModel> | $Enums.ParcelStatus
+}
+
+export type EnumParcelStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ParcelStatus | Prisma.EnumParcelStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ParcelStatus[] | Prisma.ListEnumParcelStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ParcelStatus[] | Prisma.ListEnumParcelStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumParcelStatusWithAggregatesFilter<$PrismaModel> | $Enums.ParcelStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumParcelStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumParcelStatusFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -614,6 +631,23 @@ export type NestedEnumAnnouncementStatusWithAggregatesFilter<$PrismaModel = neve
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumAnnouncementStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumAnnouncementStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumParcelStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.ParcelStatus | Prisma.EnumParcelStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ParcelStatus[] | Prisma.ListEnumParcelStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ParcelStatus[] | Prisma.ListEnumParcelStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumParcelStatusFilter<$PrismaModel> | $Enums.ParcelStatus
+}
+
+export type NestedEnumParcelStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ParcelStatus | Prisma.EnumParcelStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ParcelStatus[] | Prisma.ListEnumParcelStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ParcelStatus[] | Prisma.ListEnumParcelStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumParcelStatusWithAggregatesFilter<$PrismaModel> | $Enums.ParcelStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumParcelStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumParcelStatusFilter<$PrismaModel>
 }
 
 

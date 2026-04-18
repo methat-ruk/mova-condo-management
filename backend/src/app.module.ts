@@ -8,6 +8,7 @@ import { FloorsModule } from './api/floors/floors.module.js';
 import { ResidentsModule } from './api/residents/residents.module.js';
 import { UnitsModule } from './api/units/units.module.js';
 import { VisitorsModule } from './api/visitors/visitors.module.js';
+import { ParcelsModule } from './api/parcels/parcels.module.js';
 import { PrismaModule } from './prisma/prisma.module.js';
 
 @Module({
@@ -22,6 +23,7 @@ import { PrismaModule } from './prisma/prisma.module.js';
     ResidentsModule,
     AnnouncementsModule,
     VisitorsModule,
+    ParcelsModule,
   ],
 })
 export class AppModule {}

@@ -60,7 +60,8 @@ export const ModelName = {
   FamilyMember: 'FamilyMember',
   EmergencyContact: 'EmergencyContact',
   Announcement: 'Announcement',
-  AnnouncementRead: 'AnnouncementRead'
+  AnnouncementRead: 'AnnouncementRead',
+  Parcel: 'Parcel'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -222,6 +223,25 @@ export const AnnouncementReadScalarFieldEnum = {
 } as const
 
 export type AnnouncementReadScalarFieldEnum = (typeof AnnouncementReadScalarFieldEnum)[keyof typeof AnnouncementReadScalarFieldEnum]
+
+
+export const ParcelScalarFieldEnum = {
+  id: 'id',
+  trackingNumber: 'trackingNumber',
+  carrier: 'carrier',
+  note: 'note',
+  status: 'status',
+  unitId: 'unitId',
+  residentId: 'residentId',
+  receivedAt: 'receivedAt',
+  claimedAt: 'claimedAt',
+  receivedById: 'receivedById',
+  claimedById: 'claimedById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ParcelScalarFieldEnum = (typeof ParcelScalarFieldEnum)[keyof typeof ParcelScalarFieldEnum]
 
 
 export const SortOrder = {

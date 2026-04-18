@@ -271,6 +271,7 @@ export type UnitWhereInput = {
   floor?: Prisma.XOR<Prisma.FloorScalarRelationFilter, Prisma.FloorWhereInput>
   residents?: Prisma.ResidentListRelationFilter
   visitors?: Prisma.VisitorListRelationFilter
+  parcels?: Prisma.ParcelListRelationFilter
 }
 
 export type UnitOrderByWithRelationInput = {
@@ -287,6 +288,7 @@ export type UnitOrderByWithRelationInput = {
   floor?: Prisma.FloorOrderByWithRelationInput
   residents?: Prisma.ResidentOrderByRelationAggregateInput
   visitors?: Prisma.VisitorOrderByRelationAggregateInput
+  parcels?: Prisma.ParcelOrderByRelationAggregateInput
 }
 
 export type UnitWhereUniqueInput = Prisma.AtLeast<{
@@ -307,6 +309,7 @@ export type UnitWhereUniqueInput = Prisma.AtLeast<{
   floor?: Prisma.XOR<Prisma.FloorScalarRelationFilter, Prisma.FloorWhereInput>
   residents?: Prisma.ResidentListRelationFilter
   visitors?: Prisma.VisitorListRelationFilter
+  parcels?: Prisma.ParcelListRelationFilter
 }, "id" | "floorId_unitNumber">
 
 export type UnitOrderByWithAggregationInput = {
@@ -356,6 +359,7 @@ export type UnitCreateInput = {
   floor: Prisma.FloorCreateNestedOneWithoutUnitsInput
   residents?: Prisma.ResidentCreateNestedManyWithoutUnitInput
   visitors?: Prisma.VisitorCreateNestedManyWithoutUnitInput
+  parcels?: Prisma.ParcelCreateNestedManyWithoutUnitInput
 }
 
 export type UnitUncheckedCreateInput = {
@@ -371,6 +375,7 @@ export type UnitUncheckedCreateInput = {
   updatedAt?: Date | string
   residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUnitInput
   visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutUnitInput
+  parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutUnitInput
 }
 
 export type UnitUpdateInput = {
@@ -386,6 +391,7 @@ export type UnitUpdateInput = {
   floor?: Prisma.FloorUpdateOneRequiredWithoutUnitsNestedInput
   residents?: Prisma.ResidentUpdateManyWithoutUnitNestedInput
   visitors?: Prisma.VisitorUpdateManyWithoutUnitNestedInput
+  parcels?: Prisma.ParcelUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitUncheckedUpdateInput = {
@@ -401,6 +407,7 @@ export type UnitUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   residents?: Prisma.ResidentUncheckedUpdateManyWithoutUnitNestedInput
   visitors?: Prisma.VisitorUncheckedUpdateManyWithoutUnitNestedInput
+  parcels?: Prisma.ParcelUncheckedUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitCreateManyInput = {
@@ -604,6 +611,20 @@ export type UnitUpdateOneRequiredWithoutResidentsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UnitUpdateToOneWithWhereWithoutResidentsInput, Prisma.UnitUpdateWithoutResidentsInput>, Prisma.UnitUncheckedUpdateWithoutResidentsInput>
 }
 
+export type UnitCreateNestedOneWithoutParcelsInput = {
+  create?: Prisma.XOR<Prisma.UnitCreateWithoutParcelsInput, Prisma.UnitUncheckedCreateWithoutParcelsInput>
+  connectOrCreate?: Prisma.UnitCreateOrConnectWithoutParcelsInput
+  connect?: Prisma.UnitWhereUniqueInput
+}
+
+export type UnitUpdateOneRequiredWithoutParcelsNestedInput = {
+  create?: Prisma.XOR<Prisma.UnitCreateWithoutParcelsInput, Prisma.UnitUncheckedCreateWithoutParcelsInput>
+  connectOrCreate?: Prisma.UnitCreateOrConnectWithoutParcelsInput
+  upsert?: Prisma.UnitUpsertWithoutParcelsInput
+  connect?: Prisma.UnitWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UnitUpdateToOneWithWhereWithoutParcelsInput, Prisma.UnitUpdateWithoutParcelsInput>, Prisma.UnitUncheckedUpdateWithoutParcelsInput>
+}
+
 export type UnitCreateWithoutFloorInput = {
   id?: string
   unitNumber: string
@@ -616,6 +637,7 @@ export type UnitCreateWithoutFloorInput = {
   updatedAt?: Date | string
   residents?: Prisma.ResidentCreateNestedManyWithoutUnitInput
   visitors?: Prisma.VisitorCreateNestedManyWithoutUnitInput
+  parcels?: Prisma.ParcelCreateNestedManyWithoutUnitInput
 }
 
 export type UnitUncheckedCreateWithoutFloorInput = {
@@ -630,6 +652,7 @@ export type UnitUncheckedCreateWithoutFloorInput = {
   updatedAt?: Date | string
   residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUnitInput
   visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutUnitInput
+  parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutUnitInput
 }
 
 export type UnitCreateOrConnectWithoutFloorInput = {
@@ -686,6 +709,7 @@ export type UnitCreateWithoutVisitorsInput = {
   updatedAt?: Date | string
   floor: Prisma.FloorCreateNestedOneWithoutUnitsInput
   residents?: Prisma.ResidentCreateNestedManyWithoutUnitInput
+  parcels?: Prisma.ParcelCreateNestedManyWithoutUnitInput
 }
 
 export type UnitUncheckedCreateWithoutVisitorsInput = {
@@ -700,6 +724,7 @@ export type UnitUncheckedCreateWithoutVisitorsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUnitInput
+  parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutUnitInput
 }
 
 export type UnitCreateOrConnectWithoutVisitorsInput = {
@@ -730,6 +755,7 @@ export type UnitUpdateWithoutVisitorsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   floor?: Prisma.FloorUpdateOneRequiredWithoutUnitsNestedInput
   residents?: Prisma.ResidentUpdateManyWithoutUnitNestedInput
+  parcels?: Prisma.ParcelUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitUncheckedUpdateWithoutVisitorsInput = {
@@ -744,6 +770,7 @@ export type UnitUncheckedUpdateWithoutVisitorsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   residents?: Prisma.ResidentUncheckedUpdateManyWithoutUnitNestedInput
+  parcels?: Prisma.ParcelUncheckedUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitCreateWithoutResidentsInput = {
@@ -758,6 +785,7 @@ export type UnitCreateWithoutResidentsInput = {
   updatedAt?: Date | string
   floor: Prisma.FloorCreateNestedOneWithoutUnitsInput
   visitors?: Prisma.VisitorCreateNestedManyWithoutUnitInput
+  parcels?: Prisma.ParcelCreateNestedManyWithoutUnitInput
 }
 
 export type UnitUncheckedCreateWithoutResidentsInput = {
@@ -772,6 +800,7 @@ export type UnitUncheckedCreateWithoutResidentsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutUnitInput
+  parcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutUnitInput
 }
 
 export type UnitCreateOrConnectWithoutResidentsInput = {
@@ -802,6 +831,7 @@ export type UnitUpdateWithoutResidentsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   floor?: Prisma.FloorUpdateOneRequiredWithoutUnitsNestedInput
   visitors?: Prisma.VisitorUpdateManyWithoutUnitNestedInput
+  parcels?: Prisma.ParcelUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitUncheckedUpdateWithoutResidentsInput = {
@@ -815,6 +845,83 @@ export type UnitUncheckedUpdateWithoutResidentsInput = {
   monthlyRent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  visitors?: Prisma.VisitorUncheckedUpdateManyWithoutUnitNestedInput
+  parcels?: Prisma.ParcelUncheckedUpdateManyWithoutUnitNestedInput
+}
+
+export type UnitCreateWithoutParcelsInput = {
+  id?: string
+  unitNumber: string
+  area: number
+  bedrooms?: number
+  bathrooms?: number
+  occupancyStatus?: $Enums.OccupancyStatus
+  monthlyRent: runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  floor: Prisma.FloorCreateNestedOneWithoutUnitsInput
+  residents?: Prisma.ResidentCreateNestedManyWithoutUnitInput
+  visitors?: Prisma.VisitorCreateNestedManyWithoutUnitInput
+}
+
+export type UnitUncheckedCreateWithoutParcelsInput = {
+  id?: string
+  unitNumber: string
+  floorId: string
+  area: number
+  bedrooms?: number
+  bathrooms?: number
+  occupancyStatus?: $Enums.OccupancyStatus
+  monthlyRent: runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUnitInput
+  visitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutUnitInput
+}
+
+export type UnitCreateOrConnectWithoutParcelsInput = {
+  where: Prisma.UnitWhereUniqueInput
+  create: Prisma.XOR<Prisma.UnitCreateWithoutParcelsInput, Prisma.UnitUncheckedCreateWithoutParcelsInput>
+}
+
+export type UnitUpsertWithoutParcelsInput = {
+  update: Prisma.XOR<Prisma.UnitUpdateWithoutParcelsInput, Prisma.UnitUncheckedUpdateWithoutParcelsInput>
+  create: Prisma.XOR<Prisma.UnitCreateWithoutParcelsInput, Prisma.UnitUncheckedCreateWithoutParcelsInput>
+  where?: Prisma.UnitWhereInput
+}
+
+export type UnitUpdateToOneWithWhereWithoutParcelsInput = {
+  where?: Prisma.UnitWhereInput
+  data: Prisma.XOR<Prisma.UnitUpdateWithoutParcelsInput, Prisma.UnitUncheckedUpdateWithoutParcelsInput>
+}
+
+export type UnitUpdateWithoutParcelsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  unitNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  area?: Prisma.FloatFieldUpdateOperationsInput | number
+  bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
+  bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
+  occupancyStatus?: Prisma.EnumOccupancyStatusFieldUpdateOperationsInput | $Enums.OccupancyStatus
+  monthlyRent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  floor?: Prisma.FloorUpdateOneRequiredWithoutUnitsNestedInput
+  residents?: Prisma.ResidentUpdateManyWithoutUnitNestedInput
+  visitors?: Prisma.VisitorUpdateManyWithoutUnitNestedInput
+}
+
+export type UnitUncheckedUpdateWithoutParcelsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  unitNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  floorId?: Prisma.StringFieldUpdateOperationsInput | string
+  area?: Prisma.FloatFieldUpdateOperationsInput | number
+  bedrooms?: Prisma.IntFieldUpdateOperationsInput | number
+  bathrooms?: Prisma.IntFieldUpdateOperationsInput | number
+  occupancyStatus?: Prisma.EnumOccupancyStatusFieldUpdateOperationsInput | $Enums.OccupancyStatus
+  monthlyRent?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  residents?: Prisma.ResidentUncheckedUpdateManyWithoutUnitNestedInput
   visitors?: Prisma.VisitorUncheckedUpdateManyWithoutUnitNestedInput
 }
 
@@ -842,6 +949,7 @@ export type UnitUpdateWithoutFloorInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   residents?: Prisma.ResidentUpdateManyWithoutUnitNestedInput
   visitors?: Prisma.VisitorUpdateManyWithoutUnitNestedInput
+  parcels?: Prisma.ParcelUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitUncheckedUpdateWithoutFloorInput = {
@@ -856,6 +964,7 @@ export type UnitUncheckedUpdateWithoutFloorInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   residents?: Prisma.ResidentUncheckedUpdateManyWithoutUnitNestedInput
   visitors?: Prisma.VisitorUncheckedUpdateManyWithoutUnitNestedInput
+  parcels?: Prisma.ParcelUncheckedUpdateManyWithoutUnitNestedInput
 }
 
 export type UnitUncheckedUpdateManyWithoutFloorInput = {
@@ -878,11 +987,13 @@ export type UnitUncheckedUpdateManyWithoutFloorInput = {
 export type UnitCountOutputType = {
   residents: number
   visitors: number
+  parcels: number
 }
 
 export type UnitCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   residents?: boolean | UnitCountOutputTypeCountResidentsArgs
   visitors?: boolean | UnitCountOutputTypeCountVisitorsArgs
+  parcels?: boolean | UnitCountOutputTypeCountParcelsArgs
 }
 
 /**
@@ -909,6 +1020,13 @@ export type UnitCountOutputTypeCountVisitorsArgs<ExtArgs extends runtime.Types.E
   where?: Prisma.VisitorWhereInput
 }
 
+/**
+ * UnitCountOutputType without action
+ */
+export type UnitCountOutputTypeCountParcelsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ParcelWhereInput
+}
+
 
 export type UnitSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -924,6 +1042,7 @@ export type UnitSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
   residents?: boolean | Prisma.Unit$residentsArgs<ExtArgs>
   visitors?: boolean | Prisma.Unit$visitorsArgs<ExtArgs>
+  parcels?: boolean | Prisma.Unit$parcelsArgs<ExtArgs>
   _count?: boolean | Prisma.UnitCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["unit"]>
 
@@ -973,6 +1092,7 @@ export type UnitInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   floor?: boolean | Prisma.FloorDefaultArgs<ExtArgs>
   residents?: boolean | Prisma.Unit$residentsArgs<ExtArgs>
   visitors?: boolean | Prisma.Unit$visitorsArgs<ExtArgs>
+  parcels?: boolean | Prisma.Unit$parcelsArgs<ExtArgs>
   _count?: boolean | Prisma.UnitCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UnitIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -988,6 +1108,7 @@ export type $UnitPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     floor: Prisma.$FloorPayload<ExtArgs>
     residents: Prisma.$ResidentPayload<ExtArgs>[]
     visitors: Prisma.$VisitorPayload<ExtArgs>[]
+    parcels: Prisma.$ParcelPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1397,6 +1518,7 @@ export interface Prisma__UnitClient<T, Null = never, ExtArgs extends runtime.Typ
   floor<T extends Prisma.FloorDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FloorDefaultArgs<ExtArgs>>): Prisma.Prisma__FloorClient<runtime.Types.Result.GetResult<Prisma.$FloorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   residents<T extends Prisma.Unit$residentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Unit$residentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ResidentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   visitors<T extends Prisma.Unit$visitorsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Unit$visitorsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VisitorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  parcels<T extends Prisma.Unit$parcelsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Unit$parcelsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ParcelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1882,6 +2004,30 @@ export type Unit$visitorsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.VisitorScalarFieldEnum | Prisma.VisitorScalarFieldEnum[]
+}
+
+/**
+ * Unit.parcels
+ */
+export type Unit$parcelsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Parcel
+   */
+  select?: Prisma.ParcelSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Parcel
+   */
+  omit?: Prisma.ParcelOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ParcelInclude<ExtArgs> | null
+  where?: Prisma.ParcelWhereInput
+  orderBy?: Prisma.ParcelOrderByWithRelationInput | Prisma.ParcelOrderByWithRelationInput[]
+  cursor?: Prisma.ParcelWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ParcelScalarFieldEnum | Prisma.ParcelScalarFieldEnum[]
 }
 
 /**

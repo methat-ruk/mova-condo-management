@@ -393,7 +393,8 @@ export const ModelName = {
   FamilyMember: 'FamilyMember',
   EmergencyContact: 'EmergencyContact',
   Announcement: 'Announcement',
-  AnnouncementRead: 'AnnouncementRead'
+  AnnouncementRead: 'AnnouncementRead',
+  Parcel: 'Parcel'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -409,7 +410,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "building" | "floor" | "unit" | "user" | "visitor" | "resident" | "familyMember" | "emergencyContact" | "announcement" | "announcementRead"
+    modelProps: "building" | "floor" | "unit" | "user" | "visitor" | "resident" | "familyMember" | "emergencyContact" | "announcement" | "announcementRead" | "parcel"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1153,6 +1154,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Parcel: {
+      payload: Prisma.$ParcelPayload<ExtArgs>
+      fields: Prisma.ParcelFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ParcelFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ParcelPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ParcelFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ParcelPayload>
+        }
+        findFirst: {
+          args: Prisma.ParcelFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ParcelPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ParcelFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ParcelPayload>
+        }
+        findMany: {
+          args: Prisma.ParcelFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ParcelPayload>[]
+        }
+        create: {
+          args: Prisma.ParcelCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ParcelPayload>
+        }
+        createMany: {
+          args: Prisma.ParcelCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ParcelCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ParcelPayload>[]
+        }
+        delete: {
+          args: Prisma.ParcelDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ParcelPayload>
+        }
+        update: {
+          args: Prisma.ParcelUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ParcelPayload>
+        }
+        deleteMany: {
+          args: Prisma.ParcelDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ParcelUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ParcelUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ParcelPayload>[]
+        }
+        upsert: {
+          args: Prisma.ParcelUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ParcelPayload>
+        }
+        aggregate: {
+          args: Prisma.ParcelAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateParcel>
+        }
+        groupBy: {
+          args: Prisma.ParcelGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ParcelGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ParcelCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ParcelCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1337,6 +1412,25 @@ export const AnnouncementReadScalarFieldEnum = {
 export type AnnouncementReadScalarFieldEnum = (typeof AnnouncementReadScalarFieldEnum)[keyof typeof AnnouncementReadScalarFieldEnum]
 
 
+export const ParcelScalarFieldEnum = {
+  id: 'id',
+  trackingNumber: 'trackingNumber',
+  carrier: 'carrier',
+  note: 'note',
+  status: 'status',
+  unitId: 'unitId',
+  residentId: 'residentId',
+  receivedAt: 'receivedAt',
+  claimedAt: 'claimedAt',
+  receivedById: 'receivedById',
+  claimedById: 'claimedById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ParcelScalarFieldEnum = (typeof ParcelScalarFieldEnum)[keyof typeof ParcelScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1513,6 +1607,20 @@ export type EnumAnnouncementStatusFieldRefInput<$PrismaModel> = FieldRefInputTyp
 export type ListEnumAnnouncementStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AnnouncementStatus[]'>
     
 
+
+/**
+ * Reference to a field of type 'ParcelStatus'
+ */
+export type EnumParcelStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ParcelStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'ParcelStatus[]'
+ */
+export type ListEnumParcelStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ParcelStatus[]'>
+    
+
 /**
  * Batch Payload for updateMany & deleteMany & createMany
  */
@@ -1618,6 +1726,7 @@ export type GlobalOmitConfig = {
   emergencyContact?: Prisma.EmergencyContactOmit
   announcement?: Prisma.AnnouncementOmit
   announcementRead?: Prisma.AnnouncementReadOmit
+  parcel?: Prisma.ParcelOmit
 }
 
 /* Types for Logging */
