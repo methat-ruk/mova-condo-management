@@ -63,7 +63,9 @@ export const ModelName = {
   AnnouncementRead: 'AnnouncementRead',
   Parcel: 'Parcel',
   MaintenanceTicket: 'MaintenanceTicket',
-  MaintenanceTicketLog: 'MaintenanceTicketLog'
+  MaintenanceTicketLog: 'MaintenanceTicketLog',
+  MaintenanceExpense: 'MaintenanceExpense',
+  RefreshToken: 'RefreshToken'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -277,6 +279,32 @@ export const MaintenanceTicketLogScalarFieldEnum = {
 } as const
 
 export type MaintenanceTicketLogScalarFieldEnum = (typeof MaintenanceTicketLogScalarFieldEnum)[keyof typeof MaintenanceTicketLogScalarFieldEnum]
+
+
+export const MaintenanceExpenseScalarFieldEnum = {
+  id: 'id',
+  ticketId: 'ticketId',
+  title: 'title',
+  amount: 'amount',
+  note: 'note',
+  spentAt: 'spentAt',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MaintenanceExpenseScalarFieldEnum = (typeof MaintenanceExpenseScalarFieldEnum)[keyof typeof MaintenanceExpenseScalarFieldEnum]
+
+
+export const RefreshTokenScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  expiresAt: 'expiresAt',
+  revokedAt: 'revokedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type RefreshTokenScalarFieldEnum = (typeof RefreshTokenScalarFieldEnum)[keyof typeof RefreshTokenScalarFieldEnum]
 
 
 export const SortOrder = {

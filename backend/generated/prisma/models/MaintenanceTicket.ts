@@ -251,6 +251,7 @@ export type MaintenanceTicketWhereInput = {
   assignedTo?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   reportedBy?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   logs?: Prisma.MaintenanceTicketLogListRelationFilter
+  expenses?: Prisma.MaintenanceExpenseListRelationFilter
 }
 
 export type MaintenanceTicketOrderByWithRelationInput = {
@@ -272,6 +273,7 @@ export type MaintenanceTicketOrderByWithRelationInput = {
   assignedTo?: Prisma.UserOrderByWithRelationInput
   reportedBy?: Prisma.UserOrderByWithRelationInput
   logs?: Prisma.MaintenanceTicketLogOrderByRelationAggregateInput
+  expenses?: Prisma.MaintenanceExpenseOrderByRelationAggregateInput
 }
 
 export type MaintenanceTicketWhereUniqueInput = Prisma.AtLeast<{
@@ -296,6 +298,7 @@ export type MaintenanceTicketWhereUniqueInput = Prisma.AtLeast<{
   assignedTo?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   reportedBy?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   logs?: Prisma.MaintenanceTicketLogListRelationFilter
+  expenses?: Prisma.MaintenanceExpenseListRelationFilter
 }, "id">
 
 export type MaintenanceTicketOrderByWithAggregationInput = {
@@ -351,6 +354,7 @@ export type MaintenanceTicketCreateInput = {
   assignedTo?: Prisma.UserCreateNestedOneWithoutAssignedTicketsInput
   reportedBy: Prisma.UserCreateNestedOneWithoutReportedTicketsInput
   logs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutTicketInput
+  expenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutTicketInput
 }
 
 export type MaintenanceTicketUncheckedCreateInput = {
@@ -368,6 +372,7 @@ export type MaintenanceTicketUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   logs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutTicketInput
+  expenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutTicketInput
 }
 
 export type MaintenanceTicketUpdateInput = {
@@ -385,6 +390,7 @@ export type MaintenanceTicketUpdateInput = {
   assignedTo?: Prisma.UserUpdateOneWithoutAssignedTicketsNestedInput
   reportedBy?: Prisma.UserUpdateOneRequiredWithoutReportedTicketsNestedInput
   logs?: Prisma.MaintenanceTicketLogUpdateManyWithoutTicketNestedInput
+  expenses?: Prisma.MaintenanceExpenseUpdateManyWithoutTicketNestedInput
 }
 
 export type MaintenanceTicketUncheckedUpdateInput = {
@@ -402,6 +408,7 @@ export type MaintenanceTicketUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   logs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutTicketNestedInput
+  expenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutTicketNestedInput
 }
 
 export type MaintenanceTicketCreateManyInput = {
@@ -701,6 +708,20 @@ export type MaintenanceTicketUpdateOneRequiredWithoutLogsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.MaintenanceTicketUpdateToOneWithWhereWithoutLogsInput, Prisma.MaintenanceTicketUpdateWithoutLogsInput>, Prisma.MaintenanceTicketUncheckedUpdateWithoutLogsInput>
 }
 
+export type MaintenanceTicketCreateNestedOneWithoutExpensesInput = {
+  create?: Prisma.XOR<Prisma.MaintenanceTicketCreateWithoutExpensesInput, Prisma.MaintenanceTicketUncheckedCreateWithoutExpensesInput>
+  connectOrCreate?: Prisma.MaintenanceTicketCreateOrConnectWithoutExpensesInput
+  connect?: Prisma.MaintenanceTicketWhereUniqueInput
+}
+
+export type MaintenanceTicketUpdateOneRequiredWithoutExpensesNestedInput = {
+  create?: Prisma.XOR<Prisma.MaintenanceTicketCreateWithoutExpensesInput, Prisma.MaintenanceTicketUncheckedCreateWithoutExpensesInput>
+  connectOrCreate?: Prisma.MaintenanceTicketCreateOrConnectWithoutExpensesInput
+  upsert?: Prisma.MaintenanceTicketUpsertWithoutExpensesInput
+  connect?: Prisma.MaintenanceTicketWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MaintenanceTicketUpdateToOneWithWhereWithoutExpensesInput, Prisma.MaintenanceTicketUpdateWithoutExpensesInput>, Prisma.MaintenanceTicketUncheckedUpdateWithoutExpensesInput>
+}
+
 export type MaintenanceTicketCreateWithoutUnitInput = {
   id?: string
   title: string
@@ -715,6 +736,7 @@ export type MaintenanceTicketCreateWithoutUnitInput = {
   assignedTo?: Prisma.UserCreateNestedOneWithoutAssignedTicketsInput
   reportedBy: Prisma.UserCreateNestedOneWithoutReportedTicketsInput
   logs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutTicketInput
+  expenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutTicketInput
 }
 
 export type MaintenanceTicketUncheckedCreateWithoutUnitInput = {
@@ -731,6 +753,7 @@ export type MaintenanceTicketUncheckedCreateWithoutUnitInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   logs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutTicketInput
+  expenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutTicketInput
 }
 
 export type MaintenanceTicketCreateOrConnectWithoutUnitInput = {
@@ -792,6 +815,7 @@ export type MaintenanceTicketCreateWithoutReportedByInput = {
   resident?: Prisma.ResidentCreateNestedOneWithoutMaintenanceTicketsInput
   assignedTo?: Prisma.UserCreateNestedOneWithoutAssignedTicketsInput
   logs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutTicketInput
+  expenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutTicketInput
 }
 
 export type MaintenanceTicketUncheckedCreateWithoutReportedByInput = {
@@ -808,6 +832,7 @@ export type MaintenanceTicketUncheckedCreateWithoutReportedByInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   logs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutTicketInput
+  expenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutTicketInput
 }
 
 export type MaintenanceTicketCreateOrConnectWithoutReportedByInput = {
@@ -834,6 +859,7 @@ export type MaintenanceTicketCreateWithoutAssignedToInput = {
   resident?: Prisma.ResidentCreateNestedOneWithoutMaintenanceTicketsInput
   reportedBy: Prisma.UserCreateNestedOneWithoutReportedTicketsInput
   logs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutTicketInput
+  expenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutTicketInput
 }
 
 export type MaintenanceTicketUncheckedCreateWithoutAssignedToInput = {
@@ -850,6 +876,7 @@ export type MaintenanceTicketUncheckedCreateWithoutAssignedToInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   logs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutTicketInput
+  expenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutTicketInput
 }
 
 export type MaintenanceTicketCreateOrConnectWithoutAssignedToInput = {
@@ -908,6 +935,7 @@ export type MaintenanceTicketCreateWithoutResidentInput = {
   assignedTo?: Prisma.UserCreateNestedOneWithoutAssignedTicketsInput
   reportedBy: Prisma.UserCreateNestedOneWithoutReportedTicketsInput
   logs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutTicketInput
+  expenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutTicketInput
 }
 
 export type MaintenanceTicketUncheckedCreateWithoutResidentInput = {
@@ -924,6 +952,7 @@ export type MaintenanceTicketUncheckedCreateWithoutResidentInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   logs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutTicketInput
+  expenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutTicketInput
 }
 
 export type MaintenanceTicketCreateOrConnectWithoutResidentInput = {
@@ -966,6 +995,7 @@ export type MaintenanceTicketCreateWithoutLogsInput = {
   resident?: Prisma.ResidentCreateNestedOneWithoutMaintenanceTicketsInput
   assignedTo?: Prisma.UserCreateNestedOneWithoutAssignedTicketsInput
   reportedBy: Prisma.UserCreateNestedOneWithoutReportedTicketsInput
+  expenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutTicketInput
 }
 
 export type MaintenanceTicketUncheckedCreateWithoutLogsInput = {
@@ -982,6 +1012,7 @@ export type MaintenanceTicketUncheckedCreateWithoutLogsInput = {
   note?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  expenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutTicketInput
 }
 
 export type MaintenanceTicketCreateOrConnectWithoutLogsInput = {
@@ -1014,6 +1045,7 @@ export type MaintenanceTicketUpdateWithoutLogsInput = {
   resident?: Prisma.ResidentUpdateOneWithoutMaintenanceTicketsNestedInput
   assignedTo?: Prisma.UserUpdateOneWithoutAssignedTicketsNestedInput
   reportedBy?: Prisma.UserUpdateOneRequiredWithoutReportedTicketsNestedInput
+  expenses?: Prisma.MaintenanceExpenseUpdateManyWithoutTicketNestedInput
 }
 
 export type MaintenanceTicketUncheckedUpdateWithoutLogsInput = {
@@ -1030,6 +1062,91 @@ export type MaintenanceTicketUncheckedUpdateWithoutLogsInput = {
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  expenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutTicketNestedInput
+}
+
+export type MaintenanceTicketCreateWithoutExpensesInput = {
+  id?: string
+  title: string
+  description: string
+  category: $Enums.MaintenanceCategory
+  status?: $Enums.MaintenanceStatus
+  resolvedAt?: Date | string | null
+  note?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  unit: Prisma.UnitCreateNestedOneWithoutMaintenanceTicketsInput
+  resident?: Prisma.ResidentCreateNestedOneWithoutMaintenanceTicketsInput
+  assignedTo?: Prisma.UserCreateNestedOneWithoutAssignedTicketsInput
+  reportedBy: Prisma.UserCreateNestedOneWithoutReportedTicketsInput
+  logs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutTicketInput
+}
+
+export type MaintenanceTicketUncheckedCreateWithoutExpensesInput = {
+  id?: string
+  title: string
+  description: string
+  category: $Enums.MaintenanceCategory
+  status?: $Enums.MaintenanceStatus
+  unitId: string
+  residentId?: string | null
+  assignedToId?: string | null
+  reportedById: string
+  resolvedAt?: Date | string | null
+  note?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  logs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutTicketInput
+}
+
+export type MaintenanceTicketCreateOrConnectWithoutExpensesInput = {
+  where: Prisma.MaintenanceTicketWhereUniqueInput
+  create: Prisma.XOR<Prisma.MaintenanceTicketCreateWithoutExpensesInput, Prisma.MaintenanceTicketUncheckedCreateWithoutExpensesInput>
+}
+
+export type MaintenanceTicketUpsertWithoutExpensesInput = {
+  update: Prisma.XOR<Prisma.MaintenanceTicketUpdateWithoutExpensesInput, Prisma.MaintenanceTicketUncheckedUpdateWithoutExpensesInput>
+  create: Prisma.XOR<Prisma.MaintenanceTicketCreateWithoutExpensesInput, Prisma.MaintenanceTicketUncheckedCreateWithoutExpensesInput>
+  where?: Prisma.MaintenanceTicketWhereInput
+}
+
+export type MaintenanceTicketUpdateToOneWithWhereWithoutExpensesInput = {
+  where?: Prisma.MaintenanceTicketWhereInput
+  data: Prisma.XOR<Prisma.MaintenanceTicketUpdateWithoutExpensesInput, Prisma.MaintenanceTicketUncheckedUpdateWithoutExpensesInput>
+}
+
+export type MaintenanceTicketUpdateWithoutExpensesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumMaintenanceCategoryFieldUpdateOperationsInput | $Enums.MaintenanceCategory
+  status?: Prisma.EnumMaintenanceStatusFieldUpdateOperationsInput | $Enums.MaintenanceStatus
+  resolvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  unit?: Prisma.UnitUpdateOneRequiredWithoutMaintenanceTicketsNestedInput
+  resident?: Prisma.ResidentUpdateOneWithoutMaintenanceTicketsNestedInput
+  assignedTo?: Prisma.UserUpdateOneWithoutAssignedTicketsNestedInput
+  reportedBy?: Prisma.UserUpdateOneRequiredWithoutReportedTicketsNestedInput
+  logs?: Prisma.MaintenanceTicketLogUpdateManyWithoutTicketNestedInput
+}
+
+export type MaintenanceTicketUncheckedUpdateWithoutExpensesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumMaintenanceCategoryFieldUpdateOperationsInput | $Enums.MaintenanceCategory
+  status?: Prisma.EnumMaintenanceStatusFieldUpdateOperationsInput | $Enums.MaintenanceStatus
+  unitId?: Prisma.StringFieldUpdateOperationsInput | string
+  residentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedToId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reportedById?: Prisma.StringFieldUpdateOperationsInput | string
+  resolvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  logs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutTicketNestedInput
 }
 
 export type MaintenanceTicketCreateManyUnitInput = {
@@ -1061,6 +1178,7 @@ export type MaintenanceTicketUpdateWithoutUnitInput = {
   assignedTo?: Prisma.UserUpdateOneWithoutAssignedTicketsNestedInput
   reportedBy?: Prisma.UserUpdateOneRequiredWithoutReportedTicketsNestedInput
   logs?: Prisma.MaintenanceTicketLogUpdateManyWithoutTicketNestedInput
+  expenses?: Prisma.MaintenanceExpenseUpdateManyWithoutTicketNestedInput
 }
 
 export type MaintenanceTicketUncheckedUpdateWithoutUnitInput = {
@@ -1077,6 +1195,7 @@ export type MaintenanceTicketUncheckedUpdateWithoutUnitInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   logs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutTicketNestedInput
+  expenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutTicketNestedInput
 }
 
 export type MaintenanceTicketUncheckedUpdateManyWithoutUnitInput = {
@@ -1138,6 +1257,7 @@ export type MaintenanceTicketUpdateWithoutReportedByInput = {
   resident?: Prisma.ResidentUpdateOneWithoutMaintenanceTicketsNestedInput
   assignedTo?: Prisma.UserUpdateOneWithoutAssignedTicketsNestedInput
   logs?: Prisma.MaintenanceTicketLogUpdateManyWithoutTicketNestedInput
+  expenses?: Prisma.MaintenanceExpenseUpdateManyWithoutTicketNestedInput
 }
 
 export type MaintenanceTicketUncheckedUpdateWithoutReportedByInput = {
@@ -1154,6 +1274,7 @@ export type MaintenanceTicketUncheckedUpdateWithoutReportedByInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   logs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutTicketNestedInput
+  expenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutTicketNestedInput
 }
 
 export type MaintenanceTicketUncheckedUpdateManyWithoutReportedByInput = {
@@ -1185,6 +1306,7 @@ export type MaintenanceTicketUpdateWithoutAssignedToInput = {
   resident?: Prisma.ResidentUpdateOneWithoutMaintenanceTicketsNestedInput
   reportedBy?: Prisma.UserUpdateOneRequiredWithoutReportedTicketsNestedInput
   logs?: Prisma.MaintenanceTicketLogUpdateManyWithoutTicketNestedInput
+  expenses?: Prisma.MaintenanceExpenseUpdateManyWithoutTicketNestedInput
 }
 
 export type MaintenanceTicketUncheckedUpdateWithoutAssignedToInput = {
@@ -1201,6 +1323,7 @@ export type MaintenanceTicketUncheckedUpdateWithoutAssignedToInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   logs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutTicketNestedInput
+  expenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutTicketNestedInput
 }
 
 export type MaintenanceTicketUncheckedUpdateManyWithoutAssignedToInput = {
@@ -1247,6 +1370,7 @@ export type MaintenanceTicketUpdateWithoutResidentInput = {
   assignedTo?: Prisma.UserUpdateOneWithoutAssignedTicketsNestedInput
   reportedBy?: Prisma.UserUpdateOneRequiredWithoutReportedTicketsNestedInput
   logs?: Prisma.MaintenanceTicketLogUpdateManyWithoutTicketNestedInput
+  expenses?: Prisma.MaintenanceExpenseUpdateManyWithoutTicketNestedInput
 }
 
 export type MaintenanceTicketUncheckedUpdateWithoutResidentInput = {
@@ -1263,6 +1387,7 @@ export type MaintenanceTicketUncheckedUpdateWithoutResidentInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   logs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutTicketNestedInput
+  expenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutTicketNestedInput
 }
 
 export type MaintenanceTicketUncheckedUpdateManyWithoutResidentInput = {
@@ -1287,10 +1412,12 @@ export type MaintenanceTicketUncheckedUpdateManyWithoutResidentInput = {
 
 export type MaintenanceTicketCountOutputType = {
   logs: number
+  expenses: number
 }
 
 export type MaintenanceTicketCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   logs?: boolean | MaintenanceTicketCountOutputTypeCountLogsArgs
+  expenses?: boolean | MaintenanceTicketCountOutputTypeCountExpensesArgs
 }
 
 /**
@@ -1308,6 +1435,13 @@ export type MaintenanceTicketCountOutputTypeDefaultArgs<ExtArgs extends runtime.
  */
 export type MaintenanceTicketCountOutputTypeCountLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.MaintenanceTicketLogWhereInput
+}
+
+/**
+ * MaintenanceTicketCountOutputType without action
+ */
+export type MaintenanceTicketCountOutputTypeCountExpensesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MaintenanceExpenseWhereInput
 }
 
 
@@ -1330,6 +1464,7 @@ export type MaintenanceTicketSelect<ExtArgs extends runtime.Types.Extensions.Int
   assignedTo?: boolean | Prisma.MaintenanceTicket$assignedToArgs<ExtArgs>
   reportedBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   logs?: boolean | Prisma.MaintenanceTicket$logsArgs<ExtArgs>
+  expenses?: boolean | Prisma.MaintenanceTicket$expensesArgs<ExtArgs>
   _count?: boolean | Prisma.MaintenanceTicketCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["maintenanceTicket"]>
 
@@ -1396,6 +1531,7 @@ export type MaintenanceTicketInclude<ExtArgs extends runtime.Types.Extensions.In
   assignedTo?: boolean | Prisma.MaintenanceTicket$assignedToArgs<ExtArgs>
   reportedBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   logs?: boolean | Prisma.MaintenanceTicket$logsArgs<ExtArgs>
+  expenses?: boolean | Prisma.MaintenanceTicket$expensesArgs<ExtArgs>
   _count?: boolean | Prisma.MaintenanceTicketCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type MaintenanceTicketIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1419,6 +1555,7 @@ export type $MaintenanceTicketPayload<ExtArgs extends runtime.Types.Extensions.I
     assignedTo: Prisma.$UserPayload<ExtArgs> | null
     reportedBy: Prisma.$UserPayload<ExtArgs>
     logs: Prisma.$MaintenanceTicketLogPayload<ExtArgs>[]
+    expenses: Prisma.$MaintenanceExpensePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1833,6 +1970,7 @@ export interface Prisma__MaintenanceTicketClient<T, Null = never, ExtArgs extend
   assignedTo<T extends Prisma.MaintenanceTicket$assignedToArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MaintenanceTicket$assignedToArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   reportedBy<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   logs<T extends Prisma.MaintenanceTicket$logsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MaintenanceTicket$logsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MaintenanceTicketLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  expenses<T extends Prisma.MaintenanceTicket$expensesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MaintenanceTicket$expensesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MaintenanceExpensePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2335,6 +2473,30 @@ export type MaintenanceTicket$logsArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.MaintenanceTicketLogScalarFieldEnum | Prisma.MaintenanceTicketLogScalarFieldEnum[]
+}
+
+/**
+ * MaintenanceTicket.expenses
+ */
+export type MaintenanceTicket$expensesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MaintenanceExpense
+   */
+  select?: Prisma.MaintenanceExpenseSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MaintenanceExpense
+   */
+  omit?: Prisma.MaintenanceExpenseOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MaintenanceExpenseInclude<ExtArgs> | null
+  where?: Prisma.MaintenanceExpenseWhereInput
+  orderBy?: Prisma.MaintenanceExpenseOrderByWithRelationInput | Prisma.MaintenanceExpenseOrderByWithRelationInput[]
+  cursor?: Prisma.MaintenanceExpenseWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MaintenanceExpenseScalarFieldEnum | Prisma.MaintenanceExpenseScalarFieldEnum[]
 }
 
 /**

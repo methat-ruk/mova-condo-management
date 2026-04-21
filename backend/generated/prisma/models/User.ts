@@ -225,6 +225,8 @@ export type UserWhereInput = {
   reportedTickets?: Prisma.MaintenanceTicketListRelationFilter
   assignedTickets?: Prisma.MaintenanceTicketListRelationFilter
   ticketLogs?: Prisma.MaintenanceTicketLogListRelationFilter
+  maintenanceExpenses?: Prisma.MaintenanceExpenseListRelationFilter
+  refreshTokens?: Prisma.RefreshTokenListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -248,6 +250,8 @@ export type UserOrderByWithRelationInput = {
   reportedTickets?: Prisma.MaintenanceTicketOrderByRelationAggregateInput
   assignedTickets?: Prisma.MaintenanceTicketOrderByRelationAggregateInput
   ticketLogs?: Prisma.MaintenanceTicketLogOrderByRelationAggregateInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseOrderByRelationAggregateInput
+  refreshTokens?: Prisma.RefreshTokenOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -274,6 +278,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   reportedTickets?: Prisma.MaintenanceTicketListRelationFilter
   assignedTickets?: Prisma.MaintenanceTicketListRelationFilter
   ticketLogs?: Prisma.MaintenanceTicketLogListRelationFilter
+  maintenanceExpenses?: Prisma.MaintenanceExpenseListRelationFilter
+  refreshTokens?: Prisma.RefreshTokenListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -327,6 +333,8 @@ export type UserCreateInput = {
   reportedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -350,6 +358,8 @@ export type UserUncheckedCreateInput = {
   reportedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -373,6 +383,8 @@ export type UserUpdateInput = {
   reportedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -396,6 +408,8 @@ export type UserUncheckedUpdateInput = {
   reportedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -646,6 +660,34 @@ export type UserUpdateOneRequiredWithoutTicketLogsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTicketLogsInput, Prisma.UserUpdateWithoutTicketLogsInput>, Prisma.UserUncheckedUpdateWithoutTicketLogsInput>
 }
 
+export type UserCreateNestedOneWithoutMaintenanceExpensesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMaintenanceExpensesInput, Prisma.UserUncheckedCreateWithoutMaintenanceExpensesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMaintenanceExpensesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutMaintenanceExpensesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMaintenanceExpensesInput, Prisma.UserUncheckedCreateWithoutMaintenanceExpensesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMaintenanceExpensesInput
+  upsert?: Prisma.UserUpsertWithoutMaintenanceExpensesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMaintenanceExpensesInput, Prisma.UserUpdateWithoutMaintenanceExpensesInput>, Prisma.UserUncheckedUpdateWithoutMaintenanceExpensesInput>
+}
+
+export type UserCreateNestedOneWithoutRefreshTokensInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRefreshTokensInput, Prisma.UserUncheckedCreateWithoutRefreshTokensInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRefreshTokensInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutRefreshTokensNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRefreshTokensInput, Prisma.UserUncheckedCreateWithoutRefreshTokensInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRefreshTokensInput
+  upsert?: Prisma.UserUpsertWithoutRefreshTokensInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRefreshTokensInput, Prisma.UserUpdateWithoutRefreshTokensInput>, Prisma.UserUncheckedUpdateWithoutRefreshTokensInput>
+}
+
 export type UserCreateWithoutRecordedVisitorsInput = {
   id?: string
   email: string
@@ -666,6 +708,8 @@ export type UserCreateWithoutRecordedVisitorsInput = {
   reportedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRecordedVisitorsInput = {
@@ -688,6 +732,8 @@ export type UserUncheckedCreateWithoutRecordedVisitorsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRecordedVisitorsInput = {
@@ -715,6 +761,8 @@ export type UserCreateWithoutCheckedOutVisitorsInput = {
   reportedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCheckedOutVisitorsInput = {
@@ -737,6 +785,8 @@ export type UserUncheckedCreateWithoutCheckedOutVisitorsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCheckedOutVisitorsInput = {
@@ -775,6 +825,8 @@ export type UserUpdateWithoutRecordedVisitorsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRecordedVisitorsInput = {
@@ -797,6 +849,8 @@ export type UserUncheckedUpdateWithoutRecordedVisitorsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutCheckedOutVisitorsInput = {
@@ -830,6 +884,8 @@ export type UserUpdateWithoutCheckedOutVisitorsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCheckedOutVisitorsInput = {
@@ -852,6 +908,8 @@ export type UserUncheckedUpdateWithoutCheckedOutVisitorsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutResidentsInput = {
@@ -874,6 +932,8 @@ export type UserCreateWithoutResidentsInput = {
   reportedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutResidentsInput = {
@@ -896,6 +956,8 @@ export type UserUncheckedCreateWithoutResidentsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutResidentsInput = {
@@ -923,6 +985,8 @@ export type UserCreateWithoutCreatedResidentsInput = {
   reportedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCreatedResidentsInput = {
@@ -945,6 +1009,8 @@ export type UserUncheckedCreateWithoutCreatedResidentsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCreatedResidentsInput = {
@@ -983,6 +1049,8 @@ export type UserUpdateWithoutResidentsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutResidentsInput = {
@@ -1005,6 +1073,8 @@ export type UserUncheckedUpdateWithoutResidentsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutCreatedResidentsInput = {
@@ -1038,6 +1108,8 @@ export type UserUpdateWithoutCreatedResidentsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedResidentsInput = {
@@ -1060,6 +1132,8 @@ export type UserUncheckedUpdateWithoutCreatedResidentsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAnnouncementsInput = {
@@ -1082,6 +1156,8 @@ export type UserCreateWithoutAnnouncementsInput = {
   reportedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAnnouncementsInput = {
@@ -1104,6 +1180,8 @@ export type UserUncheckedCreateWithoutAnnouncementsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAnnouncementsInput = {
@@ -1142,6 +1220,8 @@ export type UserUpdateWithoutAnnouncementsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAnnouncementsInput = {
@@ -1164,6 +1244,8 @@ export type UserUncheckedUpdateWithoutAnnouncementsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAnnouncementReadsInput = {
@@ -1186,6 +1268,8 @@ export type UserCreateWithoutAnnouncementReadsInput = {
   reportedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAnnouncementReadsInput = {
@@ -1208,6 +1292,8 @@ export type UserUncheckedCreateWithoutAnnouncementReadsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAnnouncementReadsInput = {
@@ -1246,6 +1332,8 @@ export type UserUpdateWithoutAnnouncementReadsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAnnouncementReadsInput = {
@@ -1268,6 +1356,8 @@ export type UserUncheckedUpdateWithoutAnnouncementReadsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReceivedParcelsInput = {
@@ -1290,6 +1380,8 @@ export type UserCreateWithoutReceivedParcelsInput = {
   reportedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReceivedParcelsInput = {
@@ -1312,6 +1404,8 @@ export type UserUncheckedCreateWithoutReceivedParcelsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReceivedParcelsInput = {
@@ -1339,6 +1433,8 @@ export type UserCreateWithoutClaimedParcelsInput = {
   reportedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutClaimedParcelsInput = {
@@ -1361,6 +1457,8 @@ export type UserUncheckedCreateWithoutClaimedParcelsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutClaimedParcelsInput = {
@@ -1399,6 +1497,8 @@ export type UserUpdateWithoutReceivedParcelsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReceivedParcelsInput = {
@@ -1421,6 +1521,8 @@ export type UserUncheckedUpdateWithoutReceivedParcelsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutClaimedParcelsInput = {
@@ -1454,6 +1556,8 @@ export type UserUpdateWithoutClaimedParcelsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutClaimedParcelsInput = {
@@ -1476,6 +1580,8 @@ export type UserUncheckedUpdateWithoutClaimedParcelsInput = {
   reportedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAssignedTicketsInput = {
@@ -1498,6 +1604,8 @@ export type UserCreateWithoutAssignedTicketsInput = {
   claimedParcels?: Prisma.ParcelCreateNestedManyWithoutClaimedByInput
   reportedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutReportedByInput
   ticketLogs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAssignedTicketsInput = {
@@ -1520,6 +1628,8 @@ export type UserUncheckedCreateWithoutAssignedTicketsInput = {
   claimedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutClaimedByInput
   reportedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutReportedByInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAssignedTicketsInput = {
@@ -1547,6 +1657,8 @@ export type UserCreateWithoutReportedTicketsInput = {
   claimedParcels?: Prisma.ParcelCreateNestedManyWithoutClaimedByInput
   assignedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReportedTicketsInput = {
@@ -1569,6 +1681,8 @@ export type UserUncheckedCreateWithoutReportedTicketsInput = {
   claimedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutClaimedByInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutAssignedToInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReportedTicketsInput = {
@@ -1607,6 +1721,8 @@ export type UserUpdateWithoutAssignedTicketsInput = {
   claimedParcels?: Prisma.ParcelUpdateManyWithoutClaimedByNestedInput
   reportedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutReportedByNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAssignedTicketsInput = {
@@ -1629,6 +1745,8 @@ export type UserUncheckedUpdateWithoutAssignedTicketsInput = {
   claimedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutClaimedByNestedInput
   reportedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutReportedByNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutReportedTicketsInput = {
@@ -1662,6 +1780,8 @@ export type UserUpdateWithoutReportedTicketsInput = {
   claimedParcels?: Prisma.ParcelUpdateManyWithoutClaimedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReportedTicketsInput = {
@@ -1684,6 +1804,8 @@ export type UserUncheckedUpdateWithoutReportedTicketsInput = {
   claimedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutClaimedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutAssignedToNestedInput
   ticketLogs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutTicketLogsInput = {
@@ -1706,6 +1828,8 @@ export type UserCreateWithoutTicketLogsInput = {
   claimedParcels?: Prisma.ParcelCreateNestedManyWithoutClaimedByInput
   reportedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutAssignedToInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTicketLogsInput = {
@@ -1728,6 +1852,8 @@ export type UserUncheckedCreateWithoutTicketLogsInput = {
   claimedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutClaimedByInput
   reportedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutReportedByInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutAssignedToInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTicketLogsInput = {
@@ -1766,6 +1892,8 @@ export type UserUpdateWithoutTicketLogsInput = {
   claimedParcels?: Prisma.ParcelUpdateManyWithoutClaimedByNestedInput
   reportedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutAssignedToNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTicketLogsInput = {
@@ -1788,6 +1916,232 @@ export type UserUncheckedUpdateWithoutTicketLogsInput = {
   claimedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutClaimedByNestedInput
   reportedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutReportedByNestedInput
   assignedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutAssignedToNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutMaintenanceExpensesInput = {
+  id?: string
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  role?: $Enums.UserRole
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  residents?: Prisma.ResidentCreateNestedManyWithoutUserInput
+  createdResidents?: Prisma.ResidentCreateNestedManyWithoutCreatedByInput
+  announcements?: Prisma.AnnouncementCreateNestedManyWithoutCreatedByInput
+  announcementReads?: Prisma.AnnouncementReadCreateNestedManyWithoutUserInput
+  recordedVisitors?: Prisma.VisitorCreateNestedManyWithoutRecordedByInput
+  checkedOutVisitors?: Prisma.VisitorCreateNestedManyWithoutCheckedOutByInput
+  receivedParcels?: Prisma.ParcelCreateNestedManyWithoutReceivedByInput
+  claimedParcels?: Prisma.ParcelCreateNestedManyWithoutClaimedByInput
+  reportedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutReportedByInput
+  assignedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutAssignedToInput
+  ticketLogs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutMaintenanceExpensesInput = {
+  id?: string
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  role?: $Enums.UserRole
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUserInput
+  createdResidents?: Prisma.ResidentUncheckedCreateNestedManyWithoutCreatedByInput
+  announcements?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutCreatedByInput
+  announcementReads?: Prisma.AnnouncementReadUncheckedCreateNestedManyWithoutUserInput
+  recordedVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutRecordedByInput
+  checkedOutVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutCheckedOutByInput
+  receivedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutReceivedByInput
+  claimedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutClaimedByInput
+  reportedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutReportedByInput
+  assignedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutAssignedToInput
+  ticketLogs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutMaintenanceExpensesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutMaintenanceExpensesInput, Prisma.UserUncheckedCreateWithoutMaintenanceExpensesInput>
+}
+
+export type UserUpsertWithoutMaintenanceExpensesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutMaintenanceExpensesInput, Prisma.UserUncheckedUpdateWithoutMaintenanceExpensesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMaintenanceExpensesInput, Prisma.UserUncheckedCreateWithoutMaintenanceExpensesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutMaintenanceExpensesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutMaintenanceExpensesInput, Prisma.UserUncheckedUpdateWithoutMaintenanceExpensesInput>
+}
+
+export type UserUpdateWithoutMaintenanceExpensesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  residents?: Prisma.ResidentUpdateManyWithoutUserNestedInput
+  createdResidents?: Prisma.ResidentUpdateManyWithoutCreatedByNestedInput
+  announcements?: Prisma.AnnouncementUpdateManyWithoutCreatedByNestedInput
+  announcementReads?: Prisma.AnnouncementReadUpdateManyWithoutUserNestedInput
+  recordedVisitors?: Prisma.VisitorUpdateManyWithoutRecordedByNestedInput
+  checkedOutVisitors?: Prisma.VisitorUpdateManyWithoutCheckedOutByNestedInput
+  receivedParcels?: Prisma.ParcelUpdateManyWithoutReceivedByNestedInput
+  claimedParcels?: Prisma.ParcelUpdateManyWithoutClaimedByNestedInput
+  reportedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutReportedByNestedInput
+  assignedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutAssignedToNestedInput
+  ticketLogs?: Prisma.MaintenanceTicketLogUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutMaintenanceExpensesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  residents?: Prisma.ResidentUncheckedUpdateManyWithoutUserNestedInput
+  createdResidents?: Prisma.ResidentUncheckedUpdateManyWithoutCreatedByNestedInput
+  announcements?: Prisma.AnnouncementUncheckedUpdateManyWithoutCreatedByNestedInput
+  announcementReads?: Prisma.AnnouncementReadUncheckedUpdateManyWithoutUserNestedInput
+  recordedVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutRecordedByNestedInput
+  checkedOutVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutCheckedOutByNestedInput
+  receivedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutReceivedByNestedInput
+  claimedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutClaimedByNestedInput
+  reportedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutReportedByNestedInput
+  assignedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutAssignedToNestedInput
+  ticketLogs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutRefreshTokensInput = {
+  id?: string
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  role?: $Enums.UserRole
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  residents?: Prisma.ResidentCreateNestedManyWithoutUserInput
+  createdResidents?: Prisma.ResidentCreateNestedManyWithoutCreatedByInput
+  announcements?: Prisma.AnnouncementCreateNestedManyWithoutCreatedByInput
+  announcementReads?: Prisma.AnnouncementReadCreateNestedManyWithoutUserInput
+  recordedVisitors?: Prisma.VisitorCreateNestedManyWithoutRecordedByInput
+  checkedOutVisitors?: Prisma.VisitorCreateNestedManyWithoutCheckedOutByInput
+  receivedParcels?: Prisma.ParcelCreateNestedManyWithoutReceivedByInput
+  claimedParcels?: Prisma.ParcelCreateNestedManyWithoutClaimedByInput
+  reportedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutReportedByInput
+  assignedTickets?: Prisma.MaintenanceTicketCreateNestedManyWithoutAssignedToInput
+  ticketLogs?: Prisma.MaintenanceTicketLogCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseCreateNestedManyWithoutCreatedByInput
+}
+
+export type UserUncheckedCreateWithoutRefreshTokensInput = {
+  id?: string
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  role?: $Enums.UserRole
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  residents?: Prisma.ResidentUncheckedCreateNestedManyWithoutUserInput
+  createdResidents?: Prisma.ResidentUncheckedCreateNestedManyWithoutCreatedByInput
+  announcements?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutCreatedByInput
+  announcementReads?: Prisma.AnnouncementReadUncheckedCreateNestedManyWithoutUserInput
+  recordedVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutRecordedByInput
+  checkedOutVisitors?: Prisma.VisitorUncheckedCreateNestedManyWithoutCheckedOutByInput
+  receivedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutReceivedByInput
+  claimedParcels?: Prisma.ParcelUncheckedCreateNestedManyWithoutClaimedByInput
+  reportedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutReportedByInput
+  assignedTickets?: Prisma.MaintenanceTicketUncheckedCreateNestedManyWithoutAssignedToInput
+  ticketLogs?: Prisma.MaintenanceTicketLogUncheckedCreateNestedManyWithoutUserInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedCreateNestedManyWithoutCreatedByInput
+}
+
+export type UserCreateOrConnectWithoutRefreshTokensInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutRefreshTokensInput, Prisma.UserUncheckedCreateWithoutRefreshTokensInput>
+}
+
+export type UserUpsertWithoutRefreshTokensInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRefreshTokensInput, Prisma.UserUncheckedUpdateWithoutRefreshTokensInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRefreshTokensInput, Prisma.UserUncheckedCreateWithoutRefreshTokensInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutRefreshTokensInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRefreshTokensInput, Prisma.UserUncheckedUpdateWithoutRefreshTokensInput>
+}
+
+export type UserUpdateWithoutRefreshTokensInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  residents?: Prisma.ResidentUpdateManyWithoutUserNestedInput
+  createdResidents?: Prisma.ResidentUpdateManyWithoutCreatedByNestedInput
+  announcements?: Prisma.AnnouncementUpdateManyWithoutCreatedByNestedInput
+  announcementReads?: Prisma.AnnouncementReadUpdateManyWithoutUserNestedInput
+  recordedVisitors?: Prisma.VisitorUpdateManyWithoutRecordedByNestedInput
+  checkedOutVisitors?: Prisma.VisitorUpdateManyWithoutCheckedOutByNestedInput
+  receivedParcels?: Prisma.ParcelUpdateManyWithoutReceivedByNestedInput
+  claimedParcels?: Prisma.ParcelUpdateManyWithoutClaimedByNestedInput
+  reportedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutReportedByNestedInput
+  assignedTickets?: Prisma.MaintenanceTicketUpdateManyWithoutAssignedToNestedInput
+  ticketLogs?: Prisma.MaintenanceTicketLogUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUpdateManyWithoutCreatedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutRefreshTokensInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  residents?: Prisma.ResidentUncheckedUpdateManyWithoutUserNestedInput
+  createdResidents?: Prisma.ResidentUncheckedUpdateManyWithoutCreatedByNestedInput
+  announcements?: Prisma.AnnouncementUncheckedUpdateManyWithoutCreatedByNestedInput
+  announcementReads?: Prisma.AnnouncementReadUncheckedUpdateManyWithoutUserNestedInput
+  recordedVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutRecordedByNestedInput
+  checkedOutVisitors?: Prisma.VisitorUncheckedUpdateManyWithoutCheckedOutByNestedInput
+  receivedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutReceivedByNestedInput
+  claimedParcels?: Prisma.ParcelUncheckedUpdateManyWithoutClaimedByNestedInput
+  reportedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutReportedByNestedInput
+  assignedTickets?: Prisma.MaintenanceTicketUncheckedUpdateManyWithoutAssignedToNestedInput
+  ticketLogs?: Prisma.MaintenanceTicketLogUncheckedUpdateManyWithoutUserNestedInput
+  maintenanceExpenses?: Prisma.MaintenanceExpenseUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
 
@@ -1807,6 +2161,8 @@ export type UserCountOutputType = {
   reportedTickets: number
   assignedTickets: number
   ticketLogs: number
+  maintenanceExpenses: number
+  refreshTokens: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1821,6 +2177,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   reportedTickets?: boolean | UserCountOutputTypeCountReportedTicketsArgs
   assignedTickets?: boolean | UserCountOutputTypeCountAssignedTicketsArgs
   ticketLogs?: boolean | UserCountOutputTypeCountTicketLogsArgs
+  maintenanceExpenses?: boolean | UserCountOutputTypeCountMaintenanceExpensesArgs
+  refreshTokens?: boolean | UserCountOutputTypeCountRefreshTokensArgs
 }
 
 /**
@@ -1910,6 +2268,20 @@ export type UserCountOutputTypeCountTicketLogsArgs<ExtArgs extends runtime.Types
   where?: Prisma.MaintenanceTicketLogWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountMaintenanceExpensesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MaintenanceExpenseWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRefreshTokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RefreshTokenWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1932,6 +2304,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   reportedTickets?: boolean | Prisma.User$reportedTicketsArgs<ExtArgs>
   assignedTickets?: boolean | Prisma.User$assignedTicketsArgs<ExtArgs>
   ticketLogs?: boolean | Prisma.User$ticketLogsArgs<ExtArgs>
+  maintenanceExpenses?: boolean | Prisma.User$maintenanceExpensesArgs<ExtArgs>
+  refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1984,6 +2358,8 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   reportedTickets?: boolean | Prisma.User$reportedTicketsArgs<ExtArgs>
   assignedTickets?: boolean | Prisma.User$assignedTicketsArgs<ExtArgs>
   ticketLogs?: boolean | Prisma.User$ticketLogsArgs<ExtArgs>
+  maintenanceExpenses?: boolean | Prisma.User$maintenanceExpensesArgs<ExtArgs>
+  refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -2003,6 +2379,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     reportedTickets: Prisma.$MaintenanceTicketPayload<ExtArgs>[]
     assignedTickets: Prisma.$MaintenanceTicketPayload<ExtArgs>[]
     ticketLogs: Prisma.$MaintenanceTicketLogPayload<ExtArgs>[]
+    maintenanceExpenses: Prisma.$MaintenanceExpensePayload<ExtArgs>[]
+    refreshTokens: Prisma.$RefreshTokenPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2419,6 +2797,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   reportedTickets<T extends Prisma.User$reportedTicketsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reportedTicketsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MaintenanceTicketPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   assignedTickets<T extends Prisma.User$assignedTicketsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$assignedTicketsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MaintenanceTicketPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   ticketLogs<T extends Prisma.User$ticketLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ticketLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MaintenanceTicketLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  maintenanceExpenses<T extends Prisma.User$maintenanceExpensesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$maintenanceExpensesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MaintenanceExpensePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  refreshTokens<T extends Prisma.User$refreshTokensArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$refreshTokensArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3111,6 +3491,54 @@ export type User$ticketLogsArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   distinct?: Prisma.MaintenanceTicketLogScalarFieldEnum | Prisma.MaintenanceTicketLogScalarFieldEnum[]
+}
+
+/**
+ * User.maintenanceExpenses
+ */
+export type User$maintenanceExpensesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MaintenanceExpense
+   */
+  select?: Prisma.MaintenanceExpenseSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MaintenanceExpense
+   */
+  omit?: Prisma.MaintenanceExpenseOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MaintenanceExpenseInclude<ExtArgs> | null
+  where?: Prisma.MaintenanceExpenseWhereInput
+  orderBy?: Prisma.MaintenanceExpenseOrderByWithRelationInput | Prisma.MaintenanceExpenseOrderByWithRelationInput[]
+  cursor?: Prisma.MaintenanceExpenseWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MaintenanceExpenseScalarFieldEnum | Prisma.MaintenanceExpenseScalarFieldEnum[]
+}
+
+/**
+ * User.refreshTokens
+ */
+export type User$refreshTokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RefreshToken
+   */
+  select?: Prisma.RefreshTokenSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RefreshToken
+   */
+  omit?: Prisma.RefreshTokenOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RefreshTokenInclude<ExtArgs> | null
+  where?: Prisma.RefreshTokenWhereInput
+  orderBy?: Prisma.RefreshTokenOrderByWithRelationInput | Prisma.RefreshTokenOrderByWithRelationInput[]
+  cursor?: Prisma.RefreshTokenWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RefreshTokenScalarFieldEnum | Prisma.RefreshTokenScalarFieldEnum[]
 }
 
 /**

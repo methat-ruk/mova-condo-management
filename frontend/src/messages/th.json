@@ -341,6 +341,9 @@
     "openCount": "คำร้องที่รอดำเนินการ",
     "searchPlaceholder": "ค้นหาหัวข้อหรือห้อง...",
     "filterAll": "ทั้งหมด",
+    "actions": {
+      "viewExpenses": "ดูค่าใช้จ่าย"
+    },
     "fields": {
       "title": "หัวข้อ",
       "description": "รายละเอียด",
@@ -357,6 +360,72 @@
       "createdAt": "วันที่แจ้ง",
       "unassigned": "ยังไม่มีผู้รับผิดชอบ",
       "optional": "ไม่บังคับ"
+    },
+    "expenses": {
+      "title": "ค่าใช้จ่าย",
+      "subtitle": "บันทึกค่าอะไหล่ ค่าแรง และค่าใช้จ่ายอื่นของงานซ่อม",
+      "total": "ยอดรวม",
+      "empty": "ยังไม่มีการบันทึกค่าใช้จ่าย",
+      "addAction": "เพิ่มค่าใช้จ่าย",
+      "deleteAction": "ลบค่าใช้จ่าย",
+      "createSuccess": "เพิ่มค่าใช้จ่ายเรียบร้อย",
+      "deleteSuccess": "ลบค่าใช้จ่ายเรียบร้อย",
+      "fields": {
+        "title": "รายการค่าใช้จ่าย",
+        "titlePlaceholder": "เช่น เปลี่ยนก๊อกน้ำ",
+        "amount": "จำนวนเงิน",
+        "spentAt": "วันที่ใช้จ่าย",
+        "note": "หมายเหตุ",
+        "notePlaceholder": "รายละเอียดเพิ่มเติม (ถ้ามี)"
+      }
+    },
+    "summary": {
+      "title": "สรุปค่าใช้จ่าย",
+      "subtitle": "ดูภาพรวมค่าใช้จ่ายซ่อมบำรุงรายเดือนหรือทั้งปี",
+      "dashboardTitle": "ค่าใช้จ่ายงานซ่อมบำรุง",
+      "dashboardSubtitle": "ดูค่าใช้จ่ายรายวัน รายเดือน และรายปีในหน้าเดียว",
+      "chartTitle": "กราฟค่าใช้จ่าย",
+      "chartSubtitle": "ภาพรวมค่าใช้จ่ายตามช่วงเวลาที่เลือก",
+      "tableTitle": "รายละเอียดค่าใช้จ่าย",
+      "tableSubtitle": "รายการค่าใช้จ่ายทั้งหมดในช่วงเวลาที่เลือก",
+      "dailyBreakdown": "สรุปรายวัน",
+      "exportCsv": "ส่งออก CSV",
+      "exportSuccess": "ส่งออก CSV สำเร็จ",
+      "yearLabel": "ปี {year}",
+      "dayLabel": "วันที่ {day}",
+      "chartMeta": "{expenses} รายการ · {tickets} งานซ่อม",
+      "periods": {
+        "daily": "รายวัน",
+        "monthly": "รายเดือน",
+        "yearly": "รายปี"
+      },
+      "filters": {
+        "period": "ช่วงเวลา",
+        "year": "ปี",
+        "month": "เดือน",
+        "day": "วัน"
+      },
+      "columns": {
+        "ticket": "งานซ่อม",
+        "createdBy": "บันทึกโดย"
+      },
+      "allYear": "ทั้งปี",
+      "monthLabel": "เดือน {month}",
+      "loadError": "โหลดสรุปค่าใช้จ่ายไม่สำเร็จ",
+      "emptyTitle": "ยังไม่มีค่าใช้จ่ายในช่วงเวลานี้",
+      "emptyDescription": "เพิ่มค่าใช้จ่ายในงานซ่อมเพื่อเริ่มติดตามยอดรายเดือนและรายปี",
+      "byCategory": "แยกตามประเภท",
+      "topTickets": "งานซ่อมที่ใช้จ่ายสูงสุด",
+      "monthlyBreakdown": "สรุปรายเดือน",
+      "categoryMeta": "{expenses} รายการ · {tickets} งานซ่อม",
+      "ticketExpenseCount": "{count} รายการค่าใช้จ่าย",
+      "cards": {
+        "totalAmount": "ยอดรวม",
+        "expenseCount": "จำนวนรายการ",
+        "ticketCount": "จำนวนงานซ่อม",
+        "expenseCountDescription": "รายการค่าใช้จ่ายที่บันทึกไว้",
+        "ticketCountDescription": "งานซ่อมที่มีค่าใช้จ่ายอย่างน้อย 1 รายการ"
+      }
     },
     "status": {
       "OPEN": "รอดำเนินการ",
@@ -376,7 +445,10 @@
       "titleRequired": "กรุณากรอกหัวข้อ",
       "descriptionRequired": "กรุณากรอกรายละเอียด",
       "categoryRequired": "กรุณาเลือกประเภท",
-      "unitRequired": "กรุณาเลือกห้อง"
+      "unitRequired": "กรุณาเลือกห้อง",
+      "expenseTitleRequired": "กรุณากรอกรายการค่าใช้จ่าย",
+      "expenseAmountInvalid": "จำนวนเงินต้องมากกว่า 0",
+      "expenseDateRequired": "กรุณาระบุวันที่ใช้จ่าย"
     },
     "pagination": {
       "showing": "แสดง {from}–{to} จาก {total} รายการ"
@@ -391,7 +463,9 @@
         "ASSIGNED": "มอบหมายให้ {new}",
         "REASSIGNED": "มอบหมายใหม่ให้ {new}",
         "UNASSIGNED": "ยกเลิกการมอบหมาย",
-        "NOTE_UPDATED": "อัปเดตหมายเหตุ"
+        "NOTE_UPDATED": "อัปเดตหมายเหตุ",
+        "EXPENSE_ADDED": "เพิ่มค่าใช้จ่าย",
+        "EXPENSE_REMOVED": "ลบค่าใช้จ่าย"
       }
     }
   },

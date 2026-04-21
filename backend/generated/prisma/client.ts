@@ -106,3 +106,13 @@ export type MaintenanceTicket = Prisma.MaintenanceTicketModel
  * 
  */
 export type MaintenanceTicketLog = Prisma.MaintenanceTicketLogModel
+/**
+ * Model MaintenanceExpense
+ * 
+ */
+export type MaintenanceExpense = Prisma.MaintenanceExpenseModel
+/**
+ * Model RefreshToken
+ * 
+ */
+export type RefreshToken = Prisma.RefreshTokenModel

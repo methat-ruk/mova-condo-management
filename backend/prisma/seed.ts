@@ -1595,6 +1595,13 @@ async function main() {
       byEmail: string;
       offsetMs: number;
     }[];
+    expenses?: {
+      title: string;
+      amount: number;
+      note?: string;
+      spentAt: Date;
+      byEmail: string;
+    }[];
   };
 
   const ticketDefs: TicketSeed[] = [
@@ -1614,6 +1621,15 @@ async function main() {
           newValue: 'OPEN',
           byEmail: 'somchai.jaidee@gmail.com',
           offsetMs: 0,
+        },
+      ],
+      expenses: [
+        {
+          title: 'LED bulb replacement',
+          amount: 180,
+          note: '2 bulbs for bathroom fixture',
+          spentAt: new Date('2026-01-15T09:30:00.000Z'),
+          byEmail: 'maintenance@movacondo.co.th',
         },
       ],
     },
@@ -1807,6 +1823,22 @@ async function main() {
           offsetMs: 3 * 24 * 3600000,
         },
       ],
+      expenses: [
+        {
+          title: 'Drain cleaning chemical',
+          amount: 320,
+          note: 'Cleared sink blockage',
+          spentAt: new Date('2026-02-08T11:00:00.000Z'),
+          byEmail: 'maintenance@movacondo.co.th',
+        },
+        {
+          title: 'PVC trap replacement',
+          amount: 450,
+          note: 'Replaced worn trap under basin',
+          spentAt: new Date('2026-02-09T14:30:00.000Z'),
+          byEmail: 'maintenance@movacondo.co.th',
+        },
+      ],
     },
     {
       id: 'tkt-007',
@@ -1914,6 +1946,15 @@ async function main() {
           offsetMs: 28 * 3600000,
         },
       ],
+      expenses: [
+        {
+          title: 'Drain pan inspection',
+          amount: 650,
+          note: 'Leak inspection and temporary seal',
+          spentAt: new Date('2026-03-04T10:00:00.000Z'),
+          byEmail: 'maintenance@movacondo.co.th',
+        },
+      ],
     },
     {
       id: 'tkt-010',
@@ -1989,6 +2030,22 @@ async function main() {
           offsetMs: 5 * 24 * 3600000 - 6 * 3600000,
         },
       ],
+      expenses: [
+        {
+          title: 'Lift contractor service call',
+          amount: 4200,
+          note: 'Emergency inspection by contractor',
+          spentAt: new Date('2026-04-05T08:30:00.000Z'),
+          byEmail: 'admin@movacondo.co.th',
+        },
+        {
+          title: 'Door sensor replacement',
+          amount: 1850,
+          note: 'New sensor for lift door',
+          spentAt: new Date('2026-04-06T13:45:00.000Z'),
+          byEmail: 'maintenance@movacondo.co.th',
+        },
+      ],
     },
     {
       id: 'tkt-012',
@@ -2047,6 +2104,22 @@ async function main() {
           newValue: 'ปิดวาล์วน้ำชั่วคราวแล้ว รอช่างมาเปลี่ยนท่อ',
           byEmail: 'maintenance@movacondo.co.th',
           offsetMs: 3 * 3600000,
+        },
+      ],
+      expenses: [
+        {
+          title: 'Flexible pipe replacement',
+          amount: 560,
+          note: 'Kitchen under-sink water line',
+          spentAt: new Date('2026-04-18T15:00:00.000Z'),
+          byEmail: 'maintenance@movacondo.co.th',
+        },
+        {
+          title: 'Sealant and fittings',
+          amount: 210,
+          note: 'Joint fittings and sealant',
+          spentAt: new Date('2026-04-18T15:20:00.000Z'),
+          byEmail: 'maintenance@movacondo.co.th',
         },
       ],
     },
@@ -2191,8 +2264,31 @@ async function main() {
       }
     }
 
+    await prisma.maintenanceExpense.deleteMany({
+      where: { ticketId: t.id },
+    });
+
+    if (t.expenses && t.expenses.length > 0) {
+      for (const expense of t.expenses) {
+        const createdById = userIds[expense.byEmail];
+
+        if (!createdById) continue;
+
+        await prisma.maintenanceExpense.create({
+          data: {
+            ticketId: t.id,
+            title: expense.title,
+            amount: expense.amount,
+            note: expense.note ?? null,
+            spentAt: expense.spentAt,
+            createdById,
+          },
+        });
+      }
+    }
+
     console.log(
-      `  ✓ [${t.status.padEnd(11)}] ${t.title} (${t.logs?.length ?? 0} logs)`,
+      `  ✓ [${t.status.padEnd(11)}] ${t.title} (${t.logs?.length ?? 0} logs, ${t.expenses?.length ?? 0} expenses)`,
     );
   }
 
@@ -2204,6 +2300,9 @@ async function main() {
   console.log(`  Announcements: ${announcementDefs.length}`);
   console.log(`  Visitors:      ${visitorDefs.length}`);
   console.log(`  Tickets:       ${ticketDefs.length}`);
+  console.log(
+    `  Expenses:      ${ticketDefs.reduce((sum, ticket) => sum + (ticket.expenses?.length ?? 0), 0)}`,
+  );
 }
 
 main()

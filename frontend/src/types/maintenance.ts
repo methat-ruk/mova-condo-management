@@ -37,6 +37,16 @@ export interface TicketLogUser {
   role: string;
 }
 
+export interface MaintenanceExpense {
+  id: string;
+  title: string;
+  amount: string;
+  note: string | null;
+  spentAt: string;
+  createdAt: string;
+  createdBy: TicketLogUser;
+}
+
 export interface TicketLog {
   id: string;
   action: string;
@@ -64,6 +74,8 @@ export interface MaintenanceTicket {
   assignedTo: TicketStaff | null;
   reportedById: string;
   reportedBy: TicketReporter;
+  expenseTotal: number;
+  expenses?: MaintenanceExpense[];
   logs?: TicketLog[];
 }
 
@@ -86,4 +98,71 @@ export interface UpdateTicketRequest {
   status?: MaintenanceStatus;
   assignedToId?: string | null;
   note?: string;
+}
+
+export interface CreateExpenseRequest {
+  title: string;
+  amount: number;
+  note?: string;
+  spentAt: string;
+}
+
+export interface MaintenanceExpenseSummaryCategory {
+  category: MaintenanceCategory;
+  totalAmount: number;
+  expenseCount: number;
+  ticketCount: number;
+}
+
+export interface MaintenanceExpenseSummaryTicket {
+  ticketId: string;
+  title: string;
+  category: MaintenanceCategory;
+  unitNumber: string;
+  floorNumber: number;
+  totalAmount: number;
+  expenseCount: number;
+}
+
+export interface MaintenanceExpenseMonthlyBreakdown {
+  month: number;
+  totalAmount: number;
+  expenseCount: number;
+  ticketCount: number;
+}
+
+export interface MaintenanceExpenseSummary {
+  period: {
+    periodType: "daily" | "monthly" | "yearly";
+    year: number;
+    month: number | null;
+    day: number | null;
+    startDate: string;
+    endDate: string;
+  };
+  totalAmount: number;
+  expenseCount: number;
+  ticketCount: number;
+  byCategory: MaintenanceExpenseSummaryCategory[];
+  topTickets: MaintenanceExpenseSummaryTicket[];
+  monthlyBreakdown: MaintenanceExpenseMonthlyBreakdown[];
+  dailyBreakdown: {
+    day: number;
+    totalAmount: number;
+    expenseCount: number;
+    ticketCount: number;
+  }[];
+  expenseRows: {
+    id: string;
+    title: string;
+    amount: number;
+    note: string | null;
+    spentAt: string;
+    ticketId: string;
+    ticketTitle: string;
+    category: MaintenanceCategory;
+    unitNumber: string;
+    floorNumber: number;
+    createdBy: string;
+  }[];
 }

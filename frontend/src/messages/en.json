@@ -341,6 +341,9 @@
     "openCount": "Open tickets",
     "searchPlaceholder": "Search title or unit...",
     "filterAll": "All",
+    "actions": {
+      "viewExpenses": "View Expenses"
+    },
     "fields": {
       "title": "Title",
       "description": "Description",
@@ -357,6 +360,72 @@
       "createdAt": "Created",
       "unassigned": "Unassigned",
       "optional": "Optional"
+    },
+    "expenses": {
+      "title": "Expenses",
+      "subtitle": "Track parts, labor, and other maintenance costs",
+      "total": "Total Cost",
+      "empty": "No expenses recorded yet",
+      "addAction": "Add Expense",
+      "deleteAction": "Delete expense",
+      "createSuccess": "Expense added",
+      "deleteSuccess": "Expense removed",
+      "fields": {
+        "title": "Expense Item",
+        "titlePlaceholder": "e.g. Replacement faucet",
+        "amount": "Amount",
+        "spentAt": "Spent Date",
+        "note": "Note",
+        "notePlaceholder": "Optional cost detail"
+      }
+    },
+    "summary": {
+      "title": "Expense Summary",
+      "subtitle": "Review maintenance spending by month or across the full year",
+      "dashboardTitle": "Maintenance Expenses",
+      "dashboardSubtitle": "Track daily, monthly, and yearly maintenance spending in one place",
+      "chartTitle": "Spending Chart",
+      "chartSubtitle": "Visual breakdown for the selected period",
+      "tableTitle": "Expense Details",
+      "tableSubtitle": "All recorded expenses for the selected period",
+      "dailyBreakdown": "Daily Breakdown",
+      "exportCsv": "Export CSV",
+      "exportSuccess": "CSV exported successfully",
+      "yearLabel": "Year {year}",
+      "dayLabel": "Day {day}",
+      "chartMeta": "{expenses} expenses · {tickets} tickets",
+      "periods": {
+        "daily": "Daily",
+        "monthly": "Monthly",
+        "yearly": "Yearly"
+      },
+      "filters": {
+        "period": "Period",
+        "year": "Year",
+        "month": "Month",
+        "day": "Day"
+      },
+      "columns": {
+        "ticket": "Ticket",
+        "createdBy": "Recorded By"
+      },
+      "allYear": "Full Year",
+      "monthLabel": "Month {month}",
+      "loadError": "Failed to load expense summary",
+      "emptyTitle": "No maintenance expenses in this period",
+      "emptyDescription": "Add expenses to tickets to start tracking monthly and yearly totals.",
+      "byCategory": "By Category",
+      "topTickets": "Top Spending Tickets",
+      "monthlyBreakdown": "Monthly Breakdown",
+      "categoryMeta": "{expenses} expenses · {tickets} tickets",
+      "ticketExpenseCount": "{count} expense items",
+      "cards": {
+        "totalAmount": "Total Amount",
+        "expenseCount": "Expense Items",
+        "ticketCount": "Tickets With Cost",
+        "expenseCountDescription": "Recorded expense lines",
+        "ticketCountDescription": "Tickets with at least one expense"
+      }
     },
     "status": {
       "OPEN": "Open",
@@ -376,7 +445,10 @@
       "titleRequired": "Title is required",
       "descriptionRequired": "Description is required",
       "categoryRequired": "Please select a category",
-      "unitRequired": "Please select a unit"
+      "unitRequired": "Please select a unit",
+      "expenseTitleRequired": "Expense item is required",
+      "expenseAmountInvalid": "Amount must be greater than 0",
+      "expenseDateRequired": "Spent date is required"
     },
     "pagination": {
       "showing": "Showing {from}–{to} of {total}"
@@ -391,7 +463,9 @@
         "ASSIGNED": "Assigned to {new}",
         "REASSIGNED": "Reassigned to {new}",
         "UNASSIGNED": "Unassigned",
-        "NOTE_UPDATED": "Note updated"
+        "NOTE_UPDATED": "Note updated",
+        "EXPENSE_ADDED": "Expense added",
+        "EXPENSE_REMOVED": "Expense removed"
       }
     }
   },

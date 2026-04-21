@@ -396,7 +396,9 @@ export const ModelName = {
   AnnouncementRead: 'AnnouncementRead',
   Parcel: 'Parcel',
   MaintenanceTicket: 'MaintenanceTicket',
-  MaintenanceTicketLog: 'MaintenanceTicketLog'
+  MaintenanceTicketLog: 'MaintenanceTicketLog',
+  MaintenanceExpense: 'MaintenanceExpense',
+  RefreshToken: 'RefreshToken'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -412,7 +414,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "building" | "floor" | "unit" | "user" | "visitor" | "resident" | "familyMember" | "emergencyContact" | "announcement" | "announcementRead" | "parcel" | "maintenanceTicket" | "maintenanceTicketLog"
+    modelProps: "building" | "floor" | "unit" | "user" | "visitor" | "resident" | "familyMember" | "emergencyContact" | "announcement" | "announcementRead" | "parcel" | "maintenanceTicket" | "maintenanceTicketLog" | "maintenanceExpense" | "refreshToken"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1378,6 +1380,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    MaintenanceExpense: {
+      payload: Prisma.$MaintenanceExpensePayload<ExtArgs>
+      fields: Prisma.MaintenanceExpenseFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MaintenanceExpenseFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceExpensePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MaintenanceExpenseFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceExpensePayload>
+        }
+        findFirst: {
+          args: Prisma.MaintenanceExpenseFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceExpensePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MaintenanceExpenseFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceExpensePayload>
+        }
+        findMany: {
+          args: Prisma.MaintenanceExpenseFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceExpensePayload>[]
+        }
+        create: {
+          args: Prisma.MaintenanceExpenseCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceExpensePayload>
+        }
+        createMany: {
+          args: Prisma.MaintenanceExpenseCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MaintenanceExpenseCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceExpensePayload>[]
+        }
+        delete: {
+          args: Prisma.MaintenanceExpenseDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceExpensePayload>
+        }
+        update: {
+          args: Prisma.MaintenanceExpenseUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceExpensePayload>
+        }
+        deleteMany: {
+          args: Prisma.MaintenanceExpenseDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MaintenanceExpenseUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MaintenanceExpenseUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceExpensePayload>[]
+        }
+        upsert: {
+          args: Prisma.MaintenanceExpenseUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MaintenanceExpensePayload>
+        }
+        aggregate: {
+          args: Prisma.MaintenanceExpenseAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMaintenanceExpense>
+        }
+        groupBy: {
+          args: Prisma.MaintenanceExpenseGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MaintenanceExpenseGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MaintenanceExpenseCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MaintenanceExpenseCountAggregateOutputType> | number
+        }
+      }
+    }
+    RefreshToken: {
+      payload: Prisma.$RefreshTokenPayload<ExtArgs>
+      fields: Prisma.RefreshTokenFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RefreshTokenFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RefreshTokenPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RefreshTokenFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RefreshTokenPayload>
+        }
+        findFirst: {
+          args: Prisma.RefreshTokenFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RefreshTokenPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RefreshTokenFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RefreshTokenPayload>
+        }
+        findMany: {
+          args: Prisma.RefreshTokenFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RefreshTokenPayload>[]
+        }
+        create: {
+          args: Prisma.RefreshTokenCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RefreshTokenPayload>
+        }
+        createMany: {
+          args: Prisma.RefreshTokenCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RefreshTokenCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RefreshTokenPayload>[]
+        }
+        delete: {
+          args: Prisma.RefreshTokenDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RefreshTokenPayload>
+        }
+        update: {
+          args: Prisma.RefreshTokenUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RefreshTokenPayload>
+        }
+        deleteMany: {
+          args: Prisma.RefreshTokenDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RefreshTokenUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RefreshTokenUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RefreshTokenPayload>[]
+        }
+        upsert: {
+          args: Prisma.RefreshTokenUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RefreshTokenPayload>
+        }
+        aggregate: {
+          args: Prisma.RefreshTokenAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRefreshToken>
+        }
+        groupBy: {
+          args: Prisma.RefreshTokenGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RefreshTokenGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RefreshTokenCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RefreshTokenCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1612,6 +1762,32 @@ export const MaintenanceTicketLogScalarFieldEnum = {
 } as const
 
 export type MaintenanceTicketLogScalarFieldEnum = (typeof MaintenanceTicketLogScalarFieldEnum)[keyof typeof MaintenanceTicketLogScalarFieldEnum]
+
+
+export const MaintenanceExpenseScalarFieldEnum = {
+  id: 'id',
+  ticketId: 'ticketId',
+  title: 'title',
+  amount: 'amount',
+  note: 'note',
+  spentAt: 'spentAt',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MaintenanceExpenseScalarFieldEnum = (typeof MaintenanceExpenseScalarFieldEnum)[keyof typeof MaintenanceExpenseScalarFieldEnum]
+
+
+export const RefreshTokenScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  expiresAt: 'expiresAt',
+  revokedAt: 'revokedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type RefreshTokenScalarFieldEnum = (typeof RefreshTokenScalarFieldEnum)[keyof typeof RefreshTokenScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1940,6 +2116,8 @@ export type GlobalOmitConfig = {
   parcel?: Prisma.ParcelOmit
   maintenanceTicket?: Prisma.MaintenanceTicketOmit
   maintenanceTicketLog?: Prisma.MaintenanceTicketLogOmit
+  maintenanceExpense?: Prisma.MaintenanceExpenseOmit
+  refreshToken?: Prisma.RefreshTokenOmit
 }
 
 /* Types for Logging */

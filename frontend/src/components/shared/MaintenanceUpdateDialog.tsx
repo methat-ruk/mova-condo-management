@@ -1,12 +1,15 @@
 "use client";
 
 import { Dialog } from "@base-ui/react/dialog";
+import { Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { SelectInput } from "@/components/ui/select-input";
 import type { UserOption } from "@/services/userService";
 import type {
+  CreateExpenseRequest,
+  MaintenanceExpense,
   MaintenanceStatus,
   MaintenanceTicket,
   TicketLog,
@@ -18,11 +21,19 @@ interface Props {
   onOpenChange: (open: boolean) => void;
   ticket: MaintenanceTicket | null;
   onSubmit: (data: UpdateTicketRequest) => Promise<void>;
+  onAddExpense: (data: CreateExpenseRequest) => Promise<void>;
+  onDeleteExpense: (expenseId: string) => Promise<void>;
   isPending?: boolean;
   staffUsers: UserOption[];
 }
 
 const STATUSES: MaintenanceStatus[] = ["OPEN", "IN_PROGRESS", "RESOLVED", "CANCELLED"];
+
+interface ExpenseErrors {
+  title?: string;
+  amount?: string;
+  spentAt?: string;
+}
 
 function TicketHistory({ logs }: { logs: TicketLog[] }) {
   const t = useTranslations("maintenance");
@@ -48,6 +59,10 @@ function TicketHistory({ logs }: { logs: TicketLog[] }) {
         return t("history.actions.UNASSIGNED");
       case "NOTE_UPDATED":
         return t("history.actions.NOTE_UPDATED");
+      case "EXPENSE_ADDED":
+        return t("history.actions.EXPENSE_ADDED");
+      case "EXPENSE_REMOVED":
+        return t("history.actions.EXPENSE_REMOVED");
       default:
         return log.action;
     }
@@ -93,6 +108,8 @@ function TicketHistory({ logs }: { logs: TicketLog[] }) {
 function UpdateForm({
   ticket,
   onSubmit,
+  onAddExpense,
+  onDeleteExpense,
   isPending,
   staffUsers,
 }: Omit<Props, "open" | "onOpenChange">) {
@@ -102,6 +119,11 @@ function UpdateForm({
   const [status, setStatus] = useState<MaintenanceStatus>(ticket?.status ?? "OPEN");
   const [assignedToId, setAssignedToId] = useState<string>(ticket?.assignedToId ?? "");
   const [note, setNote] = useState(ticket?.note ?? "");
+  const [expenseTitle, setExpenseTitle] = useState("");
+  const [expenseAmount, setExpenseAmount] = useState("");
+  const [expenseSpentAt, setExpenseSpentAt] = useState(new Date().toISOString().slice(0, 10));
+  const [expenseNote, setExpenseNote] = useState("");
+  const [expenseErrors, setExpenseErrors] = useState<ExpenseErrors>({});
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -112,8 +134,46 @@ function UpdateForm({
     });
   };
 
+  const handleAddExpense = async () => {
+    const nextErrors: ExpenseErrors = {};
+    const amount = Number(expenseAmount);
+
+    if (!expenseTitle.trim()) {
+      nextErrors.title = t("validation.expenseTitleRequired");
+    }
+
+    if (!expenseAmount || Number.isNaN(amount) || amount <= 0) {
+      nextErrors.amount = t("validation.expenseAmountInvalid");
+    }
+
+    if (!expenseSpentAt) {
+      nextErrors.spentAt = t("validation.expenseDateRequired");
+    }
+
+    setExpenseErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length > 0) {
+      return;
+    }
+
+    await onAddExpense({
+      title: expenseTitle.trim(),
+      amount,
+      spentAt: new Date(expenseSpentAt).toISOString(),
+      note: expenseNote.trim() || undefined,
+    });
+
+    setExpenseTitle("");
+    setExpenseAmount("");
+    setExpenseSpentAt(new Date().toISOString().slice(0, 10));
+    setExpenseNote("");
+    setExpenseErrors({});
+  };
+
   const inputBase =
     "border-input bg-background text-foreground placeholder:text-muted-foreground focus:ring-ring w-full rounded-lg border px-3 py-2 text-sm focus:ring-2 focus:outline-none";
+
+  const expenses = ticket?.expenses ?? [];
 
   return (
     <div className="flex max-h-[70vh] flex-col overflow-hidden">
@@ -167,6 +227,129 @@ function UpdateForm({
                 className={`${inputBase} resize-none`}
               />
             </div>
+
+            <div className="border-border space-y-4 rounded-xl border p-4">
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <p className="text-foreground text-sm font-semibold">{t("expenses.title")}</p>
+                  <p className="text-muted-foreground text-xs">{t("expenses.subtitle")}</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-muted-foreground text-xs">{t("expenses.total")}</p>
+                  <p className="text-foreground text-sm font-semibold">
+                    ฿{ticket?.expenseTotal.toLocaleString("en-US", { minimumFractionDigits: 2 })}
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="space-y-1.5">
+                    <label className="text-foreground text-sm font-medium">
+                      {t("expenses.fields.title")} <span className="text-destructive">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={expenseTitle}
+                      onChange={(e) => {
+                        setExpenseTitle(e.target.value);
+                        setExpenseErrors((prev) => ({ ...prev, title: undefined }));
+                      }}
+                      placeholder={t("expenses.fields.titlePlaceholder")}
+                      className={`${inputBase} ${expenseErrors.title ? "border-destructive" : ""}`}
+                    />
+                    {expenseErrors.title && (
+                      <p className="text-destructive text-xs">{expenseErrors.title}</p>
+                    )}
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-foreground text-sm font-medium">
+                      {t("expenses.fields.amount")} <span className="text-destructive">*</span>
+                    </label>
+                    <input
+                      type="number"
+                      min="0.01"
+                      step="0.01"
+                      value={expenseAmount}
+                      onChange={(e) => {
+                        setExpenseAmount(e.target.value);
+                        setExpenseErrors((prev) => ({ ...prev, amount: undefined }));
+                      }}
+                      placeholder="0.00"
+                      className={`${inputBase} ${expenseErrors.amount ? "border-destructive" : ""}`}
+                    />
+                    {expenseErrors.amount && (
+                      <p className="text-destructive text-xs">{expenseErrors.amount}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="space-y-1.5">
+                    <label className="text-foreground text-sm font-medium">
+                      {t("expenses.fields.spentAt")} <span className="text-destructive">*</span>
+                    </label>
+                    <input
+                      type="date"
+                      value={expenseSpentAt}
+                      onChange={(e) => {
+                        setExpenseSpentAt(e.target.value);
+                        setExpenseErrors((prev) => ({ ...prev, spentAt: undefined }));
+                      }}
+                      onKeyDown={(e) => e.preventDefault()}
+                      onPaste={(e) => e.preventDefault()}
+                      className={`${inputBase} cursor-pointer scheme-light dark:scheme-dark ${expenseErrors.spentAt ? "border-destructive" : ""}`}
+                    />
+                    {expenseErrors.spentAt && (
+                      <p className="text-destructive text-xs">{expenseErrors.spentAt}</p>
+                    )}
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-foreground text-sm font-medium">
+                      {t("expenses.fields.note")}{" "}
+                      <span className="text-muted-foreground font-normal">
+                        ({t("fields.optional")})
+                      </span>
+                    </label>
+                    <input
+                      type="text"
+                      value={expenseNote}
+                      onChange={(e) => setExpenseNote(e.target.value)}
+                      placeholder={t("expenses.fields.notePlaceholder")}
+                      className={inputBase}
+                    />
+                  </div>
+                </div>
+
+                <div className="flex justify-end">
+                  <Button
+                    type="button"
+                    disabled={isPending}
+                    className="cursor-pointer"
+                    onClick={() => void handleAddExpense()}
+                  >
+                    {t("expenses.addAction")}
+                  </Button>
+                </div>
+              </div>
+
+              {expenses.length === 0 ? (
+                <p className="text-muted-foreground text-center text-xs">{t("expenses.empty")}</p>
+              ) : (
+                <div className="space-y-2">
+                  {expenses.map((expense) => (
+                    <ExpenseItem
+                      key={expense.id}
+                      expense={expense}
+                      isPending={isPending}
+                      onDelete={onDeleteExpense}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </form>
 
@@ -204,6 +387,8 @@ export function MaintenanceUpdateDialog({
   onOpenChange,
   ticket,
   onSubmit,
+  onAddExpense,
+  onDeleteExpense,
   isPending,
   staffUsers,
 }: Props) {
@@ -241,6 +426,8 @@ export function MaintenanceUpdateDialog({
               key={ticket.id}
               ticket={ticket}
               onSubmit={onSubmit}
+              onAddExpense={onAddExpense}
+              onDeleteExpense={onDeleteExpense}
               isPending={isPending}
               staffUsers={staffUsers}
             />
@@ -248,5 +435,48 @@ export function MaintenanceUpdateDialog({
         </Dialog.Popup>
       </Dialog.Portal>
     </Dialog.Root>
+  );
+}
+
+function ExpenseItem({
+  expense,
+  isPending,
+  onDelete,
+}: {
+  expense: MaintenanceExpense;
+  isPending?: boolean;
+  onDelete: (expenseId: string) => Promise<void>;
+}) {
+  const t = useTranslations("maintenance");
+  const tAuth = useTranslations("auth");
+
+  return (
+    <div className="border-border flex items-start justify-between gap-3 rounded-lg border p-3">
+      <div className="min-w-0">
+        <div className="flex items-center gap-2">
+          <p className="text-foreground truncate text-sm font-medium">{expense.title}</p>
+          <span className="bg-primary/10 text-primary rounded-full px-2 py-0.5 text-xs font-medium">
+            ฿{Number(expense.amount).toLocaleString("en-US", { minimumFractionDigits: 2 })}
+          </span>
+        </div>
+        {expense.note && <p className="text-muted-foreground mt-1 text-xs">{expense.note}</p>}
+        <p className="text-muted-foreground mt-1 text-xs">
+          {new Date(expense.spentAt).toLocaleDateString("th-TH")} · {expense.createdBy.firstName}{" "}
+          {expense.createdBy.lastName} ·{" "}
+          {tAuth(
+            `roles.${expense.createdBy.role as "ADMIN" | "JURISTIC" | "MAINTENANCE" | "GUARD" | "RESIDENT"}`,
+          )}
+        </p>
+      </div>
+      <button
+        type="button"
+        disabled={isPending}
+        onClick={() => void onDelete(expense.id)}
+        className="text-destructive/70 hover:text-destructive hover:bg-destructive/10 cursor-pointer rounded p-1 transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+        aria-label={t("expenses.deleteAction")}
+      >
+        <Trash2 className="h-4 w-4" />
+      </button>
+    </div>
   );
 }

@@ -127,6 +127,8 @@ model User {
   reportedTickets       MaintenanceTicket[]     @relation("ReportedBy")
   assignedTickets       MaintenanceTicket[]     @relation("AssignedTo")
   ticketLogs            MaintenanceTicketLog[]  @relation("LoggedBy")
+  maintenanceExpenses   MaintenanceExpense[]    @relation("ExpenseCreatedBy")
+  refreshTokens         RefreshToken[]
 }
 
 model Visitor {
@@ -263,6 +265,7 @@ model MaintenanceTicket {
   updatedAt    DateTime            @updatedAt
 
   logs         MaintenanceTicketLog[]
+  expenses     MaintenanceExpense[]
 }
 
 model MaintenanceTicketLog {
@@ -275,4 +278,31 @@ model MaintenanceTicketLog {
   oldValue  String?
   newValue  String?
   createdAt DateTime          @default(now())
+}
+
+model MaintenanceExpense {
+  id          String            @id @default(uuid())
+  ticketId    String
+  ticket      MaintenanceTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  title       String
+  amount      Decimal           @db.Decimal(10, 2)
+  note        String?
+  spentAt     DateTime
+  createdById String
+  createdBy   User              @relation("ExpenseCreatedBy", fields: [createdById], references: [id])
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  @@index([ticketId, spentAt])
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime @default(now())
+
+  @@index([userId, expiresAt])
 }
